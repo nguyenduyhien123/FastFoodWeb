@@ -18,6 +18,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('fullname');
+            $table->string('description')->nullable();
+            $table->tinytext('role');
+            $table->timestamp('birthday');
+            $table->string('phonenumber', 10);
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->tinyInteger('locked_endable',1);
+            $table->timestamp('locked_end');
             $table->timestamps();
         });
     }
