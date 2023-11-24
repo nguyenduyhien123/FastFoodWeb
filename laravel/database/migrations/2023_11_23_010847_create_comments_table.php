@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
+            $table->bigInteger('comment_id')->unsigned();
+            $table->string('image');
+            $table->string('content');
+            $table->string('path')->unique();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

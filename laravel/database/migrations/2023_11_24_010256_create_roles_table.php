@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slideshows', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('url');
-            $table->integer('order');
+            $table->string('name')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slideshows');
+        Schema::dropIfExists('roles');
     }
 };

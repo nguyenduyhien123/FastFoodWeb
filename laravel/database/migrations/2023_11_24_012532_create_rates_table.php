@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slideshows', function (Blueprint $table) {
+        Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
+            $table->tinyInteger('star');
             $table->string('image');
-            $table->string('url');
-            $table->integer('order');
+            $table->string('content');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slideshows');
+        Schema::dropIfExists('rates');
     }
 };

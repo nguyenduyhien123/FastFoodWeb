@@ -13,20 +13,23 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->string('fullname');
             $table->string('description')->nullable();
-            $table->tinytext('role');
+            $table->bigInteger('role_id');
             $table->timestamp('birthday');
             $table->string('phonenumber', 10);
             $table->timestamp('phone_verified_at')->nullable();
             $table->tinyInteger('locked_endable',1);
             $table->timestamp('locked_end');
             $table->timestamps();
+            $table->softDeletes();
+
+            
         });
     }
 
