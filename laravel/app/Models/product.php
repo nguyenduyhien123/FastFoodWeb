@@ -26,4 +26,12 @@ class Product extends Model
     public function rates(){
         return $this->hasMany(Rate::class);
     }
+
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class);
+    }
+
+    public function invoiceDetail(){
+        return $this->hasMany(InvoiceDetail::class);
+    }
 }

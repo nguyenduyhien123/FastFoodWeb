@@ -30,6 +30,9 @@ class User extends Authenticatable
         return $this->hasMany(Rate::class);
     }
 
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
