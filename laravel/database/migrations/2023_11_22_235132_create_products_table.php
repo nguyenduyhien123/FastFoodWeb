@@ -16,12 +16,11 @@ return new class extends Migration
             $table->string('name',255);
             $table->text('description');
             $table->bigInteger('price')->unsigned();
-            $table->tinyInterger('status');
+            $table->tinyInteger('status');
             $table->string('image');
-            $table->bigInterger('product_type_id');
-            $table->tinyInterger('star');
+            $table->bigInteger('product_type_id');
+            $table->tinyInteger('star');
             $table->timestamps();
-
             $table->foreign('product_type_id')->references('id')->on('producttypes');
         });
     }
