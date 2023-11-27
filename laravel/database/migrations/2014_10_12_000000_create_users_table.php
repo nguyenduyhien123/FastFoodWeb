@@ -15,21 +15,21 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->dateTime('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->string('fullname');
             $table->string('description')->nullable();
-            $table->bigInteger('role_id');
-            $table->timestamp('birthday');
+            $table->bigInteger('role_id')->unsigned();
+            $table->date('birthday');
             $table->string('phonenumber', 10);
             $table->timestamp('phone_verified_at')->nullable();
-            $table->tinyInteger('locked_endable',1);
-            $table->timestamp('locked_end');
+            $table->tinyInteger('locked_endable');
+            $table->timestamp('locked_end')->useCurrent();
             $table->timestamps();
             $table->softDeletes();
 
-            
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('user_id');
-            $table->bigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
             $table->softDeletes();
 

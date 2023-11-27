@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('price')->unsigned();
             $table->boolean('status');
             $table->json('image');
-            $table->bigInteger('product_type_id');
+            $table->bigInteger('product_type_id')->unsigned();
             $table->tinyInteger('star');
             $table->timestamps();
             $table->softDeletes();
