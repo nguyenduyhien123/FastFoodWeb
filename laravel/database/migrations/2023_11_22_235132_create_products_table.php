@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->bigInteger('price')->unsigned();
-            $table->boolean('status');
+            $table->bigInteger('price')->unsigned()->default(0);
+            $table->boolean('status')->default(1);
             $table->json('image');
-            $table->bigInteger('product_type_id')->unsigned();
-            $table->tinyInteger('star');
+            $table->bigInteger('product_type_id')->unsigned()->nullable();
+            $table->tinyInteger('star')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

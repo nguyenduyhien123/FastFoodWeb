@@ -11,6 +11,8 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = ['name', 'price', 'description', 'image'];
+
     public function producttypes(): HasMany{
         return $this->hasMany(Producttype::class);
     }
