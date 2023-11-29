@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->double('percentage',3,2);
+            $table->double('percentage',5,2);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->timestamps();

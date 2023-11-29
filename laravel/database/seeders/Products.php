@@ -41,11 +41,12 @@ class Products extends Seeder
     }
     public function run(): void
     {
-        $crawlData = $this->crawlBurger();
-        foreach($crawlData as $product)
+
+        $burgerData = $this->crawlBurger();
+        foreach($burgerData as $product)
         {
             $image = json_encode([$product['img']], JSON_FORCE_OBJECT);
-            Product::create(['name'=> $product['name'], 'price' => $product['price'], 'description' => $product['des'], 'image' => $image] );
+            Product::create(['name'=> $product['name'], 'price' => $product['price'], 'description' => $product['des'], 'image' => $image, 'product_type_id' => '1' ]);
         }
     }
 

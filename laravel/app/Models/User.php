@@ -14,6 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+
     public function comment():HasMany{
         return $this->hasMany(comment::class);
     }

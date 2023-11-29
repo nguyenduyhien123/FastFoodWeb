@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('phonenumber', 10);
             $table->timestamp('phone_verified_at')->nullable();
-            $table->tinyInteger('locked_endable');
+            $table->tinyInteger('locked_endable')->default(0);
             $table->timestamp('locked_end')->useCurrent();
             $table->timestamps();
             $table->softDeletes();
