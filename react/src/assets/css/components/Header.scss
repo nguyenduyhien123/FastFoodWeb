@@ -1,0 +1,99 @@
+.sitio-header {
+       position: fixed;
+       top: 0;
+       left: 0;
+       right: 0;
+       z-index: 1000;
+       background: #000;
+       padding: 3rem 9%;
+       display: -webkit-box;
+       display: -ms-flexbox;
+       display: flex;
+       -webkit-box-align: center;
+       -ms-flex-align: center;
+       align-items: center;
+       -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
+       justify-content: space-between;
+       gap: 1rem;
+}
+
+.sitio-header .icono {
+       font-size: 2.5rem;
+       cursor: pointer;
+       color: #fff;
+}
+
+.sitio-header .icono:hover {
+       color: #2087cc;
+}
+
+.sitio-header #menu-btn {
+       display: none;
+}
+
+.sitio-header .navbar a {
+       color: #fff;
+       font-size: 2rem;
+       margin: 0 2rem;
+}
+
+.sitio-header .navbar a:hover {
+       text-decoration: underline;
+       text-underline-offset: 1rem;
+       color: #2087cc;
+}
+
+.sitio-header .navbar .espacio {
+       display: inline-block;
+       width: 16rem;
+}
+
+.sitio-header .logo {
+       position: absolute;
+       top: 4rem;
+       left: 44%;
+       -webkit-transform: translateY(-50%);
+       transform: translateY(-50%);
+}
+
+.sitio-header .logo img {
+       width: 15rem;
+}
+
+.sitio-header .busqueda-form {
+       height: 7rem;
+       padding: 0 2rem;
+       border-top: 0.2rem solid #2087cc;
+       display: -webkit-box;
+       display: -ms-flexbox;
+       display: flex;
+       -webkit-box-align: center;
+       -ms-flex-align: center;
+       align-items: center;
+       background: #000;
+       position: absolute;
+       top: 99%;
+       left: 0;
+       right: 0;
+       -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.sitio-header .busqueda-form.active {
+       -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.sitio-header .busqueda-form input {
+       width: 100%;
+       background: none;
+       text-transform: none;
+       font-size: 1.6rem;
+       color: #fff;
+}
+
+.sitio-header .fa-times {
+       -webkit-transform: rotate(180deg);
+       transform: rotate(180deg);
+}
