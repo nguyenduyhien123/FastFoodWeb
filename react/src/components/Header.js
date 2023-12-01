@@ -5,33 +5,15 @@ import image from '../assets/images/logo.png';
 const Header = () => {
        const itemHeader = [
               [
-                     {
-                            link: 'inico',
-                            text: 'Inicio'
-                     },
-                     {
-                            link: 'menu',
-                            text: 'Menu'
-                     },
-                     {
-                            link: 'acercade',
-                            text: 'Acerca de'
-                     },
+                     { link: 'inicio', text: 'Inicio' },
+                     { link: 'menu', text: 'Menu' },
+                     { link: 'acercade', text: 'Acerca de' },
               ],
               [
-                     {
-                            link: 'opiniones',
-                            text: 'Opiniones'
-                     },
-                     {
-                            link: 'contacto',
-                            text: 'Contacto'
-                     },
-                     {
-                            link: 'blog',
-                            text: 'Blog'
-                     },
-              ]
+                     { link: 'opiniones', text: 'Opiniones' },
+                     { link: 'contacto', text: 'Contacto' },
+                     { link: 'blog', text: 'Blog' },
+              ],
        ];
        return (
               <>
