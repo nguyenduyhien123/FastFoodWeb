@@ -129,7 +129,6 @@ class ProductsSeeder extends Seeder
                     $image = json_encode([$product['img']], JSON_FORCE_OBJECT);
                     Product::create(['name' => $product['name'], 'price' => $product['price'], 'description' => $product['des'], 'image' => $image, 'product_type_id' => $product['product_type_id']]);
                 }
-
             }
         }
     }

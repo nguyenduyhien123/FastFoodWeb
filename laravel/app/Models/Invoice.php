@@ -10,23 +10,33 @@ class Invoice extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function discount(){
+    public function discount()
+    {
         return $this->belongsTo(Discount::class);
     }
 
-    public function staff(){
+    public function staff()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function paymentMethod(){
+    public function paymentMethod()
+    {
         return $this->belongsTo(PaymentMethod::class);
     }
 
-    public function invoiceDetail(){
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function invoiceDetail()
+    {
         return $this->hasMany(InvoiceDetail::class);
     }
 }
