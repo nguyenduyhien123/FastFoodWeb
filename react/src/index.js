@@ -6,11 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import SignIn from "./components/SignIn/SignIn";
+import Register from "./components/Register/Register";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <SignIn />
+    <Register />
   </React.StrictMode>
 );
 
