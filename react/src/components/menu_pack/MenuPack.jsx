@@ -37,7 +37,7 @@ const MenuPack = () => {
       default:
         break;
     }
-  }, [menuState.filter]);
+  },[menuState.filter]);
 
   const handleFilterClick = (menuType) => {
     setMenuState({ ...menuState, filter: menuType });
@@ -53,33 +53,23 @@ const MenuPack = () => {
           <Col lg='12' className='text-center mb-5'>
             <button
               className={`filter-btn ${menuState.filter === 'FAST-FOOD' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('FAST-FOOD')}
-            >
-              Fast Food
+              onClick={() => handleFilterClick('FAST-FOOD')}>Fast Food
             </button>
             <button
               className={`filter-btn ${menuState.filter === 'RICE-MENU' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('RICE-MENU')}
-            >
-              Rice Menu
+              onClick={() => handleFilterClick('RICE-MENU')}>Rice Menu
             </button>
             <button
               className={`filter-btn ${menuState.filter === 'PIZZA' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('PIZZA')}
-            >
-              Pizza
+              onClick={() => handleFilterClick('PIZZA')}>Pizza
             </button>
             <button
               className={`filter-btn ${menuState.filter === 'DESSERT' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('DESSERT')}
-            >
-              Desserts
+              onClick={() => handleFilterClick('DESSERT')}>Desserts
             </button>
             <button
               className={`filter-btn ${menuState.filter === 'COFFEE' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('COFFEE')}
-            >
-              Coffee
+              onClick={() => handleFilterClick('COFFEE')}>Coffee
             </button>
           </Col>
           {menuState.products.map((item) => (
