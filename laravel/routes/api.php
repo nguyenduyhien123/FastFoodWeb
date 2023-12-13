@@ -19,3 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('roles', RoleController::class);
+
+Route::fallback(function () {
+    return response()->json(['message' => 'API không tồn tại.'], 404);
+});
