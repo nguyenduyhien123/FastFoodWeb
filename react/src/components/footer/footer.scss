@@ -1,0 +1,69 @@
+.footer_web {
+  padding-bottom: 0;
+  background: #fff;
+  i 
+  {
+    color : red;
+  }
+  .ri-restaurant-2-line
+  {
+    color : yellow;
+  }
+  .footer_link-title {
+    color: #000000;
+    font-weight: bolder;
+  }
+
+  .link_item {
+    padding-left: 0;
+    background: transparent;
+    border: none;
+    color : #000000
+
+    a {
+      color: #c4c4c4;
+      transition: color 0.3s; // Thêm hiệu ứng chuyển động cho màu chữ
+    }
+
+    &:hover {
+      a {
+        color: #f5b70a; // Màu chữ khi hover
+      }
+    }
+  }
+
+  .footer_bottom {
+    background: #141124;
+    padding: 20px 0px;
+    text-align: center;
+    margin-top: 50px;
+
+    p {
+      font-size: 0.9rem;
+      padding-bottom: 0;
+      color: #fff; // Màu chữ
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .link_item {
+      a {
+        font-size: 0.8rem;
+      }
+      font-size: 0.8rem;
+    }
+
+    .logo p {
+      font-size: 0.8rem;
+      color: #fff; // Màu chữ
+    }
+
+    .footer_bottom p {
+      font-size: 0.7rem;
+    }
+
+    .footer_bottom {
+      padding: 15px 0px;
+    }
+  }
+}

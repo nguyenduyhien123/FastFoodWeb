@@ -1,0 +1,104 @@
+.download {
+    .app_container {
+      background: #f5b70a;
+      border-radius: 10px;
+    }
+  
+    .app_img {
+      margin-bottom: -100px;
+  
+      img {
+        width: 100%;
+      }
+    }
+  
+    .app_content {
+      padding-top: 50px;
+  
+      h5 {
+        color: #0a071a;
+        font-size: 1rem;
+  
+        @media only screen and (max-width: 992px) {
+          font-size: 1rem;
+        }
+      }
+  
+      h2 {
+        color: #0a071a;
+        font-weight: 600;
+        font-size: 1.5rem;
+  
+        @media only screen and (max-width: 992px) {
+          font-size: 1.5rem;
+        }
+      }
+  
+      p {
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 25px;
+  
+        @media only screen and (max-width: 992px) {
+          font-size: 0.7rem;
+          line-height: 25px;
+        }
+      }
+  
+      .btn_apple {
+        background: #0a071a;
+        border: none;
+        color: #fff;
+        padding: 7px 25px;
+        border-radius: 5px;
+  
+        &:hover {
+          a {
+            color: #fff;
+          }
+        }
+      }
+  
+      .btn_google {
+        background: #fff;
+        color: #0a071a;
+        border: none;
+        padding: 7px 25px;
+        border-radius: 5px;
+  
+        &:hover {
+          a {
+            color: #0a071a;
+          }
+        }
+  
+        i {
+          color: #0a071a;
+        }
+      }
+  
+      @media only screen and (max-width: 992px) {
+        padding-bottom: 50px;
+  
+        h5 {
+          font-size: 1rem;
+        }
+  
+        h2 {
+          font-size: 1.5rem;
+        }
+  
+        p {
+          font-size: 0.7rem;
+          line-height: 25px;
+        }
+  
+        .btn_apple,
+        .btn_google {
+          padding: 5px 20px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+  
