@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Producttype;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,36 +11,41 @@ class ApiProductController extends Controller
 {
     public function index()
     {
-        return DB::table('producttypes')->get();
+        return DB::table('products')->get();
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $producttype = Producttype::create(
+        $validatedData = $request->validated();
+
+        $product = Product::create(
             [
-                'name' => $request->input('name'),
-                'image' => ''
+                'name' => $validatedData['name'],
+                'description' => $validatedData['description'],
+                'price' => $validatedData['price'],
+                'image' => '123',
+                'product_type_id' => $validatedData['product_type_id'],
             ]);
         if ($request->hasFile('image')) {
-            $path = $request->image->store('upload/product/' . $producttype->id, 'public');
-            $producttype->image = $path;
+            $path = $request->image->store('upload/product/' . $product->id, 'public');
+            $product->image = json_encode([$path], JSON_FORCE_OBJECT);
         }
-        $producttype->save();
-        return $producttype;
+        $product->save();
+        return $product;
     }
 
     public function show($id)
     {
-        return Producttype::find($id);
+        return Product::find($id);
     }
 
     public function update(Request $request, $id)
     {
-        return Producttype::find($id)->update($request->all());
+        return Product::find($id)->update($request->all());
     }
 
     public function destroy($id)
     {
-        return Producttype::find($id)->delete();
+        return Product::find($id)->delete();
     }
 }
