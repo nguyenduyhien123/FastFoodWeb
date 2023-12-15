@@ -12,6 +12,7 @@ class Producttype extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = ['producttypes'];
     protected $fillable = ['name', 'image'];
     //cho phép khi gọi api tạo product thì name và image được phép thêm
     public function product(): BelongsTo
