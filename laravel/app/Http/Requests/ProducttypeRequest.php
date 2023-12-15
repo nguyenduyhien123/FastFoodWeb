@@ -6,12 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProductRequest extends FormRequest
+class ProducttypeRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
+
 
     /**
      * Determine if the user is authorized to make this request.
@@ -30,20 +31,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png,bmp',
-            'price' => 'required|numeric',
-            'product_type_id' => 'required|integer|exists:producttypes,id'
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required' => 'Please enter a product name.',
-            'description.required' => 'Please provide a product description.',
-            'image.required' => 'Please upload an image for the product.',
-            'image.image' => 'The uploaded file must be an image.',
-            'image.mimes' => 'The image must be a valid format (jpg, jpeg, png, bmp).',
+            'image' => 'required|image|mimes:jpg,jpeg, png, bmp',
         ];
     }
 }

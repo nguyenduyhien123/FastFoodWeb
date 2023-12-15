@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProductRequest extends FormRequest
+class StoreRoleRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
@@ -29,21 +29,17 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png,bmp',
-            'price' => 'required|numeric',
-            'product_type_id' => 'required|integer|exists:producttypes,id'
+            'name' => ['required','unique:roles','max:255']
         ];
     }
     public function messages()
     {
+        return [];
+    }
+    public function attributes()
+    {
         return [
-            'name.required' => 'Please enter a product name.',
-            'description.required' => 'Please provide a product description.',
-            'image.required' => 'Please upload an image for the product.',
-            'image.image' => 'The uploaded file must be an image.',
-            'image.mimes' => 'The image must be a valid format (jpg, jpeg, png, bmp).',
+            'name' => 'Tên quyền',
         ];
     }
 }

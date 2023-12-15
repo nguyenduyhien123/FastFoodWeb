@@ -6,6 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class ApiProductController extends Controller
 {
@@ -17,13 +18,12 @@ class ApiProductController extends Controller
     public function store(ProductRequest $request)
     {
         $validatedData = $request->validated();
-
         $product = Product::create(
             [
                 'name' => $validatedData['name'],
                 'description' => $validatedData['description'],
                 'price' => $validatedData['price'],
-                'image' => '123',
+                'image' => '123', //gia tri mac dinh cua image la 123
                 'product_type_id' => $validatedData['product_type_id'],
             ]);
         if ($request->hasFile('image')) {

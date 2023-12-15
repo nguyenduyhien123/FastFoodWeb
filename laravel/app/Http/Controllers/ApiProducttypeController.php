@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProducttypeRequest;
 use App\Models\Producttype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,12 +14,13 @@ class ApiProducttypeController extends Controller
         return DB::table('producttypes')->get();
     }
 
-    public function store(Request $request)
+    public function store(ProducttypeRequest $request)
     {
+        $validatedData = $request->validated();
         $producttype = Producttype::create(
             [
-                'name' => $request->input('name'),
-                'image' => ''
+                'name' => $validatedData['name'],
+                'image' => '123', //gia tri mac dinh cua image la 123
             ]);
         if ($request->hasFile('image')) {
             $path = $request->image->store('upload/product/' . $producttype->id, 'public');

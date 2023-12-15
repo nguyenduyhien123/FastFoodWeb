@@ -11,7 +11,12 @@ class Producttype extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    public function product(): BelongsTo{
+
+    protected $fillable = ['name', 'image'];
+    //cho phép khi gọi api tạo product thì name và image được phép thêm
+    public function product(): BelongsTo
+    {
         return $this->belongsTo(Product::class);
     }
+
 }
