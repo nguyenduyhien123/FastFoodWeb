@@ -26,26 +26,43 @@ class ApiProductController extends Controller
                 'image' => '123', //gia tri mac dinh cua image la 123
                 'product_type_id' => $validatedData['product_type_id'],
             ]);
+
         if ($request->hasFile('image')) {
             $path = $request->image->store('upload/product/' . $product->id, 'public');
             $product->image = json_encode([$path], JSON_FORCE_OBJECT);
         }
+
         $product->save();
         return $product;
     }
 
     public function show($id)
     {
-        return Product::find($id);
+        $product = Product::find($id);
+        if (!empty($product)) {
+            return response()->json($product);
+        } else {
+            return response()->json([
+                "message" => "Không tìm thấy sản phẩm"
+            ], 404);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
+        $validatedData = $request->validated();
         return Product::find($id)->update($request->all());
     }
 
     public function destroy($id)
     {
-        return Product::find($id)->delete();
+        $product = Product::find($id);
+        if (!empty($product)) {
+            return Product::find($id)->delete();
+        } {
+            return response()->json([
+                'message' => "Không tìm thấy sản phẩm",
+            ], 404);
+        }
     }
 }
