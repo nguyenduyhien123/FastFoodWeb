@@ -11,29 +11,36 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id'];
 
-    public function producttypes(): HasMany{
-        return $this->hasMany(Producttype::class);
+    protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id', 'status'];
+
+    public function product_types(): HasMany
+    {
+        return $this->hasMany(ProductType::class);
     }
 
-    public function comments(): HasMany{
+    public function comments(): HasMany
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function carts(){
+    public function carts()
+    {
         return $this->hasMany(Cart::class);
     }
 
-    public function rates(){
+    public function rates()
+    {
         return $this->hasMany(Rate::class);
     }
 
-    public function wishlists(){
+    public function wishlists()
+    {
         return $this->hasMany(Wishlist::class);
     }
 
-    public function invoiceDetail(){
+    public function invoiceDetail()
+    {
         return $this->hasMany(InvoiceDetail::class);
     }
 }
