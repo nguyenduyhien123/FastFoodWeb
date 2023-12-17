@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProducttypeRequest;
-use App\Models\Producttype;
+use App\Http\Requests\StoreProducttypeRequest;
+use App\Http\Requests\UpdateProducttypeRequest;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ApiProducttypeController extends Controller
 {
+    //hàm index chỉ trả về những sản phẩm chưa xóa
     public function index()
     {
-        return DB::table('producttypes')->get();
+        return ProductType::all();
     }
 
-    public function store(ProducttypeRequest $request)
+    public function store(StoreProducttypeRequest $request)
     {
-        $validatedData = $request->validated();
-        $producttype = Producttype::create(
+        $producttype = ProductType::create(
             [
-                'name' => $validatedData['name'],
+                'name' => $request['name'],
                 'image' => '123', //gia tri mac dinh cua image la 123
             ]);
         if ($request->hasFile('image')) {
-            $path = $request->image->store('upload/product/' . $producttype->id, 'public');
+            $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
             $producttype->image = $path;
         }
         $producttype->save();
@@ -32,16 +33,45 @@ class ApiProducttypeController extends Controller
 
     public function show($id)
     {
-        return Producttype::find($id);
+        $productType = ProductType::find($id);
+        if (!empty($productType)) {
+            return response()->json($productType);
+        } else {
+            return response()->json([
+                'message' => 'Không tìm thấy sản phẩm'
+            ], 404);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProducttypeRequest $request, $id)
     {
-        return Producttype::find($id)->update($request->all());
+        $producttype = ProductType::find($id);
+        if (!empty($producttype)) {
+            $producttype->name = $request->name;
+
+            if ($request->hasFile('image')) {
+                $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
+                $producttype->image = json_encode([$path], JSON_FORCE_OBJECT);
+            }
+
+            $producttype->update();
+            return $producttype;
+        } else {
+            return response()->json([
+                'message' => 'Không tìm thấy sản phẩm'
+            ], 404);
+        }
     }
 
     public function destroy($id)
     {
-        return Producttype::find($id)->delete();
+        $producttype = ProductType::find($id);
+        if (!empty($producttype)) {
+            return ProductType::find($id)->delete();
+        } else {
+            return response()->json([
+                'message' => 'Không tìm thấy sản phẩm'
+            ], 404);
+        }
     }
 }

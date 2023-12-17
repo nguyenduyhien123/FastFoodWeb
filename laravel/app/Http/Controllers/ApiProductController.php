@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,21 +11,22 @@ use Illuminate\Validation\ValidationException;
 
 class ApiProductController extends Controller
 {
+    //hàm index chỉ trả về những sản phẩm chưa xóa
     public function index()
     {
-        return DB::table('products')->get();
+        return Product::all();
     }
 
-    public function store(ProductRequest $request)
+    public function store(StoreProductRequest $request)
     {
-        $validatedData = $request->validated();
         $product = Product::create(
             [
-                'name' => $validatedData['name'],
-                'description' => $validatedData['description'],
-                'price' => $validatedData['price'],
+                'name' => $request['name'],
+                'description' => $request['description'],
+                'price' => $request['price'],
                 'image' => '123', //gia tri mac dinh cua image la 123
-                'product_type_id' => $validatedData['product_type_id'],
+                'product_type_id' => $request['product_type_id'],
+                'star' => 5,
             ]);
 
         if ($request->hasFile('image')) {
@@ -48,10 +50,26 @@ class ApiProductController extends Controller
         }
     }
 
-    public function update(ProductRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        $validatedData = $request->validated();
-        return Product::find($id)->update($request->all());
+        $product = Product::find($id);
+        if (!empty($product)) {
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->price = $request->price;
+            $product->status = $request->status;
+            if ($request->hasFile('image')) {
+                $path = $request->image->store('upload/product/' . $product->id, 'public');
+                $product->image = json_encode([$path], JSON_FORCE_OBJECT);
+            }
+            $product->product_type_id = $request->product_type_id;
+            $product->update();
+            return $product;
+        } else {
+            return response()->json([
+                'message' => "Không tìm thấy sản phẩm",
+            ], 404);
+        }
     }
 
     public function destroy($id)
@@ -64,5 +82,10 @@ class ApiProductController extends Controller
                 'message' => "Không tìm thấy sản phẩm",
             ], 404);
         }
+    }
+
+    public function deletedIndex()
+    {
+        return DB::table('products')->whereNotNull('deleted_at');
     }
 }

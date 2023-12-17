@@ -12,11 +12,11 @@ class Product extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id'];
+    protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id', 'status'];
 
-    public function producttypes(): HasMany
+    public function product_types(): HasMany
     {
-        return $this->hasMany(Producttype::class);
+        return $this->hasMany(ProductType::class);
     }
 
     public function comments(): HasMany

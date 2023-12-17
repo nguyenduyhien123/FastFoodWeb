@@ -24,5 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/products/{product}', function (Product $product) {
 //     return $product;
 // });
-Route::apiResource("/producttypes", ApiProducttypeController::class);
+// Route::get('products/deleted', [ApiProductController::class, 'deletedIndex']);
+Route::apiResource("/product_types", ApiProducttypeController::class);
 Route::apiResource("/products", ApiProductController::class);
+
