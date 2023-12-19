@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\ApiProducttypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('roles', RoleController::class);
-
-Route::fallback(function () {
-    return response()->json(['message' => 'API không tồn tại.'], 404);
-});
+Route::apiResource('producttypes', ApiProducttypeController::class)->only(['index', 'show']);
+Route::get('/producttypes', [ApiProducttypeController::class, 'index'])->name("producttypes.index");
