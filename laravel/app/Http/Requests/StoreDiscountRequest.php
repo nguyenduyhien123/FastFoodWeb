@@ -3,17 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreProducttypeRequest extends FormRequest
+class StoreDiscountRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -30,19 +28,15 @@ class StoreProducttypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', Rule::unique('product_types')->ignore($this->producttype)],
-            'image' => 'image|mimes:jpg,jpeg, png, bmp|max:10240',
+            'name' => 'required|string|max:255',
+            'percentage' => 'required|numeric|min:1|max:100',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
         ];
     }
 
-    public function messages()
-    {
-        return [];
-    }
     public function attributes()
     {
-        return [
-            'name' => 'Tên loại sản phẩm',
-        ];
+        return ['name' => 'Tên khuyến mãi'];
     }
 }
