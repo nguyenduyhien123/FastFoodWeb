@@ -77,7 +77,7 @@ class ApiProductController extends Controller
         $product = Product::find($id);
         if (!empty($product)) {
             $product->delete();
-            return "Xóa thành công";
+            return "Xóa thành công sản phẩm {$product}";
         } {
             return response()->json([
                 'message' => "Không tìm thấy sản phẩm",
