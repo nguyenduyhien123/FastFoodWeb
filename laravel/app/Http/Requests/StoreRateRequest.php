@@ -3,11 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdateProducttypeRequest extends FormRequest
+class StoreRateRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
@@ -29,19 +28,18 @@ class UpdateProducttypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', Rule::unique('product_types')->ignore($this->producttype)],
-            'image' => 'required|image|mimes:jpg,jpeg, png, bmp',
+            'user_id' => 'required|integer|exists:users,id',
+            'product_id' => 'required|integer|exists:products,id',
+            'star' => 'required|integer|min:0|max:5',
+            'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
+            'content' => 'required|string|max:10000',
         ];
     }
 
-    public function messages()
-    {
-        return [];
-    }
     public function attributes()
     {
         return [
-            'name' => 'Tên loại sản phẩm',
+            'name' => "Đánh giá"
         ];
     }
 }
