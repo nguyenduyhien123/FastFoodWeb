@@ -5,6 +5,7 @@ use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
 use App\Http\Controllers\ApiRateController;
+use App\Http\Controllers\ApiSlideshowController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::apiResource('products', ApiProductController::class);
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
+
+Route::apiResource('slideshows', ApiSlideshowController::class);
+
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
