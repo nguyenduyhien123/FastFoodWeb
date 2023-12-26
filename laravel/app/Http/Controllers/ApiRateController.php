@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRateRequest;
 use App\Http\Requests\UpdateRateRequest;
-use Illuminate\Http\Request;
 use App\Models\Rate;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
 
 class ApiRateController extends Controller
 {

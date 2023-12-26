@@ -10,4 +10,6 @@ class Slideshow extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['image', 'url', 'order'];
 }
