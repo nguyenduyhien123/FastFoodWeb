@@ -28,7 +28,9 @@ Route::apiResource('products', ApiProductController::class);
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
+
 Route::apiResource('slideshows', ApiSlideshowController::class);
+
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
