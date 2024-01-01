@@ -1,4 +1,7 @@
 import React from "react";
+<<<<<<< HEAD
+import ReactDOM from "react-dom";
+=======
 import ReactDOM from "react-dom/client";
 import "./assets/css/fontawesome/fontawesome-5.15.4.css";
 import "./assets/css/website/style.scss";
@@ -14,5 +17,19 @@ root.render(
     <Register />
   </React.StrictMode>
 );
+>>>>>>> master
 
-reportWebVitals();
+//import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "remixicon/fonts/remixicon.css";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+
+import App from "./App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

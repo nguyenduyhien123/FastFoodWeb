@@ -1,17 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+import "./App.css";
 import Home from "./pages/Home";
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+function App() {
+  useEffect(()=>{
+    AOS.init();
+  }, [])
+  return <Home />
+}
 
 export default App;

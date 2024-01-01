@@ -1,0 +1,37 @@
+.menu_pack {
+  .filter-btn {
+    border: 1px solid #f5b70a;
+    padding: 7px 25px;
+    background: transparent;
+    margin-left: 15px;
+    color: #141124; // Màu chữ đậm để đọc được trên nền sáng
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s; // Thêm hiệu ứng chuyển động
+    
+    &.active_btn {
+      background: #f76e11;
+      color: #fff; // Chuyển màu chữ thành màu sáng
+    }
+    
+    &:hover {
+      background: #f76e11; // Thay đổi màu nền khi hover
+      color: #fff; // Chuyển màu chữ thành màu sáng
+    }
+  }
+  
+  .menu_tile {
+    color: #f5b70a;
+    
+    @media only screen and (max-width: 992px) {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .filter-btn {
+      padding: 5px 20px;
+      font-size: 0.8rem;
+    }
+  }
+}
