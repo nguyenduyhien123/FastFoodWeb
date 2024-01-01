@@ -6,6 +6,9 @@ export default function SignIn() {
   const [account, setAccount] = useState({ email: "", password: "" });
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  const [acountError, setAccountError] = useState({});
+
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -25,6 +28,7 @@ export default function SignIn() {
           ref={emailRef}
           onBlur={(e) => {
             let email = account.email;
+            console.log(validator.isEmail(email));
             if (validator.isEmail(email) == true) {
               emailRef.current.className = "inputForm input-validate is-valid";
             } else {
@@ -51,7 +55,9 @@ export default function SignIn() {
             name="email"
           />
         </div>
-
+        <div className="text-danger " style={{ display: "none" }}>
+          Email phải đúng định dạng và không để trống
+        </div>
         <div className="flex-column">
           <label>Mật khẩu </label>
         </div>
@@ -60,7 +66,7 @@ export default function SignIn() {
           ref={passwordRef}
           onBlur={(e) => {
             let password = account.password;
-            if (validator.isEmpty(password) == true || password.length <= 5) {
+            if (validator.isEmpty(password) == true || password.length <= 7) {
               passwordRef.current.className =
                 "inputForm input-validate is-not-valid";
             } else {
@@ -86,7 +92,9 @@ export default function SignIn() {
             name="password"
           />
         </div>
-
+        <div className="text-danger " style={{ display: "none" }}>
+          Mật khẩu phải có ít nhất 8 ký tự
+        </div>
         <div className="flex-row">
           <div>
             <Form.Check // prettier-ignore
