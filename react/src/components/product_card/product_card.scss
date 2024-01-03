@@ -1,0 +1,66 @@
+.product_card {
+  .single_product {
+    background: #fff; // Nền trắng để tạo giao diện sáng
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); // Hiệu ứng đổ bóng nhẹ
+    
+    &:hover {
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); // Tăng độ đậm của đổ bóng khi hover
+    }
+  }
+
+  .product_content {
+    padding: 15px 20px; // Tăng khoảng cách giữa nội dung và khung sản phẩm
+    text-align: center; // Canh giữa nội dung
+    h6 {
+      color: #f76e11; // Màu chữ cam
+    }
+  }
+
+  .rating {
+    margin-bottom: 10px;
+  
+  }
+
+  .price {
+    color: #141124; // Màu chữ đen để tạo độ tương phản
+    font-weight: bold; // Tăng độ đậm của font-weight
+
+    span {
+      color: #f76e11;
+      font-size: 1.3rem;
+      font-weight: 700; // Tăng độ đậm của font-weight
+    }
+  }
+
+  .shopping_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: #f76e11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    i
+    {
+      color : #fff;
+      font-weight: bold;
+    }
+  }
+  .shopping_icon:hover
+  {
+    background-color: #ffc107;
+    transition: all 0.4s;
+  }
+  @keyframes animate {
+    from {
+      transform: scale(0);
+    }
+
+    to {
+      transform: scale(0);
+    }
+  }
+}
