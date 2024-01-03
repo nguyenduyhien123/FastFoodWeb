@@ -1,25 +1,64 @@
 import { Form } from "react-bootstrap";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import axios from 'axios'
+
 import validator from "validator";
 import "../.././assets/css/components/SignIn.css";
+import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import { AuthContext } from "../../context/AuthContext";
 export default function SignIn() {
+  const {userInfo, isLogin, updateUserInfo,updateLogin,loginInfo, updateLoginInfo,loginUser, isLoginLoading, handleLoginWithGoogle}  = useContext(AuthContext)
   const [account, setAccount] = useState({ email: "", password: "" });
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  const [disableButtonSubmit, setDisableButtonSubmit] = useState(false);
   const [acountError, setAccountError] = useState({});
 
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-    setAccount({ ...account, [name]: value });
+    updateLoginInfo({...loginInfo, [name] : value})
   }
+  // function handleSubmit(e)
+  // {
+  //   e.preventDefault();
+  //   setDisableButtonSubmit(true);
+  //   axios({
+  //     method: 'post',
+  //     url: 'http://localhost:8000/api/auth/login',
+  //     data : account,
+  //     withCredentials: true,
+
+  // })
+  // .then(res => {
+  //   updateUserInfo(res.data.data);
+  //   updateLogin(true);
+  //   Swal.fire({
+  //     title: 'Đăng nhập thành công',
+  //     icon: 'success',
+  //     text: 'Chào mừng bạn đến với hệ thống',
+  //   });
+  //   setDisableButtonSubmit(false);
+
+  // })
+  // .catch(err => {
+  //   Swal.fire({
+  //     title: 'Đăng nhập thất bại',
+  //     icon: 'error',
+  //     text: 'Có vấn đề xảy ra',
+  //   });
+  //   setDisableButtonSubmit(false);
+  // })
+
+  // }
   console.log("====================================");
-  console.log(account);
+  console.log(loginInfo);
   console.log("====================================");
   return (
     <div>
-      <form className="form border">
+      <form onSubmit={loginUser} className="form border">
         <div className="flex-column">
           <label>Email </label>
         </div>
@@ -109,14 +148,14 @@ export default function SignIn() {
           </div>
           <span className="span">Quên mật khẩu?</span>
         </div>
-        <button className="button-submit">Đăng nhập</button>
+        <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">Đăng nhập</button>
         <p className="p">
-          Chưa có tài khoản? <span className="span">Đăng ký</span>
+          Chưa có tài khoản? <Link to="/accounts/register"><span className="span">Đăng ký</span></Link>
         </p>
         <p className="p line">Hoặc đăng nhập với</p>
 
         <div className="flex-row">
-          <button className="btn google">
+          <button className="btn google" onClick={handleLoginWithGoogle}>
             <svg
               xmlSpace="preserve"
               style={{ enableBackground: "new 0 0 512 512" }}

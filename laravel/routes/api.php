@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
@@ -23,7 +24,30 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('roles', RoleController::class);
+Route::middleware('verify-token')->group(function(){
+    Route::apiResource('products', ApiProductController::class);
+});
+Route::apiResource('product_types', ApiProducttypeController::class);
+Route::apiResource('discounts', ApiDiscountController::class);
+Route::apiResource('rates', ApiRateController::class);
+
+Route::apiResource('slideshows', ApiSlideshowController::class);
 
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
+
+
+
+Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
+{
+    Route::get('encode','encodeJWT');
+    Route::get('decode/{jwt}','decodeJWT');
+    Route::post('login','login');
+    Route::post('logout','logout');
+    Route::post('loginGoogle','loginWithGoogle');
+    Route::post('loginGoogleCallback','loginWithGoogleCallback');
+    
+});
+

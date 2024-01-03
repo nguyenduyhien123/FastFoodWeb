@@ -1,7 +1,6 @@
 import "../../assets/css/components/Register.scss";
 export default function Register() {
-  return (
-    <div className="form-register">
+  return ( <div className="form-register">
       <form className="form">
         <p className="title">Đăng ký </p>
         <p className="message">Đăng ký và bắt đầu order thôi! </p>

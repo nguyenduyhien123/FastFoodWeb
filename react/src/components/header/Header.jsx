@@ -2,6 +2,9 @@ import React, { useRef } from 'react'
 import "./header.scss"
 
 import { Container } from 'reactstrap'
+import { ReactComponent as IconAvatar } from '../../assets/icon/avatar.svg'
+import { Link } from 'react-router-dom'
+import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 
 const navLinks = [
        {
@@ -10,7 +13,7 @@ const navLinks = [
        },
        {
               display: 'About',
-              url: '#'
+              url: '/about'
        },
        {
               display: 'Menu',
@@ -31,15 +34,18 @@ const Header = () => {
        const menuRef = useRef()
 
        const menuToggle = () => menuRef.current.classList.toggle('active_menu')
-
+       
        return (
               <header className="header_web">
                      <Container>
                             <div className="navigation">
                                    <div className="logo">
+                                          <Link to="/">
                                           <h2 className='d-flex align-items-center gap-1'>
                                                  <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
                                           </h2>
+                                          </Link>
+
                                    </div>
                                    <div className="nav_menu " ref={menuRef}>
 
@@ -61,6 +67,9 @@ const Header = () => {
                                                         </div>
                                                  </div>
                                           </div>
+                                   </div>
+                                   <div className="avatar">
+                                        <DropdownAvatar></DropdownAvatar>
                                    </div>
                                    <div>
                                           <span className="cart_icon">

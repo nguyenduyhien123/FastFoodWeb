@@ -10,8 +10,7 @@ import Testimonials from '../components/testimonials/Testimonials'
 const Home = () => {
        return (
               <Fragment>
-                     <div className='mt-3'>
-                     <Header />
+                     <div className='mt-5'>
                      </div>
                      <HeroSilder/>
                      <PopularMenu/>
@@ -19,7 +18,6 @@ const Home = () => {
                      <MenuPack/>
                      <Testimonials/>
                      <Download/>
-                     <Footer/>
               </Fragment>
        )
 }
