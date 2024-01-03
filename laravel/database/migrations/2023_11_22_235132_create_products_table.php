@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->tinyInteger('star')->default(0);
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('product_type_id')->references('id')->on('producttypes');
+            $table->foreign('product_type_id')->references('id')->on('product_types');
         });
     }
 

@@ -1,0 +1,35 @@
+.slider_web {
+  .btn {
+    padding: 7px 25px;
+    border-radius: 5px;
+    background: #f76e11;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: 30px;
+
+    &:hover {
+      background: #ffc107; // Thay đổi màu nền khi hover
+    }
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    .slider_content {
+      h2 {
+        font-size: 1.5rem;
+        color: #141124; // Màu chữ đậm hơn để đọc được trên nền sáng
+        margin-bottom: 15px !important;
+      }
+
+      p {
+        font-size: 0.8rem;
+        color: #555; // Màu chữ nhẹ hơn để tăng độ đọc được
+      }
+
+      .btn_ex {
+        padding: 5px 20px;
+        font-size: 0.7rem;
+      }
+    }
+  }
+}

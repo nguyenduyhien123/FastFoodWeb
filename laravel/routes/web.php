@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/text', function () {
+    $text = '<p>shughkwgh     dshkhwhhuhueghuegr</p>';
+    return view('text', ['text' => $text]);
+});

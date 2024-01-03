@@ -10,12 +10,18 @@ return [
     ],
     'exists' => ':attribute không tồn tại.',
     'mimes' => ':attribute phải là một tệp hợp lệ với định dạng: :values.',
+    'date' => ':attribute phải đúng định dạng ngày',
+    'integer' => ':attribute phải là số nguyên',
     'attributes' => [
         'name' => 'Tên sản phẩm',
         'price' => 'Giá sản phẩm',
         'category' => 'Loại sản phẩm',
         'desc' => "Mô tả sản phẩm",
-        'image' => 'Hình ảnh sản phẩm'
+        'image' => 'Hình ảnh sản phẩm',
+        'percentage' => "Phần trăm",
+        'start_date' => "Ngày bắt đầu",
+        'end_date' => "Ngày kết thúc",
+        'order' => 'thứ tự',
         // Thêm các thành phần nhãn khác tại đây
     ],
 ];
