@@ -18,11 +18,12 @@ return new class extends Migration
             $table->dateTime('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
-            $table->string('fullname');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
             $table->string('description')->nullable();
             $table->bigInteger('role_id')->unsigned()->nullable();
             $table->date('birthday')->nullable();
-            $table->string('phonenumber', 10)->nullable();
+            $table->string('phone', 10)->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->tinyInteger('locked_endable')->default(0);
             $table->timestamp('locked_end')->useCurrent();

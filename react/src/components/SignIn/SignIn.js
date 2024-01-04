@@ -8,6 +8,14 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { AuthContext } from "../../context/AuthContext";
+import {ClipLoader} from "react-spinners";
+
+const overrideCliploader = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "white",
+  borderWidth : "5px"
+};
 export default function SignIn() {
   const {userInfo, isLogin, updateUserInfo,updateLogin,loginInfo, updateLoginInfo,loginUser, isLoginLoading, handleLoginWithGoogle}  = useContext(AuthContext)
   const [account, setAccount] = useState({ email: "", password: "" });
@@ -148,7 +156,15 @@ export default function SignIn() {
           </div>
           <span className="span">Quên mật khẩu?</span>
         </div>
-        <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">Đăng nhập</button>
+        <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">
+          {isLoginLoading ? <ClipLoader
+  color="#36d7b7"
+  size={35}
+  speedMultiplier={1}
+  cssOverride={overrideCliploader}
+
+/> : 'Đăng nhập'}
+        </button>
         <p className="p">
           Chưa có tài khoản? <Link to="/accounts/register"><span className="span">Đăng ký</span></Link>
         </p>

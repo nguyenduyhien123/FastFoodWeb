@@ -12,11 +12,20 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [userInfo, setUserInfo] = useState({});
+    // Đăng nhập
     const [isLogin, setIsLogin] = useState(false);
     const updateUserInfo = (infoObj) => setUserInfo(infoObj)
     const updateLogin = (val) => setIsLogin(val);
     const [loginInfo, setLoginInfo] = useState({});
     const [isLoginLoading, setIsLoginLoading] = useState(false);
+    // Đăng ký
+    const [isRegisterLoading, setIsRegisterLoading] = useState(false);
+    const [registerUserError, setRegisterUserError] = useState({});
+    const [registerInfo, setRegisterInfo] = useState([]);
+    const updateRegisterInfo = (val) =>{
+      setRegisterInfo(val);
+      console.log(registerInfo);
+    } 
     const updateLoginInfo = (info) => setLoginInfo(info)
     const loginUser = (e) => {
         e.preventDefault();
@@ -39,17 +48,19 @@ export const AuthContextProvider = ({children}) => {
         navigate("/");
 
       })
-      .catch(err => {
+      .catch(res => {
+        console.log(res.response.data.error);
         Swal.fire({
           title: 'Đăng nhập thất bại',
           icon: 'error',
-          text: 'Có vấn đề xảy ra',
+          text: res.response.data.error,
         });
         setIsLoginLoading(false);
       })
     }
     const handleLoginWithGoogle = (e) => {
         e.preventDefault();
+        setLoginInfo({});
         axios({
             method: 'post',
             url: 'http://localhost:8000/api/auth/loginGoogle',
@@ -84,7 +95,7 @@ export const AuthContextProvider = ({children}) => {
     const logoutUser = () => {
         Swal.fire({
             title: "Bạn có muốn đăng xuất ?",
-            text: "Bạn sẽ thoát ra khỏi hệ thống !",
+            text: "Bạn sẽ thoát ra khỏi hệ thống !!!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -97,6 +108,36 @@ export const AuthContextProvider = ({children}) => {
             }
           });
     }
+    const handleRegisterUser = (e) => {
+      e.preventDefault();
+      console.table(registerInfo);
+      setIsRegisterLoading(true);
+      axios({
+        method: 'post',
+        url: 'http://localhost:8000/api/auth/register',
+        data : registerInfo,
+        withCredentials: true,          
+    })
+    .then(res => {
+      console.log(res.data);
+      Swal.fire({
+        title: res.data?.message,
+        icon: 'success',
+        text: res.data?.description,
+      })
+      .then(() => {
+        setIsRegisterLoading(false)
+        navigate('/')
+      })
+
+    })
+    .catch(err => {
+      setRegisterUserError(err.response.data.errors);
+      console.log(err.response.data.errors);
+        console.log('Gọi API bị lỗi');
+        setIsRegisterLoading(false)
+    })
+    }
     useEffect(() => {
         axios({
             method: 'post',
@@ -106,16 +147,16 @@ export const AuthContextProvider = ({children}) => {
         .then(res => {
           updateUserInfo(res.data.data);
           updateLogin(true);
-          navigate("/");
-  
         })
         .catch(err => {
             console.log('Gọi API bị lỗi');
+            updateLogin(false);
         })
     }, [location.pathname]) 
     useEffect(() => {
         if(location?.search)
         {
+          console.log(`http://localhost:8000/api/auth/loginGoogleCallback${location.search}`);
             axios({
                 method: 'post',
                 url:    `http://localhost:8000/api/auth/loginGoogleCallback${location.search}`,
@@ -124,16 +165,16 @@ export const AuthContextProvider = ({children}) => {
             .then(res => {
               updateUserInfo(res.data.data);
               updateLogin(true);
-              navigate("/");
-      
+              navigate('/');
             })
             .catch(err => {
                 console.log('Gọi API bị lỗi');
+                updateLogin(false);
             })
         }
 
     }, [location.pathname]) 
-    return <AuthContext.Provider value={{userInfo, isLogin, updateUserInfo,updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading,logoutUser, handleLoginWithGoogle}}>
+    return <AuthContext.Provider value={{userInfo, isLogin, updateUserInfo,updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading,logoutUser, handleLoginWithGoogle,isRegisterLoading, handleRegisterUser, registerUserError,registerInfo, updateRegisterInfo}}>
         {children}
     </AuthContext.Provider>
 }

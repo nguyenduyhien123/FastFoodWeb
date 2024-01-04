@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
 use App\Http\Controllers\ApiRateController;
 use App\Http\Controllers\ApiSlideshowController;
+use App\Http\Controllers\ApiUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('roles', RoleController::class);
 Route::middleware('verify-token')->group(function(){
     Route::apiResource('products', ApiProductController::class);
+    Route::apiResource('users', ApiUserController::class);
+    
 });
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
@@ -48,6 +51,9 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::post('logout','logout');
     Route::post('loginGoogle','loginWithGoogle');
     Route::post('loginGoogleCallback','loginWithGoogleCallback');
-    
+    Route::post('register','register');
+    Route::post('create','createSecureCode');
+    Route::post('decode','verifySecureCode');
+    Route::get('verify-account','verifyAccount')->name('verify-account');
 });
 
