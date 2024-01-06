@@ -30,10 +30,14 @@ class StoreCommentRequest extends FormRequest
         return [
             'user_id' => 'required|integer|exists:users,id',
             'product_id' => 'required|integer|exists:products,id',
-            'comment_id' => "required|integer|exists:comments,id",
-            'star' => 'required|integer|min:0|max:5',
+            'comment_id' => "integer|exists:comments,id",
             'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
             'content' => 'required|string|max:10000',
+            'path' => 'required|string',
         ];
+    }
+    public function attributes()
+    {
+        return ['name' => 'Bình luận'];
     }
 }
