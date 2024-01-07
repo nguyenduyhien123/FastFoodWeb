@@ -20,8 +20,8 @@ export default function ProductPage() {
 
     const [quantity, setQuantity] = useState(1);
 
-    const [comment, setComment] = useState(0);
-    const [rating, setRating] = useState(1);
+    const [comment, setComment] = useState(false);
+    const [rating, setRating] = useState(true);
     // useEffect(() => {
     //     axios.get(`http://localhost:8000/api/products/1`).then(res => setProduct(res.data));
     // }, []);
@@ -113,28 +113,49 @@ export default function ProductPage() {
                 {/* button */}
                 <div className="button">
                     <div>
-                        <button className="rating-button" style={{ borderTop: rating === 1 ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(0); setRating(1) }} >Đánh giá sản phẩm</button>
+                        <button className="rating-button" style={{ borderTop: rating === true ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(false); setRating(true) }} >Đánh giá sản phẩm</button>
                     </div>
                     <div>
-                        <button className="comment-button" style={{ borderTop: comment === 1 ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(1); setRating(0) }} >bình luận</button>
+                        <button className="comment-button" style={{ borderTop: comment === true ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(true); setRating(false) }} >bình luận</button>
                     </div>
                 </div>
-                {console.log("comment:", comment, "rating:", rating)}
+
                 {/* content-box */}
                 <div className="content-box">
-                    <p>Mục này chỉ để nhận xét và đánh giá, Vui lòng dùng mục bình luận để thảo luận, hỏi đáp</p>
-                    <div className="rating-box">
-                        <img class="rounded-circle shadow-1-strong me-3 user-image" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
-                        <div>
-                            <Rating size={20} interactive rating={0} hoverColor="yellow" onRatingChanged={(e) => console.log(e)}></Rating>
-                            <textarea class="form-control" id="" rows="4"
-                                style={{ background: '#fff' }} placeholder="Viết đánh giá"></textarea>
+                    {
+                        rating && <div>
+                            <p>Mục này chỉ để nhận xét và đánh giá, Vui lòng dùng mục bình luận để thảo luận, hỏi đáp</p>
+                            <div className="rating-box">
+                                <img class="rounded-circle shadow-1-strong me-3 user-image" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
+                                <div>
+                                    <Rating size={20} interactive rating={0} hoverColor="yellow" onRatingChanged={(e) => console.log(e)}></Rating>
+                                    <textarea class="form-control" id="" rows="4"
+                                        style={{ background: '#fff' }} placeholder="Viết đánh giá"></textarea>
+                                </div>
+                                <div className="rating-box-button">
+                                    <button class="btn btn-outline-primary btn-sm post-rating">Đăng đánh giá</button>
+                                    <button class="btn btn-outline-primary btn-sm cancel-rating">Hủy</button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="rating-box-button">
-                            <button class="btn btn-primary btn-sm post-rating">Đăng đánh giá</button>
-                            <button class="btn btn-outline-primary btn-sm cancel-rating">Hủy</button>
+                    }
+                    {
+                        comment && <div>
+                            <p>Mục này chỉ để thảo luận, hỏi đáp, Vui lòng dùng mục đánh giá để nhận xét và đánh giá</p>
+                            <div className="rating-box">
+                                <img class="rounded-circle shadow-1-strong me-3 user-image" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
+                                <div>
+                                    <Rating size={20} interactive rating={0} hoverColor="yellow" onRatingChanged={(e) => console.log(e)}></Rating>
+                                    <textarea class="form-control" id="" rows="4"
+                                        style={{ background: '#fff' }} placeholder="Viết bình luận"></textarea>
+                                </div>
+                                <div className="rating-box-button">
+                                    <button class="btn btn-outline-primary btn-sm post-rating">Đăng đánh giá</button>
+                                    <button class="btn btn-outline-primary btn-sm cancel-rating">Hủy</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
