@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\ApiAccountController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiProductController;
@@ -26,11 +27,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('roles', RoleController::class);
-Route::middleware('verify-token')->group(function(){
+Route::middleware('verify-token:authencation')->group(function(){
     Route::apiResource('products', ApiProductController::class);
-    Route::apiResource('users', ApiUserController::class);
-    
+    Route::apiResource('users', ApiUserController::class); 
+    Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
+    Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
+        Route::get('/','index');
+    });
 });
+
+ 
+
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
@@ -54,6 +61,6 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::post('register','register');
     Route::post('create','createSecureCode');
     Route::post('decode','verifySecureCode');
-    Route::get('verify-account','verifyAccount')->name('verify-account');
+    Route::middleware('verify-token:verify-account')->get('verify-account','verifyAccount')->name('verify-account');
 });
 

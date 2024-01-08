@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Carbon\Carbon;
@@ -13,6 +15,8 @@ use Tymon\JWTAuth\Facades\JWTFactory;
 use Tymon\JWTAuth\Payload;
 use Tymon\JWTAuth\Token;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+
 class VerifyToken
 {
     /**
@@ -20,12 +24,35 @@ class VerifyToken
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $description): Response
     {
-        if(!empty($request->cookie('token')))
+        if(!empty($request->cookie('token')) && $description === 'authencation' )
         {
             $jwt = $this->decodeJWT($request->cookie('token'));
-            return $next($request);
+            if($jwt['description'] === $description)
+            {
+                $user = User::find($jwt['sub']);
+                if(!empty($user))
+                {
+                    Auth::loginUsingId($user->id);
+                    $request->merge(['user' => $user]);
+                    return $next($request);
+                }
+            }
+        }
+        else if(!empty($request->token) && $description === 'verify-account')
+        {
+            $jwt = $this->decodeJWT($request->token);
+            if($jwt['description'] === $description)
+            {
+                $user = User::find($jwt['sub']);
+                if(!empty($user))
+                {
+                    Auth::loginUsingId($user->id);
+                    $request->merge(['user' => $user]);
+                    return $next($request);
+                }
+            }
         }
         return response()->json(['message' => 'Unauthorized'], 403);
     }
@@ -37,13 +64,17 @@ class VerifyToken
             return $payload;
         } catch (TokenExpiredException $e) {
             // Xử lý khi token hết hạn
-            return response()->json(['error' => 'Token has expired'], 401);
+            throw new HttpResponseException(response()->json(['errors' =>'Token has expired'], 422));
         } catch (TokenInvalidException $e) {
             // Xử lý khi token không hợp lệ
-            return response()->json(['error' => 'Invalid token'], 401);
+            // throw $e;
+            // throw new Exception("Lỗi khi giải mã JWT: ");
+            throw new HttpResponseException(response()->json(['errors' =>'Invalid Token'], 422));
+           // return response()->json(['error' => 'Invalid token'], 401);
         } catch (Exception $e) {
             // Xử lý các lỗi khác nếu cần thiết
-            return response()->json(['error' => 'Something went wrong'], 500);
+            throw new HttpResponseException(response()->json(['errors' =>'Lỗi'. $e->getMessage()], 422));
+            // return response()->json(['error' => 'Something went wrong'], 500);
         }
     }
 }

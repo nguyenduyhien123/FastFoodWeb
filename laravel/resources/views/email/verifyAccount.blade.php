@@ -14,7 +14,7 @@
         <p>Chúng tôi đã nhận được yêu cầu mở tài khoản trên trang web thức ăn
             nhanh của chúng tôi</p>
         <p>Để xác nhận email đăng ký, vui lòng ấn vào nút <b>"Xác thực"</b></p>
-        <div style="display: flex; justify-content: center; align-items: center;">
+        <div style="text-align: center;">
             <button style="background-color: #0d6efd;color : #ffffff; padding : 0.75rem 1rem;font-size: 1.5rem;outline: none;border-width: 0px;border-radius: 10px;"><a href="{{$link}}" style="text-decoration: none;color : #ffffff">Xác thực</a></button>
           </div>        <p>Trong trường hợp nút "Xác thực" không hoạt động, bạn hãy copy link dưới và dán vào trình duyệt.
             <p><b>{{ $link }}</b></p>

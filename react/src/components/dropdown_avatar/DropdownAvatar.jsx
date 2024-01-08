@@ -82,7 +82,7 @@ const DropdownAvatar = () => {
                 return <Link onClick={() =>         setSlidingPaneState({ isPaneOpen: false })
               } to={data.link} className='action-item col-3 d-flex flex-wrap justify-content-center'>
                   <div className="action-icon"><IconAccount></IconAccount></div>
-                  <div className="action-name">{data.text}</div>
+                  <div className="action-name">{data.text}</div> 
                 </Link>
               })}
               <div onClick={logoutUser}  className='action-item col-3 d-flex flex-wrap justify-content-center'>

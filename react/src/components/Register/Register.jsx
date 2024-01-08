@@ -50,10 +50,10 @@ export default function Register() {
             className="input"
             type="text"
             onChange={handleChange}
-            name="firstname"
+            name="lastname"
           />
         </div>
-        {registerUserError?.firstname ? <div className="text-danger">{registerUserError?.firstname[0]}</div> : ''}
+        {registerUserError?.lastname ? <div className="text-danger">{registerUserError?.lastname[0]}</div> : ''}
         </div>
         <div className="item">
         <div className="flex-column">
@@ -77,10 +77,10 @@ export default function Register() {
             className="input"
             type="text"
             onChange={handleChange}
-            name="lastname"
+            name="firstname"
           />
         </div>
-        {registerUserError?.lastname ? <div className="text-danger">{registerUserError?.lastname[0]}</div> : ''}
+        {registerUserError?.firstname ? <div className="text-danger">{registerUserError?.firstname[0]}</div> : ''}
 
         </div>
         <div className="item">

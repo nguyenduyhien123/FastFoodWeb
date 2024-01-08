@@ -1,7 +1,6 @@
 import { Form } from "react-bootstrap";
 import { useContext, useRef, useState } from "react";
 import axios from 'axios'
-
 import validator from "validator";
 import "../.././assets/css/components/SignIn.css";
 import { Link } from "react-router-dom";

@@ -66,21 +66,11 @@ class ApiAuthController extends Controller
         return $token;
     }
     public function login(Request $request){
-        if(!empty($request->cookie('token')))
-        {
-            $jwt = $this->decodeJWT($request->cookie('token'));
-            $user = User::find($jwt['sub']);
-            return response()->json([
-                'message' => 'Đăng nhập thành công',
-                'status' => 200,
-                'data' => ['lastname' => $user->lastname,'verify_account' => $user->email_verified_at ? true: false]
-            ]);
-        }
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
             return response()->json(['error' => 'Tên đăng nhập hoặc mật khẩu không chính xác !!!'], 401);
         }
-        $payload = ['user_id' => Auth::id(),'description' => 'Authencation'];
+        $payload = ['user_id' => Auth::id(),'description' => 'authencation'];
         $jwt = $this->encodeJWT($payload);
         $cookie =   cookie('token', $jwt, 60 , '/', 'localhost', false, true, false);
         return response()->json([
@@ -88,6 +78,14 @@ class ApiAuthController extends Controller
             'status' => 200,
             'data' => ['lastname' => Auth::user()->lastname,'verify_account' => Auth::user()->email_verified_at ? true : false]
         ])->cookie($cookie);
+    }
+    public function loginWithToken(Request $request){
+        $user = $request->user;
+        return response()->json([
+            'message' => 'Đăng nhập thành công',
+            'status' => 200,
+            'data' => ['lastname' => $user->lastname,'verify_account' => $user->email_verified_at ? true: false]
+        ]);
     }
     public function logout(){
         return response()->json([
@@ -156,7 +154,7 @@ class ApiAuthController extends Controller
         {
             return $e;
         }
-        $payload = ['user_id' => $user->id,'description' => 'Authencation'];
+        $payload = ['user_id' => $user->id,'description' => 'authencation'];
         $jwt = $this->encodeJWT($payload);
         $cookie =   cookie('token', $jwt, 60 , '/', 'localhost', false, true, false);
         return response()->json([
@@ -179,9 +177,13 @@ class ApiAuthController extends Controller
             {
                 $user->email_verified_at = Carbon::now();
                 $user->save();
-                return response()->json(['message' => 'Xác thực tài khoản thành công'], 200);
+                $newUrl = 'http://localhost:3000/';
+
+                return response()
+                    ->json(['message' => 'Xác thực tài khoản thành công','description' => 'Chuyển hướng tới trang chủ sau 3s'], 200)
+                    ->header('Refresh', '3;url=' . $newUrl);
             }
-            return response()->json(['message' => 'Tài khoản đã được xác thực'], 200);
+            return response()->json(['message' => 'Liên kết đã hết hiệu lực'], 200);
             // Xử lý kết quả trả về (nếu cần)
         } catch (Exception $e) {
             throw $e;
