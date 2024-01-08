@@ -10,10 +10,14 @@ import {AuthContext, AuthContextProvider} from "./context/AuthContext";
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import ProductPage from "./components/product_page/product_page";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
