@@ -14,6 +14,7 @@ import {AuthContext, AuthContextProvider} from "./context/AuthContext";
 import { About } from "./components/about/About";
 import { UserInfo } from "./components/user_info/UserInfo";
 import { PageRegister } from "./pages/PageRegister";
+import ProductCard from "./components/product_card/ProductCard";
 function App() {
   const navigate = useNavigate();
   const {isLogin}  = useContext(AuthContext)
@@ -31,6 +32,8 @@ function App() {
         <Route path="register" element={<PageRegister />} />
         <Route path="signin" element={isLogin ? <Navigate replace to="/"/> : <PageSignIn/>} />
         <Route path="info" element={<UserInfo />} />
+      </Route>
+      <Route path="products" element={<Layout />}>
       </Route>
       <Route path="/avatar" element={<DropdownAvatar />} />
 

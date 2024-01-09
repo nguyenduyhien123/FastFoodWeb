@@ -28,7 +28,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource('roles', RoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
-    Route::apiResource('products', ApiProductController::class);
     Route::apiResource('users', ApiUserController::class); 
     Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
     Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
@@ -44,6 +43,7 @@ Route::apiResource('rates', ApiRateController::class);
 
 Route::apiResource('slideshows', ApiSlideshowController::class);
 
+Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class, 'getProductsByProductTypeId']);
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
