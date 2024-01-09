@@ -6,16 +6,11 @@ import 'aos/dist/aos.css';
 import { useContext, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home";
-import SignIn from './components/SignIn/SignIn'
-import Register from './components/Register/Register'
-import PageSignIn from "./pages/PageSignIn";
-import DropdownAvatar from "./components/dropdown_avatar/DropdownAvatar";
-import {AuthContext, AuthContextProvider} from "./context/AuthContext";
-import { About } from "./components/about/About";
-import { UserInfo } from "./components/user_info/UserInfo";
-import { PageRegister } from "./pages/PageRegister";
-import ProductCard from "./components/product_card/ProductCard";
 function App() {
+  const navigate = useNavigate();
+  const {isLogin}  = useContext(AuthContext)
+
+    useEffect(() => {
   const navigate = useNavigate();
   const {isLogin}  = useContext(AuthContext)
 

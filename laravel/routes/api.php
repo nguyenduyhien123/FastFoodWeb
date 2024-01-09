@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\ApiAccountController;
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ApiCommentController;
 use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
@@ -27,23 +28,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('roles', RoleController::class);
-Route::middleware('verify-token:authencation')->group(function(){
-    Route::apiResource('users', ApiUserController::class); 
-    Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
-    Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
-        Route::get('/','index');
-    });
-});
-
- 
-
+Route::apiResource('products', ApiProductController::class);
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
 
 Route::apiResource('slideshows', ApiSlideshowController::class);
 
-Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class, 'getProductsByProductTypeId']);
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
