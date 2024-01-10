@@ -1,0 +1,68 @@
+// ShoppingCart.scss
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #ecf0f1;
+
+.shopping-cart-container {
+  background-color: $background-color;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+  }
+
+  .products-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        button {
+          background-color: $primary-color;
+          color: #fff;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .cart-section {
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+    p {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  }
+}
