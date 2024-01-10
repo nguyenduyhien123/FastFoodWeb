@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Rating from 'react-star-review';
 import './product_card.scss';
+import { CartContext } from '../../context/CartContext';
 
 const ProductCard = (props) => {
-    const { name,image, price, star, onAddToCart } = props.item;
+  const {carts, addToCart} = useContext(CartContext)
+    const { id, name,image, price, star, onAddToCart } = props.item;
   
     const handleAddToCart = () => {
       if (onAddToCart) {
@@ -23,10 +25,10 @@ const ProductCard = (props) => {
             <Rating size={20} interactive rating={star} hoverColor='red' onRatingChanged={e => console.log(e)}></Rating>
           </div>
             <h6 className='product-name'>{name}</h6>
-  
+
             <div className='d-flex align-items-center justify-content-between'>
               <span className='price d-flex align-items-center'><span>{price.toLocaleString("vi")}</span><sup>đ</sup></span>
-              <span className='shopping_icon' onClick={handleAddToCart}><i className="ri-shopping-cart-line"></i></span>
+              <span className='shopping_icon' onClick={() => addToCart(id)}><i className="ri-shopping-cart-line"></i></span>
                   </div>
             </div>
       </section>
