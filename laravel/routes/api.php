@@ -28,13 +28,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('roles', RoleController::class);
-Route::apiResource('products', ApiProductController::class);
+Route::middleware('verify-token:authencation')->group(function(){
+    Route::apiResource('users', ApiUserController::class); 
+    Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
+    Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
+        Route::get('/','index');
+    });
+});
+
+ 
+
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
 
 Route::apiResource('slideshows', ApiSlideshowController::class);
-
+Route::apiResource('comments', ApiCommentController::class);
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
@@ -55,3 +64,4 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::middleware('verify-token:verify-account')->get('verify-account','verifyAccount')->name('verify-account');
 });
 
+Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class,'getProductsByProductTypeId']);

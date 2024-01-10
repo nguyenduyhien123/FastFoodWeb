@@ -5,10 +5,34 @@ import React from "react";
 import Rating from "react-star-review";
 import "./product_page.scss";
 import { Button } from "react-bootstrap";
+ 
 export default function ProductPage() {
+    const [data] = useState([
+        {
+          userId: '01a',
+          comId: '012',
+          fullName: 'Riya Negi',
+          avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
+          userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
+          text: 'Hey, Loved your blog! ',
+          replies: [
+        {
+          userId: '02b',
+          comId: '017',
+          fullName: 'Lily',
+          userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
+          text: 'I have a doubt about the 4th point🤔',
+          avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
+          replies: []
+        }
+      ]}])
     const { id } = useParams();
     const [product, setProduct] = useState();
-
+    const [tabActive, setTabActive] = useState();
+    const tabs = [
+        'Bình luận',
+        'Đánh giá'
+    ];
     const [selectedImage, setSelectedImage] = useState(
         "https://burgerking.vn/media/catalog/product/cache/1/small_image/316x/9df78eab33525d08d6e5fb8d27136e95/7/-/7-burger-b_-n_ng-whopper-jr_1.jpg"
     );
@@ -27,7 +51,7 @@ export default function ProductPage() {
     // }, []);
     return (
         <div>
-            <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4">
+            <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4 mt-4">
                 <div className="Image-List">
                     {images.map((image, index) => (
                         <img
@@ -109,19 +133,11 @@ export default function ProductPage() {
                     </div>
                 </div>
             </div>
-            <div className="CommentRating">
-                {/* button */}
-                <div className="button">
-                    <div>
-                        <button className="rating-button" style={{ borderTop: rating === 1 ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(0); setRating(1) }} >Đánh giá sản phẩm</button>
-                    </div>
-                    <div>
-                        <button className="comment-button" style={{ borderTop: comment === 1 ? "5px solid #f5b70a" : "" }} onClick={() => { setComment(1); setRating(0) }} >bình luận</button>
-                    </div>
-                </div>
-                {console.log("comment:", comment, "rating:", rating)}
-                {/* content-box */}
-                <div className="content-box">
+            <div className="list-tab">
+                {
+                    tabs.map((data, index) => <div className={`tab-button ${tabActive === index ? 'active' : ''}` } onClick={() => setTabActive(index)}>{data}</div>)
+                }
+                {/* <div className="content-box">
                     <p>Mục này chỉ để nhận xét và đánh giá, Vui lòng dùng mục bình luận để thảo luận, hỏi đáp</p>
                     <div className="rating-box">
                         <img class="rounded-circle shadow-1-strong me-3 user-image" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
@@ -135,7 +151,8 @@ export default function ProductPage() {
                             <button class="btn btn-outline-primary btn-sm cancel-rating">Hủy</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
             </div>
         </div>
     );

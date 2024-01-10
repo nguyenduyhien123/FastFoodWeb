@@ -41,8 +41,8 @@ const MenuPack = () => {
           <Col lg='12' className='text-center mb-5 d-flex justify-content-center '>
             {
               categories?.map((data, index) => {
-                return             <div key={index} onClick={() => setCategoryActive(index)}
-                className={`category-item ${index === categoryActive ? 'active_btn' : ''} filter-btn d-flex align-items-center gap-2 fs-3`}><div className='icon'><img src={data?.image}/></div> <div className="product-name fw-bold">
+                return             <div key={index} onClick={() => setCategoryActive(data.id)}
+                className={`category-item ${ data.id === categoryActive ? 'active_btn' : ''} filter-btn d-flex align-items-center gap-2 fs-3`}><div className='icon'><img src={data?.image}/></div> <div className="product-name fw-bold">
                   {data?.name}
                 </div>
               </div>
