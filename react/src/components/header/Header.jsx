@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import "./header.scss"
 
-import { Container } from 'reactstrap'
-import { ReactComponent as IconAvatar } from '../../assets/icon/avatar.svg'
 import { Link } from 'react-router-dom'
+import { Container } from 'reactstrap'
+import Cart from '../carts/Cart'
 import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 
 const navLinks = [
@@ -72,10 +72,7 @@ const Header = () => {
                                         <DropdownAvatar></DropdownAvatar>
                                    </div>
                                    <div>
-                                          <span className="cart_icon">
-                                                 <i class="ri-shopping-basket-line"></i>
-                                                 <span className="badge">2</span>
-                                          </span>
+                                          <Cart/>
                                    </div>
                                    <div className="mobile_menu">
                                           <span><i class="ri-menu-line " onClick={menuToggle}></i></span>

@@ -1,20 +1,18 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate,Redirect, useNavigate } from "react-router-dom";
-import Layout from "./pages/Layout";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useContext, useEffect } from "react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import SignIn from './components/SignIn/SignIn'
-import Register from './components/Register/Register'
-import PageSignIn from "./pages/PageSignIn";
-import DropdownAvatar from "./components/dropdown_avatar/DropdownAvatar";
-import {AuthContext, AuthContextProvider} from "./context/AuthContext";
 import { About } from "./components/about/About";
+import DropdownAvatar from "./components/dropdown_avatar/DropdownAvatar";
+import ShoppingCart from "./components/shoppingcart/ShoppingCart";
 import { UserInfo } from "./components/user_info/UserInfo";
+import { AuthContext } from "./context/AuthContext";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
 import { PageRegister } from "./pages/PageRegister";
 import ProductPage from "./components/product_page/product_page";
+import PageSignIn from "./pages/PageSignIn";
 function App() {
   const navigate = useNavigate();
   const {isLogin}  = useContext(AuthContext)
