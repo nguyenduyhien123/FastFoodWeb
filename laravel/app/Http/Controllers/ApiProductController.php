@@ -28,7 +28,7 @@ class ApiProductController extends Controller
             ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->image->store('upload/product/' . $product->id, 'public');
+            $path = $request->image->store("upload/product/{$product->id}", 'public');
             $product->image = json_encode([$path], JSON_FORCE_OBJECT);
         }
 
@@ -57,7 +57,7 @@ class ApiProductController extends Controller
             $product->price = $request->price;
             $product->status = $request->status;
             if ($request->hasFile('image')) {
-                $path = $request->image->store('upload/product/' . $product->id, 'public');
+                $path = $request->image->store("upload/product/{$product->id}", 'public');
                 $product->image = json_encode([$path], JSON_FORCE_OBJECT);
             }
             $product->product_type_id = $request->product_type_id;
@@ -86,5 +86,9 @@ class ApiProductController extends Controller
     public function deletedIndex()
     {
         return DB::table('products')->whereNotNull('deleted_at');
+    }
+    public function getProductsByProductTypeId($productTypeId)
+    {
+        return Product::where('product_type_id', $productTypeId)->get();
     }
 }

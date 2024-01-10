@@ -58,7 +58,7 @@ class ApiDiscountController extends Controller
         $discount = Discount::find($id);
         if (!empty($discount)) {
             $discount->delete();
-            return "Xóa thành công khuyến mãi {$discount}";
+            return "Xóa thành công khuyến mãi {$discount->id}";
         } else {
             return response()->json([
                 'message' => 'Không tìm thấy khuyến mãi'

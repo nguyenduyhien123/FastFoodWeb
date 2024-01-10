@@ -1,37 +1,60 @@
 .menu_pack {
   .filter-btn {
     border: 1px solid #f5b70a;
-    padding: 7px 25px;
+    padding: 10px 14px;
     background: transparent;
     margin-left: 15px;
     color: #141124; // Màu chữ đậm để đọc được trên nền sáng
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s, color 0.3s; // Thêm hiệu ứng chuyển động
-    
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+
     &.active_btn {
       background: #f76e11;
       color: #fff; // Chuyển màu chữ thành màu sáng
     }
-    
+
     &:hover {
       background: #f76e11; // Thay đổi màu nền khi hover
       color: #fff; // Chuyển màu chữ thành màu sáng
     }
   }
-  
+
   .menu_tile {
     color: #f5b70a;
-    
+
     @media only screen and (max-width: 992px) {
       font-size: 1.4rem;
     }
   }
-  
+
   @media only screen and (max-width: 992px) {
     .filter-btn {
       padding: 5px 20px;
       font-size: 0.8rem;
     }
   }
+
+  .icon {
+    img {
+      width: 30px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .category-item {
+    border-radius: 25px;
+
+  }
+
+  .category-item svg {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+
+  }
+
+  .icon {}
 }
