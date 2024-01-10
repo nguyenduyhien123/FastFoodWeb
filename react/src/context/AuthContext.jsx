@@ -139,6 +139,7 @@ export const AuthContextProvider = ({children}) => {
     })
     }
     useEffect(() => {
+      setIsLogin(false)
         axios({
             method: 'post',
             url: 'http://localhost:8000/api/auth/loginWithToken',

@@ -87,4 +87,8 @@ class ApiProductController extends Controller
     {
         return DB::table('products')->whereNotNull('deleted_at');
     }
+    public function getProductsByProductTypeId($productTypeId)
+    {
+        return Product::where('product_type_id', $productTypeId)->get();
+    }
 }

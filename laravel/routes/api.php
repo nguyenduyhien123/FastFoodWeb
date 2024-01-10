@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource('roles', RoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
-    Route::apiResource('products', ApiProductController::class);
     Route::apiResource('users', ApiUserController::class); 
     Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
     Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
@@ -65,3 +64,4 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::middleware('verify-token:verify-account')->get('verify-account','verifyAccount')->name('verify-account');
 });
 
+Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class,'getProductsByProductTypeId']);
