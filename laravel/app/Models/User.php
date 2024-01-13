@@ -15,7 +15,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
 
-    public function comment():HasMany{
+    public function comments():HasMany{
         return $this->hasMany(comment::class);
     }
 
@@ -38,7 +38,7 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
-     */
+     */ 
     protected $fillable = [
         'name',
         'email',
@@ -67,4 +67,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function getFullnameAttribute(){
+        return $this->lastname .' '.$this->firstname;
+    }
+    protected $appends = ['fullname'];
 }

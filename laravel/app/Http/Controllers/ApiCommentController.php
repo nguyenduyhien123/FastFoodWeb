@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewCommentEvent;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
@@ -10,7 +11,7 @@ class ApiCommentController extends Controller
 {
     public function index()
     {
-        return Comment::all();
+        return Comment::with('user.role')->orderBy('path','asc')->get();
     }
 
     public function show($id)
@@ -39,6 +40,7 @@ class ApiCommentController extends Controller
             $comment->content = $request->content;
             $comment->path = $request->path;
             $comment->update();
+            event(new NewCommentEvent());
             return $comment;
         } else {
             return response()->json([
@@ -54,18 +56,33 @@ class ApiCommentController extends Controller
                 'user_id' => $request->user_id,
                 'product_id' => $request->product_id,
                 'comment_id' => $request->comment_id,
-                'image' => '123',
+                'image' => '123', 
                 'content' => $request->content,
-                'path' => $request->path,
             ]
         );
+        if($request->comment_id)
+        {
+            // return 'Comment id : '.$comment-> comment_id;
+            $commentParent = Comment::find($comment-> comment_id);
+            if($commentParent->path)
+            {
 
-        if ($request->hasFile('image')) {
-            $path = $request->image->store("upload/comment/{$comment->id}", 'public');
-            $comment->image = $path;
+                $comment->path = $commentParent->path .'/' .$comment->id;
+                $comment->save();
+            }
         }
+        else
+        {
+            $comment->path =  $comment->id;
+            $comment->save();
+        }
+        broadcast(new NewCommentEvent($comment));
+        // if ($request->hasFile('image')) {
+        //     $path = $request->image->store("upload/comment/{$comment->id}", 'public');
+        //     $comment->image = $path;
+        // }
 
-        $comment->save();
+        // $comment->save();
         return $comment;
     }
 

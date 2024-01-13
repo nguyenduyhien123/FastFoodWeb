@@ -21,10 +21,13 @@ class UsersSeeder extends Seeder
                 'email' => 'john_doe@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'John',
+                'lastname' => 'Doe',
                 'role_id' => 3,
                 'birthday' => '1990-01-01',
                 'phone' => '1234567890',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 2,
@@ -32,10 +35,13 @@ class UsersSeeder extends Seeder
                 'email' => 'jane_doe@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Jane',
+                'lastname' => 'Doe',
                 'role_id' => 2,
                 'birthday' => '1991-01-01',
                 'phone' => '1234567891',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 3,
@@ -43,10 +49,13 @@ class UsersSeeder extends Seeder
                 'email' => 'alice_smith@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Alice',
+                'lastname' => 'Smith',
                 'role_id' => 1,
                 'birthday' => '1992-01-01',
                 'phone' => '1234567892',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 4,
@@ -54,10 +63,13 @@ class UsersSeeder extends Seeder
                 'email' => 'bob_jones@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Bob',
+                'lastname' => 'Jones',
                 'role_id' => 1,
                 'birthday' => '1993-01-01',
                 'phone' => '1234567893',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 5,
@@ -65,10 +77,13 @@ class UsersSeeder extends Seeder
                 'email' => 'charlie_brown@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Charlie',
+                'lastname' => 'Brown',
                 'role_id' => 2,
                 'birthday' => '1994-01-01',
                 'phone' => '1234567894',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 6,
@@ -76,10 +91,13 @@ class UsersSeeder extends Seeder
                 'email' => 'dave_johnson@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Dave',
+                'lastname' => 'Johnson',
                 'role_id' => 2,
                 'birthday' => '1995-01-01',
                 'phone' => '1234567895',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 7,
@@ -87,10 +105,13 @@ class UsersSeeder extends Seeder
                 'email' => 'emily_clark@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Emily',
+                'lastname' => 'Clark',
                 'role_id' => 2,
                 'birthday' => '1996-01-01',
                 'phone' => '1234567896',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 8,
@@ -98,10 +119,13 @@ class UsersSeeder extends Seeder
                 'email' => 'fred_johnson@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Fred',
+                'lastname' => 'Johnson',
                 'role_id' => 2,
                 'birthday' => '1997-01-01',
                 'phone' => '1234567897',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
             [
                 'id' => 9,
@@ -109,10 +133,13 @@ class UsersSeeder extends Seeder
                 'email' => 'grace_clark@example.com',
                 'email_verified_at' => '2023-11-29',
                 'password' => Hash::make('password'),
+                'firstname' => 'Grace',
+                'lastname' => 'Clark',
                 'role_id' => 1,
                 'birthday' => '1998-01-01',
                 'phone' => '1234567898',
-                'phone_verified_at' => '2023-11-29'
+                'phone_verified_at' => '2023-11-29',
+                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
             ],
         ]);
     }

@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+ 
 class Comment extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['user_id', 'product_id', 'commend_id', 'image', 'content', 'path'];
+    protected $fillable = ['user_id', 'product_id', 'comment_id', 'image', 'content', 'path','created_at'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -22,4 +23,17 @@ class Comment extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    // Lấy cấp của bình luận dựa vào dấu /
+    public function getLevelAttribute(){
+        if($this->path != "")
+        {
+            $level = substr_count($this->path,'/');
+            return $level + 1;
+        }
+        return 1;
+    }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->getTimestampMs();
+    }
+    protected $appends = ['level'];
 }

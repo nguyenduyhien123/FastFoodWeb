@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->bigInteger('comment_id')->unsigned()->nullable();
             $table->string('image')->nullable();
             $table->string('content');
-            $table->string('path')->unique();
+            $table->string('path')->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();
 

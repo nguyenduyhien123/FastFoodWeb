@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('description')->nullable();
+            $table->string('avatar')->nullable();
             $table->bigInteger('role_id')->unsigned()->nullable();
             $table->date('birthday')->nullable();
             $table->string('phone', 10)->nullable();
