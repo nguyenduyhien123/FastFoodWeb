@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import { PageRegister } from "./pages/PageRegister";
 import PageSignIn from "./pages/PageSignIn";
+import Comment from './components/comment/Comment';
 function App() {
   const navigate = useNavigate();
   const {isLogin}  = useContext(AuthContext)
@@ -35,6 +36,7 @@ function App() {
         <Route path="1" element = {<ProductPage/>}/>
       </Route>
       <Route path="/avatar" element={<DropdownAvatar />} />
+      <Route path="comments" element={<Comment />} />
 
     </Routes>
 }
