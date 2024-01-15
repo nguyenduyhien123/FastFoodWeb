@@ -8,6 +8,7 @@ use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
 use App\Http\Controllers\ApiRateController;
+use App\Http\Controllers\ApiRoleController;
 use App\Http\Controllers\ApiSlideshowController;
 use App\Http\Controllers\ApiUserController;
 use Illuminate\Http\Request;
@@ -27,23 +28,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('roles', RoleController::class);
+Route::apiResource('roles', ApiRoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
-    Route::apiResource('users', ApiUserController::class); 
+    // Route::apiResource('users', ApiUserController::class); 
     Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
     Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
         Route::get('/','index');
     });
+    Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
 });
+Route::apiResource('comments',ApiCommentController::class)->only(['index','show']);
 
- 
+Route::apiResource('users', ApiUserController::class); 
+
 
 Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
 
 Route::apiResource('slideshows', ApiSlideshowController::class);
-Route::apiResource('comments', ApiCommentController::class);
+// Route::apiResource('comments', ApiCommentController::class);
 Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });

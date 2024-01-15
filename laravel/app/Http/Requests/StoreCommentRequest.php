@@ -32,7 +32,7 @@ class StoreCommentRequest extends FormRequest
             'product_id' => 'required|integer|exists:products,id',
             'comment_id' => "nullable|integer|exists:comments,id",
             'image' => 'nullable|image|mimes:jpg,jpeg,png,bmp|max:10240',
-            'content' => 'required|string|max:10000',
+            'content' => 'required|string|max:1000',
             'path' => 'nullable|string',
         ];
     }

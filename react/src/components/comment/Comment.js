@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InputEmoji from "react-input-emoji";
 import './Comment.scss'
 import { ReactComponent as IconSend } from '../../assets/icon/send.svg'
@@ -7,9 +7,11 @@ import { CommentItem } from "./CommentItem";
 import { CommentInput } from "./CommentInput";
 import axios from 'axios'
 import Pusher from 'pusher-js';
+import { AuthContext } from "../../context/AuthContext";
 
 
 export default function Comment() {
+    const {isLogin, userInfo} = useContext(AuthContext);
     const [comment, setComment] = useState("");
     const [activeButtonAction, setActiveButtonAction] = useState(false);
     const handleReply = (commentIndex) => {
@@ -69,6 +71,18 @@ export default function Comment() {
             })
             .catch(err => console.log(err))
     }, [])
+    const handleReceive  = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/comments',
+            withCredentials: true,
+        })
+            .then(res => {
+                console.log(res.data)
+                setListComment(res.data)
+            })
+            .catch(err => console.log(err))
+    }
     useEffect(() => {
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -76,18 +90,7 @@ export default function Comment() {
             cluster: 'ap1',
             encrypted: true
         });
-        const handleReceive  = () => {
-            axios({
-                method: 'get',
-                url: 'http://localhost:8000/api/comments',
-                withCredentials: true,
-            })
-                .then(res => {
-                    console.log(res.data)
-                    setListComment(res.data)
-                })
-                .catch(err => console.log(err))
-        }
+
         var channel = pusher.subscribe('commentChannel');
         channel.bind('App\\Events\\NewCommentEvent', (data) => {
             console.log('Dữ liệu Event', data);
@@ -106,7 +109,7 @@ export default function Comment() {
     console.log(comment);
     return <div className="comment-section">
         <div className="comment-input d-flex align-items-center gap-3">
-            <CommentInput />
+            {isLogin ? <CommentInput /> : <h1>Đăng nhập đi bạn</h1>}
         </div>
         <div className="list-comment mt-3">
             {listComment?.map((data, index) => {

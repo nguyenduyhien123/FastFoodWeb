@@ -16,7 +16,7 @@ class User extends Authenticatable
 
 
     public function comments():HasMany{
-        return $this->hasMany(comment::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function role(){
@@ -45,7 +45,9 @@ class User extends Authenticatable
         'password',
         'firstname',
         'lastname',
-        'phone'
+        'phone',
+        'avatar',
+        'role_id'
     ];
 
     /**

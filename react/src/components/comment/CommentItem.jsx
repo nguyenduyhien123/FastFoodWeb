@@ -69,7 +69,7 @@ export const CommentItem = ({ data }) => {
     isEdit && <CommentInput data={data}/>
 }
 {
-    isEdit && <p onClick={() => setIsEdit(false)} style={{ color : "#0866FF" }}>Nhấn vào đây để huỷ bình luận</p>
+    isEdit && <p onClick={() => setIsEdit(false)} style={{ color : "#0866FF" }}>Nhấn vào đây để huỷ bình luận 123</p>
 }
 {
     isReply && <CommentInput commentParent={data} onReply={setIsReply}/>

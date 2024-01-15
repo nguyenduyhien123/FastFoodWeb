@@ -34,7 +34,7 @@ class VerifyToken
                 $user = User::find($jwt['sub']);
                 if(!empty($user))
                 {
-                    // Auth::loginUsingId($user->id);
+                    Auth::loginUsingId($user->id);
                     $request->merge(['user' => $user]);
                     return $next($request);
                 }
@@ -48,7 +48,7 @@ class VerifyToken
                 $user = User::find($jwt['sub']);
                 if(!empty($user))
                 {
-                    // Auth::loginUsingId($user->id);
+                    Auth::loginUsingId($user->id);
                     $request->merge(['user' => $user]);
                     return $next($request);
                 }

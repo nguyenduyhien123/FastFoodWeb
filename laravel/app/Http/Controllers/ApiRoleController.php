@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class RoleController extends Controller
+class ApiRoleController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      */
     public function index()

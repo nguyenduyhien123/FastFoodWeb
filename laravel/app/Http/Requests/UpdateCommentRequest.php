@@ -24,7 +24,7 @@ class UpdateCommentRequest extends FormRequest
         return [
             'user_id' => 'required|integer|exists:users,id',
             'product_id' => 'required|integer|exists:products,id',
-            'comment_id' => "integer|exists:comments,id",
+            'comment_id' => "nullable|integer|exists:comments,id",
             'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
             'content' => 'required|string|max:10000',
             'path' => 'required|string',

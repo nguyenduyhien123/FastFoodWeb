@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './CommentInput.scss'
 import { ReactComponent as IconSend } from '../../assets/icon/send.svg'
 import axios from 'axios';
@@ -8,6 +8,7 @@ import draftToHtml from 'draftjs-to-html';
 import { convertFromRaw } from 'draft-js';
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { AuthContext } from '../../context/AuthContext';
 const customEditor = {
         options: ['inline', 'emoji','history'],
         inline: {
@@ -133,6 +134,9 @@ const customEditor = {
         },
       }
 export const CommentInput = ({data,commentParent, onReply}) => {
+  const {userInfo} = useContext(AuthContext);
+        const [isSending, setIsSending] = useState(false);
+        const [isAllow, setIsAllow] = useState(false);
         const [editorState, setEditorState] = useState(() => {
                 if (data?.content) {
                         const contentState = ContentState.createFromBlockArray(
@@ -143,44 +147,112 @@ export const CommentInput = ({data,commentParent, onReply}) => {
                       }
                 return EditorState.createEmpty();
         });
-        const handleAddComment = (e) => {
-                const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
-                console.log(contentState);
-                console.log('Comment cha path', commentParent?.path);
-                let id = commentParent?.id ? commentParent?.id : null;
-                console.log('ID là : ', id);
-                let infoComment = {
-                        user_id : 1,
-                        product_id : 1,
-                        comment_id : id,
-                        // image : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg',
-                        content : contentState,
-                }
-                axios({
-                        method: 'post',
-                        url: 'http://localhost:8000/api/comments',
-                        withCredentials: true,     
-                        data : infoComment   
-                    })
-                .then(res => {
-                  console.log(res.data);
-                  setEditorState(EditorState.createEmpty());
-                  onReply(false);
+        const handleGetPlainText = (editorState) => {
+          const contentState = editorState.getCurrentContent();
+          const rawContentState = convertToRaw(contentState);
+          const plainText = rawContentState.blocks.map((block) => block.text).join('\n');
+          return plainText;
+        };
+        const handleEditComment = (e) => {
+          setIsSending(true);
+          if(handleGetPlainText(editorState) != "")
+          {
+            const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
+            let id = commentParent?.id ? commentParent?.id : null;
+            console.log('ID là : ', id);
+            let infoComment = {
+                    user_id : userInfo?.id,
+                    product_id : data?.product_id,
+                    comment_id : data?.comment_id,
+                    // image : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg',
+                    content : contentState,
+                    id : data?.id,
+                    _method : 'PATCH',
+                    path : data?.path
+            }
+            axios({
+                    method: 'post',
+                    url: `http://localhost:8000/api/comments/${data?.id}`,
+                    withCredentials: true,     
+                    data : infoComment   
                 })
-                .catch(err => console.log(err))
+            .then(res => {
+              setEditorState(EditorState.createEmpty());
+              onReply(false);
+              setIsSending(false);
+              setIsAllow(false)
+            })
+            .catch(err => {
+              console.log(err)
+              setIsSending(false)
+              setIsAllow(false)
+
+            })
+          }
         }
-        return <div className={`comment-input d-flex align-items-center gap-3 ${commentParent?.level + 1 >= 2 ? 'ms-5' : '' }`}>
-            <div className="avatar"><img src={data?.avatar || 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'} alt="Ảnh đại diện"/></div>
+        const handleAddComment = (e) => {
+          setIsSending(true);
+          if(handleGetPlainText(editorState) != "")
+          {
+            const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
+            let id = commentParent?.id ? commentParent?.id : null;
+            console.log('ID là : ', id);
+            let infoComment = {
+                    user_id : userInfo?.id,
+                    product_id : 1,
+                    comment_id : id,
+                    // image : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg',
+                    content : contentState,
+            }
+            axios({
+                    method: 'post',
+                    url: 'http://localhost:8000/api/comments',
+                    withCredentials: true,     
+                    data : infoComment   
+                })
+            .then(res => {
+              setEditorState(EditorState.createEmpty());
+              onReply(false);
+              setIsSending(false);
+              setIsAllow(false)
+            })
+            .catch(err => {
+              console.log(err)
+              setIsSending(false)
+              setIsAllow(false)
+
+            })
+          }
+        }
+        return <div><div className={`comment-input d-flex align-items-center gap-3 ${commentParent?.level + 1 >= 2 ? 'ms-5' : '' }`}>
+            <div className="avatar"><img src={userInfo?.avatar || 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'} alt="Ảnh đại diện"/></div>
                     <Editor
           editorState={editorState}
           wrapperClassName="demo-wrapper"
           editorClassName="demo-editor"
-          onEditorStateChange={val => setEditorState(val)}
+          onEditorStateChange={val => {
+            console.log('Giá trị là ',val);
+            setEditorState(val)
+            if(handleGetPlainText(val) != "")
+            {
+              setIsAllow(true);
+              console.log('được sửa');
+            }
+            else
+            {
+              setIsAllow(false);
+              console.log('k được sửa');
+              setEditorState(val)
+            }
+          }}
           toolbar={customEditor}
         />
-        <div className="btn-send" onClick={handleAddComment}><IconSend/></div>
+        <div className="btn-send" onClick={(e) => {
+          data ? handleEditComment(e) : handleAddComment(e)
+        }}><IconSend className={isAllow ? 'active' : ''}/></div>
     <div>
-
       </div>
+            </div>
+
             </div>
 }

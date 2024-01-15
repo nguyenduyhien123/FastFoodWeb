@@ -41,7 +41,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1991-01-01',
                 'phone' => '1234567891',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://phunugioi.com/wp-content/uploads/2020/02/hinh-anh-dep-thien-nhien.jpg'
             ],
             [
                 'id' => 3,
@@ -55,7 +55,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1992-01-01',
                 'phone' => '1234567892',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://msmobile.com.vn/upload_images/images/hinh-nen-thien-nhien-dep-cho-laptop-7.jpg'
             ],
             [
                 'id' => 4,
@@ -69,7 +69,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1993-01-01',
                 'phone' => '1234567893',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://www.fodors.com/wp-content/uploads/2021/09/3-FallFoliage-Aspen-shutterstock_1866243163-390x260.jpg'
             ],
             [
                 'id' => 5,
@@ -83,7 +83,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1994-01-01',
                 'phone' => '1234567894',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://fatafatsewa.com/storage/media/76/ktslI21609.jpg'
             ],
             [
                 'id' => 6,
@@ -97,7 +97,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1995-01-01',
                 'phone' => '1234567895',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://msmobile.com.vn/upload_images/images/hinh-nen-thien-nhien-dep-cho-laptop-7.jpg'
             ],
             [
                 'id' => 7,
@@ -111,7 +111,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1996-01-01',
                 'phone' => '1234567896',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://www.fodors.com/wp-content/uploads/2021/09/3-FallFoliage-Aspen-shutterstock_1866243163-390x260.jpg'
             ],
             [
                 'id' => 8,
@@ -125,7 +125,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1997-01-01',
                 'phone' => '1234567897',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://fatafatsewa.com/storage/media/76/ktslI21609.jpg'
             ],
             [
                 'id' => 9,
@@ -139,7 +139,7 @@ class UsersSeeder extends Seeder
                 'birthday' => '1998-01-01',
                 'phone' => '1234567898',
                 'phone_verified_at' => '2023-11-29',
-                'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
+                'avatar' => 'https://phunugioi.com/wp-content/uploads/2020/02/hinh-anh-dep-thien-nhien.jpg'
             ],
         ]);
     }
