@@ -2,7 +2,7 @@
 import React from 'react'
 import './download.scss'
 
-import appImg from '../../assets/images/app.png'
+import appImg from '../../assets/images/client/app.png'
 
 import { Col, Container, Row } from 'reactstrap'
 

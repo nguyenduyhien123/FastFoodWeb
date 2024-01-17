@@ -1,0 +1,154 @@
+{
+    "pageTitle": "product view",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "product" },
+        { "text": "view" }
+    ],
+    "gallery":[
+        { "src": "images/product/single/01.webp", "alt": "product" },
+        { "src": "images/product/single/02.webp", "alt": "product" },
+        { "src": "images/product/single/03.webp", "alt": "product" },
+        { "src": "images/product/single/04.webp", "alt": "product" },
+        { "src": "images/product/single/05.webp", "alt": "product" }
+    ],
+    "title": "Formal suits for men wedding slim fit 3 piece dress business party jacket",
+    "descrip": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae reprehenderit repellendus expedita esse cupiditate quos doloremque rerum, corrupti ab illum est nihil, voluptate ex dignissimos! Sit voluptatem delectus nam, molestiae, repellendus ab sint quo aliquam debitis amet natus doloremque laudantium? Repudiandae, consequuntur, officiis quidem quo deleniti, autem non laudantium sequi error molestiae ducimus accusamus facere velit consectetur vero dolore natus nihil temporibus aspernatur quia consequatur? Consequuntur voluptate deserunt repellat tenetur debitis molestiae doloribus dicta. In rem illum dolorem atque ratione voluptates asperiores maxime doloremque laudantium magni neque ad quae quos quidem, quaerat rerum ducimus blanditiis reiciendis",
+    "specify": [
+        { "icon": "store", "title": "brand", "text": "ecstasy" },
+        { "icon": "pix", "title": "category", "text": "man's" },
+        { "icon": "settings", "title": "tags", "list": ["suite", "party", "dress", "smart", "man", "styles"] },
+        { "icon": "palette", "title": "color", "list": ["red", "blue", "green", "yellow", "purple"] },
+        { "icon": "summarize", "title": "size", "list": ["sm", "md", "lg", "xl", "xxl"] },
+        { "icon": "sell", "title": "price", "price": { "now": "$37.00", "old": "$42.00" } },
+        { "icon": "shopping_cart", "title": "stock", "text": "(68) piece" },
+        { "icon": "hotel_class", "title": "review", "text": "(03) review" },
+        { "icon": "verified", "title": "published", "text": "02 feb 2020" }
+    ],
+    "rating": {
+        "total": "total review (38)",
+        "item": [
+            { "count": "5 star", "graph": "90%", "user": "22" },
+            { "count": "4 star", "graph": "75%", "user": "06" },
+            { "count": "3 star", "graph": "30%", "user": "05" },
+            { "count": "2 star", "graph": "15%", "user": "03" },
+            { "count": "1 star", "graph": "5%", "user": "02" }
+        ],
+        "score": "4.9",
+        "icon": ["star", "star", "star", "star", "star_half"],
+        "text": "your average rating star"
+    },
+    "review": [
+        {
+            "src": "images/avatar/01.webp",
+            "alt": "avatar",
+            "name": "miron mahmud",
+            "date": "25 minutes ago!",
+            "button": { "path": "#", "icon": "reply", "text": "reply" },
+            "star": ["star", "star", "star", "star", "star_half"],
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+            "dots": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "edit", "text": "edit" },
+                    { "icon": "gpp_bad", "text": "block" },
+                    { "icon": "report", "text": "report" },
+                    { "icon": "delete", "text": "delete" }
+                ]
+            },
+            "reply": [
+                {
+                    "src": "images/avatar/02.webp",
+                    "alt": "avatar",
+                    "name": "tahmina bonny",
+                    "date": "3 weeks ago!",
+                    "admin": "admin",
+                    "button": { "path": "#", "icon": "reply", "text": "reply" },
+                    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+                    "dots": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "edit", "text": "edit" },
+                            { "icon": "gpp_bad", "text": "block" },
+                            { "icon": "report", "text": "report" },
+                            { "icon": "delete", "text": "delete" }
+                        ]
+                    }
+                },
+                {
+                    "src": "images/avatar/03.webp",
+                    "alt": "avatar",
+                    "name": "labonno khan",
+                    "date": "15 days ago!",
+                    "button": { "path": "#", "icon": "reply", "text": "reply" },
+                    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+                    "dots": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "edit", "text": "edit" },
+                            { "icon": "gpp_bad", "text": "block" },
+                            { "icon": "report", "text": "report" },
+                            { "icon": "delete", "text": "delete" }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "src": "images/avatar/04.webp",
+            "alt": "avatar",
+            "name": "shahriar nafiz",
+            "date": "active now!",
+            "button": { "path": "#", "icon": "reply", "text": "reply" },
+            "star": ["star", "star", "star", "star", "star_half"],
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+            "dots": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "edit", "text": "edit" },
+                    { "icon": "gpp_bad", "text": "block" },
+                    { "icon": "report", "text": "report" },
+                    { "icon": "delete", "text": "delete" }
+                ]
+            },
+            "reply": [
+                {
+                    "src": "images/avatar/02.webp",
+                    "alt": "avatar",
+                    "name": "tahmina bonny",
+                    "date": "3 weeks ago!",
+                    "admin": "admin",
+                    "button": { "path": "#", "icon": "reply", "text": "reply" },
+                    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+                    "dots": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "edit", "text": "edit" },
+                            { "icon": "gpp_bad", "text": "block" },
+                            { "icon": "report", "text": "report" },
+                            { "icon": "delete", "text": "delete" }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "src": "images/avatar/05.webp",
+            "alt": "avatar",
+            "name": "marjana akter",
+            "date": "few minutes ago!",
+            "button": { "path": "#", "icon": "reply", "text": "reply" },
+            "star": ["star", "star", "star", "star", "star_half"],
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quo nostrum dolore fugiat ducimus labore debitis unde autem recusandae? Eius harum tempora quis minima, adipisci natus quod magni omnis quas.",
+            "dots": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "edit", "text": "edit" },
+                    { "icon": "gpp_bad", "text": "block" },
+                    { "icon": "report", "text": "report" },
+                    { "icon": "delete", "text": "delete" }
+                ]
+            }
+        }
+    ]
+}

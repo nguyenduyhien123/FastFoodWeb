@@ -26,7 +26,7 @@ export default function Register() {
   }
   
   return (
-    <div>
+    <div className="form-register">
       <form className="form border" onSubmit={handleRegisterUser}>
         <div className="item">
       <div className="flex-column">

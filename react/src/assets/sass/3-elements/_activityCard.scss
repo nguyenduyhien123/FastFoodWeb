@@ -1,0 +1,79 @@
+.mc-activity-card-list {
+    height: 404px;
+    @include padding(15px, 15px, 0px, 15px);
+}
+
+.mc-activity-card-item {
+    position: relative;
+    padding-#{$start-direction}: 25px;
+    border-#{$start-direction}: 2px dashed var(--deepBorder);
+    @include transition-linear;
+
+    &:hover {
+        border-color: var(--primaryHEX);
+
+        &::before {
+            background-color: var(--primaryHEX);
+        }
+    }
+
+    &::before {
+        content: "";
+        @include position-top-left(absolute, 0px, -10px, 1);
+        @include content-center(18px, inherit, 50%);
+        border: 4px solid var(--lightBorder);
+        background-color: var(--textColor);
+        box-shadow: 0px 3px 10px 0px rgba(var(--blackRGB), 15%);
+        @include transition-linear;
+    }
+}
+
+.mc-activity-card-title {
+    display: flex;
+    gap: 10px;
+
+    @include mobile-breakpoint {
+        flex-wrap: wrap;
+    }
+
+    h6 {
+        font-size: 14px;
+        text-transform: inherit;
+    }
+
+    small {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+.mc-activity-card-body {
+    padding: 12px 0px 28px;
+    font-size: 15px;
+
+    .mc-btn {
+        margin-top: 20px;
+    }
+}
+
+.mc-activity-card-text {
+    font-size: 14px;
+}
+
+.mc-activity-card-media {
+    margin-top: 15px;
+    @include flex-dimension(center, start, 10px);
+
+    img {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        box-shadow: 0px 3px 10px 0px rgba(var(--blackRGB), 15%);
+    }
+
+    h6 { 
+        font-size: 13px; 
+        text-transform: capitalize;
+    }
+}

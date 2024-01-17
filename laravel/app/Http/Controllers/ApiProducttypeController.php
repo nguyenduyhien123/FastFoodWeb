@@ -76,4 +76,8 @@ class ApiProducttypeController extends Controller
             ], 404);
         }
     }
+    public function getTotalProductTypes(){
+        return response()->json(['count' => ProductType::all()->count()]);
+
+    }
 }

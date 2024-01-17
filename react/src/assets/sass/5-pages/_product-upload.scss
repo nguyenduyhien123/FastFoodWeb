@@ -1,0 +1,115 @@
+.mc-product-upload-organize {
+    @include flex-dimension(end, start, 15px);
+
+    .mc-label-field-group {
+        width: 100%;
+    }
+
+    .mc-btn {
+        width: 90px;
+        height: 42px;
+        flex-shrink: 0;
+        padding: 8px 12px;
+    }
+}
+
+.mc-product-upload-media {
+    @include grid-minmax(20px, 150px);
+
+    @include mobile-breakpoint {
+        @include grid-minmax(20px, 115px);
+    }
+}
+
+.mc-product-upload-image {
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        &::after { 
+            opacity: 1;
+            color: var(--primaryHEX); 
+        }
+
+        img { border-color: var(--primaryHEX); }
+    }
+
+    &.active {
+        &::after { opacity: 1; }
+        img { border-color: $green-600; }
+    }
+
+    &::after {
+        @include position-top-right(absolute, 12px, 12px, 1);
+        font-family: 'Material Icons';
+        line-height: 22px;
+        font-size: 22px;
+        content: "\e86c";
+        opacity: 0;
+        color: $green-600;
+        @include transition-linear;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px dashed var(--deepBorder);
+        filter: drop-shadow(0px 10px 15px rgba(var(--blackRGB), 5%));
+        @include transition-linear;
+    }
+}
+
+.mc-product-upload-file {
+    position: relative;
+    border-radius: 8px;
+    border: 2px dashed var(--deepBorder);
+    filter: drop-shadow(0px 10px 15px rgba(var(--blackRGB), 5%));
+    @include transition-linear;
+
+    &:hover { border-color: $gray-500; }
+
+    input { 
+        width: 100%;
+        height: 100%;
+        visibility: hidden; 
+        position: absolute;
+    }
+
+    label {
+        @include flex-dimension(center, center, 0px);
+        flex-direction: column;
+        padding: 20px 0px;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        text-align: center;
+
+        i {
+            font-size: 90px;
+            opacity: 0.1;
+
+            @include mobile-breakpoint {
+                font-size: 60px;
+            }
+        }
+
+        p {
+            width: 100px;
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.mc-product-upload-btn {
+    width: 100%;
+    margin-top: 50px;
+    text-transform: capitalize;
+    @include text-font(15px, 500);
+    letter-spacing: 0.5px;
+    gap: 10px;
+
+    i { font-size: 20px; }
+}

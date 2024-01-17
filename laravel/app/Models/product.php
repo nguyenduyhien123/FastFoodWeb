@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -43,4 +44,14 @@ class Product extends Model
     {
         return $this->hasMany(InvoiceDetail::class);
     }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
+    }
+    public function getUpdatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
+    }
+    // protected $casts = [
+    //     'created_at' => 'timestamp',
+    //     'updated_at' => 'timestamp'
+    // ];
 }

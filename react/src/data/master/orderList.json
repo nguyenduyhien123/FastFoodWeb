@@ -1,0 +1,104 @@
+{
+    "pageTitle": "order list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "order-list" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "pending orders", "digit": "547", "icon": "pending", "variant": "lg purple" }, 
+        { "title": "shipped orders", "digit": "398", "icon": "local_shipping", "variant": "lg blue" },
+        { "title": "recieved orders", "digit": "605", "icon": "shopping_bag", "variant": "lg green" },
+        { "title": "cancelled orders", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
+    ],
+    "filter":[
+        { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+        { "label": "status by", "option": ["pending", "shipped", "recieved", "cancelled"] },
+        { "label": "issued by", "type": "date" },
+        { "label": "search by", "type": "search", "placeholder": "id / name / email" }
+    ],
+    "table":{
+        "thead": ["client", "product", "amount", "payment", "status", "date time", "action"],
+        "tbody": [
+            {
+                "id": "#4980",
+                "src": "images/avatar/01.webp",
+                "alt": "client",
+                "name": "miron mahmud", 
+                "product": "(2) item",
+                "amount": "$56.00", 
+                "status": { "text": "pending", "variant": "purple" },
+                "payment": "bkash",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4981",
+                "src": "images/avatar/02.webp",
+                "alt": "client",
+                "name": "tahmina bonny", 
+                "product": "(1) item",
+                "amount": "$45.00", 
+                "status": { "text": "shipped", "variant": "blue" },
+                "payment": "tap tap send",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4982",
+                "src": "images/avatar/03.webp",
+                "alt": "client",
+                "name": "labonno khan", 
+                "product": "(3) item",
+                "amount": "$68.00", 
+                "status": { "text": "cancelled", "variant": "red" },
+                "payment": "nagad",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4983",
+                "src": "images/avatar/04.webp",
+                "alt": "client",
+                "name": "sheikh adabali", 
+                "product": "(1) item",
+                "amount": "$68.00", 
+                "status": { "text": "recieved", "variant": "green" },
+                "payment": "paypal",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4984",
+                "src": "images/avatar/05.webp",
+                "alt": "client",
+                "name": "johara khatun", 
+                "product": "(5) item",
+                "amount": "$53.00", 
+                "status": { "text": "shipped", "variant": "blue" },
+                "payment": "payoneer",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4985",
+                "src": "images/avatar/06.webp",
+                "alt": "client",
+                "name": "kurulus osman", 
+                "product": "(4) item",
+                "amount": "$79.00", 
+                "status": { "text": "pending", "variant": "purple" },
+                "payment": "cash on delivery",
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            }
+        ]
+    }
+}

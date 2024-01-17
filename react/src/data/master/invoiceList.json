@@ -1,0 +1,98 @@
+{
+    "pageTitle": "invoice list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "invoice" },
+        { "text": "list" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "recieved amount", "digit": "$78,593.00", "icon": "account_balance", "variant": "lg green" },
+        { "title": "drafts amount", "digit": "$24,950.00", "icon": "drafts", "variant": "lg blue" },
+        { "title": "pending amount", "digit": "$53,617.00", "icon": "pending", "variant": "lg purple" } 
+    ],
+    "filter":[
+        { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+        { "label": "status by", "option": ["recieved", "drafts", "pending"] },
+        { "label": "issued by", "type": "date" },
+        { "label": "search by", "type": "search", "placeholder": "id / name / email" }
+    ],
+    "table":{
+        "thead": ["client", "email", "amount", "status", "issue date", "action"],
+        "tbody": [
+            {
+                "id": "#4980",
+                "src": "images/avatar/01.webp",
+                "alt": "client",
+                "name": "miron mahmud", 
+                "email": "miron@gmail.com", 
+                "amount": "$5,689.00", 
+                "status": { "text": "recieved", "variant": "green" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4981",
+                "src": "images/avatar/02.webp",
+                "alt": "client",
+                "name": "tahmina bonny", 
+                "email": "tahmina@gmail.com", 
+                "amount": "$4,578.00", 
+                "status": { "text": "drafts", "variant": "blue" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4982",
+                "src": "images/avatar/03.webp",
+                "alt": "client",
+                "name": "labonno khan", 
+                "email": "labonno@gmail.com", 
+                "amount": "$6,872.00", 
+                "status": { "text": "pending", "variant": "purple" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4983",
+                "src": "images/avatar/04.webp",
+                "alt": "client",
+                "name": "sheikh adabali", 
+                "email": "sheikh@gmail.com", 
+                "amount": "$6,890.00", 
+                "status": { "text": "recieved", "variant": "green" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4984",
+                "src": "images/avatar/05.webp",
+                "alt": "client",
+                "name": "johara khatun", 
+                "email": "johara@gmail.com", 
+                "amount": "$5,347.00", 
+                "status": { "text": "drafts", "variant": "blue" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            },
+            {
+                "id": "#4985",
+                "src": "images/avatar/06.webp",
+                "alt": "client",
+                "name": "kurulus osman", 
+                "email": "kurulus@gmail.com", 
+                "amount": "$7,920.00", 
+                "status": { "text": "pending", "variant": "purple" },
+                "date": "15/06/2022 14:02",
+                "action": { "delete": "delete", "download": "download", "view": "visibility" }
+            }
+        ]
+    }
+}

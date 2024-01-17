@@ -1,0 +1,139 @@
+.mc-invoice-head {
+    @include flex-dimension(center, center, 10px);
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    @include mobile-breakpoint {
+        align-items: start;
+    }
+
+    img {
+        height: 60px;
+    }
+
+    h2 {
+        @include text-font(22px, 800);
+        text-transform: uppercase;
+    }
+}
+
+.mc-invoice-group {
+    @include flex-dimension(center, space-between, 20px);
+    margin-bottom: 30px;
+
+    @include mobile-breakpoint {
+        flex-wrap: wrap;
+    }
+}
+
+.mc-invoice-recieved,
+.mc-invoice-shipment {
+    max-width: 250px;
+
+    @include mobile-breakpoint {
+        max-width: 100%;
+    }
+
+    h6 {
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-transform: capitalize;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.mc-invoice-shipment {
+    text-align: $end-direction;
+
+    @include mobile-breakpoint {
+        text-align: $start-direction;
+    }
+}
+
+.mc-invoice-list-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--lightBorder);
+}
+
+.mc-invoice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
+        display: flex;
+
+        &:last-child {
+            padding-top: 15px;
+            border-top: 1px solid var(--lightBorder);
+        }
+
+        span {
+            font-size: 15px;
+        }
+
+        .title {
+            width: 100px;
+            text-transform: capitalize;
+        }
+
+        .clone {
+            font-weight: 700;
+            margin-#{$end-direction}: 30px;
+        }
+
+        .digit {
+            font-weight: 500;
+            color: var(--heading);
+        }
+
+        .total { 
+            font-size: 17px;
+            font-weight: 700; 
+        }
+
+        .status {
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            @include text-font(12px, 700);
+
+            &.purple {
+                color: $purple-700;
+                background-color: $purple-200;
+            }
+
+            &.green {
+                color: $green-700;
+                background-color: $green-200;
+            }
+
+            &.red {
+                color: $red-700;
+                background-color: $red-200;
+            }
+        }
+    }
+}
+
+.mc-invoice-note {
+    font-size: 13px;
+    margin-bottom: 50px;
+}
+
+.mc-invoice-btns {
+    @include flex-dimension(center, center, 15px);
+    flex-wrap: wrap;
+
+    .btn {
+        width: fit-content;
+        @include flex-dimension(center, center, 8px);
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "pageTitle": "Thêm sản phẩm",
+    "breadcrumb": [
+        { "path": "/", "text": "Trang chủ" },
+        { "text": "Sản phẩm" },
+        { "text": "Thêm" }
+    ],
+    "title": "add new product",
+    "button": { "path": "#", "icon": "visibility", "text": "show all products" },
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    }
+    
+}

@@ -1,0 +1,116 @@
+.mc-ecommerce-card {
+    position: relative;
+    padding: 22px;
+    border-radius: 8px;
+    background-color: var(--lightColor);
+    @include transition-linear;
+
+    &:hover {
+        box-shadow: 0px 15px 25px 0px rgba(var(--blackRGB), 8%);
+    }
+
+    &.green {
+        background: linear-gradient(to left, $green-500, $green-700);
+
+        .mc-ecommerce-card-icon {
+            color: $green-400;
+            background: linear-gradient($green-600, $green-700);
+        }
+
+        .mc-ecommerce-card-trend { color: $green-700; }
+        .mc-ecommerce-card-compare mark { background-color: $green-800; }
+        .mc-dropdown-toggle { color: $green-800; }
+    }
+
+    &.purple {
+        background: linear-gradient(to left, $purple-500, $purple-700);
+
+        .mc-ecommerce-card-icon {
+            color: $purple-400;
+            background: linear-gradient($purple-600, $purple-700);
+        }
+
+        .mc-ecommerce-card-trend { color: $purple-700; }
+        .mc-ecommerce-card-compare mark { background-color: $purple-800; }
+        .mc-dropdown-toggle { color: $purple-800; }
+    }
+
+    &.blue {
+        background: linear-gradient(to left, $blue-500, $blue-700);
+
+        .mc-ecommerce-card-icon {
+            color: $blue-400;
+            background: linear-gradient($blue-600, $blue-700);
+        }
+
+        .mc-ecommerce-card-trend { color: $blue-700; }
+        .mc-ecommerce-card-compare mark { background-color: $blue-800; }
+        .mc-dropdown-toggle { color: $blue-800; }
+    }
+
+    &.yellow {
+        background: linear-gradient(to left, $yellow-500, $yellow-700);
+
+        .mc-ecommerce-card-icon {
+            color: $yellow-400;
+            background: linear-gradient($yellow-600, $yellow-700);
+        }
+
+        .mc-ecommerce-card-trend { color: $yellow-700; }
+        .mc-ecommerce-card-compare mark { background-color: $yellow-800; }
+        .mc-dropdown-toggle { color: $yellow-800; }
+    }
+}
+
+.mc-ecommerce-card-trend {
+    @include position-bottom-left(absolute, 0px, 0px, 1);
+    font-size: 150px;
+    opacity: 0.8;
+}
+
+.mc-ecommerce-card-head {
+    @include flex-dimension(start, space-between, 0px);
+    margin-bottom: 40px;
+}
+
+.mc-ecommerce-card-meta {
+    @include text-font(32px, 700);
+    position: relative;
+    z-index: 1;
+    color: var(--lightColor);
+
+    span {
+        margin-bottom: 7px;
+        @include text-font(16px, 500);
+        text-transform: capitalize;
+        display: block;
+    }
+}
+
+.mc-ecommerce-card-icon {
+    @include content-center(50px, 50px, 8px);
+    font-size: 28px;
+}
+
+.mc-ecommerce-card-foot {
+    position: relative;
+    z-index: 1;
+    @include flex-dimension(center, space-between, 0px);
+}
+
+.mc-ecommerce-card-compare {
+    @include flex-dimension(center, start, 0px 5px);
+    color: var(--lightColor);
+
+    mark {
+        padding: 4px 6px;
+        border-radius: 4px;
+        @include text-font(12px, 500);
+        color: var(--lightColor);
+    }
+
+    span {
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+}

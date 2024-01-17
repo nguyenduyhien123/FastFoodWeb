@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,13 +36,24 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::get('/','index');
     });
     Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
+    Route::apiResource('products',ApiProductController::class)->except(['index','show']);
 });
+// Api không cần đăng nhập
+Route::apiResource('products',ApiProductController::class)->only(['index','show']);
+Route::apiResource('product_types',ApiProducttypeController::class)->only(['index','show']);
+
+Route::prefix('summary')->group(function(){
+    Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
+    Route::get('getTotalProductTypes',[ApiProducttypeController::class,'getTotalProductTypes']);
+});
+
+/// ------------------------------
 Route::apiResource('comments',ApiCommentController::class)->only(['index','show']);
 
 Route::apiResource('users', ApiUserController::class); 
 
 
-Route::apiResource('product_types', ApiProducttypeController::class);
+// Route::apiResource('product_types', ApiProducttypeController::class);
 Route::apiResource('discounts', ApiDiscountController::class);
 Route::apiResource('rates', ApiRateController::class);
 

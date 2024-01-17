@@ -1,0 +1,101 @@
+.mc-overview-card {
+    transform: translateY(0);
+    @include transition-linear;
+
+    &:hover {
+        transform: translateY(-5px);
+
+        .mc-overview-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mc-overview-link {
+            top: 50%;
+        }
+    }
+}
+
+.mc-overview-media {
+    position: relative;
+    margin-bottom: 22px;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0px 15px 35px 0px rgba(var(--blackRGB), 8%);
+    }
+}
+
+.mc-overview-label {
+    position: absolute;
+    top: -25px;
+    z-index: 1;
+    @include text-font(26px, 700);
+    @include content-center(100px, 100px, 50%);
+    border: 8px solid var(--lightColor);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: var(--lightColor);
+    background: var(--primaryHEX);
+    box-shadow: 0px 8px 30px 0px rgba(var(--blackRGB), 20%);
+
+    &.left { left: -25px; }
+    &.right { right: -25px; }
+
+    span {
+        display: block;
+        width: fit-content;
+        @include text-font(14px, 400);
+        @include position-top-left(absolute, 70%, 50%, 1);
+        transform: translate(-50%, -50%);
+    }
+}
+
+.mc-overview-badge {
+    @include position-top-right(absolute, -20px, -20px, 1);
+    @include content-center(70px, 70px, 50%);
+    @include text-font(18px, 500);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--lightColor);
+    background-color: $red-600;
+    box-shadow: 0px 8px 30px 0px rgba(var(--blackRGB), 20%);
+}
+
+.mc-overview-overlay {
+    @include position-bottom-left(absolute, 0px, 0px, 1);
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: rgba(var(--blackRGB), 70%);
+    visibility: hidden;
+    opacity: 0;
+    @include transition-linear;
+}
+
+.mc-overview-link {
+    @include position-top-left(absolute, 40%, 50%, 1);
+    @include text-font(14px, 600);
+    padding: 15px 32px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: var(--lightColor);
+    background: var(--primaryHEX);
+    transform: translate(-50%, -50%);
+    box-shadow: var(--btnBoxShadow);
+    @include transition-linear;
+
+    &:hover { color: var(--lightColor); }
+}
+
+.mc-overview-name {
+    @include text-font(16px, 700);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: $blue-500;
+}

@@ -6,13 +6,13 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 class ApiProductController extends Controller
 {
     //hàm index chỉ trả về những sản phẩm chưa xóa
     public function index()
     {
-        return Product::all();
+        return Product::with('productType')->get();
     }
 
     public function store(StoreProductRequest $request)
@@ -22,23 +22,26 @@ class ApiProductController extends Controller
                 'name' => $request['name'],
                 'description' => $request['description'],
                 'price' => $request['price'],
-                'image' => '123', //gia tri mac dinh cua image la 123
+                'image' => '{}', 
                 'product_type_id' => $request['product_type_id'],
                 'star' => 5,
             ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->image->store("upload/product/{$product->id}", 'public');
-            $product->image = json_encode([$path], JSON_FORCE_OBJECT);
-        }
-
+            $listImage = [];
+            $files = $request->file('image');
+            foreach($files as $file)
+            {
+                $nameFile = Str::random(20).Str::random(20).'_product_'.$product->id.'.'.$file->getClientOriginalExtension();
+                $file->storeAs('public/Uploads', $nameFile);
+                array_push( $listImage, $nameFile);
+            }
+            $product->image =  json_encode($listImage, JSON_FORCE_OBJECT);
         $product->save();
         return $product;
     }
 
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::with('productType')->find($id);
         if (!empty($product)) {
             return response()->json($product);
         } else {
@@ -90,5 +93,8 @@ class ApiProductController extends Controller
     public function getProductsByProductTypeId($productTypeId)
     {
         return Product::where('product_type_id', $productTypeId)->get();
+    }
+    public function getTotalProducts(){
+        return response()->json(['count' => Product::all()->count()]);
     }
 }

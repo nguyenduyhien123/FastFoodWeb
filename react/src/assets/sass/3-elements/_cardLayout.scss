@@ -1,0 +1,26 @@
+.mc-card {
+    padding: 22px;
+    border-radius: 8px;
+    background-color: var(--cardBG);
+    border: 1px solid var(--lightBorder);
+    @include transition-linear;
+
+    @include mobile-breakpoint {
+        padding: 20px 15px;
+    }
+
+    &:hover {
+        box-shadow: 0px 15px 25px 0px rgba(var(--blackRGB), 6%);
+    }
+}
+
+.mc-card-header {
+    margin-bottom: 18px;
+    @include flex-dimension(start, space-between, 0px);
+}
+
+.mc-card-title {
+    line-height: 27px;
+    @include text-font(17px, 600);
+    text-transform: capitalize;
+}

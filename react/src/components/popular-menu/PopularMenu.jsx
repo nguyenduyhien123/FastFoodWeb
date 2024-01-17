@@ -12,7 +12,7 @@ const PopularMenu = () => {
                 </Col>
 
                 {
-                    popularMenuFood.map(item=>(
+                    popularMenuFood?.map(item=>(
                         <Col lg='3' key={item.id}>
                             <ProductCard item={item}/>
                         </Col>

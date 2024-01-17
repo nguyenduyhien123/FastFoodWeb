@@ -1,0 +1,31 @@
+{
+    "pageTitle": "my account",
+    "breadcrumb": [
+        { "path": "/admin", "text": "home" },
+        { "path": "/admin/user-list", "text": "user-list" },
+        { "text": "/admin/my-account" }
+    ],
+    "id": { "title": "unique id", "value": "#783404edft97e3445" },
+    "name": { "title": "fullname", "value": "Miron Mahmud" },
+    "username": { "title": "username", "value": "@Ndhcoder" },
+    "role": { "title": "role", "activeOption": "member", "option": ["member", "admin", "vendor", "founder"] },
+    "status": { "title": "status", "activeOption": "approved", "option": ["approved", "pending", "blocked"] },
+    "bio": { "title": "biography", "longText": "I consider myself as a creative, professional and a flexible person. I can adapt with any kind of brief and design style" },
+    "email": { "title": "email", "value": "demo@example.com" },
+    "phone": { "title": "phone", "value": "+8801838288389" },
+    "website": { "title": "website", "value": "https://mironmahmud.com/" },
+    "create": { "title": "create", "value": "15/06/2022 14:02" },
+    "address": { "title": "address", "longText": "3379  Monroe Avenue, Fort Myers, Florida(33912)" },
+    "social": [
+        { "type": "url", "title": "facebook", "value": "https://example.com/" },
+        { "type": "url", "title": "twitter", "value": "https://example.com/" },
+        { "type": "url", "title": "linkedin", "value": "https://example.com/" },
+        { "type": "url", "title": "instagram", "value": "https://example.com/" },
+        { "type": "url", "title": "youtube", "value": "https://example.com/" },
+        { "type": "url", "title": "pinterest", "value": "https://example.com/" }
+    ],
+    "avatar": {
+        "src": "images/avatar/01.webp",
+        "alt": "avatar"
+    }
+}

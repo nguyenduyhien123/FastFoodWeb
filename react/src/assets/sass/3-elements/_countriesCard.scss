@@ -1,0 +1,35 @@
+.mc-countries-card-list {
+    height: 364px;
+    padding: 0px 15px;
+}
+
+.mc-countries-card-item {
+    @include flex-dimension(center, space-between, 0px);
+    border-top: 1px solid var(--lightBorder);
+    padding: 18px 0px;
+
+    div {
+        width: 135px;
+        @include flex-dimension(center, start, 0px 15px);
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 3px 10px 0px rgba(var(--blackRGB), 15%);
+    }
+
+    h6 {
+        @include text-font(14px, 600);
+        text-transform: capitalize;
+
+        span {
+            display: block;
+            @include text-font(11px, 500);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: var(--textColor);
+        }
+    }
+}

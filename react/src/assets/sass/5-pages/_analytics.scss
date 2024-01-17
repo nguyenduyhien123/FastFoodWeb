@@ -1,0 +1,17 @@
+.mc-analytics-group {
+    margin-bottom: 20px;
+    @include flex-dimension(start, space-between, 0px);
+
+    h5 {
+        line-height: 27px;
+        font-size: 17px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    .mc-icon-field {
+        margin-bottom: 0px;
+        border-color: var(--lightBorder);
+        background-color: var(--thinGray);
+    }
+}

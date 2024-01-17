@@ -1,0 +1,14 @@
+.mc-divide-title {
+    width: 100%;
+    @include flex-dimension(center, start, 10px);
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: capitalize;
+
+    &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: var(--lightBorder);
+    }
+}

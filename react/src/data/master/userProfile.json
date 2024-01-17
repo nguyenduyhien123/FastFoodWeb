@@ -1,0 +1,76 @@
+{
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "path": "/user-list", "text": "user-list" },
+        { "text": "user-profile" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "profile": {
+        "src": "images/avatar/01.webp",
+        "alt": "avatar",
+        "size": "lg",
+        "fullname": "miron mahmud",
+        "username": "@Ndhcoder"
+    },
+    "contact":[
+        { "icon": "phone_in_talk", "text": "+91 987-654-3210" },
+        { "icon": "feed", "text": "demo@example.com" },
+        { "icon": "public", "text": "exampleduyhien.com" },
+        { "icon": "map", "text": "1Hd- 50, 010 Avenue, NY 90001 United States" }
+    ],
+    "bio": {
+        "title": "biography",
+        "descrip": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets"
+    },
+    "social": [
+        { "path": "#", "icon": "icofont-facebook", "type": "facebook" },
+        { "path": "#", "icon": "icofont-twitter", "type": "twitter" },
+        { "path": "#", "icon": "icofont-linkedin", "type": "linkedin" },
+        { "path": "#", "icon": "icofont-whatsapp", "type": "whatsapp" },
+        { "path": "#", "icon": "icofont-youtube-play", "type": "youtube" }
+    ],
+    "float": [
+        { "title": "total orders", "digit": "5789", "icon": "shopping_cart", "variant": "sm purple" }, 
+        { "title": "total reviews", "digit": "2373", "icon": "hotel_class", "variant": "sm yellow" },
+        { "title": "total products", "digit": "7893", "icon": "shopping_bag", "variant": "sm green" }
+    ],
+    "activity": {
+        "title": "user activities",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "items": [
+            { 
+                "title": "Your account is logged in",
+                "time": "45 min ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/avatar/01.webp", "alt": "avatar", "name": "miron mahmud" }
+            },
+            { 
+                "title": "Current language has been changed",
+                "time": "24 hr ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/flag/bangladesh.webp", "alt": "flag", "name": "bengali language" }
+            },
+            { 
+                "title": "Asked about this product",
+                "time": "Yesterday",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/product/01.webp", "alt": "product", "name": "Modern tiny red skirt" },
+                "button": { "path": "#", "label": "go there" }
+            }
+        ]
+    }
+}

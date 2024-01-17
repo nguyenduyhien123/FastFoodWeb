@@ -1,0 +1,27 @@
+{
+    "logo": {
+        "path": "/ecommerce",
+        "src": "images/logo.webp",
+        "alt": "blue",
+        "name": "duyhien"
+    },
+    "pattern": { 
+        "src": "images/pattern.webp", 
+        "alt": "line-pattern" 
+    },
+    "title": "Reset the Password",
+    "input": [
+        { 
+            "icon": "email", 
+            "type": "email", 
+            "placeholder": "Enter your email",
+            "fieldSize": "h-sm"
+        }
+    ],
+    "button": { "type": "button", "text": "get link", "fieldSize": "h-sm" },
+    "navigate": {
+        "title": "Remember the password?",
+        "path": "/login",
+        "text": "login"
+    }
+}

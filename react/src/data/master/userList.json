@@ -1,0 +1,101 @@
+{
+    "pageTitle": "user list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "users" },
+        { "text": "all-user" }
+    ],
+    "cardTitle": "registered users",
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "pending users", "digit": "547", "icon": "pending", "variant": "lg purple" }, 
+        { "title": "approved users", "digit": "605", "icon": "check_circle", "variant": "lg green" },
+        { "title": "blocked users", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
+    ],
+    "filter":[
+        { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+        { "label": "role by", "option": ["admin", "member", "client", "manager", "vendor"] },
+        { "label": "status by", "option": ["approved", "pending", "blocked"] },
+        { "label": "search by", "type": "search", "placeholder": "id / name / email / number" }
+    ],
+    "table":{
+        "thead": ["name", "role", "email", "password", "phone", "status", "created", "action"],
+        "tbody": [
+            {
+                "role": { "icon": "person", "text": "member" },
+                "src": "images/avatar/01.webp",
+                "name": "mahmudul hasan", 
+                "email": "miron@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "approved",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            },
+            {  
+                "role": { "icon": "settings", "text": "admin" },
+                "src": "images/avatar/02.webp",
+                "name": "labonno khan", 
+                "email": "labonno@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "pending",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            },
+            { 
+                "role": { "icon": "person", "text": "member" },
+                "src": "images/avatar/03.webp",
+                "name": "tahmina bonny", 
+                "email": "tahmina@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "blocked",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            },
+            { 
+                "role": { "icon": "store", "text": "vendor" },
+                "src": "images/avatar/04.webp",
+                "name": "shariful khandakar", 
+                "email": "shariful@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "approved",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            },
+            { 
+                "role": { "icon": "settings", "text": "admin" },
+                "src": "images/avatar/05.webp",
+                "name": "farzana dolon", 
+                "email": "farzana@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "pending",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            },
+            { 
+                "role": { "icon": "school", "text": "founder" },
+                "src": "images/avatar/06.webp",
+                "name": "saikul azam", 
+                "email": "saikul@gmail.com", 
+                "password": "$2a$06$4Uoeanolkkpo8gBDNIYt6eid0Qm8cCwsYU5VwaQcBsB6KISR1kwf2",
+                "phone": "o1838288389", 
+                "status": "blocked",
+                "created": "15/06/2022 14:02",
+                "action": { "edit": "edit", "block": "block", "view": "visibility" }
+            }
+        ]
+    },
+    "role": ["founder", "admin", "member", "client", "vendor"],
+    "status": ["approved", "pending", "blocked"]
+}
