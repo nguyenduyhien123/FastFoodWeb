@@ -6,12 +6,19 @@ import "bootstrap/dist/css/bootstrap.css";
 import "remixicon/fonts/remixicon.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-
-import App from "./App";
+import { AuthContext, AuthContextProvider } from "./context/AuthContext";
+import ProductCard from "./components/product_card/ProductCard";
 import ProductPage from "./components/product_page/product_page";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
-    <ProductPage />
+    <BrowserRouter>
+      <AuthContextProvider>
+        <ProductPage />
+      </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -15,9 +15,9 @@ class ProductType extends Model
 
     protected $fillable = ['name', 'image'];
     //cho phép khi gọi api tạo product thì name và image được phép thêm
-    public function product(): BelongsTo
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class);
     }
 
 }

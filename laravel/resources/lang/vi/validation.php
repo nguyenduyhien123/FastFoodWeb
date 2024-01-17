@@ -12,6 +12,7 @@ return [
     'mimes' => ':attribute phải là một tệp hợp lệ với định dạng: :values.',
     'date' => ':attribute phải đúng định dạng ngày',
     'integer' => ':attribute phải là số nguyên',
+    'string' => ':attribute phải là một chuỗi',
     'attributes' => [
         'name' => 'Tên sản phẩm',
         'price' => 'Giá sản phẩm',

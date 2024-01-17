@@ -3,45 +3,33 @@ import { Col, Container, Row } from 'reactstrap';
 import { coffeeProducts, dessertProducts, fastFoodProducts, pizzaProducts, riceMenuProducts } from '../../assets/fake-data/products';
 import ProductCard from '../product_card/ProductCard';
 import './menu_pack.scss';
-
+import axios from 'axios'
+import {ReactComponent as IconPizza} from '../../assets/icon/pizza.svg';
+import {ReactComponent as IconBurger} from '../../assets/icon/burger.svg';
+import {ReactComponent as IconPack} from '../../assets/icon/pack.svg';
 const MenuPack = () => {
-  const [menuState, setMenuState] = useState({
-    filter: 'RICE-MENU',
-    products: riceMenuProducts,
-  });
+  const [categories, setCategories ] = useState([]);
+  const [categoryActive, setCategoryActive] = useState(1);
+  const [products, setProducts] = useState([]);
 
+  console.log(categories);
   useEffect(() => {
-    const { filter } = menuState;
-
-    switch (filter) {
-      case 'RICE-MENU':
-        setMenuState({ ...menuState, products: riceMenuProducts });
-        break;
-
-      case 'FAST-FOOD':
-        setMenuState({ ...menuState, products: fastFoodProducts });
-        break;
-
-      case 'PIZZA':
-        setMenuState({ ...menuState, products: pizzaProducts });
-        break;
-
-      case 'DESSERT':
-        setMenuState({ ...menuState, products: dessertProducts });
-        break;
-
-      case 'COFFEE':
-        setMenuState({ ...menuState, products: coffeeProducts });
-        break;
-
-      default:
-        break;
-    }
-  },[menuState.filter]);
-
-  const handleFilterClick = (menuType) => {
-    setMenuState({ ...menuState, filter: menuType });
-  };
+    axios.get('http://localhost:8000/api/product_types')
+    .then(res => setCategories(res.data))
+    .catch(err => console.log('Lỗi khi gọi API', err))
+  },[]);
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/products/getProductsByProductTypeId/${categoryActive}`)
+    .then(res => {
+      var products = res.data;
+      products.forEach(item => {
+          item.image = JSON.parse(item.image)
+          item.image = item.image[0]
+      });
+      setProducts(res.data)
+    })
+    .catch(err => console.log('Lỗi khi gọi API', err))
+  },[categoryActive]);
 
   return (
     <section className='menu_pack'>
@@ -50,29 +38,18 @@ const MenuPack = () => {
           <Col lg='12' className='text-center mb-4'>
             <h3 className='menu_tile'>Our Menu Pack</h3>
           </Col>
-          <Col lg='12' className='text-center mb-5'>
-            <button
-              className={`filter-btn ${menuState.filter === 'FAST-FOOD' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('FAST-FOOD')}>Fast Food
-            </button>
-            <button
-              className={`filter-btn ${menuState.filter === 'RICE-MENU' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('RICE-MENU')}>Rice Menu
-            </button>
-            <button
-              className={`filter-btn ${menuState.filter === 'PIZZA' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('PIZZA')}>Pizza
-            </button>
-            <button
-              className={`filter-btn ${menuState.filter === 'DESSERT' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('DESSERT')}>Desserts
-            </button>
-            <button
-              className={`filter-btn ${menuState.filter === 'COFFEE' ? 'active_btn' : ''}`}
-              onClick={() => handleFilterClick('COFFEE')}>Coffee
-            </button>
+          <Col lg='12' className='text-center mb-5 d-flex justify-content-center '>
+            {
+              categories?.map((data, index) => {
+                return             <div key={index} onClick={() => setCategoryActive(data.id)}
+                className={`category-item ${ data.id === categoryActive ? 'active_btn' : ''} filter-btn d-flex align-items-center gap-2 fs-3`}><div className='icon'><img src={data?.image}/></div> <div className="product-name fw-bold">
+                  {data?.name}
+                </div>
+              </div>
+              })
+            }
           </Col>
-          {menuState.products.map((item) => (
+          {products?.map((item) => (
             <Col lg='3' key={item.id} className='mb-4'>
               <ProductCard item={item} />
             </Col>

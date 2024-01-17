@@ -1,7 +1,10 @@
 import React, { useRef } from 'react'
 import "./header.scss"
 
+import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
+import Cart from '../carts/Cart'
+import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 
 const navLinks = [
        {
@@ -10,7 +13,7 @@ const navLinks = [
        },
        {
               display: 'About',
-              url: '#'
+              url: '/about'
        },
        {
               display: 'Menu',
@@ -31,15 +34,18 @@ const Header = () => {
        const menuRef = useRef()
 
        const menuToggle = () => menuRef.current.classList.toggle('active_menu')
-
+       
        return (
               <header className="header_web">
                      <Container>
                             <div className="navigation">
                                    <div className="logo">
+                                          <Link to="/">
                                           <h2 className='d-flex align-items-center gap-1'>
                                                  <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
                                           </h2>
+                                          </Link>
+
                                    </div>
                                    <div className="nav_menu " ref={menuRef}>
 
@@ -62,11 +68,11 @@ const Header = () => {
                                                  </div>
                                           </div>
                                    </div>
+                                   <div className="avatar">
+                                        <DropdownAvatar></DropdownAvatar>
+                                   </div>
                                    <div>
-                                          <span className="cart_icon">
-                                                 <i class="ri-shopping-basket-line"></i>
-                                                 <span className="badge">2</span>
-                                          </span>
+                                          <Cart/>
                                    </div>
                                    <div className="mobile_menu">
                                           <span><i class="ri-menu-line " onClick={menuToggle}></i></span>

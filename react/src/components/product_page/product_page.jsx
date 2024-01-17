@@ -22,9 +22,9 @@ export default function ProductPage() {
 
     const [comment, setComment] = useState(false);
     const [rating, setRating] = useState(true);
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8000/api/products/1`).then(res => setProduct(res.data));
-    // }, []);
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/products/1`).then(res => { setProduct(res.data) });
+    }, []);
     return (
         <div>
             <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4">

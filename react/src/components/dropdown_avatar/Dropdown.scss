@@ -1,0 +1,77 @@
+$clr-accent-700 : #04af2f;
+.dropdown-avatar
+{
+    position: relative;
+    cursor: pointer;
+    svg {
+        width: 30px;
+        height : 30px;
+    }
+    .drop-btn
+    {
+        width: 30px;
+        height : 30px;
+    }
+    .dropdown-content
+    {
+        position: absolute;
+        transform: translate(-25%, 0%);
+        border: 1px solid #dee2e6;
+        max-width: 400px;
+        min-width: 200px;
+        display: none;
+        z-index: 99;
+        background-color: white;
+
+        .action
+        {
+            padding : 7px 8px;
+        }
+        .action:hover
+        {
+            background-color: #EBEDF0;
+        }
+    }
+    .dropdown-content.active
+    {
+        display: block;
+    }
+
+}
+.popup-account    .account-name
+    {
+        color : #000000;
+    }
+.popup-account
+{
+    .list-action
+    {
+        .action-item
+        {
+            background-color : #F1F1F1;
+            padding : 10px 15px;
+            border-radius: 10px;
+            color : #000000;
+            font-weight: 600;
+            border: 1px solid #000000;
+        }
+        .action-item:hover{
+            background-color: var(--clr-accent-50);
+            color : $clr-accent-700;
+            border: 1px solid $clr-accent-700;
+
+        }
+        .action-icon
+        {
+            svg
+            {
+                width: 40px;
+                height : 40px;
+            }
+        }
+        .action-name
+        {
+            text-align: center;
+        }
+    }
+}

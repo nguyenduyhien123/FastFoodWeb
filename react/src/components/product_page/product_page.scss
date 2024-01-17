@@ -130,6 +130,76 @@ $disable: #f2f2f2;
   }
 }
 
+.list-tab {
+  display: flex;
+  flex-direction: row;
+  max-width: 1120px;
+  margin: 0 auto;
+  border: 1px solid $smoke;
+  border-radius: 5px;
+
+  .button {
+    display: flex;
+    flex-direction: row;
+  }
+  .tab-button {
+    padding: 20px 25px 20px 20px;
+    background-color: white;
+    border: 5px solid white;
+    border-bottom: 1px solid $smoke;
+    border-right: 1px solid $smoke;
+    font-weight: bold;
+  }
+  .tab-button:hover {
+    border-top: 5px solid #f5b70a;
+    transition: 0.5s ease;
+  }
+  .tab-button.active {
+    border-top: 5px solid #f5b70a;
+  }
+  .comment-button {
+    background-color: white;
+    padding: 20px 25px 20px 20px;
+    border: 5px solid white;
+    border-bottom: 1px solid $smoke;
+    border-right: 1px solid $smoke;
+  }
+  .comment-button:hover {
+    border-top: 5px solid #f5b70a;
+    transition: 0.3s ease;
+  }
+  .content-box {
+    p {
+      padding: 20px 20px 0px 20px;
+    }
+
+    textarea {
+      width: 70vw;
+      margin: 10px 0 10px 0;
+    }
+    .rating-box {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      .user-image {
+        width: 50px;
+        height: 50px;
+      }
+      .rating-box-button {
+        button {
+          padding: 10px;
+        }
+        .post-rating {
+          margin-left: 66px;
+        }
+        .cancel-rating {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
 .CommentRating {
   display: flex;
   flex-direction: column;
@@ -183,11 +253,14 @@ $disable: #f2f2f2;
         height: 50px;
       }
       .rating-box-button {
+        display: flex;
+        width: 40vw;
         button {
           padding: 10px;
         }
         .post-rating {
           margin-left: 66px;
+          padding: 20px 30px;
         }
         .cancel-rating {
           margin-left: 5px;

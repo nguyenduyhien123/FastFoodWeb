@@ -14,9 +14,9 @@ class Product extends Model
 
     protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id', 'status'];
 
-    public function product_types(): HasMany
+    public function productType()
     {
-        return $this->hasMany(ProductType::class);
+        return $this->belongsTo(ProductType::class);
     }
 
     public function comments(): HasMany
