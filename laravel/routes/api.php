@@ -42,6 +42,12 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::apiResource('users', ApiUserController::class); 
         Route::apiResource('roles', ApiRoleController::class); 
         Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
+        Route::prefix('summary')->group(function(){
+            Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
+            Route::get('getTotalUser',[ApiUserController::class,'getTotalUser']);
+            Route::get('getTotalUserIsNotVerified',[ApiUserController::class,'getTotalUserIsNotVerified']);
+            Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
+        });
     }); 
 
 });
@@ -49,10 +55,6 @@ Route::middleware('verify-token:authencation')->group(function(){
 Route::apiResource('products',ApiProductController::class)->only(['index','show']);
 Route::apiResource('product_types',ApiProducttypeController::class)->only(['index','show']);
 
-Route::prefix('summary')->group(function(){
-    Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
-    Route::get('getTotalProductTypes',[ApiProducttypeController::class,'getTotalProductTypes']);
-});
 
 /// ------------------------------
 Route::apiResource('comments',ApiCommentController::class)->only(['index','show']);

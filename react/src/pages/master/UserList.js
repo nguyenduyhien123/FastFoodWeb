@@ -11,6 +11,11 @@ import axios from 'axios'
 
 export default function UserList() {
     const [accounts, setAccounts]  = useState([]);
+    const [float, setFloat] = useState([
+        { "title": "Tổng số tài khoản", "digit": "547", "icon": "functions", "variant": "lg purple" }, 
+        { "title": "Đã xác thực", "digit": "605", "icon": "check_circle", "variant": "lg green" },
+        { "title": "Chưa xác thực", "digit": "249", "icon": "remove_circle", "variant": "lg red" }
+    ]);
     useEffect(() => {
         axios({
             method: 'get',
@@ -20,6 +25,36 @@ export default function UserList() {
         .then(res => setAccounts(res.data))
         .catch(err => console.log('GỌI APi ds user bị lỗi'))
     }, [])
+    useEffect(() => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/summary/getTotalUser',
+            withCredentials: true,          
+        })
+        .then(res => {
+            setFloat([...float, float[0].digit = res.data.count]);
+        })
+        .catch(err => console.log(err))
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/summary/getTotalUserIsVerified',
+            withCredentials: true,          
+        })
+        .then(res => {
+            setFloat([...float, float[1].digit = res.data.count]);
+        })
+        .catch(err => console.log(err))
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/summary/getTotalUserIsNotVerified',
+            withCredentials: true,          
+        })
+        .then(res => {
+            setFloat([...float, float[2].digit = res.data.count]);
+        })
+        .catch(err => console.log(err))
+
+    }, []);
     console.log(accounts);
     return (
         <PageLayout>
@@ -35,7 +70,7 @@ export default function UserList() {
                         </Breadcrumb>
                     </CardLayout>
                 </Col>
-                {data?.float.map((item, index) => (
+                {float?.map((item, index) => (
                     <Col xl={4} key={ index }>
                         <FloatCard 
                             variant={ item.variant }

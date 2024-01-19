@@ -116,4 +116,13 @@ class ApiUserController extends Controller
         return response()->json(['message' => 'Không tìm thấy người dùng này']);
 
     }
+    public function getTotalUser(){
+        return response()->json(['count' => User::all()->count()]);
+    }
+    public function getTotalUserIsNotVerified(){
+        return response()->json(['count' => User::where('email_verified_at', null)->count()]);
+    }
+    public function getTotalUserIsVerified(){
+        return response()->json(['count' => User::where('email_verified_at','!=', null)->count()]);
+    }
 }

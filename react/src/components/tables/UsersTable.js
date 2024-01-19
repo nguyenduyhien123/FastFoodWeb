@@ -115,7 +115,7 @@ export default function UsersTable({ thead, tbody, setDataUserTable }) {
                             </Td>
                             <Td title={item.lastname}>{item.lastname}</Td>
                             <Td title={item.firstname}>{item.firstname}</Td>
-                            <Td title={item.birthday}>{moment(item.birthday).format('DD/MM/YYYY')}</Td>
+                            {/* <Td title={item.birthday}>{moment(item.birthday).format('DD/MM/YYYY')}</Td> */}
                             <Td title={item.email_verified_at}>
                                 {item.email_verified_at ? <Text className="mc-table-badge green">Đã xác thực</Text> : <Text className="mc-table-badge red">Chưa xác thực</Text>}
                                 {/* {item.status === "pending" && <Text className="mc-table-badge purple">{item.status}</Text>}

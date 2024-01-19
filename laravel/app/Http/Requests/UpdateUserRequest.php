@@ -31,11 +31,12 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userId = $this->id;
         return [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
-            'email' => [Rule::unique('users')->ignore($this->user), new EmailRule()],
-            'phone' => [Rule::unique('users')->ignore($this->user), new PhoneNumberRule()],
+            'email' => [Rule::unique('users')->ignore($userId), new EmailRule()],
+            'phone' => [Rule::unique('users')->ignore($userId), new PhoneNumberRule()],
             'description' => 'required|string|max:5000',
             'address' => 'required|max:255',
             'birthday' => 'required|date|before:' . Date::now()->subYears(10)->format('Y-m-d'),
