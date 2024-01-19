@@ -44,9 +44,14 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
         Route::prefix('summary')->group(function(){
             Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
+            Route::get('getTotalProductTypes',[ApiProducttypeController::class,'getTotalProductTypes']);
             Route::get('getTotalUser',[ApiUserController::class,'getTotalUser']);
             Route::get('getTotalUserIsNotVerified',[ApiUserController::class,'getTotalUserIsNotVerified']);
             Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
+        });
+        Route::prefix('update')->group(function(){
+            Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);
+
         });
     }); 
 

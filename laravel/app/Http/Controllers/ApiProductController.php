@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 class ApiProductController extends Controller
 {
     //hàm index chỉ trả về những sản phẩm chưa xóa
@@ -119,5 +121,26 @@ class ApiProductController extends Controller
     }
     public function getTotalProducts(){
         return response()->json(['count' => Product::all()->count()]);
+    }
+    public function updateStatusProduct(Request $request, $id){
+        $product = Product::find($id);
+        if (!empty($product)) {
+            $status = $request->input('status');
+            if($status === true || $status === false)
+            {
+                $product->status = $status;
+                $product->save();
+                return response()->json([
+                    "message" => "Cập nhật trạng thái thành công"
+                ]);
+            }
+            return response()->json([
+                "message" => "Cập nhật bị lỗi"
+            ]);
+                } else {
+            return response()->json([
+                "message" => "Không tìm thấy sản phẩm"
+            ], 404);
+        }
     }
 }

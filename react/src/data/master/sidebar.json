@@ -33,20 +33,28 @@
                 },
                 { 
                     "icon": "pix", 
-                    "text": "products",
+                    "text": "Sản phẩm",
                     "badge": { "text": "new", "variant": "purple square" },
                     "submenu": [
-                        { "href": "/admin/product-list", "text": "product list" },
-                        { "href": "/admin/product-view", "text": "product view" },
-                        { "href": "/admin/product-upload", "text": "product upload" }
+                        { "href": "/admin/product-list", "text": "Danh sách sản phẩm" },
+                        { "href": "/admin/product-upload", "text": "Thêm sản phẩm mới" }
                     ]
                 },
                 { 
                     "href": "#",
                     "icon": "article", 
-                    "text": "invoices",
+                    "text": "Hoá đơn",
                     "submenu": [
-                        { "href": "/admin/invoice-list", "text": "invoice list" },
+                        { "href": "/admin/invoice-list", "text": "Danh sách hoá đơn" },
+                        { "href": "/admin/invoice-details", "text": "invoice details" }
+                    ]
+                },
+                { 
+                    "href": "#",
+                    "icon": "mode_comment", 
+                    "text": "Bình luận",
+                    "submenu": [
+                        { "href": "/admin/invoice-list", "text": "Danh sách hoá đơn" },
                         { "href": "/admin/invoice-details", "text": "invoice details" }
                     ]
                 },

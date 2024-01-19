@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal';
 import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
-import { Anchor, Heading, Box, Text, Input, Image, Icon, Button } from "../elements";
+import { Anchor, Heading, Box, Text, Input, Image, Icon, Button, Form } from "../elements";
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
+import { Row, Col, Tab, Tabs, Form as FormBootstrap } from "react-bootstrap";
 
 
 export default function ProductsTable({ thead, tbody, setDataProductTable }) {
@@ -63,6 +67,31 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
               });
         })
     }
+    const handleUpdateStatusProduct = (id, check) => {
+        let data = { status : check };
+        const apiUpdateStatusProduct = axios({
+            method: 'post',
+            url: `http://localhost:8000/api/update/updateStatusProduct/${id}`,
+            withCredentials: true,
+            data: data
+        });
+        toast.promise(
+            apiUpdateStatusProduct.then(res => {
+                getAllProduct();
+            }),
+            {
+              pending: 'Đang cập nhật trạng thái',
+              success: 'Cập nhật trạng thái thành công',
+              error: 'Cập nhật bị lỗi',    
+              autoClose: 4000,
+              hideProgressBar: true,
+              pauseOnHover: false,
+              closeOnClick: false,
+              pauseOnFocusLoss: false
+
+            }
+          );
+    }
     return (
         <Box className="mc-table-responsive">
             <Table className="mc-table product">
@@ -112,7 +141,12 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
                             </Td>
                             <Td>{ item?.price }</Td>
                             <Td>{ item?.product_type?.name }</Td>
-                            <Td>{ item?.status ? 'Còn hàng' : 'Hết hàng' }</Td>
+                            <Td>
+                            <FormBootstrap.Check type="switch" name="status" label={ item?.status ? 'Còn hiệu lực' : 'Hết hiệu lực' } checked={item?.status} onChange={(e) => {
+                                handleUpdateStatusProduct(item?.id, e.target.checked);
+                            }}/>
+                            
+                            </Td>
                             <Td>{ item?.star }</Td>
                             <Td>{ item?.created_at}</Td>
                             <Td>{ item?.updated_at }</Td>
@@ -145,7 +179,7 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
                     ))}
                 </Tbody>
             </Table>
-
+            <ToastContainer />
             <Modal show={ alertModal } onHide={()=> setAlertModal(false)}>
                 <Box className="mc-alert-modal">
                     <Icon type="new_releases" />
