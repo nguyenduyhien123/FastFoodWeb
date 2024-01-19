@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class ApiProductController extends Controller
@@ -53,6 +54,28 @@ class ApiProductController extends Controller
 
     public function update(UpdateProductRequest $request, $id)
     {
+        $data = $request->all();
+        $images = $data['image'];
+        foreach ($images as $image) {
+            $arr[] = 'Chuỗi';
+            // if ($image->isValid()) {
+            //     // Lấy kiểu MIME của tệp tin
+            //     $mimeType = $image->getMimeType();
+    
+            //     // Kiểm tra kiểu MIME có phải là hình ảnh
+            //     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            //     if (in_array($mimeType, $allowedMimeTypes)) {
+            //         // Xử lý khi tệp tin không phải là hình ảnh
+            //         array_push($arr, 'Hình ảnh');
+            //     }
+    
+            //     // Tiếp tục xử lý khi tệp tin là hình ảnh
+            // } else {
+            //     // Xử lý khi tệp tin không hợp lệ
+            //     array_push($arr, 'Chuỗi');
+            // }
+        }
+        return $arr;
         $product = Product::find($id);
         if (!empty($product)) {
             $product->name = $request->name;

@@ -65,7 +65,10 @@ export default function ProductsTable({ thead, tbody }) {
                             </Td>
                             <Td>
                                 <Box className="mc-table-product md">
-                                    <Image src={ item?.image[0] } alt={ item?.alt } />
+                                {(Array.isArray(item?.image) && item.image.length > 0) && (
+  <Image src={ item?.image[0] } alt={ item?.alt } /> 
+)}
+                                {/* {!item?.image &&  <Image src={ item?.image } alt={ item?.alt } />} */}
                                     <Box className="mc-table-group">
                                         <Heading as="h6">{ item?.name }</Heading>
                                         <Text>{ item?.description }</Text>

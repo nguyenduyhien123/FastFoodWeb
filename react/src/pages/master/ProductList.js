@@ -140,7 +140,7 @@ export default function ProductList() {
                         </Row>
                     </CardLayout>
                 </Col>
-            </Row>
+            </Row> 
         </PageLayout>
     );
 }

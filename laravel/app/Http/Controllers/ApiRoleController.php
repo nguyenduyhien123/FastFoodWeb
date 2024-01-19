@@ -55,4 +55,8 @@ class ApiRoleController extends Controller
             'message' => 'Xóa thành công.'
         ]);
     }
+    public function getAllRoleExceptAdmin (){
+        $roles = Role::where('name','!=','Admin')->get();
+        return $roles;
+    }
 }

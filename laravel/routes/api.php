@@ -28,15 +28,22 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('roles', ApiRoleController::class);
+// Route::apiResource('roles', ApiRoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
     // Route::apiResource('users', ApiUserController::class); 
     Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
     Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
         Route::get('/','index');
     });
-    Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
-    Route::apiResource('products',ApiProductController::class)->except(['index','show']);
+    // Các route liên quan đến admin
+    Route::middleware('can:admin')->group(function(){
+        Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
+        Route::apiResource('products',ApiProductController::class)->except(['index','show']);
+        Route::apiResource('users', ApiUserController::class); 
+        Route::apiResource('roles', ApiRoleController::class); 
+        Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
+    }); 
+
 });
 // Api không cần đăng nhập
 Route::apiResource('products',ApiProductController::class)->only(['index','show']);
@@ -50,7 +57,6 @@ Route::prefix('summary')->group(function(){
 /// ------------------------------
 Route::apiResource('comments',ApiCommentController::class)->only(['index','show']);
 
-Route::apiResource('users', ApiUserController::class); 
 
 
 // Route::apiResource('product_types', ApiProducttypeController::class);

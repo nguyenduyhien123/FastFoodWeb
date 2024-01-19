@@ -23,7 +23,7 @@ export default function Pagination({data, rows, onPageChange}) {
       }, [totalRow, rowsPerPage]);
       useEffect(() => {
         let row123 = show();
-        onPageChange(row123)
+        // onPageChange(row123)
       }, [pageActive]);
     
       function show() {

@@ -1,5 +1,5 @@
 {
-    "pageTitle": "my account",
+    "pageTitle": "Tài khoản của bạn",
     "breadcrumb": [
         { "path": "/admin", "text": "home" },
         { "path": "/admin/user-list", "text": "user-list" },

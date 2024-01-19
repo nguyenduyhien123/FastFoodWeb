@@ -5,10 +5,11 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\Comment;
+use App\Models\User;
 use App\Policies\CommentPolicy;
-use Illuminate\Auth\Access\Gate;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         //
         $this->registerPolicies();
-
+        Gate::define('admin', function(User $user)
+        {
+            return $user->role->name == 'Admin';
+        });
     }
 }

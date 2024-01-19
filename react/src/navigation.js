@@ -1,5 +1,5 @@
 import ShoppingCart from "./components/shoppingcart/ShoppingCart";
-import Home from "./pages/Home";
+import Home from "./pages/client/Home";
 
 export const navigationClient = [
     {

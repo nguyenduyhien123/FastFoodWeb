@@ -9,10 +9,10 @@ import ProductPage from "./components/product_page/product_page";
 import ShoppingCart from "./components/shoppingcart/ShoppingCart";
 import { UserInfo } from "./components/user_info/UserInfo";
 import { AuthContext } from "./context/AuthContext";
-import Home from "./pages/Home";
-import Layout from "./pages/Layout";
-import { PageRegister } from "./pages/PageRegister";
-import PageSignIn from "./pages/PageSignIn";
+import Home from "./pages/client/Home";
+import Layout from "./pages/client/Layout";
+import { PageRegister } from "./pages/client/PageRegister";
+import PageSignIn from "./pages/client/PageSignIn";
 import Comment from './components/comment/Comment';
 // Admin 
 
@@ -22,6 +22,8 @@ import { Ecommerce, Analytics, CRM, ForgotPassword, Register, Login, UserList, U
     ProductList, ProductView, ProductUpload, InvoiceList, InvoiceDetails, OrderList, Message, 
     Notification, BlankPage, Settings } from "./pages/master";
 import ProductEdit from './pages/master/ProductEdit';
+import UserEdit from './pages/master/UserEdit';
+import UserCreate from './pages/master/UserCreate';
 
 
 // Admin
@@ -70,7 +72,9 @@ function App() {
                         <Route path="/admin/register" element={<Register />} />
                         <Route path="/admin/forgot-password" element={<ForgotPassword />} />
                         <Route path="/admin/user-list" element={<UserList />} />
-                        <Route path="/admin/user-profile" element={<UserProfile />} />
+                        <Route path="/admin/user-profile/:id" element={<UserProfile />} />
+                        <Route path="/admin/user-create" element={<UserCreate />} />
+                        <Route path="/admin/user-edit/:id" element={<UserEdit />} />
                         <Route path="/admin/my-account" element={<MyAccount />} />
                         <Route path="/admin/product-list" element={<ProductList />} />
                         <Route path="/admin/product-view/:id" element={<ProductView />} />

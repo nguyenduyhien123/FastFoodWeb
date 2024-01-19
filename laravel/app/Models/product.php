@@ -39,7 +39,7 @@ class Product extends Model
     {
         return $this->hasMany(Wishlist::class);
     }
-
+ 
     public function invoiceDetail()
     {
         return $this->hasMany(InvoiceDetail::class);

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -47,7 +49,9 @@ class User extends Authenticatable
         'lastname',
         'phone',
         'avatar',
-        'role_id'
+        'role_id',
+        'birthday',
+        'password'
     ];
 
     /**
@@ -71,6 +75,12 @@ class User extends Authenticatable
     ];
     public function getFullnameAttribute(){
         return $this->lastname .' '.$this->firstname;
+    }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
+    }
+    public function getUpdatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
     }
     protected $appends = ['fullname'];
 }

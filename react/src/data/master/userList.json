@@ -1,5 +1,5 @@
 {
-    "pageTitle": "user list",
+    "pageTitle": "Danh sách tài khoản",
     "breadcrumb": [
         { "path": "/", "text": "home" },
         { "text": "users" },
@@ -26,7 +26,7 @@
         { "label": "search by", "type": "search", "placeholder": "id / name / email / number" }
     ],
     "table":{
-        "thead": ["name", "role", "email", "password", "phone", "status", "created", "action"],
+        "thead": ["Email","Vai trò","Họ", "Tên","Ngày sinh", "Đã xác thực","Số điện thoại", "Ngày tạo", "Cập nhật lần cuối","Hành động" ],
         "tbody": [
             {
                 "role": { "icon": "person", "text": "member" },

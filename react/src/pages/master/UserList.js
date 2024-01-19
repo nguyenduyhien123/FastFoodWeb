@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Anchor, Item } from "../../components/elements";
 import { CardLayout, CardHeader, FloatCard } from "../../components/cards";
@@ -7,11 +7,23 @@ import LabelField from "../../components/fields/LabelField";
 import UsersTable from "../../components/tables/UsersTable";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/userList.json";
+import axios from 'axios'
 
 export default function UserList() {
+    const [accounts, setAccounts]  = useState([]);
+    useEffect(() => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/users/',
+            withCredentials: true,          
+        })
+        .then(res => setAccounts(res.data))
+        .catch(err => console.log('GỌI APi ds user bị lỗi'))
+    }, [])
+    console.log(accounts);
     return (
         <PageLayout>
-            <Row>
+            <Row> 
                 <Col xl={12}>
                     <CardLayout>
                         <Breadcrumb title={ data?.pageTitle }>
@@ -52,7 +64,8 @@ export default function UserList() {
                         </Row>
                         <UsersTable 
                             thead = { data?.table.thead }
-                            tbody = { data?.table.tbody }
+                            tbody = { accounts }
+                            setDataUserTable = {setAccounts}
                         />
                         <Pagination />
                     </CardLayout>

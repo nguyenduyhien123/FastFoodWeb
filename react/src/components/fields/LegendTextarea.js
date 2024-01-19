@@ -1,8 +1,9 @@
 import React from "react";
-import { Fieldset, Legend, Textarea } from "../elements";
+import { Fieldset, Legend, Text, Textarea } from "../elements";
 
-export default function LagendTextarea({ title, longText, placeholder, fieldSize, ...rest }) {
+export default function LegendTextarea({ title, longText, placeholder, fieldSize,alert, ...rest }) {
     return (
+        <>
         <Fieldset className="mc-fieldset">
             <Legend>{ title || "legend" }</Legend>
             <Textarea 
@@ -13,5 +14,7 @@ export default function LagendTextarea({ title, longText, placeholder, fieldSize
             >
             </Textarea>
         </Fieldset>
+         {alert && <Text className="text-danger">{alert[0]}</Text>}
+         </>
     )
 }

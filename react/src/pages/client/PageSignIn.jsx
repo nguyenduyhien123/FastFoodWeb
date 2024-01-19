@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import SignIn from "../components/SignIn/SignIn";
+import SignIn from "../../components/SignIn/SignIn";
 
 const PageSignIn = () => {
     useEffect(() => {

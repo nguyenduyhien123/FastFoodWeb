@@ -98,7 +98,7 @@ export default function ProductUpload() {
                             <Box className="mc-product-upload-file">
                                 <Input type="file" multiple name="image[]" id="product" onChange={handleChangeFile} />
                                 <Label htmlFor="product"><Icon type="collections" /><Text>{uploadFile}</Text></Label>
-                            </Box>
+                            </Box> 
                         </Box>
                         <Anchor
                             className="mc-btn w-100 primary mt-5"

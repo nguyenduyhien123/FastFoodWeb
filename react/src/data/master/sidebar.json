@@ -8,8 +8,8 @@
                     "text": "dashboard",
                     "submenu": [
                         { "href": "/admin/ecommerce", "text": "ecommerce" },
-                        { "href": "/admin/analytics", "text": "analytics" },
-                        { "href": "/admin/crm", "text": "CRM" }
+                        { "href": "/admin/analytics", "text": "Phân tích số liệu/Analytics" },
+                        { "href": "/admin/crm", "text": "Quản trị quan hệ khách hàng/CRM" }
                     ]
                 },
                 { 
@@ -23,11 +23,11 @@
                 },
                 { 
                     "icon": "account_circle", 
-                    "text": "users", 
+                    "text": "Tài khoản", 
                     "badge": { "text": "hot", "variant": "red square" },
                     "submenu": [
-                        { "href": "/admin/user-list", "text": "user list" },
-                        { "href": "/admin/user-profile", "text": "user profile" },
+                        { "href": "/admin/user-list", "text": "Danh sách tài khoản" },
+                        { "href": "/admin/user-create", "text": "Tạo tài khoản mới" },
                         { "href": "/admin/my-account", "text": "my account" }
                     ]
                 },

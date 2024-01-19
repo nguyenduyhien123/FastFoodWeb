@@ -9,6 +9,7 @@ export default function DuelText({ size, title, descrip, timesTamp }) {
                 {timesTamp && <Text as="small">{ timesTamp }</Text>}
             </Heading>
             <Text className="mc-duel-text-descrip">{ descrip }</Text>
+            
         </Box>
     )
 }
