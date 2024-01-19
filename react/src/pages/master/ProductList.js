@@ -134,6 +134,7 @@ export default function ProductList() {
                                 <ProductsTable 
                                     thead = { headTableProduct } 
                                     tbody = { products } 
+                                    setDataProductTable = {setProducts}
                                 />
                                 {/* {isLoadData ? <Pagination onPageChange={setProductsLoad} data={products} rows={5}/> : ''} */}
                             </Col>

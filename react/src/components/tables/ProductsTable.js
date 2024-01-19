@@ -3,11 +3,16 @@ import Modal from 'react-bootstrap/Modal';
 import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
 import { Anchor, Heading, Box, Text, Input, Image, Icon, Button } from "../elements";
 import moment from 'moment';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import axios from 'axios';
 
-export default function ProductsTable({ thead, tbody }) {
+
+export default function ProductsTable({ thead, tbody, setDataProductTable }) {
 
     const [alertModal, setAlertModal] = useState(false);
     const [data, setData] = useState([]);
+    const [dataModal, setDataModal]  = useState({});
 
     useEffect(()=> { setData(tbody) }, [tbody]);
 
@@ -27,7 +32,37 @@ export default function ProductsTable({ thead, tbody }) {
             setData(checkData);
         }
     }
-
+    const getAllProduct = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/products/',
+            withCredentials: true,          
+        })
+        .then(res => setDataProductTable(res.data))
+        .catch(err => console.log('GỌI APi ds user bị lỗi'))
+    }
+    const handleDeleteProduct = (id) => {
+        let data = { _method : "DELETE"};
+        axios({
+            method: 'post',
+            url: `http://localhost:8000/api/products/${id}`,
+            withCredentials: true,
+            data: data
+        })
+        .then(res => {
+                Swal.fire({
+                title: res?.data?.message || "Xoá thành công",
+                icon: 'success',
+              });
+              getAllProduct();
+        })
+        .catch(err => {
+            Swal.fire({
+                title: err?.response?.data?.message || "Xoá thành công",
+                icon: 'success',
+              });
+        })
+    }
     return (
         <Box className="mc-table-responsive">
             <Table className="mc-table product">
@@ -100,7 +135,10 @@ export default function ProductsTable({ thead, tbody }) {
                                 <Box className="mc-table-action">
                                     <Anchor href={`/admin/product-view/${item?.id}`} title="View" className="material-icons view">visibility</Anchor>
                                     <Anchor href={`/admin/product-edit/${item?.id}`} title="Edit" className="material-icons edit">edit</Anchor>
-                                    <Button title="Delete" className="material-icons delete" onClick={()=> setAlertModal(true)}>delete</Button>
+                                    <Button title="Delete" className="material-icons delete" onClick={()=> {
+                                        setAlertModal(true)
+                                        setDataModal(item)
+                                    }}>delete</Button>
                                 </Box>
                             </Td>
                         </Tr>
@@ -111,11 +149,14 @@ export default function ProductsTable({ thead, tbody }) {
             <Modal show={ alertModal } onHide={()=> setAlertModal(false)}>
                 <Box className="mc-alert-modal">
                     <Icon type="new_releases" />
-                    <Heading as="h3">are your sure!</Heading>
-                    <Text as="p">Want to delete this product?</Text>
+                    <Heading as="h3">Bạn có chắc!</Heading>
+                    <Text as="p">Muốn xoá sản phẩm <span className="fw-bold ">{dataModal?.name}</span> không?</Text>
                     <Modal.Footer>
-                        <Button type="button" className="btn btn-secondary" onClick={()=> setAlertModal(false)}>nop, close</Button>
-                        <Button type="button" className="btn btn-danger" onClick={()=> setAlertModal(false)}>yes, delete</Button>
+                        <Button type="button" className="btn btn-secondary" onClick={()=> setAlertModal(false)}>Không, đóng cửa sổ này</Button>
+                        <Button type="button" className="btn btn-danger" onClick={()=> {
+                            setAlertModal(false)
+                            handleDeleteProduct(dataModal?.id);
+                        }}>Có, tôi muốn xoá</Button>
                     </Modal.Footer>
                 </Box>
             </Modal>
