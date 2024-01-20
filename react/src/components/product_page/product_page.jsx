@@ -27,7 +27,7 @@ export default function ProductPage() {
     }, []);
     return (
         <div>
-            <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4">
+            <div className="Product-Page card h-100 col-sm-12 mb-3 py-4">
                 <div className="Image-List">
                     {images.map((image, index) => (
                         <img
@@ -48,7 +48,7 @@ export default function ProductPage() {
                 <div className="Description">
                     <div className="first-row d-flex flex-column">
                         {/* product-name */}
-                        <h2 className="product-name">BURGER BÒ NƯỚNG WHOPPER JR</h2>
+                        <h2 className="product-name">{product.name}</h2>
                         {/* rating */}
                         <Rating
                             size={20}
@@ -59,7 +59,7 @@ export default function ProductPage() {
                         ></Rating>
                         {/* price */}
                         <p className="price">
-                            <h3>159.000đ</h3>
+                            <h3>{product.price}&nbsp;VND</h3>
                         </p>
                     </div>
                     {/* quantity-change */}

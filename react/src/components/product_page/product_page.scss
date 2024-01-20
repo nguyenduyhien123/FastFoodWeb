@@ -7,15 +7,16 @@ $disable: #f2f2f2;
   display: flex;
   max-width: 1120px;
   margin: 0 auto;
-
+  flex-direction: row;
+  align-items: flex-start;
   .Image-List {
     width: 5%;
-    margin: 20px 20px 20px 20px;
+    margin: 0px 20px;
   }
 
   .Active-Image {
     width: 30%;
-    margin: 20px;
+    margin: 0px 20px;
     img {
       width: 100%;
     }
@@ -23,7 +24,7 @@ $disable: #f2f2f2;
 
   .Description {
     width: 55%;
-    margin: 15px 50px;
+    margin: 0px 50px;
     .second-row {
       gap: 20px;
     }
