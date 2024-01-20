@@ -1,8 +1,8 @@
-.mc-message-user {
+.mc-comment-user {
     padding: 15px 0px;
 }
 
-.mc-message-user-filter {
+.mc-comment-user-filter {
     padding: 5px 20px;
     @include flex-dimension(center, center, 10px);
 
@@ -29,7 +29,7 @@
     }
 }
 
-.mc-message-user-list {
+.mc-comment-user-list {
     overflow-y: auto;
     height: calc(100vh - 230px);
     padding: 5px 7px 5px 10px ;
@@ -39,7 +39,7 @@
     }
 }
 
-.mc-message-user-item {
+.mc-comment-user-item {
     cursor: pointer;
     margin: 5px 0px;
     padding: 10px 10px;
@@ -53,19 +53,19 @@
     .mc-round-avatar {
         position: relative;
 
-        &::before {
-            @include position-bottom-right(absolute, 0px, 0px, auto);
-            @include content-center(13px, 13px, 50%);
-            border: 2px solid var(--lightBorder);
-            background-color: $gray-600;
-            content: "";
-        }
+        // &::before {
+        //     @include position-bottom-right(absolute, 0px, 0px, auto);
+        //     @include content-center(13px, 13px, 50%);
+        //     border: 2px solid var(--lightBorder);
+        //     background-color: $gray-600;
+        //     content: "";
+        // }
 
-        &.online {
-            &::before {
-                background-color: $green-600;
-            }
-        }
+        // &.online {
+        //     &::before {
+        //         background-color: $green-600;
+        //     }
+        // }
     }
 
     .mc-duel-text {
@@ -128,7 +128,7 @@
 }
 
 // chat
-.mc-message-chat-header {
+.mc-comment-chat-header {
     padding-bottom: 15px;
     @include flex-dimension(center, start, 10px);
     border-bottom: 1px solid var(--lightBorder);
@@ -139,14 +139,6 @@
 
     .mc-round-avatar {
         position: relative;
-
-        &::before {
-            @include position-bottom-right(absolute, 0px, 0px, auto);
-            @include content-center(13px, 13px, 50%);
-            border: 2px solid var(--lightBorder);
-            background-color: $green-600;
-            content: "";
-        }
     }
 
     .mc-duel-text {
@@ -162,7 +154,7 @@
     }
 }
 
-.mc-message-chat-action-group {
+.mc-comment-chat-action-group {
     align-self: flex-start;
     @include flex-dimension(center, end, 12px);
 
@@ -180,7 +172,7 @@
     }
 }
 
-.mc-message-chat-list {
+.mc-comment-chat-list {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -193,13 +185,13 @@
     }
 }
 
-.mc-message-chat-item {
+.mc-comment-chat-item {
     position: relative;
     display: flex;
     gap: 10px;
 
     &:hover {
-        .mc-message-chat-text {
+        .mc-comment-chat-text {
             i {
                 transform: scale(1);
             }
@@ -210,7 +202,7 @@
         flex-direction: row-reverse;
         text-align: $end-direction;
 
-        .mc-message-chat-text {
+        .mc-comment-chat-text {
             flex-direction: row-reverse;
 
             p {
@@ -220,7 +212,7 @@
     }
 }
 
-.mc-message-chat-user {
+.mc-comment-chat-user {
     align-self: flex-end;
     border: none;
 
@@ -231,13 +223,13 @@
     }
 }
 
-.mc-message-chat-group {
+.mc-comment-chat-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.mc-message-chat-text {
+.mc-comment-chat-text {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -262,11 +254,11 @@
     }
 }
 
-.mc-message-chat-datetime {
+.mc-comment-chat-datetime {
     font-size: 12px;
 }
 
-.mc-message-chat-footer {
+.mc-comment-chat-footer {
     @include flex-dimension(center, start, 10px);
     border: 1px solid var(--deepBorder);
     background-color: var(--lightGray);

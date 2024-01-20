@@ -46,3 +46,7 @@ a {
 {
   --bs-gutter-y : 1.5rem;
 }
+button.swal2-styled
+{
+  padding: .625em 1.1em;
+}

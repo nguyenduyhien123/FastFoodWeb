@@ -5,7 +5,7 @@ import { Button, Image, Input, Text, Box, Icon, Anchor, Option, Heading } from "
 import userInfo from "../../data/master/userList.json";
 import moment from 'moment';
 import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+// import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from 'axios';
 
 

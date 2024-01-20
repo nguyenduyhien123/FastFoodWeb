@@ -5,7 +5,7 @@ import validator from "validator";
 import "../.././assets/css/components/SignIn.scss";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+// import 'sweetalert2/dist/sweetalert2.min.css';
 import { AuthContext } from "../../context/AuthContext";
 import {ClipLoader} from "react-spinners";
 

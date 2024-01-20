@@ -6,7 +6,13 @@ use App\Events\NewCommentEvent;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
+use App\Models\Product;
+use Illuminate\Contracts\Database\Query\Builder as EloquentBuilder ;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+
 
 class ApiCommentController extends Controller
 {
@@ -116,5 +122,25 @@ class ApiCommentController extends Controller
                 'messega' => 'Không tìm thấy bình luận'
             ], 404);
         }
+    }
+    public function getProductsAndComments(){
+        // $products =  Product::withCount('comments')
+        // ->get(['id', 'name', 'comments_count']);
+        $products = Product::has('comments')
+        ->withCount('comments')
+        ->get(['id', 'name', 'comments_count']);
+
+
+        return $products;
+    }
+    public function getCommentsByCriteria(Request $request)
+    {
+        if($request->filled('product_id') )
+        {
+            $product_id = $request->query('product_id');
+            $comments = Comment::with('user.role')->where('product_id', $product_id)->get();
+            return $comments;
+        }
+        return response()->json(['message' => 'Yêu cầu không hợp lệ']);
     }
 }

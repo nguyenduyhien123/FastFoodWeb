@@ -3,6 +3,9 @@ import './CommentInput.scss'
 import { ReactComponent as IconSend } from '../../assets/icon/send.svg'
 import axios from 'axios';
 import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { Row, Col } from "react-bootstrap";
+
 import { EditorState, convertToRaw, ContentState , convertFromHTML} from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import { convertFromRaw } from 'draft-js';
@@ -225,7 +228,11 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           }
         }
         return <div><div className={`comment-input d-flex align-items-center gap-3 ${commentParent?.level + 1 >= 2 ? 'ms-5' : '' }`}>
-            <div className="avatar"><img src={userInfo?.avatar || 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'} alt="Ảnh đại diện"/></div>
+          <Row>
+            <Col xl={2}>
+            <div className="avatar"><img src={ userInfo?.avatar?.startsWith('https') ? userInfo?.avatar : `http://localhost:8000/storage/uploads/${userInfo?.avatar }`} alt="Ảnh đại diện"/></div>
+            </Col>
+            <Col xl={8}>
                     <Editor
           editorState={editorState}
           wrapperClassName="demo-wrapper"
@@ -247,9 +254,13 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           }}
           toolbar={customEditor}
         />
+        </Col>
+        <Col xl={2}>
         <div className="btn-send" onClick={(e) => {
           data ? handleEditComment(e) : handleAddComment(e)
         }}><IconSend className={isAllow ? 'active' : ''}/></div>
+        </Col>
+        </Row>
     <div>
       </div>
             </div>

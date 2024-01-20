@@ -35,9 +35,10 @@ Route::middleware('verify-token:authencation')->group(function(){
     Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
         Route::get('/','index');
     });
+    Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
+
     // Các route liên quan đến admin
     Route::middleware('can:admin')->group(function(){
-        Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
         Route::apiResource('products',ApiProductController::class)->except(['index','show']);
         Route::apiResource('users', ApiUserController::class); 
         Route::apiResource('roles', ApiRoleController::class); 
@@ -48,6 +49,8 @@ Route::middleware('verify-token:authencation')->group(function(){
             Route::get('getTotalUser',[ApiUserController::class,'getTotalUser']);
             Route::get('getTotalUserIsNotVerified',[ApiUserController::class,'getTotalUserIsNotVerified']);
             Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
+            Route::get('getProductsAndComments', [ApiCommentController::class,'getProductsAndComments']);
+            Route::get('getCommentsByCriteria', [ApiCommentController::class, 'getCommentsByCriteria']);
         });
         Route::prefix('update')->group(function(){
             Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);

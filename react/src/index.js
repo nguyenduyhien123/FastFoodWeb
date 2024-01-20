@@ -2,11 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
-import "bootstrap/dist/css/bootstrap.css";
+// import 'sweetalert2/src/sweetalert2.scss'
+// import "bootstrap/dist/css/bootstrap.css";
 import "remixicon/fonts/remixicon.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import './assets/sass/styles.scss'
+
+
 
 import {AuthContext, AuthContextProvider} from "./context/AuthContext";
 

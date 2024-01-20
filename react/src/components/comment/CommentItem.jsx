@@ -36,16 +36,17 @@ export const CommentItem = ({ data }) => {
     const [activeButtonAction, setActiveButtonAction] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [isReply, setIsReply] = useState(false);
-    return <> {!isEdit && <div className={`comment-item d-flex gap-3 level-${data.level}`}>
-    <div className="avatar"><img src={data.user.avatar} alt="Ảnh đại diện" /></div>
+    return <> {!isEdit && <div className={`comment-item  d-flex gap-3 level-${data.level}`}>
+    <div className="avatar"><img src={ data?.user?.avatar?.startsWith('https') ? data?.user?.avatar : `http://localhost:8000/storage/uploads/${data?.user?.avatar }`} alt="Ảnh đại diện" /></div>
     <div>
         <div className="d-flex gap-3">
             <div className="comment-name fw-bold">
                 {data.user?.fullname}
             </div>
-            <div className="account-type">{data.user?.role.name}</div>
+            <div className="account-type">{data.user?.role?.name}</div>
         </div>
-        {!isEdit && <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.content) }} className="comment-content">
+            
+        {!isEdit && <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.content) }} className="comment-content" style={{ wordBreak: 'break-word', whiteSpace: 'normal' }}>
             
         </div>}
 

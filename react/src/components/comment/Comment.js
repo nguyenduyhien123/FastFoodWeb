@@ -10,79 +10,35 @@ import Pusher from 'pusher-js';
 import { AuthContext } from "../../context/AuthContext";
 
 
-export default function Comment() {
+export default function Comment({product_id}) {
     const {isLogin, userInfo} = useContext(AuthContext);
     const [comment, setComment] = useState("");
     const [activeButtonAction, setActiveButtonAction] = useState(false);
-    const handleReply = (commentIndex) => {
-        const updatedComments = [...listComment];
-        console.log('Index : ', commentIndex);
-        const elementToInsert = {
-            avatar: 'https://img5.thuthuatphanmem.vn/uploads/2021/07/16/hinh-anh-rung-cay-xanh-dep-man-nhan_093251383.jpg',
-            name: 'Nguyễn Văn A',
-            accountType: 'user',
-            content: 'Xin chào 123',
-            time: '10/01/2024',
-            level: 2,
-            isCommented: false
-        };
-        const indexToInsert = commentIndex;
-
-        updatedComments.splice(indexToInsert + 1, 0, elementToInsert);
-        setListComment(updatedComments);
-    };
-    // const [listComment, setListComment] = useState([
-    //     {
-    //         avatar: 'https://img5.thuthuatphanmem.vn/uploads/2021/07/16/hinh-anh-rung-cay-xanh-dep-man-nhan_093251383.jpg',
-    //         name: 'Nguyễn Văn A',
-    //         accountType: 'user',
-    //         content: 'Xin chào',
-    //         time: '10/01/2024',
-    //         level: 1
-    //     },
-    //     {
-    //         avatar: 'https://img5.thuthuatphanmem.vn/uploads/2021/07/16/hinh-anh-rung-cay-xanh-dep-man-nhan_093251383.jpg',
-    //         name: 'Nguyễn Văn B',
-    //         accountType: 'admin',
-    //         content: 'Xin chào 123',
-    //         time: '10/01/2022',
-    //         level: 2
-    //     },
-    //     {
-    //         avatar: 'https://img5.thuthuatphanmem.vn/uploads/2021/07/16/hinh-anh-rung-cay-xanh-dep-man-nhan_093251383.jpg',
-    //         name: 'Nguyễn Duy C',
-    //         accountType: 'admin',
-    //         content: 'Sản phẩm này tốt nè',
-    //         time: '12/09/2023',
-    //         level: 1
-    //     },
-    // ])
     const [listComment, setListComment] = useState([
     ])
-    useEffect(() => {
+    const getCommentsByProductId = (id ) => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/comments',
-            withCredentials: true,
+            url: 'http://localhost:8000/api/summary/getCommentsByCriteria',
+            withCredentials: true, 
+            params: {
+                product_id: id,
+              }         
         })
-            .then(res => {
-                console.log(res.data)
-                setListComment(res.data)
-            })
-            .catch(err => console.log(err))
+        .then(res => {
+            console.log(res.data);
+            setListComment(res.data);
+        })
+        .catch(err => {
+        })
+    }
+    useEffect(() => {
+        getCommentsByProductId(product_id);
     }, [])
     const handleReceive  = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8000/api/comments',
-            withCredentials: true,
-        })
-            .then(res => {
-                console.log(res.data)
-                setListComment(res.data)
-            })
-            .catch(err => console.log(err))
+        getCommentsByProductId(product_id);
     }
+    console.log('Comment .....');
     useEffect(() => {
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -107,7 +63,7 @@ export default function Comment() {
           };
     }, [])
     console.log(comment);
-    return <div className="comment-section">
+    return <div className="comment-section w-100">
         <div className="comment-input d-flex align-items-center gap-3">
             {isLogin ? <CommentInput /> : <h1>Đăng nhập đi bạn</h1>}
         </div>

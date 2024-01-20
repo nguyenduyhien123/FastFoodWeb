@@ -24,6 +24,7 @@ import { Ecommerce, Analytics, CRM, ForgotPassword, Register, Login, UserList, U
 import ProductEdit from './pages/master/ProductEdit';
 import UserEdit from './pages/master/UserEdit';
 import UserCreate from './pages/master/UserCreate';
+import CommentList from './pages/master/CommentList';
 
 
 // Admin
@@ -81,6 +82,7 @@ function App() {
                         <Route path="/admin/product-edit/:id" element={<ProductEdit />} />
                         <Route path="/admin/product-upload" element={<ProductUpload />} />
                         <Route path="/admin/invoice-list" element={<InvoiceList />} />
+                        <Route path="/admin/comment-list" element={<CommentList />} />
                         <Route path="/admin/invoice-details" element={<InvoiceDetails />} />
                         <Route path="/admin/order-list" element={<OrderList />} />
                         <Route path="/admin/message" element={<Message />} />

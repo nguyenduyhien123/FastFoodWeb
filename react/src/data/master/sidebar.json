@@ -54,8 +54,7 @@
                     "icon": "mode_comment", 
                     "text": "Bình luận",
                     "submenu": [
-                        { "href": "/admin/invoice-list", "text": "Danh sách hoá đơn" },
-                        { "href": "/admin/invoice-details", "text": "invoice details" }
+                        { "href": "/admin/comment-list", "text": "Danh sách bình luận" }
                     ]
                 },
                 { 

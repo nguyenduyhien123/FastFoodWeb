@@ -54,4 +54,4 @@ class Product extends Model
     //     'created_at' => 'timestamp',
     //     'updated_at' => 'timestamp'
     // ];
-}
+} 

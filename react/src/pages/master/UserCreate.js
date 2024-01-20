@@ -7,7 +7,7 @@ import { Breadcrumb, FileUpload } from "../../components";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/userEdit.json";
 import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+// import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
 
