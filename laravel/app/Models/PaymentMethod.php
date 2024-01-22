@@ -13,4 +13,5 @@ class PaymentMethod extends Model
     public function invoices(){
         return $this->hasMany(Invoice::class);
     }
+    protected $fillable = ['name','created_at','updated_at'];
 }

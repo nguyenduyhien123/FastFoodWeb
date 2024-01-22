@@ -86,7 +86,7 @@ class ApiAuthController extends Controller
         return response()->json([
             'message' => 'Đăng nhập thành công',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
         ]);
     }
     public function logout()
@@ -117,7 +117,7 @@ class ApiAuthController extends Controller
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
-                'data' => ['firstname' => $userLog->firstname, 'lastname' => $userLog->lastname, 'verify_account' => $userLog->email_verified_at ? true : false, 'avatar' => $userLog->avatar, 'id' => $userLog->id]
+                'data' => ['firstname' => $userLog->firstname, 'lastname' => $userLog->lastname, 'verify_account' => $userLog->email_verified_at ? true : false, 'avatar' => $userLog->avatar, 'id' => $userLog->id, 'address' => $userLog->address]
             ])->cookie($cookie);
         } else {
             $payload = ['user_id' => $user->id];
@@ -126,7 +126,7 @@ class ApiAuthController extends Controller
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
-                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id]
+                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
             ])->cookie($cookie);
         }
     }
@@ -158,7 +158,7 @@ class ApiAuthController extends Controller
             'message' => 'Đăng ký Thành công',
             'description' => 'Vui lòng mở hộp thư trong email để xác thực tài khoản !',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
         ])->cookie($cookie);
     }
     public function verifyAccount(Request $request)

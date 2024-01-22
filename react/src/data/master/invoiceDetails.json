@@ -1,9 +1,9 @@
 {
-    "pageTitle": "invoice details",
+    "pageTitle": "Chi tiết hoá đơn",
     "breadcrumb": [
-        { "path": "/", "text": "home" },
-        { "text": "invoice" },
-        { "text": "details" }
+        { "path": "/", "text": "Trang chủ" },
+        { "text": "Hoá đơn" },
+        { "text": "Chi tiết" }
     ],
     "dotsMenu": {
         "dots": "more_horiz",
@@ -23,7 +23,7 @@
     "recieved": { "title": "order recieved", "text": "Office 25/B, Road 30, West jalkuri, Fatullah, Narayanganj 1265. +8801838288389, support@miron.com" },
     "shipment": { "title": "shipment details", "text": "House 17/A, Road 09, West jalkuri, Fatullah, Narayanganj 1265. +8801838288389, support@miron.com" },
     "table": {
-        "thead": ["uid", "product", "price", "discount", "quantity", "Amount"],
+        "thead": ["STT", "SẢn phẩm", "Giá", "Số lượng", "Thành tiền"],
         "tbody": [
             { 
                 "id": "#5768", 

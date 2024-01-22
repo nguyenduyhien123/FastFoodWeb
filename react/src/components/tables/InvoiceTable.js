@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal';
 import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
 import { Heading, Anchor, Icon, Box, Text, Input, Image, Button } from "../elements";
-
+import moment from "moment";
 export default function InvoiceTable({ thead, tbody }) {
     const [alertModal, setAlertModal] = React.useState(false);
     const [data, setData] = useState([]);
@@ -63,19 +63,22 @@ export default function InvoiceTable({ thead, tbody }) {
                             </Td>
                             <Td>
                                 <Box className="mc-table-profile">
-                                    <Image src={ item.src } alt={ item.alt } />
-                                    <Text>{ item.name }</Text>
+                                    <Image src={ item?.user?.avatar } alt={ "Ảnh đại diện" } />
+                                    <Text>{ item?.user?.email }</Text>
                                 </Box>
                             </Td>
-                            <Td>{ item.email }</Td>
-                            <Td>{ item.amount }</Td>
-                            <Td><Text className={`mc-table-badge ${ item.status.variant }`}>{ item.status.text }</Text></Td>
-                            <Td>{ item.date }</Td>
+                            <Td>{ item?.code }</Td>
+                            {/* <Td>{ item?.payment_method?.name }</Td> */}
+                            {/* <Td><Text className={`mc-table-badge ${ item.status.variant }`}>{ item.status.text }</Text></Td> */}
+                            <Td>{ item?.total_price?.toLocaleString("vi-VN") }</Td>
+                            <Td>{ item?.address }</Td>
+                            <Td>{moment(item?.created_at).format('DD/MM/YYYY HH:mm:ss')}</Td>
+                            <Td>{moment(item?.updated_at).format('DD/MM/YYYY HH:mm:ss')}</Td>
                             <Td>
                                 <Box className="mc-table-action">
-                                    <Anchor title="View" href="/invoice-details" className="material-icons view">{ item.action.view }</Anchor>
-                                    <Anchor title="Download" href="#" className="material-icons download" download>{ item.action.download }</Anchor>
-                                    <Button title="Delete" className="material-icons delete" onClick={()=> setAlertModal(true)}>{ item.action.delete }</Button>
+                                    <Anchor title="View" href={`/admin/invoice-details/${item?.id}`} className="material-icons view">visibility</Anchor>
+                                    <Anchor title="Download" href="#" className="material-icons download" download>download</Anchor>
+                                    <Button title="Delete" className="material-icons delete" onClick={()=> setAlertModal(true)}>delete</Button>
                                 </Box>
                             </Td>
                         </Tr>

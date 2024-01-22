@@ -7,12 +7,12 @@ import Breadcrumb from "../../components/Breadcrumb";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/productUpload.json";
 import axios from 'axios';
-
+import {useNavigate} from 'react-router-dom'
 export default function ProductUpload() {
     const [product, setProduct] = useState({});
     const [productError, setProductError] = useState({});
     const [productTypes, setProductTypes] = useState([]);
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -35,6 +35,8 @@ export default function ProductUpload() {
         })
             .then(res => {
                 console.log('Thêm thành công');
+                navigate('/admin/product-list')
+                
             })
             .catch(err => {
                 setProductError(err.response.data.errors);

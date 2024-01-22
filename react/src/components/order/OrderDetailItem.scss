@@ -1,0 +1,44 @@
+.order-detail-item
+{
+    .product-image
+    {
+        width: 100px;
+        height : 100px;
+    }
+    .mc-quantity
+    {
+        font-size: 20px;
+        border-radius: 10px;
+        border : 1px solid #d9d9d9;
+        width: 100px;
+        button
+        {
+            font-size: 1.25rem;
+        }
+        .mc-input
+        {
+            border: none;
+            padding: 5px 0;
+            margin: 0;
+            height: 100%;
+            width: 36px;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+    }
+    .material-icons
+    {
+        color: #f11133;
+        background-color: #ffdfe4;
+        font-size: 16px;
+        padding: 6px 6px;
+        border-radius: 6px;
+        margin : auto 0;
+        display: block;
+    }
+}
+input[type=number]::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

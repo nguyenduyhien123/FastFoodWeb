@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('discount_id')->nullable();
             $table->unsignedBigInteger('staff_id')->nullable();
+            $table->string('code')->unique();
             $table->unsignedBigInteger('payment_method_id');
-            $table->unsignedBigInteger('payment_id');
-            $table->string('status');
+            // $table->unsignedBigInteger('payment_id');
             $table->bigInteger('total_price')->unsigned();
+            $table->string('address');
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
 
@@ -27,7 +29,7 @@ return new class extends Migration
             $table->foreign('discount_id')->references('id')->on('discounts');
             $table->foreign('staff_id')->references('id')->on('users');
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
-            $table->foreign('payment_id')->references('id')->on('payments');
+            // $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
 

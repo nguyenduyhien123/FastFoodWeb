@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Item, Anchor } from "../../components/elements";
 import { CardLayout, CardHeader, FloatCard } from "../../components/cards";
@@ -7,8 +7,27 @@ import LabelField from "../../components/fields/LabelField";
 import InvoiceTable from "../../components/tables/InvoiceTable";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/invoiceList.json";
+import axios from 'axios'
 
 export default function InvoiceList() {
+    const [invoiceList, setInvoiceList] = useState([]);
+    const getInvoiceList = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/invoices/',
+            withCredentials: true,
+        })
+        .then((res) => {
+            setInvoiceList(res.data);
+        })
+        .catch(() => {
+
+        })
+    }
+    useEffect(() => {
+        getInvoiceList();
+    }, [])
+    console.log(invoiceList);
     return (
         <PageLayout>
             <Row>
@@ -50,7 +69,7 @@ export default function InvoiceList() {
                                 </Col>
                             ))}
                         </Row>
-                        <InvoiceTable thead={ data?.table.thead } tbody={ data?.table.tbody } />
+                        <InvoiceTable thead={ data?.table.thead } tbody={ invoiceList } />
                         <Pagination />
                     </CardLayout>
                 </Col>

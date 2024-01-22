@@ -17,12 +17,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/Themes";
 import { LoaderProvider } from "./context/Preloader";
+
+//
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
       <ThemeProvider>
             <LoaderProvider>
+            <ToastContainer/>
         <App />
         </LoaderProvider>
         </ThemeProvider>

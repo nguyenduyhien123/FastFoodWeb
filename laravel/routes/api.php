@@ -3,8 +3,11 @@
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\ApiAccountController;
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiCommentController;
 use App\Http\Controllers\ApiDiscountController;
+use App\Http\Controllers\ApiInvoiceController;
+use App\Http\Controllers\ApiPaymentMethodController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
 use App\Http\Controllers\ApiRateController;
@@ -36,12 +39,19 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::get('/','index');
     });
     Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
+    Route::apiResource('carts', ApiCartController::class);
+    Route::apiResource('paymentMethods', ApiPaymentMethodController::class)->only(['index','show']);
+    Route::apiResource('invoices', ApiInvoiceController::class)->only(['store']);
+    Route::get('getCartByUser', [ApiCartController::class, 'getCartByUser']);
+    Route::prefix('get')->group(function(){
 
+    });
     // Các route liên quan đến admin
     Route::middleware('can:admin')->group(function(){
         Route::apiResource('products',ApiProductController::class)->except(['index','show']);
         Route::apiResource('users', ApiUserController::class); 
         Route::apiResource('roles', ApiRoleController::class); 
+        Route::apiResource('invoices', ApiInvoiceController::class);
         Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
         Route::prefix('summary')->group(function(){
             Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
@@ -51,6 +61,7 @@ Route::middleware('verify-token:authencation')->group(function(){
             Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
             Route::get('getProductsAndComments', [ApiCommentController::class,'getProductsAndComments']);
             Route::get('getCommentsByCriteria', [ApiCommentController::class, 'getCommentsByCriteria']);
+            
         });
         Route::prefix('update')->group(function(){
             Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);

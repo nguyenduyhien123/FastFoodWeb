@@ -28,7 +28,7 @@
 
 .mc-invoice-recieved,
 .mc-invoice-shipment {
-    max-width: 250px;
+    max-width: 300px;
 
     @include mobile-breakpoint {
         max-width: 100%;
@@ -79,7 +79,7 @@
         }
 
         .title {
-            width: 100px;
+            width: 150px;
             text-transform: capitalize;
         }
 

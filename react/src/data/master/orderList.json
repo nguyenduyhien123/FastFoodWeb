@@ -1,8 +1,8 @@
 {
-    "pageTitle": "order list",
+    "pageTitle": "Danh sách các hoá đơn", 
     "breadcrumb": [
-        { "path": "/", "text": "home" },
-        { "text": "order-list" }
+        { "path": "/", "text": "Trang chủ" },
+        { "text": "Danh sách hoá đơn" }
     ],
     "dotsMenu": {
         "dots": "more_horiz",

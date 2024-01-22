@@ -41,26 +41,31 @@ export default function ProductPage() {
         "https://burgerking.vn//media//catalog//product//cache//1//small_image//316x//9df78eab33525d08d6e5fb8d27136e95//6//-//6-burger-ca.jpg",
         "https://burgerking.vn/media/catalog/product/cache/1/small_image/316x/9df78eab33525d08d6e5fb8d27136e95/1/2/12-burger-b_-n_ng-h_nh-chi_n_4.jpg",
     ];
-
     const [quantity, setQuantity] = useState(1);
-
-    const [comment, setComment] = useState(0);
-    const [rating, setRating] = useState(1);
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8000/api/products/1`).then(res => setProduct(res.data));
-    // }, []);
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/products/${id}`)
+        .then(res => {
+            var product = res.data;
+            product.image = JSON.parse(product.image)
+            setProduct(product)
+        })
+        .catch(err => {
+            console.log('Không tìm thấy sản phẩm');
+        })
+        ;
+    }, []);
     return (
         <div>
             <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4 mt-4">
                 <div className="Image-List">
-                    {images.map((image, index) => (
+                    {product?.image && Object.keys(product?.image).map((image, index) => (
                         <img
                             key={index}
-                            src={image}
+                            src={product?.image[image]}
                             className="img-fluid rounded m-1"
                             style={{ opacity: selectedImage === image ? 1 : 0.5 }}
                             alt="product-image"
-                            onClick={() => setSelectedImage(image)}
+                            onClick={() => setSelectedImage(product?.image[image])}
                         />
                     ))}
                 </div>
@@ -72,22 +77,26 @@ export default function ProductPage() {
                 <div className="Description">
                     <div className="first-row d-flex flex-column">
                         {/* product-name */}
-                        <h2 className="product-name">BURGER BÒ NƯỚNG WHOPPER JR</h2>
+                        <h2 className="product-name">{product?.name}</h2>
                         {/* rating */}
+                        <p>{product?.description}</p>
+                        <div className="mt-3">
                         <Rating
                             size={20}
                             interactive
-                            rating={5}
+                            rating={product?.star}
                             hoverColor="yellow"
                             onRatingChanged={(e) => console.log(e)}
                         ></Rating>
+                        </div>
                         {/* price */}
-                        <p className="price">
-                            <h3>159.000đ</h3>
+                        <p className="price mt-3">
+                            <h3 className="fs-2">{product?.price}</h3>
                         </p>
                     </div>
                     {/* quantity-change */}
-                    <div class="qty-input">
+                    <div className="d-flex gap-4 align-items-center">
+                    <div class="qty-input mt-3">
                         <button
                             class="qty-count qty-count--minus"
                             data-action="minus"
@@ -103,8 +112,9 @@ export default function ProductPage() {
                             type="number"
                             name="product-qty"
                             min="0"
-                            max="10"
+                            max="100"
                             value={quantity}
+                            onChange={(e) => setQuantity(Number(e.target.value))}
                         />
                         <button
                             class="qty-count qty-count--add"
@@ -130,6 +140,7 @@ export default function ProductPage() {
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                             </svg>
                         </Button>
+                    </div>
                     </div>
                 </div>
             </div>

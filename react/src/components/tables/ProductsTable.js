@@ -89,11 +89,13 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
               pauseOnHover: false,
               closeOnClick: false,
               pauseOnFocusLoss: false
-
             }
           );
     }
     return (
+        <>
+                    <ToastContainer />
+
         <Box className="mc-table-responsive">
             <Table className="mc-table product">
                 <Thead className="mc-table-head primary">
@@ -180,7 +182,6 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
                     ))}
                 </Tbody>
             </Table>
-            <ToastContainer />
             <Modal show={ alertModal } onHide={()=> setAlertModal(false)}>
                 <Box className="mc-alert-modal">
                     <Icon type="new_releases" />
@@ -196,5 +197,7 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
                 </Box>
             </Modal>
         </Box>
+        </>
+
     );
 }

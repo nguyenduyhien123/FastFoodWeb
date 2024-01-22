@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Modal from 'react-bootstrap/Modal';
+import Modal from 'react-bootstrap/Modal'; 
 import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
 import { Image, Input, Text, Box, Icon, Button, Heading, Anchor } from "../elements";
 

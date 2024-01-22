@@ -14,6 +14,7 @@ import Layout from "./pages/client/Layout";
 import { PageRegister } from "./pages/client/PageRegister";
 import PageSignIn from "./pages/client/PageSignIn";
 import Comment from './components/comment/Comment';
+import { Payment } from './components/payment/Payment';
 // Admin 
 
 import { Overview, Documentation, ChangeLog, Error } from "./pages/supports";
@@ -52,6 +53,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/about" element={<About />} />
+        <Route path="/payments" element={<Payment />} />
       </Route>
       <Route path="accounts" element={<Layout />}>
         <Route path="register" element={<PageRegister />} />
@@ -59,7 +61,7 @@ function App() {
         <Route path="info" element={<UserInfo />} />
       </Route>
       <Route path="products" element={<Layout />}>
-        <Route path="1" element = {<ProductPage/>}/>
+        <Route path=":id" element = {<ProductPage/>}/>
       </Route>
       <Route path="/avatar" element={<DropdownAvatar />} />
       <Route path="comments" element={<Comment />} />
@@ -83,14 +85,14 @@ function App() {
                         <Route path="/admin/product-upload" element={<ProductUpload />} />
                         <Route path="/admin/invoice-list" element={<InvoiceList />} />
                         <Route path="/admin/comment-list" element={<CommentList />} />
-                        <Route path="/admin/invoice-details" element={<InvoiceDetails />} />
+                        <Route path="/admin/invoice-details/:id" element={<InvoiceDetails />} />
                         <Route path="/admin/order-list" element={<OrderList />} />
                         <Route path="/admin/message" element={<Message />} />
                         <Route path="/admin/notification" element={<Notification />} />
                         <Route path="/admin/settings" element={<Settings />} />
                         <Route path="/admin/blank-page" element={<BlankPage />} />
 
-                        {/* Blocks Pages */} 
+                        {/* Blocks Pages */}  
                         <Route path="/admin/headings" element={<Headings />} />
                         <Route path="/admin/buttons" element={<Buttons />} />
                         <Route path="/admin/avatars" element={<Avatars />} />

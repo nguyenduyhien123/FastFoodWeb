@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-class UpdateCommentRequest extends FormRequest
+class StoreInvoiceRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
@@ -27,16 +27,19 @@ class UpdateCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer|exists:users,id',
-            'product_id' => 'required|integer|exists:products,id',
-            'comment_id' => "nullable|integer|exists:comments,id",
-            'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
-            'content' => 'required|string|max:10000',
-            'path' => 'required|string',
+            'user_id' => 'required|exists:users,id',
+            'staff_id' => 'nullable|exists:users,id',
+            'payment_method_id' => 'required|exists:payment_methods,id',
+            'total_price' => 'required|integer',
+            'address' => 'required|max:255',
         ];
     }
     public function attributes()
     {
-        return ['name' => 'Bình luận'];
+        return [
+            'payment_method_id' => 'Phương thức thanh toán',
+            'total_price' => 'Tổng tiền',
+            'address' => 'Địa chỉ'
+        ];
     }
 }

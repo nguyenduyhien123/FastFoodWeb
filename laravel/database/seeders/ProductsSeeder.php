@@ -24,7 +24,7 @@ class ProductsSeeder extends Seeder
         // Chuyển đổi số tiền thành kiểu số nguyên
         $integerAmount = (int) $amount;
 
-        return $integerAmount;
+        return $integerAmount * 1000;
     }
 
     public function scrapeAll()
