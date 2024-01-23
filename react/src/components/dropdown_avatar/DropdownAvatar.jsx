@@ -7,7 +7,7 @@ import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { AuthContext } from '../../context/AuthContext';
 const DropdownAvatar = () => {
-  const {userInfo, isLogin, updateUserInfo,updateLogi,logoutUser}  = useContext(AuthContext)
+  const {userInfo, isLogin, updateUserInfo,updateLogi,logoutUser, roleName}  = useContext(AuthContext)
     let actionAccount = [
       {
         text : 'Thông tin tài khoản',
@@ -74,8 +74,8 @@ const DropdownAvatar = () => {
           onRequestClose={() => setSlidingPaneState({ isPaneOpenLeft: false })}
 
            >
-            <h1 className='account-name'>Chào, {userInfo?.lastname} !</h1>
-            <p>{userInfo?.verify_account ? 'Đã xác thực' : 'Chưa xác thực'}</p>
+            <h1 className='account-name'>Chào, {userInfo?.lastname + " " + (userInfo?.firstname ?? '')} !</h1>
+            <p><span className='fw-bold'>{userInfo?.roleName}</span> - ({userInfo?.verify_account ? 'Đã xác thực' : 'Chưa xác thực'})</p>
             <div className='border-bottom'></div>
             <div className="list-action d-inline-flex gap-3 flex-wrap justify-content-center row mt-4">
               {actionAccount.map((data,index) => {

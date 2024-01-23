@@ -86,7 +86,7 @@ class ApiAuthController extends Controller
         return response()->json([
             'message' => 'Đăng nhập thành công',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name]
         ]);
     }
     public function logout()
@@ -108,7 +108,7 @@ class ApiAuthController extends Controller
         $googleUser = Socialite::driver('google')->stateless()->user();
         $user = User::where('email', $googleUser->getEmail())->first();
         if (empty($user)) {
-            $userLog = User::create(['email' => $googleUser->getEmail(), 'lastname' => $googleUser->getName(), 'username' => $googleUser->getNickname(), 'avatar' => $googleUser->getAvatar(),'role_id' => 1]);
+            $userLog = User::create(['email' => $googleUser->getEmail(), 'lastname' => $googleUser->getName(), 'username' => $googleUser->getNickname(), 'avatar' => $googleUser->getAvatar(),'role_id' => 2]);
             $userLog->email_verified_at = Carbon::now();
             $userLog->save();
             $payload = ['user_id' => $userLog->id];
@@ -117,7 +117,7 @@ class ApiAuthController extends Controller
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
-                'data' => ['firstname' => $userLog->firstname, 'lastname' => $userLog->lastname, 'verify_account' => $userLog->email_verified_at ? true : false, 'avatar' => $userLog->avatar, 'id' => $userLog->id, 'address' => $userLog->address]
+                'data' => ['firstname' => $userLog->firstname, 'lastname' => $userLog->lastname, 'verify_account' => $userLog->email_verified_at ? true : false, 'avatar' => $userLog->avatar, 'id' => $userLog->id, 'address' => $userLog->address, 'roleName' => $userLog->role->name]
             ])->cookie($cookie);
         } else {
             $payload = ['user_id' => $user->id];
@@ -126,13 +126,14 @@ class ApiAuthController extends Controller
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
-                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
+                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address,  'roleName' => $user->role->name]
             ])->cookie($cookie);
         }
     }
     public function register(RegisterUserRequest $request)
     {
         $infoUser = $request->only(['email', 'password', 'phone', 'firstname', 'lastname']);
+        $infoUser['role_id'] = 2;
         $user = User::create($infoUser);
         $payload = ['user_id' => $user->id, 'exp' => Carbon::now()->addDays(1), 'description' => 'verify-account'];
         $jwt = $this->encodeJWT($payload);
@@ -158,7 +159,7 @@ class ApiAuthController extends Controller
             'message' => 'Đăng ký Thành công',
             'description' => 'Vui lòng mở hộp thư trong email để xác thực tài khoản !',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name]
         ])->cookie($cookie);
     }
     public function verifyAccount(Request $request)

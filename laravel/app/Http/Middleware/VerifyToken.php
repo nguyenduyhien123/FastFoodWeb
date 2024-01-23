@@ -31,7 +31,7 @@ class VerifyToken
             $jwt = $this->decodeJWT($request->cookie('token'));
             if($jwt['description'] === $description)
             {
-                $user = User::find($jwt['sub']);
+                $user = User::with('role')->find($jwt['sub']);
                 if(!empty($user))
                 {
                     Auth::loginUsingId($user->id);
@@ -45,7 +45,7 @@ class VerifyToken
             $jwt = $this->decodeJWT($request->token);
             if($jwt['description'] === $description)
             {
-                $user = User::find($jwt['sub']);
+                $user = User::with('role')->find($jwt['sub']);
                 if(!empty($user))
                 {
                     Auth::loginUsingId($user->id);
