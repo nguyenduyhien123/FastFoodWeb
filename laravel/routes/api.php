@@ -51,7 +51,7 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::apiResource('products',ApiProductController::class)->except(['index','show']);
         Route::apiResource('users', ApiUserController::class); 
         Route::apiResource('roles', ApiRoleController::class); 
-        Route::apiResource('invoices', ApiInvoiceController::class);
+        Route::apiResource('invoices', ApiInvoiceController::class)->except(['store']);
         Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
         Route::prefix('summary')->group(function(){
             Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);

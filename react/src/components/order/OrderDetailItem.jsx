@@ -41,6 +41,7 @@ export const OrderDetailItem = ({data, setCartList}) => {
         pauseOnHover: false, // Không dừng lại khi hovered
     }
     const deleteCart = () => {
+        console.log('Xoá giỏ hàng có id là ', cart?.id);
         setIsProcessing(true);
         let data = { _method: "DELETE" };
       
