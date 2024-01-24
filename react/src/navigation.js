@@ -6,25 +6,25 @@ export const navigationClient = [
         path : '/',
         element : <Home />,
         name : 'Home',
-        isPrivate : false
+        role : []
     },
     {
         path : '/shopping-cart',
         element : <ShoppingCart />,
         name : 'Shopping Cart',
-        isPrivate : false
+        role : []
     }
     ,
     {
         path : 'about',
         element : <About />,
         name : 'About',
-        isPrivate : false
+        role : []
     },
     {
         path : 'about',
         element : <About />,
         name : 'About',
-        isPrivate : false
+        role : []
     }
 ]

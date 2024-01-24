@@ -14,6 +14,7 @@ use App\Http\Controllers\ApiRateController;
 use App\Http\Controllers\ApiRoleController;
 use App\Http\Controllers\ApiSlideshowController;
 use App\Http\Controllers\ApiUserController;
+use App\Http\Controllers\ApiWistlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,8 @@ Route::middleware('verify-token:authencation')->group(function(){
     Route::apiResource('paymentMethods', ApiPaymentMethodController::class)->only(['index','show']);
     Route::apiResource('invoices', ApiInvoiceController::class)->only(['store']);
     Route::get('getCartByUser', [ApiCartController::class, 'getCartByUser']);
+    Route::apiResource('wishlists', ApiWistlistController::class);
+
     Route::prefix('get')->group(function(){
 
     });

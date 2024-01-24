@@ -9,6 +9,7 @@ use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ApiInvoiceController extends Controller
 {
@@ -29,10 +30,20 @@ class ApiInvoiceController extends Controller
         try {
             DB::transaction(function () use($request,){
                 function generateCode(){
-                    $prefix = 'KVH'; // Tiền tố cho mã hoá đơn (tuỳ chọn)
-                    $randomNumber = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
-                    $code = $prefix.Carbon::now()->getTimestampMs().$randomNumber;
-                    return $code;
+                    // Lấy ngày hiện tại
+                    $currentDate = Carbon::now()->format('ymd');
+
+                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $charactersLength = strlen($characters);
+                    $randomString = '';
+                
+                    for ($i = 0; $i < 10; $i++) {
+                        $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
+                    }
+
+                    // Kết hợp ngày và chuỗi ngẫu nhiên để tạo mã đơn hàng
+                    $orderCode = $currentDate . $randomString;
+                    return $orderCode;
                 }
                 $code = '';
                 do {

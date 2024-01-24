@@ -34,7 +34,7 @@ export default function UserProfile() {
         .catch(err => console.log('Gọi API profile bị lỗi'))
     }, [])
     console.log(profile);
-    return (
+    return ( 
         <PageLayout>
             <Row> 
                 <Col xl={12}>
