@@ -45,7 +45,7 @@ Route::middleware('verify-token:authencation')->group(function(){
     Route::apiResource('invoices', ApiInvoiceController::class)->only(['store']);
     Route::get('getCartByUser', [ApiCartController::class, 'getCartByUser']);
     Route::apiResource('wishlists', ApiWistlistController::class);
-
+ 
     Route::prefix('get')->group(function(){
 
     });
@@ -76,6 +76,7 @@ Route::middleware('verify-token:authencation')->group(function(){
 // Api không cần đăng nhập
 Route::apiResource('products',ApiProductController::class)->only(['index','show']);
 Route::apiResource('product_types',ApiProducttypeController::class)->only(['index','show']);
+Route::get('getProductsByCriteria', [ApiProductController::class, 'getProductsByCriteria'])->withoutMiddleware(['throttle']);
 
 
 /// ------------------------------

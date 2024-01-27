@@ -143,4 +143,42 @@ class ApiProductController extends Controller
             ], 404);
         }
     }
+    public function getProductsByCriteria(Request $request){
+        $query = Product::query();
+
+        // Lọc theo danh mục
+        if ($request->has('product_type_id')) {
+            $category = $request->input('product_type_id');
+            $query->whereIn('product_type_id', $category);
+        }
+    
+        // Lọc theo tên
+        if ($request->has('name')) {
+            $name = $request->input('name');
+            $query->where('name', 'like', "%$name%");
+        }
+    
+        // Lọc theo giá
+        if ($request->has('price')) {
+            $price = $request->input('price');
+            if(isset($price['min']) && $price['min'] != 0)
+            {
+                $query->where('price', '>=', $price['min']);
+            }
+            if(isset($price['max']) && $price['max'] != 0)
+            {
+                $query->where('price', '<=', $price['max']);
+
+            }
+        }
+    
+        // Lọc theo số sao
+        if ($request->has('rating')) {
+            $rating = $request->input('rating');
+            $query->where('rating', '>=', $rating);
+        }
+    
+        $products = $query->with('productType')->get(); 
+        return response()->json($products);
+    }
 }

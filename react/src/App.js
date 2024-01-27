@@ -26,6 +26,9 @@ import ProductEdit from './pages/master/ProductEdit';
 import UserEdit from './pages/master/UserEdit';
 import UserCreate from './pages/master/UserCreate';
 import CommentList from './pages/master/CommentList';
+import { WishList } from './components/wishlist/WishList';
+import { ProductSearch } from './components/product_search/ProductSearch';
+import { ProductSearchOption } from './components/product_search/ProductSearchOption';
 
 
 // Admin
@@ -49,11 +52,16 @@ function App() {
   })
   console.log('trạng thái ',isLogin);
   return  <> <Routes>
+
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/about" element={<About />} />
         <Route path="/payments" element={<Payment />} />
+        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/search" element={<ProductSearchOption />} /> 
+
+
       </Route>
       <Route path="accounts" element={<Layout />}>
         <Route path="register" element={<PageRegister />} />

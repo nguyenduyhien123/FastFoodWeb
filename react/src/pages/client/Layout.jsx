@@ -1,6 +1,7 @@
 import Footer from "../../components/footer/Footer"
 import Header from "../../components/headerFrontend/Header"
 import { Outlet, Link } from "react-router-dom";
+import { Navigation } from "../../components/navigation/Navigation";
 
 const Layout = () => {
     return <>

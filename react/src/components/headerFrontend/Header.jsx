@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import Cart from '../carts/Cart'
 import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
+import { ProductSearch } from '../product_search/ProductSearch'
 
 const navLinks = [
        {
@@ -34,16 +35,16 @@ const Header = () => {
        const menuRef = useRef()
 
        const menuToggle = () => menuRef.current.classList.toggle('active_menu')
-       
+
        return (
               <header className="header_web">
                      <Container>
                             <div className="navigation">
                                    <div className="logo">
                                           <Link to="/">
-                                          <h2 className='d-flex align-items-center gap-1'>
-                                                 <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
-                                          </h2>
+                                                 <h2 className='d-flex align-items-center gap-1'>
+                                                        <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
+                                                 </h2>
                                           </Link>
 
                                    </div>
@@ -61,18 +62,23 @@ const Header = () => {
                                                  </ul>
 
                                                  <div className="menu_right">
-                                                        <div className="custom_search">
-                                                               <input type="text" placeholder='Search item...' />
-                                                               <span><i class="ri-search-line"></i></span>
-                                                        </div>
+                                                       <ProductSearch></ProductSearch>
                                                  </div>
                                           </div>
                                    </div>
-                                   <div className="avatar">
-                                        <DropdownAvatar></DropdownAvatar>
+                                   <div className="d-flex list-action align-items-center gap-4">
+
+                                          <div className="avatar">
+                                                 <DropdownAvatar></DropdownAvatar>
+                                          </div>
+                                          <Link to={"/wishlist"}>
+                                          <button class="material-symbols-outlined favorite">
+                                                 favorite
+                                          </button>
+                                          </Link>
                                    </div>
                                    <div>
-                                          <Cart/>
+                                          <Cart />
                                    </div>
                                    <div className="mobile_menu">
                                           <span><i class="ri-menu-line " onClick={menuToggle}></i></span>
