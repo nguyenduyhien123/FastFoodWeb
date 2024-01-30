@@ -1,0 +1,32 @@
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 0;
+    // background-color: #e31837;
+    .nav_list {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        list-style: none;
+        gap : 40px;
+        li a {
+            text-transform: uppercase;
+            display: block;
+            transition: background-color .2s linear;
+            padding: 12px 20px;
+            border-radius: 10px 10px 0 0;
+            font-family: 'MergeBlack', sans-serif;
+            font-weight: bold;
+            &:hover {
+                color: #e31837;
+                background-color: #F4D2D6;
+                text-decoration: none;
+                -webkit-transition: background-color .2s linear;
+                -o-transition: background-color .2s linear;
+                transition: background-color .2s linear;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,172 @@
+{
+    "pageTitle": "product list",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "product" },
+        { "text": "list" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "total products", "digit": "547", "icon": "shopping_bag", "variant": "lg blue" }, 
+        { "title": "total categories", "digit": "605", "icon": "widgets", "variant": "lg green" },
+        { "title": "total barnds", "digit": "249", "icon": "verified_user", "variant": "lg purple" }
+    ],
+    "product": {
+        "filter":[
+            { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+            { "label": "rating by", "option": ["1 star", "2 star", "3 star", "4 star", "5 star"] },
+            { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+            { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] }
+        ],
+        "thead": ["product", "category", "brand", "price", "stock", "rating", "order", "sales", "action"],
+        "tbody": [
+            {
+                "src": "images/product/01.webp",
+                "alt": "scart",
+                "heading": "Tops and skirt set for Female", 
+                "descrip": "Women's exclusive summer Tops and skirt set for Female Tops and skirt set", 
+                "category": "womans",
+                "brand": "richman",
+                "price": { "present": "$19.00", "previous": "$21.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.9", "number": "16" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/02.webp",
+                "alt": "scart",
+                "heading": "Leather belt steve madden men's", 
+                "descrip": "Steve madden men's dress casual cvery cay ceather belt", 
+                "category": "mans",
+                "brand": "lubana",
+                "price": { "present": "$14.00" },
+                "stock": "23",
+                "order": "189",
+                "sales": "$9k", 
+                "rating": { "icon": "star", "percent": "4.5", "number": "38" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/03.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00", "previous": "44.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.1", "number": "69" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/04.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "kidz",
+                "brand": "ecstasy",
+                "price": { "present": "33.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.4", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/05.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "accessory",
+                "brand": "ecstasy",
+                "price": { "present": "33.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "5", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/06.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "3.7", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/07.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00", "previous": "44.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.5", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/08.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.3", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/09.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00", "previous": "44.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "4.8", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            },
+            {
+                "src": "images/product/10.webp",
+                "alt": "scart",
+                "heading": "Existing product name", 
+                "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                "category": "womans",
+                "brand": "ecstasy",
+                "price": { "present": "33.00" },
+                "stock": "30",
+                "order": "380",
+                "sales": "$38k", 
+                "rating": { "icon": "star", "percent": "3.9", "number": "47" },
+                "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+            }
+        ]
+    }
+}

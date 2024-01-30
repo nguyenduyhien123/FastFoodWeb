@@ -1,0 +1,188 @@
+.mc-sidebar {
+    @include position-top-left(fixed, 75px, -270px, 3);
+    @include padding(20px, 17px, 20px, 20px);
+    width: 270px;
+    overflow-y: scroll;
+    height: calc(100vh - 75px);
+    @include transition-linear;
+
+    @include laptop-breakpoint {
+        z-index: 5;
+        background-color: var(--bodyBG);
+        border-#{$end-direction}: 1px solid var(--lightGray);
+    }
+
+    @include mobile-breakpoint {
+        top: 62px;
+        height: calc(100vh - 62px);
+    }
+
+    &.active {
+        #{$start-direction}: 0px;
+    }
+}
+
+.mc-sidebar-menu {
+    margin-bottom: 25px;
+}
+
+.mc-sidebar-menu-title {
+    @include text-font(13px, 600);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: $gray-500;
+}
+
+.mc-sidebar-menu-item {
+    margin-bottom: 3px;
+
+    &.focused {
+        .mc-sidebar-menu-btn  {
+            color: var(--activeColor);
+            background-color: var(--activeBG);
+        }
+    }
+    
+    &.active {
+        .mc-sidebar-menu-btn  {
+            color: var(--activeColor);
+            background-color: var(--activeBG);
+            
+            small { transform: rotate(0deg); }
+        }
+
+        .mc-sidebar-dropdown-list {
+            height: auto;
+            overflow: visible;
+            padding: 10px 0px;
+        }
+    }
+}
+
+.mc-sidebar-menu-btn {
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 8px;
+    @include flex-dimension(center, start, 0px 12px);
+    @include transition-linear;
+
+    &:hover { 
+        background-color: var(--hoverBG); 
+    }
+
+    i { 
+        font-size: 22px; 
+        @include transition-linear;
+    }
+
+    span {
+        @include text-font(15px, 500);
+        text-transform: capitalize;
+        text-align: $start-direction;
+        flex-grow: 1;
+    }
+
+    sup {
+        line-height: 18px;
+        letter-spacing: 0.3px;
+        @include text-font(10px, 600);
+        text-transform: uppercase;
+        color: var(--lightColor);
+
+        &.square {
+            padding: 0px 5px 1px;
+            border-radius: 4px;
+        }
+
+        &.round {
+            border-radius: 15px;
+            padding: 0px 4px 1px;
+        }
+
+        &.red { background: $red-600; }
+        &.blue { background: $blue-600; }
+        &.green { background: $green-600; }
+        &.purple { background: $purple-600; }
+        &.yellow { background: $yellow-600; }
+        &.primary { background: var(--primaryHEX); }
+    }
+
+    small {
+        font-size: 20px;
+        transform: rotate(-90deg);
+        @include transition-linear;
+    }
+}
+
+.mc-sidebar-dropdown-list {
+    height: 0px;
+    overflow: hidden;
+    margin: 0px 20px;
+    border-#{$start-direction}: 1px solid var(--deepBorder);
+    @include transition-linear;
+}
+
+.mc-sidebar-dropdown-item {
+    &.active {
+        .mc-sidebar-dropdown-link {
+            color: var(--primaryHEX);
+
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.mc-sidebar-dropdown-link {
+    width: 100%;
+    font-size: 15px;
+    position: relative;
+    text-transform: capitalize;
+    padding-#{$start-direction}: 20px;
+    margin: 6px 0px;
+    @include transition-linear;
+
+    &:hover { color: var(--primaryHEX); }
+
+    &::before {
+        content: "";
+        @include position-top-left(absolute, 0px, -1px, 1);
+        width: 2px;
+        height: 100%;
+        opacity: 0;
+        background-color: var(--primaryHEX);
+        @include transition-linear;
+    }
+
+    &:hover {
+        &::before { opacity: 1; }
+    }
+}
+
+.mc-sidebar-logout {
+    padding: 45px;
+    border-radius: 8px;
+    background: linear-gradient(rgba(var(--primaryRGB), 25%), rgba(var(--primaryRGB), 40%));
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        @include position-top-left(absolute, 15px, 15px, 1);
+        @include content-center(30px, 30px, 50%);
+        background: linear-gradient(rgba(var(--primaryRGB), 25%), rgba(var(--primaryRGB), 40%));
+    }
+
+    &::after {
+        content: "";
+        @include position-top-right(absolute, -40px, -10px, 1);
+        @include content-center(80px, 80px, 50%);
+        background: linear-gradient(rgba(var(--primaryRGB), 25%), rgba(var(--primaryRGB), 40%));
+    }
+
+    .mc-btn {
+        margin: 0 auto;
+    }
+}

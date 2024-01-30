@@ -1,0 +1,163 @@
+.mc-label-field-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &.label-row { 
+        flex-direction: row;
+        justify-content: start;
+    }
+
+    &.label-col { 
+        flex-direction: column;
+        align-items: start;
+    }
+
+    &.label-row-reverse {
+        flex-direction: row-reverse;
+        justify-content: start;
+    }
+
+    &.label-col-reverse {
+        flex-direction: column-reverse;
+        align-items: start;
+    }
+}
+
+.mc-label-field-title {
+    @include text-font(12px, 700);
+    text-transform: uppercase;
+    color: var(--headingColor);
+}
+
+.mc-label-field-input,
+.mc-label-field-select,
+.mc-label-field-textarea {
+    padding: 0px 15px;
+    border-radius: 8px;
+    @include text-font(14px, 500);
+    border: 1px solid var(--deepBorder);
+    background-color: var(--lightGray);
+
+
+    &.w-sm { width: 200px; }
+    &.w-md { width: 300px; }
+    &.w-lg { width: 400px; }
+    &.w-xl { width: 500px; }
+    &.w-100 { width: 100%; }
+    &.w-fit { width: fit-content; }
+
+    &.h-sm { height: 42px; }
+    &.h-md { height: 45px; }
+    &.h-lg { height: 48px; }
+    &.h-xl { height: 50px; }
+    &.h-text-sm { height: 120px; }
+    &.h-text-md { height: 150px; }
+    &.h-text-lg { height: 180px; }
+    &.h-text-xl { height: 210px; }
+    &.h-multiple {
+        height: 100px;
+        padding: 12px 15px;
+        background-image: none;
+    }
+}
+
+.mc-label-field-textarea {
+    padding: 10px 15px;
+}
+
+.mc-label-field-select {
+    text-transform: capitalize;
+    background-image: url(../../images/dropdown.svg);
+    background-position: $end-direction 12px center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    appearance:none;
+    cursor: pointer;
+}
+
+// ICON FIELD STYLE
+.mc-icon-field {
+    @include flex-dimension(center, start, 0px);
+    padding: 0px 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--deepBorder);
+    background-color: var(--lightBG);
+    @include transition-linear;
+
+    &:focus-within {
+        border-color: var(--primaryHEX);
+        i { color: var(--primaryHEX) }
+        button { opacity: 1; }
+    }
+
+    &.textarea {
+        align-items: start;
+
+        i { margin-top: 14px; }
+        textarea { padding: 12px; resize: none; }
+    }
+
+    &.gray {
+        background-color: var(--thinGray);
+        border-color: var(--deepBorder);
+    }
+
+    &.light {
+        background-color: $gray-100;
+        border-color: $gray-200;
+    }
+
+    &.white {
+        background-color: var(--lightBG);
+        border-color: $gray-100;
+    }
+
+    &.w-sm { width: 200px; }
+    &.w-md { width: 300px; }
+    &.w-lg { width: 400px; }
+    &.w-xl { width: 500px; }
+    &.w-100 { width: 100%; }
+    &.w-fit { width: fit-content; }
+
+    &.h-sm { height: 42px; }
+    &.h-md { height: 45px; }
+    &.h-lg { height: 48px; }
+    &.h-xl { height: 50px; }
+    &.h-text-sm { height: 120px; }
+    &.h-text-md { height: 150px; }
+    &.h-text-lg { height: 180px; }
+    &.h-text-xl { height: 210px; }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        height: 100%;
+        padding: 0px 12px;
+        background-color: var(--thinGray);
+    }
+
+    select {
+        font-size: 14px;
+        text-transform: capitalize;
+        background-image: url(../../images/dropdown.svg);
+        background-position: $end-direction 0px center;
+        background-repeat: no-repeat;
+        background-size: 12px;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    i,
+    button {
+        font-size: 20px;
+        @include transition-linear;
+    }
+
+    button {
+        opacity: 0;
+        @include transition-linear;
+    }
+}

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,8 +17,8 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
 
-    public function comment():HasMany{
-        return $this->hasMany(comment::class);
+    public function comments():HasMany{
+        return $this->hasMany(Comment::class);
     }
 
     public function role(){
@@ -38,14 +40,18 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
-     */
+     */ 
     protected $fillable = [
         'name',
         'email',
         'password',
         'firstname',
         'lastname',
-        'phone'
+        'phone',
+        'avatar',
+        'role_id',
+        'birthday',
+        'password'
     ];
 
     /**
@@ -67,4 +73,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function getFullnameAttribute(){
+        return $this->lastname .' '.$this->firstname;
+    }
+    public function getCreatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
+    }
+    public function getUpdatedAtAttribute($val){
+        return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
+    }
+    protected $appends = ['fullname'];
 }

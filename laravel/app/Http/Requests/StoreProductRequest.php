@@ -31,7 +31,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:5000',
-            'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
+            'image[]' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
             'price' => 'required|integer|min:1000|max:1000000000',
             'product_type_id' => 'required|integer|exists:product_types,id',
         ];
@@ -45,7 +45,8 @@ class StoreProductRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Tên Sản phẩm'
+            'name' => 'Tên Sản phẩm',
+            'description' => 'Mô tả sản phẩm'
         ];
     }
 }

@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => env('TIME_ZONE','UTC'),
+    'timezone' => env('Asia/Ho_Chi_Minh','Asia/Ho_Chi_Minh'),
 
     /*
     |--------------------------------------------------------------------------
@@ -165,7 +165,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,

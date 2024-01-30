@@ -1,0 +1,202 @@
+{
+    "pageTitle": "Bình luận theo sản phẩm",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "product" },
+        { "text": "list" }
+    ],
+    "search": {
+        "type": "search",
+        "icon": "search",
+        "fieldSize": "w-100 h-sm",
+        "placeholder": "Search username"
+    },
+    "dots": {
+        "icon": "dialpad",
+        "menu": [
+            { "icon": "account_circle", "text": "active users" },
+            { "icon": "question_answer", "text": "all conversations" },
+            { "icon": "mark_chat_unread", "text": "unread messages" },
+            { "icon": "mark_chat_read", "text": "read messages" }
+        ]
+    },
+    "profDots": {
+        "icon": "more_vert",
+        "menu": [
+            { "icon": "account_circle", "text": "view profile" },
+            { "icon": "mark_chat_read", "text": "mark as unread" },
+            { "icon": "delete", "text": "delete messages" },
+            { "icon": "remove_circle", "text": "block messages" }
+        ]
+    },
+    "actDots": {
+        "icon": "more_vert",
+        "menu": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "forward", "text": "forward" },
+            { "icon": "delete", "text": "delete" }
+        ]
+    },
+    "actions": [
+        { "icon": "remove_circle", "event": "handleBlock", "title": "Block" },
+        { "icon": "delete", "event": "handleDelete", "title": "Delete" },
+        { "icon": "mark_chat_read", "event": "handleReading", "title": "Reading" },
+        { "icon": "account_circle", "event": "handleProfile", "title": "Profile" }
+    ],
+    "users": [
+        {
+            "src": "images/avatar/01.webp",
+            "alt": "avatar",
+            "name": "miron mahmud",
+            "status": "online",
+            "active": "active",
+            "mark": "unread",
+            "time": "now",
+            "badge": "03",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/avatar/02.webp",
+            "alt": "avatar",
+            "name": "tahmina bonny",
+            "time": "3m",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/avatar/03.webp",
+            "alt": "avatar",
+            "name": "labonno khan",
+            "mark": "unread",
+            "time": "5h",
+            "badge": "01",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/avatar/04.webp",
+            "alt": "avatar",
+            "name": "shipon ahmed",
+            "status": "online",
+            "time": "7d",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/avatar/05.webp",
+            "alt": "avatar",
+            "name": "rabeya akter",
+            "time": "9s",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/avatar/06.webp",
+            "alt": "avatar",
+            "name": "shah nasrullah",
+            "time": "4w",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        },
+        {
+            "src": "images/logo.webp",
+            "alt": "avatar",
+            "name": "duyhien admin",
+            "status": "online",
+            "time": "now",
+            "text": "whats your current career opportunity position",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "account_circle", "text": "view profile" },
+                    { "icon": "mark_chat_read", "text": "mark as unread" },
+                    { "icon": "delete", "text": "delete messages" },
+                    { "icon": "remove_circle", "text": "block messages" }
+                ]
+            }
+        }
+    ],
+    "chats": [
+        {
+            "src": "images/avatar/01.webp",
+            "time": "2 minute ago!",
+            "text" :[
+                { "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo dolore animi dolores autem assumenda fuga consequuntur, laboriosam laborum minus provident error officia quasi atque deleniti.", "icon": ["delete", "fast_forward"] },
+                { "text": "Omnis dolorum tempora consequatur", "icon": ["delete", "fast_forward"] }
+            ]
+        },
+        {
+            "src": "images/logo.webp",
+            "time": "2 minute ago!",
+            "text" :[
+                { "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis dolorum tempora consequatur. Deleniti nisi libero!", "icon": ["delete", "fast_forward"] },
+                { "text": "Omnis dolorum tempora consequatur", "icon": ["delete", "fast_forward"] }
+            ]
+        },
+        {
+            "src": "images/avatar/01.webp",
+            "time": "2 minute ago!",
+            "text" :[
+                { "text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo dolore animi dolores autem assumenda fuga consequuntur, laboriosam laborum minus provident error officia quasi atque deleniti.", "icon": ["delete", "fast_forward"] },
+                { "text": "Omnis dolorum tempora consequatur", "icon": ["delete", "fast_forward"] }
+            ]
+        },
+        {
+            "src": "images/logo.webp",
+            "time": "2 minute ago!",
+            "text" :[
+                { "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis dolorum tempora consequatur. Deleniti nisi libero!", "icon": ["delete", "fast_forward"] },
+                { "text": "Omnis dolorum tempora consequatur", "icon": ["delete", "fast_forward"] }
+            ]
+        }
+    ]
+}

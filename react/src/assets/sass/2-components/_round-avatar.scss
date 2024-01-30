@@ -1,0 +1,61 @@
+.mc-round-avatar {
+    border-style: solid;
+    width: fit-content;
+    border-radius: 50%;
+    border-color: var(--primaryHEX);
+
+    img {
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &.xs {
+        border-width: 1px;
+
+        img {
+            width: 37px;
+            height: 37px;
+            border: 2px solid transparent;
+        }
+    }
+
+    &.sm {
+        border-width: 2px;
+
+        img {
+            width: 55px;
+            height: 55px;
+            border: 3px solid transparent;
+        }
+    }
+
+    &.md {
+        border-width: 2px;
+
+        img {
+            width: 85px;
+            height: 85px;
+            border: 3px solid transparent;
+        }
+    }
+
+    &.lg {
+        border-width: 2px;
+
+        img {
+            width: 115px;
+            height: 115px;
+            border: 3px solid transparent;
+        }
+    }
+
+    &.xl {
+        border-width: 2px;
+
+        img {
+            width: 145px;
+            height: 145px;
+            border: 3px solid transparent;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.mc-tab-card {
+    margin-bottom: 60px;
+}
+
+.mc-tab-card-title {
+    @include flex-dimension(center, start, 15px);
+    font-weight: 600;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    text-transform: capitalize;
+
+    &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: var(--lightBorder);
+    }
+}

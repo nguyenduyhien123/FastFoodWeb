@@ -13,6 +13,7 @@ return [
     'date' => ':attribute phải đúng định dạng ngày',
     'integer' => ':attribute phải là số nguyên',
     'string' => ':attribute phải là một chuỗi',
+    'before' => ':attribute phải trước ngày :date',
     'attributes' => [
         'name' => 'Tên sản phẩm',
         'price' => 'Giá sản phẩm',
@@ -23,6 +24,7 @@ return [
         'start_date' => "Ngày bắt đầu",
         'end_date' => "Ngày kết thúc",
         'order' => 'thứ tự',
+        'avatar' => 'Ảnh đại diện'
         // Thêm các thành phần nhãn khác tại đây
     ],
 ];

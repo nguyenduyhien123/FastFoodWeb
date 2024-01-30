@@ -1,0 +1,17 @@
+.mc-color-group {
+    @include grid-minmax(20px, 150px);
+}
+
+.mc-color {
+    div {
+        width: 100%;
+        height: 100px;
+        border-radius: 8px;
+    }
+
+    span {
+        @include flex-dimension(center, space-between, 0px);
+        font-size: 15px;
+        padding: 5px;
+    }
+}

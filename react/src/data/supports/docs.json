@@ -1,0 +1,35 @@
+{
+    "pageTitle": "documentation",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "supports" },
+        { "text": "documentation" }
+    ],
+    "docs": [
+        {
+            "heading": "01. How to install this react template?",
+            "describe": "First you need to open the entire project in any terminal. Then write this command <b>npm install</b> and press the enter button of the keyboard. After <b>node_modules</b> install complete then <b>npm start</b> this command should be run. After a while you can see your project installed and running in your default browser.",
+            "images": ["images/docs/npm_install.webp", "images/docs/node.webp", "images/docs/npm_start.webp"]
+        },
+        {
+            "heading": "02. How to live this project on my server?",
+            "describe": "Open the entire project in a terminal and use the <b>npm run build</b> command line. You see a folder named <b>build</b> will be created inside your project. Then Upload this build folder to your server.",
+            "images": ["images/docs/npm_build.webp", "images/docs/build.webp"]
+        },
+        {
+            "heading": "03. How do I change my page's path name?",
+            "describe": "Go to the app.js file of the project, you can see that the path of all the pages is defined there. From there you can change the path of your page via variable or string.",
+            "images": ["images/docs/app.webp", "images/docs/path.webp"]
+        },
+        {
+            "heading": "04. How do I change my primary brand color?",
+            "describe": "Open your project in the <b>vscode</b> editor. If the <b>live sass compiler</b> extension is not installed then install it. Once the installation is complete, click on <b>watch sass</b> under the code editor. Then change your brand color or any other color from public > sass > 1-helpers > _colors.scss file. But if you don't have good knowledge about sass then you can change from public > css > style.css file.",
+            "images": ["images/docs/sass.webp", "images/docs/watch.webp", "images/docs/color.webp", "images/docs/css.webp"]
+        },
+        {
+            "heading": "05. How to change my content like text, images, icon?",
+            "describe": "All the data in this template is arranged in JSON format. All kinds of data are kept there by creating JSON files according to the name of each page separately inside the <b>data folder</b>. Any changes from there will show on your website.",
+            "images": ["images/docs/data.webp", "images/docs/json.webp"]
+        }
+    ]
+}

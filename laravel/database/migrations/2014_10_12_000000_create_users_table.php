@@ -21,9 +21,12 @@ return new class extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('description')->nullable();
+            $table->string('avatar')->nullable();
             $table->bigInteger('role_id')->unsigned()->nullable();
             $table->date('birthday')->nullable();
             $table->string('phone', 10)->nullable();
+            $table->string('address')->nullable();
+
             $table->timestamp('phone_verified_at')->nullable();
             $table->tinyInteger('locked_end')->nullable();
             $table->timestamps();

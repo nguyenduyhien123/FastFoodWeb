@@ -1,0 +1,18 @@
+.mc-devices-card-head {
+    margin-bottom: 20px;
+    @include flex-dimension(start, space-between, 15px);
+    flex-wrap: wrap;
+
+    h5 {
+        line-height: 27px;
+        font-size: 17px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    .mc-icon-field {
+        margin-bottom: 0px;
+        background-color: var(--thinGray);
+        border-color: var(--lightBorder);
+    }
+}

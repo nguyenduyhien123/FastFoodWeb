@@ -1,0 +1,73 @@
+.form-group {
+    &.inline {
+        @include flex-dimension(center, start, 0px);
+
+        .form-label {
+            width: 70px;
+            flex-shrink: 0;
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.form-label {
+    @include text-font(13px, 700);
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--headingColor);
+}
+
+.form-select,
+.form-control {
+    width: 100%;
+    height: 45px;
+    padding: 0px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--deepBorder);
+    background-color: var(--lightGray);
+    @include text-font(15px, 500);
+    @include transition-linear;
+
+    &:focus-within {
+        box-shadow: none;
+        border-color: var(--primaryHEX);
+        background-color: var(--thinBorder);
+    }
+}
+
+textarea.form-control {
+    height: 134px;
+    padding: 15px 16px;
+}
+
+.form-select {
+    cursor: pointer;
+    background-position: $end-direction 18px center;
+}
+
+.form-control[type=file]::-webkit-file-upload-button,
+.form-control[type=file]::file-selector-button {
+    padding: 17px 12px;
+    font-size: 15px;
+    border: none;
+    background: none;
+    color: var(--textColor);
+}
+
+.form-btn {
+    @include text-font (15px, 600);
+    @include flex-dimension (center, center, 0px 8px);
+    text-transform: uppercase;
+    width: 100%;
+    height: 55px;
+    line-height: 24px;
+    border-radius: 0px;
+    padding: 14px 25px;
+    letter-spacing: 0.5px;
+    color: var(--lightColor);
+    background-color: var(--primaryHEX);
+    box-shadow: var(--btnBoxShadow);
+    @include transition-linear;
+
+    &:focus { box-shadow: var(--btnBoxShadow); }
+}

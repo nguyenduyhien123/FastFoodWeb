@@ -1,0 +1,36 @@
+.mc-analytics-card {
+    padding: 22px;
+    border-radius: 8px;
+    background-color: var(--cardBG);
+    @include transition-linear;
+
+    &:hover {
+        box-shadow: var(--cardBoxShadow);
+    }
+
+    &.purple { background: linear-gradient($purple-500, $purple-700); }
+    &.yellow { background: linear-gradient($yellow-500, $yellow-700); }
+    &.green { background: linear-gradient($green-500, $green-700); }
+    &.blue { background: linear-gradient($blue-500, $blue-700); }
+    &.red { background: linear-gradient($red-500, $red-700); }
+}
+
+.mc-analytics-card-group {
+    margin-bottom: 10px;
+    @include flex-dimension(start, space-between, 0px);
+
+    .mc-dropdown-toggle  i { color: var(--lightColor); }
+}
+
+.mc-analytics-card-content {
+    h3 {
+        margin-bottom: 3px;
+        color: var(--lightColor);
+    }
+
+    p {
+        font-size: 15px;
+        color: var(--lightColor);
+        text-transform: capitalize;
+    }
+}

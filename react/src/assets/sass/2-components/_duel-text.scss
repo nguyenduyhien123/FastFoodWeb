@@ -1,0 +1,41 @@
+.mc-duel-text {
+    display: flex;
+    flex-direction: column;
+
+    &.xs {
+        gap: 4px;
+        .mc-duel-text-title { font-size: 14px; }
+        .mc-duel-text-descrip { font-size: 12px; font-weight: 500; }
+    }
+
+    &.sm {
+        gap: 6px;
+        .mc-duel-text-title { font-size: 16px; }
+        .mc-duel-text-descrip { font-size: 14px; }
+    }
+
+    &.md {
+        gap: 8px;
+        .mc-duel-text-title { font-size: 18px; }
+        .mc-duel-text-descrip { font-size: 15px; }
+    }
+
+    &.lg {
+        gap: 10px;
+        .mc-duel-text-title { font-size: 20px; }
+        .mc-duel-text-descrip { font-size: 17px; }
+    }
+}
+
+.mc-duel-text-title {
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.mc-duel-text-descrip {
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: $start-direction;
+    text-transform: lowercase;
+}
