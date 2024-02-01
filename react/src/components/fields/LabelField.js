@@ -15,7 +15,7 @@ export default function LabelField({ label, labelDir, fieldSize, option, type, p
             :
                 <Select className={`mc-label-field-select ${ fieldSize || "w-md h-sm" }`} { ...rest }>
                     {option?.map((item, index) => (
-                        <Option key={ index } selected={index === 0 ? 'true' : 'false'} value={ item?.id || item }>{ item?.name || item}</Option>
+                        <Option key={ index } selected={index === 0 ? 'true' : 'false'} value={ item?.id || item }>{ item?.name || item?.name_vi || item}</Option>
                     ))}
                 </Select>
             }

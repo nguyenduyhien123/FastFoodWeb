@@ -24,7 +24,7 @@ export default function ProductList() {
     ])
     const headTableProduct = ['TÊN SẢN PHẨM','GIÁ','DANH MỤC','TRẠNG THÁI', 'SAO','NGÀY TẠO','CẬP NHẬT LẦN CUỐI','HÀNH ĐỘNG'];
     const [productTypes, setProductTypes] = useState([]);
-    useEffect(() => {
+    const getAllProduct = () => {
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/products/',
@@ -36,14 +36,6 @@ export default function ProductList() {
             products.forEach(item => {
                 item.image = JSON.parse(item.image)
             });
-            products.forEach(item => {
-                Object.keys(item?.image).forEach(imageItem => {
-                    if(item?.image[imageItem]?.startsWith('https') == false)
-                    {
-                        item.image[imageItem] = 'http://localhost:8000/storage/uploads/' + item.image[imageItem];
-                    }
-                })
-            });
             setProducts(products)
             console.log(res.data);
             setIsLoadData(true)
@@ -51,6 +43,9 @@ export default function ProductList() {
         .catch(err => {
 
         })
+    }
+    useEffect(() => {
+        getAllProduct();
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/product_types/',
@@ -134,7 +129,7 @@ export default function ProductList() {
                                 <ProductsTable 
                                     thead = { headTableProduct } 
                                     tbody = { products } 
-                                    setDataProductTable = {setProducts}
+                                    getAllProduct = {getAllProduct}
                                 />
                                 {/* {isLoadData ? <Pagination onPageChange={setProductsLoad} data={products} rows={5}/> : ''} */}
                             </Col>

@@ -21,6 +21,12 @@
         // &:nth-child(4) { grid-column: 7 / 10; }
         // &:nth-child(5) { grid-column: 10 / 13; }
     }
+    .image-active-show
+    {
+        height : 300px;
+        object-fit: contain;
+        border-color: var(--primaryHEX);
+    }
     .image-active
     {
         border-color: red;
@@ -28,7 +34,11 @@
     &.thumbnail
     {
         grid-template-columns: repeat(6, 1fr);
-
+        img
+        {
+            height: 100px;
+            object-fit: cover;
+        }
     }
 }
 
@@ -46,7 +56,7 @@
 }
 
 .mc-product-view-meta {
-    @include flex-dimension(start, start, 0px);
+    @include flex-dimension(center, start, 0px);
 
     i { 
         font-size: 20px;
@@ -54,7 +64,7 @@
     }
 
     h5 {
-        width: 90px;
+        width: 150px;
         font-size: 15px;
         text-transform: capitalize;
     }
@@ -65,7 +75,7 @@
     }
 
     p {
-        font-size: 15px;
+        font-size: 20px;
         line-height: 18px;
         text-transform: capitalize;
 

@@ -8,7 +8,10 @@ use App\Models\Product;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ApiProductController extends Controller
 {
@@ -25,19 +28,19 @@ class ApiProductController extends Controller
                 'name' => $request['name'],
                 'description' => $request['description'],
                 'price' => $request['price'],
-                'image' => '{}', 
+                'image' => '{}',
                 'product_type_id' => $request['product_type_id'],
                 'star' => 5,
-            ]);
-            $listImage = [];
-            $files = $request->file('image');
-            foreach($files as $file)
-            {
-                $nameFile = Str::random(20).Str::random(20).'_product_'.$product->id.'.'.$file->getClientOriginalExtension();
-                $file->storeAs('public/Uploads', $nameFile);
-                array_push( $listImage, $nameFile);
-            }
-            $product->image =  json_encode($listImage, JSON_FORCE_OBJECT);
+            ]
+        );
+        $listImage = [];
+        $files = $request->file('image');
+        foreach ($files as $file) {
+            $nameFile = Str::random(20) . Str::random(20) . '_product_' . $product->id . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/Uploads', $nameFile);
+            array_push($listImage, $nameFile);
+        }
+        $product->image =  json_encode($listImage, JSON_FORCE_OBJECT);
         $product->save();
         return $product;
     }
@@ -56,41 +59,74 @@ class ApiProductController extends Controller
 
     public function update(UpdateProductRequest $request, $id)
     {
-        $data = $request->all();
-        $images = $data['image'];
-        foreach ($images as $image) {
-            $arr[] = 'Chuỗi';
-            // if ($image->isValid()) {
-            //     // Lấy kiểu MIME của tệp tin
-            //     $mimeType = $image->getMimeType();
-    
-            //     // Kiểm tra kiểu MIME có phải là hình ảnh
-            //     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            //     if (in_array($mimeType, $allowedMimeTypes)) {
-            //         // Xử lý khi tệp tin không phải là hình ảnh
-            //         array_push($arr, 'Hình ảnh');
-            //     }
-    
-            //     // Tiếp tục xử lý khi tệp tin là hình ảnh
-            // } else {
-            //     // Xử lý khi tệp tin không hợp lệ
-            //     array_push($arr, 'Chuỗi');
-            // }
-        }
-        return $arr;
         $product = Product::find($id);
         if (!empty($product)) {
             $product->name = $request->name;
             $product->description = $request->description;
             $product->price = $request->price;
             $product->status = $request->status;
-            if ($request->hasFile('image')) {
-                $path = $request->image->store("upload/product/{$product->id}", 'public');
-                $product->image = json_encode([$path], JSON_FORCE_OBJECT);
+            // Lấy các hình ảnh đã bị xoá
+            $imagesDelete = $request->input('imageDelete');
+            // Lấy các ảnh cũ
+            $imageOld = json_decode($product->image, true);
+            if (!empty($imagesDelete)) {
+                // Lặp qua mảng các ảnh bị xoá và thực hiện xoá trong mảng ảnh cũ
+                foreach ($imagesDelete as $key => $val) {
+                    $index = array_search($val, $imageOld);
+                    if ($index !== false) {
+                        array_splice($imageOld, $index, 1);
+                        // echo "Xoá thành công  $index";
+                    }
+                    else
+                    {
+                        // echo "xoá thất bại $index";
+                    }
+
+                    $filePath = "Uploads/$val";
+                    // Nếu file ảnh tồn tại thì thực hiện xoá ra khỏi public
+                    if (Storage::disk('public')->exists($filePath)) {
+                        // Xoá ảnh
+                        Storage::disk('public')->delete($filePath);
+                    }
+                }
             }
-            $product->product_type_id = $request->product_type_id;
-            $product->update();
-            return $product;
+            // Kiểm tra có upload ảnh
+            if ($request->hasFile('image')) {
+                $files = $request->file('image');
+                foreach ($files as $file) {
+                    $nameFile = Str::random(20) . Str::random(20) . '_product_' . $product->id . '.' . $file->getClientOriginalExtension();
+                    $file->storeAs('public/Uploads', $nameFile);
+                    array_push($imageOld, $nameFile);
+                }
+            }
+            if(!empty($imageOld))
+            {
+                if (!empty($imagesDelete)) {
+                    // Lặp qua mảng các ảnh bị xoá và thực hiện xoá trong mảng ảnh cũ
+                    foreach ($imagesDelete as $key => $val) {
+                        $filePath = "Uploads/$val";
+                        // Nếu file ảnh tồn tại thì thực hiện xoá ra khỏi public
+                        if (Storage::disk('public')->exists($filePath)) {
+                            // Xoá ảnh
+                            Storage::disk('public')->delete($filePath);
+                        }
+                    }
+                }
+                $product->image =  json_encode($imageOld, JSON_FORCE_OBJECT);
+                $product->product_type_id = $request->product_type_id;
+                $product->update();
+                return response()->json([
+                    'message' => "Cập nhật sản phẩm thành công",
+                ]);
+            }
+            else
+            {
+                throw new HttpResponseException(response()->json(['errors' => [
+                    'image' => ['Sản phẩm phải có ít nhất 1 hình ảnh']
+                ]], 422));
+            }
+
+
         } else {
             return response()->json([
                 'message' => "Không tìm thấy sản phẩm",
@@ -119,15 +155,16 @@ class ApiProductController extends Controller
     {
         return Product::where('product_type_id', $productTypeId)->get();
     }
-    public function getTotalProducts(){
+    public function getTotalProducts()
+    {
         return response()->json(['count' => Product::all()->count()]);
     }
-    public function updateStatusProduct(Request $request, $id){
+    public function updateStatusProduct(Request $request, $id)
+    {
         $product = Product::find($id);
         if (!empty($product)) {
             $status = $request->input('status');
-            if($status === true || $status === false)
-            {
+            if ($status === true || $status === false) {
                 $product->status = $status;
                 $product->save();
                 return response()->json([
@@ -137,13 +174,14 @@ class ApiProductController extends Controller
             return response()->json([
                 "message" => "Cập nhật bị lỗi"
             ]);
-                } else {
+        } else {
             return response()->json([
                 "message" => "Không tìm thấy sản phẩm"
             ], 404);
         }
     }
-    public function getProductsByCriteria(Request $request){
+    public function getProductsByCriteria(Request $request)
+    {
         $query = Product::query();
 
         // Lọc theo danh mục
@@ -151,34 +189,31 @@ class ApiProductController extends Controller
             $category = $request->input('product_type_id');
             $query->whereIn('product_type_id', $category);
         }
-    
+
         // Lọc theo tên
         if ($request->has('name')) {
             $name = $request->input('name');
             $query->where('name', 'like', "%$name%");
         }
-    
+
         // Lọc theo giá
         if ($request->has('price')) {
             $price = $request->input('price');
-            if(isset($price['min']) && $price['min'] != 0)
-            {
+            if (isset($price['min']) && $price['min'] != 0) {
                 $query->where('price', '>=', $price['min']);
             }
-            if(isset($price['max']) && $price['max'] != 0)
-            {
+            if (isset($price['max']) && $price['max'] != 0) {
                 $query->where('price', '<=', $price['max']);
-
             }
         }
-    
+
         // Lọc theo số sao
         if ($request->has('rating')) {
             $rating = $request->input('rating');
             $query->where('rating', '>=', $rating);
         }
-    
-        $products = $query->with('productType')->get(); 
+
+        $products = $query->with('productType')->get();
         return response()->json($products);
     }
 }

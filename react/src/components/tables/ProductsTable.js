@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Row, Col, Tab, Tabs, Form as FormBootstrap } from "react-bootstrap";
 
 
-export default function ProductsTable({ thead, tbody, setDataProductTable }) {
+export default function ProductsTable({ thead, tbody, getAllProduct }) {
 
     const [alertModal, setAlertModal] = useState(false);
     const [data, setData] = useState([]);
@@ -36,15 +36,6 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
             );
             setData(checkData);
         }
-    }
-    const getAllProduct = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8000/api/products/',
-            withCredentials: true,          
-        })
-        .then(res => setDataProductTable(res.data))
-        .catch(err => console.log('GỌI APi ds user bị lỗi'))
     }
     const handleDeleteProduct = (id) => {
         let data = { _method : "DELETE"};
@@ -132,17 +123,14 @@ export default function ProductsTable({ thead, tbody, setDataProductTable }) {
                             </Td>
                             <Td>
                                 <Box className="mc-table-product md">
-                                {(Array.isArray(item?.image) && item.image.length > 0) && (
-  <Image src={ item?.image[0] } alt={ item?.alt } /> 
-)}
-                                {/* {!item?.image &&  <Image src={ item?.image } alt={ item?.alt } />} */}
+                                {item?.image &&  <Image src={ item?.image[0]?.startsWith('https') ? item?.image[0] : `http://localhost:8000/storage/uploads/${item?.image[0]}`} alt={ item?.alt } />}
                                     <Box className="mc-table-group">
                                         <Heading as="h6">{ item?.name }</Heading>
                                         <Text>{ item?.description }</Text>
                                     </Box>
                                 </Box>
                             </Td>
-                            <Td>{ item?.price }</Td>
+                            <Td className={"fw-bold"}>{ item?.price }</Td>
                             <Td>{ item?.product_type?.name }</Td>
                             <Td>
                             <FormBootstrap.Check type="switch" name="status" label={ item?.status ? 'Còn hiệu lực' : 'Hết hiệu lực' } checked={item?.status} onChange={(e) => {

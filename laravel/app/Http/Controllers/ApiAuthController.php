@@ -71,9 +71,9 @@ class ApiAuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return response()->json(['error' => 'Tên đăng nhập hoặc mật khẩu không chính xác !!!'], 401);
         }
-        $payload = ['user_id' => Auth::id(), 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))];
+        $payload = ['user_id' => Auth::id(), 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp];
         $jwt = $this->encodeJWT($payload);
-        $cookie =   cookie('token', $jwt, 60, '/', 'localhost', false, true, false);
+        $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
         return response()->json([
             'message' => 'Thành công',
             'status' => 200,
@@ -111,9 +111,9 @@ class ApiAuthController extends Controller
             $userLog = User::create(['email' => $googleUser->getEmail(), 'lastname' => $googleUser->getName(), 'username' => $googleUser->getNickname(), 'avatar' => $googleUser->getAvatar(),'role_id' => 2]);
             $userLog->email_verified_at = Carbon::now();
             $userLog->save();
-            $payload = ['user_id' => $userLog->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))];
+            $payload = ['user_id' => $userLog->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp];
             $jwt = $this->encodeJWT($payload);
-            $cookie =   cookie('token', $jwt, 60, '/', 'localhost', false, true, false);
+            $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
@@ -122,7 +122,7 @@ class ApiAuthController extends Controller
         } else {
             $payload = ['user_id' => $user->id];
             $jwt = $this->encodeJWT($payload);
-            $cookie =   cookie('token', $jwt, 60, '/', 'localhost', false, true, false);
+            $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
@@ -152,9 +152,9 @@ class ApiAuthController extends Controller
         } catch (Exception $e) {
             return $e;
         }
-        $payload = ['user_id' => $user->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME')) ];
+        $payload = ['user_id' => $user->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp ];
         $jwt = $this->encodeJWT($payload);
-        $cookie =   cookie('token', $jwt, 60, '/', 'localhost', false, true, false);
+        $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
         return response()->json([
             'message' => 'Đăng ký Thành công',
             'description' => 'Vui lòng mở hộp thư trong email để xác thực tài khoản !',

@@ -39,9 +39,10 @@ const productSpecify = [
     { "icon": "pix", "title": "Danh mục", "text": product?.product_type?.name },
     // { "icon": "sell", "title": "Giá", "price": { "now": "$37.00", "old": "$42.00" } },
     { "icon": "sell", "title": "Giá", "text": product?.price},
-    { "icon": "shopping_cart", "title": "Còn hàng", "text": product?.status ? 'Còn' : 'Không' },
+    { "icon": "shopping_cart", "title": "Trạng thái", "text": product?.status ? 'Còn' : 'Không' },
     // { "icon": "hotel_class", "title": "Đánh giá", "text": "(03) review" },
-    { "icon": "verified", "title": "Ngày tạo", "text": product?.created_at }
+    { "icon": "verified", "title": "Ngày tạo", "text": product?.created_at },
+    { "icon" : "update", "title" : "Cập nhật lần cuối", "text" : product?.updated_at}
 ];
     useEffect(() => {
         axios({
@@ -75,12 +76,12 @@ const productSpecify = [
                 <Col xl={5}>
                     <DivideTitle title="Hình ảnh sản phẩm" className="mb-4" />
                     <Box className="mc-product-view-gallery">
-                        {isObjectWithProperties(product?.image) && <Image key={imageActive} src={product?.image[imageActive]} alt={`Ảnh sản phẩm`} />}
+                        {isObjectWithProperties(product?.image) && <Image className={"image-active-show"} key={imageActive} src={product?.image[imageActive].startsWith('https') ? product?.image[imageActive] : `http://localhost:8000/storage/uploads/${product?.image[imageActive]}`} alt={`Ảnh sản phẩm`} />}
                     </Box>
                     <Box className="mc-product-view-gallery thumbnail">
                         {product?.image && Object.keys(product?.image)?.map((item, index) => (
                             <>
-                                <img className={imageActive === item ? 'image-active' : ''} key={item} src={product?.image[item]} alt={`Ảnh sản phẩm`} onClick={() => setImageActive(item)} />
+                                <img className={imageActive === item ? 'image-active ' : ''} key={item} src={product?.image[item].startsWith('https') ? product?.image[item] : `http://localhost:8000/storage/uploads/${product?.image[item]}`} alt={`Ảnh sản phẩm`} onClick={() => setImageActive(item)} />
                             </>
                         ))}
                     </Box>
@@ -98,10 +99,10 @@ const productSpecify = [
                         {productSpecify?.map((item, index) => (
                             <Box key={index} className="mc-product-view-meta">
                                 <Icon type={item?.icon} />
-                                <Heading as="h5">{item?.title}</Heading>
+                                <Heading as="h4">{item?.title}</Heading>
                                 <Text as="span">:</Text>
-                                {item?.text && <Text as="p">{item?.text}</Text>}
-                                {item?.price && <Text as="p">{item?.price?.now} <del>{item?.price?.old}</del></Text>}
+                                {item?.text && <Text  as="p">{item?.text}</Text>}
+                                {item?.price && <Text as="p">{item?.price?.now} VND <del>{item?.price?.old}</del></Text>}
                                 {item?.list &&
                                     <List>
                                         {item?.list?.map((item, index) => (

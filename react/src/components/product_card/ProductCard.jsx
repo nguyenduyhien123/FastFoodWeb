@@ -35,7 +35,7 @@ const ProductCard = (props) => {
     return (
       <section className='product_card h-100 card' data-aos="flip-left" data-aos-duration="1000">
           <div className="product_img text-center">
-            <img src={image} alt="" className='w-75 ' />
+            <img src={image?.startsWith('https') ? image : `http://localhost:8000/storage/uploads/${image}`} alt="" className='w-75 ' />
           </div>
           <div className="product_content">
           <div className="rating d-flex justify-content-center">

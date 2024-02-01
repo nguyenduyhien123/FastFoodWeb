@@ -39,7 +39,7 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'firstname' => 'Hiện',
                 'lastname' => 'Nguyễn Duy',
-                'role_id' => 2,
+                'role_id' => 3,
                 'birthday' => '1990-01-01',
                 'phone' => '0943851465',
                 'phone_verified_at' => '2023-11-29',

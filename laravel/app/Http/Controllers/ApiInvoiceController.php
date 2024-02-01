@@ -6,6 +6,7 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Cart;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
+use App\Models\InvoiceTrack;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class ApiInvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::with('user','paymentMethod')->get();
+        $invoices = Invoice::with('user','paymentMethod','lastStatus.invoiceStatus','invoiceTracks')->get();
         return $invoices;
     }
 
@@ -55,10 +56,11 @@ class ApiInvoiceController extends Controller
                     'code' => $code,
                     'total_price' => 0,
                     'address' => $request->address,
-                    'status' => 'Chờ duyệt',
+                    // 'invoice_status_id' => 1,
+                    'paid_at' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
-                ]);
+                ]); 
                 $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
                 $totalInvoice = 0;
                 foreach($carts as $cart)
@@ -76,7 +78,17 @@ class ApiInvoiceController extends Controller
                     ]);
                 }
                 $invoice->total_price = $totalInvoice;
-                $invoice->save();               
+                $invoice->save();   
+                // Tạo track cho hoá đơn
+                InvoiceTrack::create([
+                    'invoice_id' =>  $invoice->id,
+                    'invoice_status_id' => 1,
+                    'description' => "Đơn hàng $code đã đặt",
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ])  ; 
+                    // Xoá giỏ hàng
+                    Cart::where('user_id',$request->user->id)->delete();;
             });
             return response()->json(['Tạo hoá đơn thành công']);
         } catch (\Exception $e) {
@@ -92,7 +104,7 @@ class ApiInvoiceController extends Controller
     public function show(string $id)
     {
 
-        $invoices = Invoice::with('user','paymentMethod', 'invoiceDetail.product')->where('id', $id)->get();
+        $invoices = Invoice::with('user','paymentMethod', 'invoiceDetail.product','lastStatus.invoiceStatus','invoiceTracks')->find($id);
         if(!empty($invoices))
         {
             return $invoices;

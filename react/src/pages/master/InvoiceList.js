@@ -68,6 +68,7 @@ export default function InvoiceList() {
                                     /> 
                                 </Col>
                             ))}
+                                                <button className="btn btn-success" onClick={() => getInvoiceList()}>Làm mới dữ liệu</button>
                         </Row>
                         <InvoiceTable thead={ data?.table.thead } tbody={ invoiceList } />
                         <Pagination />

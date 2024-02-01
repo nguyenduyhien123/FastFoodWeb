@@ -102,6 +102,7 @@ export default function ProductUpload() {
                                 <Label htmlFor="product"><Icon type="collections" /><Text>{uploadFile}</Text></Label>
                             </Box> 
                         </Box>
+                        {productError["image"] && <Text className="text-danger">{productError["image"][0]}</Text>}
                         <Anchor
                             className="mc-btn w-100 primary mt-5"
                             text="Thêm sản phẩm"

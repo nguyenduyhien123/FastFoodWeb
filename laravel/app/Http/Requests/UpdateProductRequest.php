@@ -31,7 +31,8 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique('products')->ignore($this->product)],
             'description' => ['required', 'string', 'max:255'],
-            // 'image' => 'image|mimes:jpg,jpeg,png,bmp|max:10240',
+            'image.*' => 'image|mimes:jpg,jpeg,png,bmp|max:20240',
+            'imageDelete' => 'array',
             'price' => 'required|integer|min:1000|max:1000000000',
             'product_type_id' => 'required|integer|exists:product_types,id',
             'status' => 'required|integer|min:0|max:1'
@@ -45,6 +46,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'Tên sản phẩm',
+            'description' => "Mô tả"
         ];
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiCommentController;
 use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiInvoiceController;
+use App\Http\Controllers\ApiInvoiceStatusController;
+use App\Http\Controllers\ApiInvoiceTrackController;
 use App\Http\Controllers\ApiPaymentMethodController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
@@ -55,6 +57,8 @@ Route::middleware('verify-token:authencation')->group(function(){
         Route::apiResource('users', ApiUserController::class); 
         Route::apiResource('roles', ApiRoleController::class); 
         Route::apiResource('invoices', ApiInvoiceController::class)->except(['store']);
+        Route::apiResource('invoice_statuses',ApiInvoiceStatusController::class);
+        Route::apiResource('invoice_tracks',ApiInvoiceTrackController::class);
         Route::get('getAllRoleExceptAdmin', [ApiRoleController::class, 'getAllRoleExceptAdmin']);
         Route::prefix('summary')->group(function(){
             Route::get('getTotalProducts',[ApiProductController::class,'getTotalProducts']);
@@ -109,5 +113,6 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::post('decode','verifySecureCode');
     Route::middleware('verify-token:verify-account')->get('verify-account','verifyAccount')->name('verify-account');
 });
+
 
 Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class,'getProductsByProductTypeId']);

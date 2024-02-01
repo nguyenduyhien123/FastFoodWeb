@@ -5,14 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
-class StoreProductRequest extends FormRequest
+class StoreInvoiceTrackRequest extends FormRequest
 {
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -29,26 +27,15 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:products,name',
-            'description' => 'required|string|max:5000',
-            'image' => 'required|array',
-            'image.*' => 'image|mimes:jpg,jpeg,png,bmp|max:5000',
-            'price' => 'required|integer|min:1000|max:1000000000',
-            'product_type_id' => 'required|integer|exists:product_types,id',
-        ];
-    }
-    public function messages()
-    {
-        return [
-
+            'invoice_id' => 'required|exists:invoices,id',
+            'invoice_status_id' => 'required|exists:invoice_statuses,id'
         ];
     }
     public function attributes()
     {
         return [
-            'name' => 'Tên Sản phẩm',
-            'description' => 'Mô tả sản phẩm',
-            'image[]' => 'Hình ảnh sản phẩm'
+            'invoice_id' => 'Mã hoá đơn',
+            'invoice_status_id' => 'Trạng thái hoá đơn',
         ];
     }
 }
