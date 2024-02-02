@@ -1,65 +1,107 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import DatePicker from 'react-date-picker';
-import 'react-date-picker/dist/DatePicker.css';
-import 'react-calendar/dist/Calendar.css';
+import { useContext, useEffect, useState } from 'react'
 import './UserInfo.scss'
+//
+import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
+import { LegendField, LegendTextarea, IconField } from "../../components/fields";
+import { Item, Anchor, Box, Button, Image, Text } from "../../components/elements";
+import { CardLayout, TabCard } from "../../components/cards";
+import { Breadcrumb, FileUpload } from "../../components";
+import PageLayout from "../../layouts/PageLayout";
+import data from "../../data/master/userEdit.json";
+import Swal from 'sweetalert2';
+// import 'sweetalert2/dist/sweetalert2.min.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+//
 
 export const UserInfo = () => {
-    const [userInfo, setUserInfo] = useState({birthday : new Date()});
+    const { userInfo } = useContext(AuthContext);
+    const [account, setAccount] = useState({});
+    const navigate = useNavigate();
+    const [accountError, setAccountError] = useState({});
     useEffect(() => {
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/accounts/',
-            withCredentials: true,          
+            withCredentials: true,
         })
-        .then(res => setUserInfo(res.data))
+            .then(res => setAccount(res.data))
+            .catch(() => {
+
+            })
     }, []);
+    const handleChooseImage = (e) => {
+        let name = e.target.name;
+        let file = e.target.files[0];
+        setAccount({ ...account, [name]: file })
+    }
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        setUserInfo({...userInfo, [name] : value})
+        setAccount({ ...account, [name]: value })
     }
     const handleSubmit = (e) => {
-      e.preventDefault();
+        let data = { ...account, _method: "PATCH" };
+        axios({
+            method: 'post',
+            url: `http://localhost:8000/api/accounts/${userInfo?.id}`,
+            withCredentials: true,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            data: data
+        })
+            .then(res => {
+                Swal.fire({
+                    title: res?.data?.message || "Cập nhật thành công",
+                    icon: 'success',
+                });
+                setAccountError([]);
+            })
+            .catch(res => {
+                Swal.fire({
+                    title: res?.response?.data?.message || "Cập nhật thất bại",
+                    icon: 'error',
+                });
+                setAccountError(res?.response?.data?.errors);
+            })
     }
-    console.log(userInfo);
-    return <div className="user-info mx-auto mt-5 w-50">
-    <h1 className="text-center fs-1 text-dark">Thông tin tài khoản</h1>
-       <form className='mt-4' onSubmit={handleSubmit}>
-       <div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="staticEmail" name='email' onChange={handleChange} value={userInfo?.email || ''} />
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputFullname" class="col-sm-4 col-form-label">Họ và tên đệm</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputFullname" name="fullname" onChange={handleChange} value={userInfo?.lastname || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputFullname" class="col-sm-4 col-form-label">Họ và tên</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputFullname" name="fullname" onChange={handleChange} value={userInfo?.firstname || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputTel" class="col-sm-4 col-form-label">Số điện thoại</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputTel" name="phonenumber" onChange={handleChange} value={userInfo?.phone || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputTel" class="col-sm-4 col-form-label">Ngày sinh</label>
-    <div class="col-sm-8">
-    <DatePicker name="date" onChange={(value) => {
-        setUserInfo({...userInfo, birthday : value}) 
-    }} value={userInfo?.birthday} format="dd/MM/y"/>
-    <button type='submit' className="button-submit">Cập nhật tài khoản</button>
-    </div>
-  </div>
-       </form>
+    console.log(account);
+    return <div className='user-info'>
+        <Row>
+            <Col xl={12}>
+                <Row>
+                    <h2 className='text-center'>Cập nhật tài khoản</h2>
+                    <Col xl={4}>
+                        {/* Ảnh đại diện */}
+                        {(account?.avatar instanceof File) && <Box className="mc-user-avatar"><Image src={URL.createObjectURL(account?.avatar)} alt={"Ảnh đại diện 1"} ></Image>
+                        </Box>}
+                        {!(account?.avatar instanceof File) && <Box className="mc-user-avatar"><Image src={account?.avatar?.startsWith('https') ? account?.avatar : (account?.avatar ? `http://localhost:8000/storage/uploads/${account?.avatar}` : `http://localhost:8000/storage/Uploads/no-avatar.png`)} alt={"Ảnh đại diện 2"} ></Image></Box>}
+
+                        <FileUpload icon="cloud_upload" text="Chọn ảnh" name="avatar" accept="image/png, image/jpeg, image/jpgm, image/gif" onChange={handleChooseImage} />
+                        {accountError?.avatar && <Text className={"text-danger text-center"}>{accountError?.avatar[0]}</Text>}
+                    </Col>
+                    <Col xl={8}>
+                        <Row>
+                            <Col xl={6}><LegendField title={"Họ"} value={account?.lastname} name="lastname" onInput={handleChange} alert={accountError?.lastname} /></Col>
+                            <Col xl={6}><LegendField title={"Tên"} value={account?.firstname || ""} name="firstname" onInput={handleChange} alert={accountError?.firstname} /></Col>
+                            <Col xl={6}><LegendTextarea title={"Mô tả"} value={account?.description || ""} name="description" onInput={handleChange} alert={accountError?.description}  draggable="false"
+/></Col>
+                            <Col xl={6}><LegendField title={"Email"} value={account?.email || ""} name="email" onInput={handleChange} alert={accountError?.email} readonly={true} /></Col>
+                            <Col xl={6}><LegendField title={"Số điện thoại"} value={account?.phone || ""}
+                                name="phone" onInput={handleChange} alert={accountError?.phone} /></Col>
+                            <Col xl={6}><LegendField title={"Giới tính"} option={[{ name: 'Nam' }, { name: 'Nữ' }]}
+                                value={account?.gender}
+                                name="gender" onInput={handleChange} alert={accountError?.gender} /></Col>
+                            <Col xl={6}><LegendField title={"Địa chỉ"} value={account?.address || ""} name="address" onInput={handleChange} alert={accountError?.address} /></Col>
+                            <Col xl={6}><LegendField type={"date"} title={"Ngày sinh"} value={account?.birthday || ""} name="birthday" onInput={handleChange} alert={accountError?.birthday} /></Col>
+                            <Button className="mc-btn primary  text-right" icon="add_circle" text="Cập nhật tài khoản" onClick={handleSubmit} />
+                        </Row>
+
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
     </div>
 }

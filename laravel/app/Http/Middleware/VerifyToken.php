@@ -39,7 +39,7 @@ class VerifyToken
                     return $next($request);
                 }
             }
-        }
+        } 
         else if(!empty($request->token) && $description === 'verify-account')
         {
             $jwt = $this->decodeJWT($request->token);

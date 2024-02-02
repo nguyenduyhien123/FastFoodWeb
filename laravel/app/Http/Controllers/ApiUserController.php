@@ -113,7 +113,7 @@ class ApiUserController extends Controller
             $user->delete();
             return response()->json(['message' => 'Xoá thành công']);
         }
-        return response()->json(['message' => 'Không tìm thấy người dùng này']);
+        return response()->json(['message' => 'Không tìm thấy người dùng này'], 404);
 
     }
     public function getTotalUser(){

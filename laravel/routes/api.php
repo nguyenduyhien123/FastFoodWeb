@@ -36,21 +36,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // Route::apiResource('roles', ApiRoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
-    // Route::apiResource('users', ApiUserController::class); 
     Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
-    Route::prefix('accounts')->controller(ApiAccountController::class)->group(function(){
-        Route::get('/','index');
-    });
     Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
     Route::apiResource('carts', ApiCartController::class);
     Route::apiResource('paymentMethods', ApiPaymentMethodController::class)->only(['index','show']);
     Route::apiResource('invoices', ApiInvoiceController::class)->only(['store']);
     Route::get('getCartByUser', [ApiCartController::class, 'getCartByUser']);
     Route::apiResource('wishlists', ApiWistlistController::class);
- 
-    Route::prefix('get')->group(function(){
 
+    Route::prefix('get')->group(function(){
     });
+    Route::apiResource('accounts',ApiAccountController::class)->only(['index']);
+    // Các route chủ sở hữu mới truy cập được
+    Route::middleware('check-account-access')->group(function(){
+        Route::apiResource('accounts',ApiAccountController::class)->except(['index']);
+    });
+
     // Các route liên quan đến admin
     Route::middleware('can:admin')->group(function(){
         Route::apiResource('products',ApiProductController::class)->except(['index','show']);
@@ -68,7 +69,6 @@ Route::middleware('verify-token:authencation')->group(function(){
             Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
             Route::get('getProductsAndComments', [ApiCommentController::class,'getProductsAndComments']);
             Route::get('getCommentsByCriteria', [ApiCommentController::class, 'getCommentsByCriteria']);
-            
         });
         Route::prefix('update')->group(function(){
             Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);
