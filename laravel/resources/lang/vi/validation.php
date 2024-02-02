@@ -3,9 +3,11 @@ return [
     'required' => ':attribute không được để trống.',
     'unique' => ':attribute đã tồn tại.',
     'max' => [
-        'string' => ':attribute không được vượt quá :max ký tự.',
+        'string' => ':attribute có tối đa :max ký tự.',
+        'numeric' => ':attribute phải nhỏ hơn :max. ',
     ],
     'min' => [
+        'string' => ':attribute có tối thiểu :min ký tự.',
         'numeric' => ':attribute phải lớn hơn hoặc bằng :min.',
     ],
     'exists' => ':attribute không tồn tại.',
@@ -14,6 +16,9 @@ return [
     'integer' => ':attribute phải là số nguyên',
     'string' => ':attribute phải là một chuỗi',
     'before' => ':attribute phải trước ngày :date',
+            'numeric' => 'The :attribute must be between :min and :max.',
+            'file' => 'The :attribute must be between :min and :max kilobytes.',
+            'array' => 'The :attribute must have between :min and :max items.',
     'attributes' => [
         'name' => 'Tên sản phẩm',
         'price' => 'Giá sản phẩm',

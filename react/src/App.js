@@ -67,6 +67,7 @@ function App() {
         <Route path="register" element={<PageRegister />} />
         <Route path="signin" element={isLogin ? <Navigate replace to="/"/> : <PageSignIn/>} />
         <Route path="info" element={<UserInfo />} />
+        <Route path="reset-password" element={<UserInfo />} />
       </Route>
       <Route path="products" element={<Layout />}>
         <Route path=":id" element = {<ProductPage/>}/>

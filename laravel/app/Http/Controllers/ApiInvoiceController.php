@@ -19,7 +19,7 @@ class ApiInvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::with('user','paymentMethod','lastStatus.invoiceStatus','invoiceTracks')->get();
+        $invoices = Invoice::with('user', 'paymentMethod', 'lastStatus.invoiceStatus', 'invoiceTracks')->get();
         return $invoices;
     }
 
@@ -29,15 +29,16 @@ class ApiInvoiceController extends Controller
     public function store(StoreInvoiceRequest $request)
     {
         try {
-            DB::transaction(function () use($request,){
-                function generateCode(){
+            DB::transaction(function () use ($request,) {
+                function generateCode()
+                {
                     // Lấy ngày hiện tại
                     $currentDate = Carbon::now()->format('ymd');
 
                     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                     $charactersLength = strlen($characters);
                     $randomString = '';
-                
+
                     for ($i = 0; $i < 10; $i++) {
                         $randomString .= $characters[mt_rand(0, $charactersLength - 1)];
                     }
@@ -49,7 +50,7 @@ class ApiInvoiceController extends Controller
                 $code = '';
                 do {
                     $code = generateCode();
-                } while (Invoice::where('code', $code)->exists());            
+                } while (Invoice::where('code', $code)->exists());
                 $invoice = Invoice::create([
                     'user_id' => $request->user->id,
                     'payment_method_id' => $request->payment_method_id,
@@ -60,11 +61,10 @@ class ApiInvoiceController extends Controller
                     'paid_at' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
-                ]); 
-                $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
+                ]);
+                $carts = Cart::with('product')->where('user_id', $request->user->id)->get();
                 $totalInvoice = 0;
-                foreach($carts as $cart)
-                {
+                foreach ($carts as $cart) {
                     $totalInvoiceDetail = $cart->quantity * $cart->product->price;
                     $totalInvoice += $totalInvoiceDetail;
                     $invoiceDetail = InvoiceDetail::create([
@@ -78,7 +78,7 @@ class ApiInvoiceController extends Controller
                     ]);
                 }
                 $invoice->total_price = $totalInvoice;
-                $invoice->save();   
+                $invoice->save();
                 // Tạo track cho hoá đơn
                 InvoiceTrack::create([
                     'invoice_id' =>  $invoice->id,
@@ -86,9 +86,9 @@ class ApiInvoiceController extends Controller
                     'description' => "Đơn hàng $code đã đặt",
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
-                ])  ; 
-                    // Xoá giỏ hàng
-                    Cart::where('user_id',$request->user->id)->delete();;
+                ]);
+                // Xoá giỏ hàng
+                Cart::where('user_id', $request->user->id)->delete();;
             });
             return response()->json(['Tạo hoá đơn thành công']);
         } catch (\Exception $e) {
@@ -104,9 +104,8 @@ class ApiInvoiceController extends Controller
     public function show(string $id)
     {
 
-        $invoices = Invoice::with('user','paymentMethod', 'invoiceDetail.product','lastStatus.invoiceStatus','invoiceTracks')->find($id);
-        if(!empty($invoices))
-        {
+        $invoices = Invoice::with('user', 'paymentMethod', 'invoiceDetail.product', 'lastStatus.invoiceStatus', 'invoiceTracks')->find($id);
+        if (!empty($invoices)) {
             return $invoices;
         }
         return response()->json(['message' => 'Không tìm thấy hoá đơn'], 404);
@@ -127,5 +126,39 @@ class ApiInvoiceController extends Controller
     {
         //
     }
+    public function getInvoiceByStatus(Request $request)
+    {
+        if ($request->status_id) {
+            // $invoices = Invoice::whereIn('id', function ($query) use ($request) {
+            //     $query->select('invoice_id')
+            //         ->from('invoice_tracks')
+            //         ->whereIn('invoice_status_id', [$request->status_id])
+            //         ->groupBy('invoice_id')
+            //         ->havingRaw('MAX(created_at)');
+            // })->get();
 
+            // return $invoices;
+            // $invoices = Invoice::whereHas('lastStatus', function ($query) use($request) {
+            //     $query->where('invoice_status_id', $request->status_id);
+            // })->get();
+            $statusId = $request->status_id; // Trạng thái được truyền vào
+            $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks', 'lastStatus'])
+            ->whereHas('invoiceTracks', function ($query) use($statusId) {
+                $query->where('invoice_status_id',$statusId)
+                      ->whereRaw('invoice_tracks.id = (SELECT MAX(id) FROM invoice_tracks WHERE invoice_tracks.invoice_id = invoices.id)');
+            })
+            ->get();
+        
+        return $invoices;
+//         $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks'])
+//     ->whereHas('lastStatus', function ($query) {
+//         $query->where('invoice_status_id', 2);
+//     })
+//     ->get();
+
+// return $invoices;
+        
+        }
+        return response()->json(['message' => 'Không hợp lệ']);
+    }
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Input, Select, Option, Icon, Button } from "../elements";
 
-export default function IconField({ classes, icon, option, activeOption, type, placeholder, passwordVisible,reverse , ...rest}) {
+export default function IconField({ classes, icon, option, activeOption, type, placeholder, passwordVisible,reverse,alert , ...rest}) {
     const [visible, setVisible] = React.useState(false);
     
     return (
+        <>
         <Box className={`mc-icon-field ${ classes || "w-md h-sm white" }`}>
             {reverse ? <> 
           {type ?
@@ -59,5 +60,7 @@ export default function IconField({ classes, icon, option, activeOption, type, p
             }</> 
             }
        </Box>
+       {alert && <p className="text-danger">{alert}</p>}
+       </>
     )
 }

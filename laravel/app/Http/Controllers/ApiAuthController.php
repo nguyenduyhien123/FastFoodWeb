@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserRegisterEvent;
+use App\Http\Requests\AccountChangePasswordRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Hash;
 
 class ApiAuthController extends Controller
 {
@@ -185,5 +187,14 @@ class ApiAuthController extends Controller
         } catch (Exception $e) {
             throw $e;
         }
+    }
+    public function changePassword(AccountChangePasswordRequest $request){
+        $user = $request->user;
+        if(Hash::check($request->password_old, $user->password)){
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return response()->json(['message' => 'Đổi mật khẩu thành công']);
+        }
+        return response()->json(['message' => 'Mật khẩu cũ không trùng khớp'], 422);   
     }
 }

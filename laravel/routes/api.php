@@ -36,7 +36,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // Route::apiResource('roles', ApiRoleController::class);
 Route::middleware('verify-token:authencation')->group(function(){
-    Route::post('auth/loginWithToken', [ApiAuthController::class,'loginWithToken']);  
+    Route::prefix('auth')->group(function(){
+        Route::post('loginWithToken', [ApiAuthController::class,'loginWithToken']);  
+        Route::post('change-password',[ApiAuthController::class,'changePassword']);
+    });
     Route::apiResource('comments',ApiCommentController::class)->except(['index','show']);
     Route::apiResource('carts', ApiCartController::class);
     Route::apiResource('paymentMethods', ApiPaymentMethodController::class)->only(['index','show']);
@@ -69,11 +72,13 @@ Route::middleware('verify-token:authencation')->group(function(){
             Route::get('getTotalUserIsVerified',[ApiUserController::class,'getTotalUserIsVerified']);
             Route::get('getProductsAndComments', [ApiCommentController::class,'getProductsAndComments']);
             Route::get('getCommentsByCriteria', [ApiCommentController::class, 'getCommentsByCriteria']);
+            Route::get('getInvoiceByStatus', [ApiInvoiceController::class,'getInvoiceByStatus']);
         });
         Route::prefix('update')->group(function(){
             Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);
 
         });
+
     }); 
 
 });

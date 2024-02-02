@@ -81,7 +81,7 @@
     @include flex-dimension(center, start, 0px);
     padding: 0px 12px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border: 1px solid var(--deepBorder);
     background-color: var(--lightBG);
     @include transition-linear;
