@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => env('Asia/Ho_Chi_Minh','Asia/Ho_Chi_Minh'),
+    'timezone' => env('TIME_ZONE','Asia/Ho_Chi_Minh'),
 
     /*
     |--------------------------------------------------------------------------

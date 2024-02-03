@@ -117,7 +117,11 @@ Route::controller(ApiAuthController::class)->prefix('auth')->group(function()
     Route::post('create','createSecureCode');
     Route::post('decode','verifySecureCode');
     Route::middleware('verify-token:verify-account')->get('verify-account','verifyAccount')->name('verify-account');
+    // Route::match(['get','post'],'reset-password', 'resetPassword');
+    Route::post('check-token-reset-password', 'checkTokenResetPassword');
+    Route::post('reset-password/setPassword', 'resetPasswordSetPassword');
+    Route::post('reset-password/verifyEmail', 'resetPasswordVerifyEmail');
 });
-
+ 
 
 Route::get('products/getProductsByProductTypeId/{productTypeId}',[ApiProductController::class,'getProductsByProductTypeId']);

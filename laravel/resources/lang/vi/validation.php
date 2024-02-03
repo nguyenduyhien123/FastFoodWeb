@@ -29,7 +29,8 @@ return [
         'start_date' => "Ngày bắt đầu",
         'end_date' => "Ngày kết thúc",
         'order' => 'thứ tự',
-        'avatar' => 'Ảnh đại diện'
+        'avatar' => 'Ảnh đại diện',
+        'email' => 'Email'
         // Thêm các thành phần nhãn khác tại đây
     ],
 ];

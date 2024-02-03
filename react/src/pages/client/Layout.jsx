@@ -7,6 +7,7 @@ const Layout = () => {
     return <>
     <div className="mt-4"></div>
     <Header></Header>
+    <div className="mb-4"></div>
     <Outlet></Outlet>
     <div className="mt-5">
     <Footer></Footer>

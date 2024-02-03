@@ -29,6 +29,8 @@ import CommentList from './pages/master/CommentList';
 import { WishList } from './components/wishlist/WishList';
 import { ProductSearch } from './components/product_search/ProductSearch';
 import { ProductSearchOption } from './components/product_search/ProductSearchOption';
+import { ResetPasswordVerifyEmail } from './components/user_info/ResetPasswordVerifyEmail';
+import { ResetPasswordSetPassword } from './components/user_info/ResetPasswordSetPassword';
 
 
 // Admin
@@ -67,7 +69,8 @@ function App() {
         <Route path="register" element={<PageRegister />} />
         <Route path="signin" element={isLogin ? <Navigate replace to="/"/> : <PageSignIn/>} />
         <Route path="info" element={<UserInfo />} />
-        <Route path="reset-password" element={<UserInfo />} />
+        <Route path="reset-password/verify-email" element={<ResetPasswordVerifyEmail />} />
+        <Route path="reset-password/set-password" element={<ResetPasswordSetPassword />} />
       </Route>
       <Route path="products" element={<Layout />}>
         <Route path=":id" element = {<ProductPage/>}/>

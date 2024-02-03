@@ -153,7 +153,7 @@ export default function SignIn() {
               }
             />
           </div>
-          <span className="span">Quên mật khẩu?</span>
+          <Link to="/accounts/reset-password" className="span">Quên mật khẩu?</Link>
         </div>
         <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">
           {isLoginLoading ? <ClipLoader
