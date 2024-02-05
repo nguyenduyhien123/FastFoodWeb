@@ -39,6 +39,7 @@ export const ChangePassword = () => {
                     return;
                 }
                 if (res?.response?.data?.message) {
+                    setPasswordUserError([])
                     Swal.fire({
                         title: res?.response?.data?.message || "Cập nhật thất bại",
                         icon: 'error',

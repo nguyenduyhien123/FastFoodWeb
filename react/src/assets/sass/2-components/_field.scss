@@ -85,7 +85,7 @@
     border: 1px solid var(--deepBorder);
     background-color: var(--lightBG);
     @include transition-linear;
-
+    background-color: var(--thinGray);
     &:focus-within {
         border-color: var(--primaryHEX);
         i { color: var(--primaryHEX) }

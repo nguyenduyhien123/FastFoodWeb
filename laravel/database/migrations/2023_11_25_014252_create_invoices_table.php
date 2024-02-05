@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('payment_method_id');
             $table->datetime('paid_at')->nullable();
             // $table->unsignedBigInteger('invoice_status_id')->nullable();
+            $table->string('note');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');

@@ -29,7 +29,8 @@ class ApiInvoiceController extends Controller
     public function store(StoreInvoiceRequest $request)
     {
         try {
-            DB::transaction(function () use ($request,) {
+            $invoice_code = '';
+            DB::transaction(function () use ($request, &$invoice_code) {
                 function generateCode()
                 {
                     // Lấy ngày hiện tại
@@ -51,13 +52,14 @@ class ApiInvoiceController extends Controller
                 do {
                     $code = generateCode();
                 } while (Invoice::where('code', $code)->exists());
+                $invoice_code = $code;
                 $invoice = Invoice::create([
                     'user_id' => $request->user->id,
                     'payment_method_id' => $request->payment_method_id,
                     'code' => $code,
                     'total_price' => 0,
                     'address' => $request->address,
-                    // 'invoice_status_id' => 1,
+                    'note' => $request->note,
                     'paid_at' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
@@ -88,9 +90,9 @@ class ApiInvoiceController extends Controller
                     'updated_at' => Carbon::now()
                 ]);
                 // Xoá giỏ hàng
-                Cart::where('user_id', $request->user->id)->delete();;
+                Cart::where('user_id', $request->user->id)->delete();
             });
-            return response()->json(['Tạo hoá đơn thành công']);
+            return response()->json(['message' => 'Tạo đơn hàng thành công', 'code' => $invoice_code]);
         } catch (\Exception $e) {
             // Xử lý lỗi
             echo 'Lỗi: ' . $e->getMessage();
@@ -142,23 +144,64 @@ class ApiInvoiceController extends Controller
             //     $query->where('invoice_status_id', $request->status_id);
             // })->get();
             $statusId = $request->status_id; // Trạng thái được truyền vào
-            $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks', 'lastStatus'])
-            ->whereHas('invoiceTracks', function ($query) use($statusId) {
-                $query->where('invoice_status_id',$statusId)
-                      ->whereRaw('invoice_tracks.id = (SELECT MAX(id) FROM invoice_tracks WHERE invoice_tracks.invoice_id = invoices.id)');
-            })
-            ->get();
-        
-        return $invoices;
-//         $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks'])
-//     ->whereHas('lastStatus', function ($query) {
-//         $query->where('invoice_status_id', 2);
-//     })
-//     ->get();
+            $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks', 'lastStatus.invoiceStatus'])
+                ->whereHas('invoiceTracks', function ($query) use ($statusId) {
+                    $query->where('invoice_status_id', $statusId)
+                        ->whereRaw('invoice_tracks.id = (SELECT MAX(id) FROM invoice_tracks WHERE invoice_tracks.invoice_id = invoices.id)');
+                })
+                ->get();
 
-// return $invoices;
-        
+            return $invoices;
+            //         $invoices = Invoice::with(['user', 'paymentMethod', 'invoiceTracks'])
+            //     ->whereHas('lastStatus', function ($query) {
+            //         $query->where('invoice_status_id', 2);
+            //     })
+            //     ->get();
+
+            // return $invoices;
+
         }
         return response()->json(['message' => 'Không hợp lệ']);
     }
+    public function getInvoiceByUser(Request $request)
+    {
+        $queryInvoice = Invoice::with(['user', 'paymentMethod', 'lastStatus.invoiceStatus', 'invoiceTracks'])->whereHas('user', function ($query) use ($request) {
+            $query->where('id', $request->user->id);
+        });
+        // Lấy các đơn hàng theo người dùng
+        // Nếu có status_id thì lọc theo trạng thái đơn hàng, các trạng thái từ 1 đến 5
+        if ($request->status_id != 0) {
+            $statusId = $request->status_id; // Trạng thái được truyền vào
+            $queryInvoice->whereHas('user', function ($query) use ($request) {
+                $query->where('id', $request->user->id);
+            })->whereHas('invoiceTracks', function ($query) use ($statusId) {
+                $query->where('invoice_status_id', $statusId)
+                    ->whereRaw('invoice_tracks.id = (SELECT MAX(id) FROM invoice_tracks WHERE invoice_tracks.invoice_id = invoices.id)');
+            });
+        }
+        // Nếu mà không có trạng thái đơn hàng
+        // else
+        // {
+        //     $invoices = Invoice::with(['user', 'paymentMethod', 'lastStatus.invoiceStatus', 'invoiceTracks'])->whereHas('user', function ($query) use ($request) {
+        //         $query->where('id', $request->user->id);
+        //     })->get();
+        //     return $invoices;
+        // }
+        if($request->code)
+        {
+            $queryInvoice->where('code', $request->code);
+        }
+        $invoices = $queryInvoice->get();
+        return $invoices;
+    }
+    public function getInvoiceByUserAndCode(Request $request)
+        {
+            $request->validate([
+                'code' => 'required|exists:invoices,code'
+            ]);
+            $invoice = Invoice::with(['user', 'paymentMethod','invoiceDetail.product', 'lastStatus.invoiceStatus', 'invoiceTracks'])->where('code', $request->code)->whereHas('user', function ($query) use ($request) {
+                $query->where('id', $request->user->id);
+            })->first();
+            return $invoice;
+        }
 }

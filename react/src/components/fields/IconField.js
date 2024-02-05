@@ -52,9 +52,9 @@ export default function IconField({ classes, icon, option, activeOption, type, p
                 </>
                 :
                 <Select { ...rest }>
-                    <Option>{ activeOption || "Select Option" }</Option>
+                    {activeOption && <Option>{ activeOption || "Select Option" }</Option>}
                     {option.map((item, index) => (
-                        <Option key={ index } value={ item }>{ item}</Option>
+                        <Option key={ index } value={ index !== -1 ? index : item}>{ item?.text || item}</Option>
                     ))}
                 </Select>
             }</> 

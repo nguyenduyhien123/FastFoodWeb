@@ -19,7 +19,6 @@ class CheckAccountAccess
         if ($request->user->id != $accountId) {
             abort(403, 'Unauthorized');
         }
-
         return $next($request);   
      }
 }

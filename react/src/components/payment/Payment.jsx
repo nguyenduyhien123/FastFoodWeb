@@ -9,9 +9,9 @@ import { LabelField } from "../fields";
 import { AuthContext } from "../../context/AuthContext";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
-
+import {useNavigate} from 'react-router-dom';
 export const Payment = () => {
+    const navigate = useNavigate();
     const { userInfo } = useContext(AuthContext);
     const [cartList, setCartList] = useState([]);
     const [paymentMethods, setPaymentMethods] = useState([]);
@@ -82,7 +82,8 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
-                toast.success('Tạo đơn hàng thành công');
+                navigate(`/accounts/manage-order/${res?.data?.code}`)
+                toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
             })
             .catch((err) => {
                 toast.error('Tạo đơn hàng thất bại');
@@ -114,6 +115,18 @@ export const Payment = () => {
                             <Button className={"mc-btn primary m-2"} icon={"home"} text="Lấy địa chỉ" onClick={() => {
                                 setInfoOrder({ ...infoOrder, address: userInfo?.address })
                             }} />
+                        </Col>
+                        <Col xl={12}>
+                        <LabelField
+                                type={"text"}
+                                placeholder={"Ghi chú cho đơn hàng"}
+                                labelDir="label-col"
+                                fieldSize="w-100 h-md"
+                                name="note"
+                                value={infoOrder?.note}
+                                onChange={(e) => setInfoOrder({ ...infoOrder, note: e.target.value })}
+                            />
+                            {infoOrderError?.note && <Text className={"text-danger"}>{infoOrderError?.note[0]}</Text>}
                         </Col>
                     </Row>
 

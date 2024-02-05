@@ -54,6 +54,9 @@ Route::middleware('verify-token:authencation')->group(function(){
     Route::middleware('check-account-access')->group(function(){
         Route::apiResource('accounts',ApiAccountController::class)->except(['index']);
     });
+    // Hoá đơn(đơn hàng)
+    Route::get('getInvoiceByUser', [ApiInvoiceController::class, 'getInvoiceByUser']);
+    Route::post('getInvoiceByUserAndCode', [ApiInvoiceController::class, 'getInvoiceByUserAndCode']);
 
     // Các route liên quan đến admin
     Route::middleware('can:admin')->group(function(){

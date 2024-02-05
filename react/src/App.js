@@ -31,6 +31,10 @@ import { ProductSearch } from './components/product_search/ProductSearch';
 import { ProductSearchOption } from './components/product_search/ProductSearchOption';
 import { ResetPasswordVerifyEmail } from './components/user_info/ResetPasswordVerifyEmail';
 import { ResetPasswordSetPassword } from './components/user_info/ResetPasswordSetPassword';
+import { ChangePassword } from './components/user_info/ChangePassword';
+import { AccountEdit } from './components/user_info/AccountEdit';
+import { ManageOrder } from './components/user_info/ManageOrder';
+import { OrderDetailUser } from './components/user_info/OrderDetailUser';
 
 
 // Admin
@@ -68,9 +72,12 @@ function App() {
       <Route path="accounts" element={<Layout />}>
         <Route path="register" element={<PageRegister />} />
         <Route path="signin" element={isLogin ? <Navigate replace to="/"/> : <PageSignIn/>} />
-        <Route path="info" element={<UserInfo />} />
+        <Route path="change-password" element={<UserInfo />} />
+        <Route path="manage-order" element={<UserInfo />} />
+        <Route path="edit" element={<UserInfo />} />
         <Route path="reset-password/verify-email" element={<ResetPasswordVerifyEmail />} />
         <Route path="reset-password/set-password" element={<ResetPasswordSetPassword />} />
+        <Route path="manage-order/:code" element={<OrderDetailUser />} />
       </Route>
       <Route path="products" element={<Layout />}>
         <Route path=":id" element = {<ProductPage/>}/>

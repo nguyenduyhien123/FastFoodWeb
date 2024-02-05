@@ -11,7 +11,7 @@ const DropdownAvatar = () => {
     let actionAccount = [
       {
         text : 'Thông tin tài khoản',
-        link : '/accounts/info'
+        link : '/accounts/edit'
       },
       {
         text : 'Lịch sử mua hàng',

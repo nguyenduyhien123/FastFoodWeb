@@ -32,6 +32,7 @@ class StoreInvoiceRequest extends FormRequest
             'payment_method_id' => 'required|exists:payment_methods,id',
             'total_price' => 'required|integer',
             'address' => 'required|max:255',
+            'note' => 'nullable|max:256'
         ];
     }
     public function attributes()

@@ -30,7 +30,7 @@ class ApiProductController extends Controller
                 'price' => $request['price'],
                 'image' => '{}',
                 'product_type_id' => $request['product_type_id'],
-                'star' => 5,
+                'star' => 5, 
             ]
         );
         $listImage = [];
