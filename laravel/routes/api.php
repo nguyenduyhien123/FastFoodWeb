@@ -17,6 +17,7 @@ use App\Http\Controllers\ApiRoleController;
 use App\Http\Controllers\ApiSlideshowController;
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\ApiWistlistController;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -54,9 +55,17 @@ Route::middleware('verify-token:authencation')->group(function(){
     Route::middleware('check-account-access')->group(function(){
         Route::apiResource('accounts',ApiAccountController::class)->except(['index']);
     });
+    // view
+    Route::get('view/print-invoice', function(Request $request){
+        $invoice = Invoice::with(['user', 'paymentMethod','invoiceDetail.product', 'lastStatus.invoiceStatus', 'invoiceTracks'])->where('code', $request->code)->whereHas('user', function ($query) use ($request) {
+            $query->where('id', $request->user->id);
+        })->first();
+        return view('invoice.printInvoice2', ['invoice' => $invoice]);
+    });
     // Hoá đơn(đơn hàng)
     Route::get('getInvoiceByUser', [ApiInvoiceController::class, 'getInvoiceByUser']);
     Route::post('getInvoiceByUserAndCode', [ApiInvoiceController::class, 'getInvoiceByUserAndCode']);
+    Route::post('printInvoice', [ApiInvoiceController::class, 'printInvoice']);
 
     // Các route liên quan đến admin
     Route::middleware('can:admin')->group(function(){

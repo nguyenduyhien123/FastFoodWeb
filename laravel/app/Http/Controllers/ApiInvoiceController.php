@@ -8,9 +8,14 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\InvoiceTrack;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\View;
+use TCPDF;
 
 class ApiInvoiceController extends Controller
 {
@@ -204,4 +209,37 @@ class ApiInvoiceController extends Controller
             })->first();
             return $invoice;
         }
+    public function printInvoice(Request $request){
+        try {
+            $validator = $this->validate($request, [
+                'code' => 'required|exists:invoices,code'
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'errors' => $e->errors(),
+            ], 422);
+        }
+        // Truy vấn lấy hoá đơn
+        $invoice = Invoice::with(['user', 'paymentMethod','invoiceDetail.product', 'lastStatus.invoiceStatus', 'invoiceTracks'])->where('code', $request->code)->first();
+        if(!empty($invoice))
+        {
+        $pdf = new TCPDF();
+        $code = $invoice->code;
+        $time = Carbon::now()->format('dmYHis');
+        $pdf->SetCreator('Your Name');
+        $pdf->SetAuthor('Your Name');
+        $pdf->SetTitle("HOADON_$code"."_$time.pdf");
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+        $pdf->setFontSubsetting(false);
+        // $pdf->SetFont('freesans', '', 10, '', false);
+        $pdf->SetFont('dejavusans', '', 10, '', false);
+        $html = view('invoice.printInvoice', ['invoice' => $invoice])->render();
+        $pdf->AddPage();
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        return $pdf->Output("HOADON_$code"."_$time.pdf", 'I');
+        }
+        return response()->json(['message' => 'Không tồn tại hoá đơn trên']);
+    }
 }

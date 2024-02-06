@@ -51,27 +51,27 @@ export const OrderDetailUser = () => {
     useEffect(() => {
         getOrder(code);
     }, []);
-    const thead = ['STT','Sản phẩm', 'Số lượng', 'Đơn giá', 'Thành tiền'];
+    const thead = ['STT', 'Sản phẩm', 'Số lượng', 'Đơn giá', 'Thành tiền'];
     return <>
-            <Col xl={10} className="mx-auto customer-order-detail">
-                <CardLayout>
-                    <DivideTitle as={"h2"} title="Thông tin đơn hàng" className="mb-4" />
-                    <div className="card">
-                        <div className="card-body order-info">
-                            <div className="order-info">
-                                <Col xl={7}>
-                                    <Text ><span>Mã đơn hàng :</span> <strong>{code}</strong></Text>
-                                    <Text ><span>Thời gian :</span> <strong>{moment(order?.created_at).format('DD/MM/YYYY HH:mm:ss')}</strong></Text>
-                                    <Text ><span>Địa chỉ nhận hàng :</span> <strong>{order?.address}</strong></Text>
-                                    <Text ><span>Ghi chú :</span> <strong>{order?.note}</strong></Text>
-                                    <Text ><span>Trạng thái đơn hàng :</span> <strong>{order?.last_status?.invoice_status?.name_vi}</strong></Text>
-                                    <Text ><span>Phương thức thanh toán :</span> <strong>{order?.payment_method?.name}</strong></Text>
-                                    <Text ><span>Trạng thái thanh toán :</span> <strong>{order?.paid_at ? 'Đã thanh toán' : 'Chưa thanh toán'}</strong></Text>
-                                </Col>
-                            </div>
-                            <div className="mt-2">
-                                <h4>Danh sách sản phẩm</h4>
-                                <Col xl={12} className="mt-2">
+        <Col xl={10} className="mx-auto customer-order-detail">
+            <CardLayout>
+                <DivideTitle as={"h2"} title="Thông tin đơn hàng" className="mb-4" />
+                <div className="card">
+                    <div className="card-body order-info">
+                        <div className="order-info">
+                            <Col xl={7}>
+                                <Text ><span>Mã đơn hàng :</span> <strong>{code}</strong></Text>
+                                <Text ><span>Thời gian :</span> <strong>{moment(order?.created_at).format('DD/MM/YYYY HH:mm:ss')}</strong></Text>
+                                <Text ><span>Địa chỉ nhận hàng :</span> <strong>{order?.address}</strong></Text>
+                                <Text ><span>Ghi chú :</span> <strong>{order?.note}</strong></Text>
+                                <Text ><span>Trạng thái đơn hàng :</span> <strong>{order?.last_status?.invoice_status?.name_vi}</strong></Text>
+                                <Text ><span>Phương thức thanh toán :</span> <strong>{order?.payment_method?.name}</strong></Text>
+                                <Text ><span>Trạng thái thanh toán :</span> <strong>{order?.paid_at ? 'Đã thanh toán' : 'Chưa thanh toán'}</strong></Text>
+                            </Col>
+                        </div>
+                        <div className="mt-2">
+                            <h4>Danh sách sản phẩm</h4>
+                            <Col xl={12} className="mt-2">
                                 <Box className="mc-table-responsive">
                                     <Table className="mc-table order-user-detail">
                                         <Thead className="mc-table-head gradient-22">
@@ -99,19 +99,20 @@ export const OrderDetailUser = () => {
                                         }
                                     </Table>
                                 </Box>
-                                </Col>
-                            </div>
-                            <div className="mt-1">
-                                <Col xl={12}>
-                                    <Text className={"text-end fs-4"}><span>Tổng tiền :</span> <strong>{order?.total_price?.toLocaleString("vi-VN")}</strong></Text>
-                                </Col>
-                            </div>
-                            <div className="d-flex justify-content-center">
-                            <Button icon={"print"} text={"In hoá đơn" } className={"mc-btn primary m-2 fs-4" } />
-                            </div>
+                            </Col>
+                        </div>
+                        <div className="mt-1">
+                            <Col xl={12}>
+                                <Text className={"text-end fs-4"}><span>Tổng tiền :</span> <strong>{order?.total_price?.toLocaleString("vi-VN")}</strong></Text>
+                            </Col>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <form action={`http://localhost:8000/api/printInvoice?code=${code}`} method="POST" target="_blank">
+                            <Button icon={"print"} text={"In hoá đơn"} className={"mc-btn primary m-2 fs-4"} type={"submit"} />                            </form>
                         </div>
                     </div>
-                </CardLayout>
-            </Col>
+                </div>
+            </CardLayout>
+        </Col>
     </>
 }

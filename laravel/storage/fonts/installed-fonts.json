@@ -1,0 +1,17 @@
+{
+    "roboto": {
+        "300": "roboto_300_32acfcb296f555e063ebba2be7db9e2f"
+    },
+    "montserrat": {
+        "normal": "montserrat_normal_00833106404dc8458cdfb436c759f23d"
+    },
+    "tangerine": {
+        "normal": "tangerine_normal_19ce16c8d386f49ccf94be2beb5587b6"
+    },
+    "noto sans": {
+        "normal": "noto_sans_normal_b3c8304c479981863828130d3a482199"
+    },
+    "amiri": {
+        "normal": "amiri_normal_348ef76746470e33e297aecee4bbb555"
+    }
+}
