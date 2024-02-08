@@ -78,5 +78,5 @@ class Invoice extends Model
     {
         return Carbon::parse($val)->getTimestampMs();
     }
-    protected $fillable = ['user_id', 'discount_id', 'staff_id', 'code', 'payment_method_id', 'total_price', 'address','note', 'status', 'created_at', 'updated_at', 'invoice_status_id', 'paid_at'];
+    protected $fillable = ['user_id', 'discount_id', 'staff_id', 'code', 'payment_method_id', 'total_price', 'address','note', 'status', 'created_at', 'updated_at', 'invoice_status_id', 'checkoutURL', 'paid_at'];
 }

@@ -17,7 +17,7 @@ use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
-use Tymon\JWTAuth\Payload;
+use Tymon\JWTAuth\Payload; 
 use Tymon\JWTAuth\Token;
 use Exception;
 use Illuminate\Support\Facades\Auth;

@@ -31,11 +31,15 @@ export const Payment = () => {
         })
             .then((res) => {
                 let data = res.data
+                if(data?.length > 0)
+                {
                 data.forEach(item => {
                     let imageJSON = JSON.parse(item.product.image);
                     item.product.image = imageJSON;
                 });
                 setCartList(data)
+                setDisableButtonPay(false);
+            }
             })
             .catch(err => {
             })
@@ -50,7 +54,6 @@ export const Payment = () => {
                 if(res?.data?.length > 0)
                 {            
                 setPaymentMethods(res.data);
-                setDisableButtonPay(false);
                 }
                 setInfoOrder({ ...infoOrder, payment_method_id: res.data[0]?.id })
             })
@@ -82,8 +85,15 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
-                navigate(`/accounts/manage-order/${res?.data?.code}`)
+                if(res?.data?.checkoutLink)
+                {
+                    window.location.href = res?.data?.checkoutLink
+                }
+                else
+                {
+                // navigate(`/accounts/manage-order/${res?.data?.code}`)
                 toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
+                }
             })
             .catch((err) => {
                 toast.error('Tạo đơn hàng thất bại');

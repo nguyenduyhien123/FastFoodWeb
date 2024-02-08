@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Thị Thu đây !!!',
                 'address' => '456 Lê Lợi, Phường Bến Thành, Quận 1, TPHCM',
                 'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 2,
                 'username' => 'nguyenduyhien',
@@ -46,7 +48,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Duy Hiện đây !!!',
                 'address' => '234 Hai Bà Trưng, Phường Bến Nghé, Quận 1, TPHCM',
                 'avatar' => 'https://phunugioi.com/wp-content/uploads/2020/02/hinh-anh-dep-thien-nhien.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 3,
                 'username' => 'nguyenduyhien2',
@@ -62,7 +65,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Duy Hiện Hiện đây !!!',
                 'address' => '567 Võ Văn Tần, Phường 6, Quận 3, TPHCM',
                 'avatar' => 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-n%E1%BB%81n-bi%E1%BB%83n-%C4%91%E1%BA%B9p-trong-xanh.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 4,
                 'username' => 'nguyenanhminh',
@@ -78,7 +82,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Anh Minh đây !!!',
                 'address' => '432 Trần Quang Diệu, Phường 14, Quận 3, TPHCM',
                 'avatar' => 'https://www.fodors.com/wp-content/uploads/2021/09/3-FallFoliage-Aspen-shutterstock_1866243163-390x260.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 5,
                 'username' => 'dtntrinh',
@@ -94,7 +99,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Đặng Thị Ngọc Trinh đây !!!',
                 'address' => '987 Nguyễn Đức Cảnh, Phường Tân Phong, Quận 7, TPHCM',
                 'avatar' => 'https://fatafatsewa.com/storage/media/76/ktslI21609.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 6,
                 'username' => 'ngthimylinh',
@@ -110,7 +116,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Thị Mỹ Linh đây !!!',
                 'address' => '876 Nguyễn Hữu Thọ, Phường Tân Hưng, Quận 7, TPHCM',
                 'avatar' => 'https://msmobile.com.vn/upload_images/images/hinh-nen-thien-nhien-dep-cho-laptop-7.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 7,
                 'username' => 'ngovanduc',
@@ -126,7 +133,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Ngô Văn Đức đây !!!',
                 'address' => '654 Lê Văn Khương, Phường Hiệp Thành, Quận 12, TPHCM',
                 'avatar' => 'https://www.fodors.com/wp-content/uploads/2021/09/3-FallFoliage-Aspen-shutterstock_1866243163-390x260.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 8,
                 'username' => 'lethibichngoc',
@@ -142,7 +150,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Lê Thị Bích Ngọc đây !!!',
                 'address' => '876 Cộng Hòa, Phường 15, Quận Tân Bình, TPHCM',
                 'avatar' => 'https://fatafatsewa.com/storage/media/76/ktslI21609.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 9,
                 'username' => 'nguyenthuykieu',
@@ -158,7 +167,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Nguyễn Thuý Kiều đây !!!',
                 'address' => '654 Trường Chinh, Phường 14, Quận Tân Bình, TPHCM',
                 'avatar' => 'https://phunugioi.com/wp-content/uploads/2020/02/hinh-anh-dep-thien-nhien.jpg'
-            ],
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()],
             [
                 'id' => 10,
                 'username' => 'vuminhhieu',
@@ -174,7 +184,8 @@ class UsersSeeder extends Seeder
                 'description' => 'Xin chào mình là Vũ Minh Hiếu đây !!!',
                 'address' => '321 Lạc Long Quân, Phường 3, Quận Tân Phú, TPHCM',
                 'avatar' => 'https://phunugioi.com/wp-content/uploads/2020/02/hinh-anh-dep-thien-nhien.jpg'
-            ],
-        ]);
+            ,'created_at' => Carbon::now(), 
+        'updated_at' => Carbon::now()]
+            ]);
     }
 }

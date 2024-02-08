@@ -1,12 +1,143 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Breadcrumb } from "../../components";
 import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/ecommerce.json";
 import { Box, Item, Anchor } from "../../components/elements";
 import { EcommerceCard, SalesCard, ProductsCard, RevenueCard, ClientsCard, ActivityCard, OrdersCard } from "../../components/cards";
+import axios from 'axios';
 
 export default function Ecommerce() {
+    const [totals, setTotals] = useState([]);
+    const getTotals = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/analysis/',
+            withCredentials: true,
+        })
+            .then(res => {
+                setTotals(res.data)
+            })
+            .catch(() => {
+
+            })
+    }
+    useEffect(() => {
+        getTotals()
+    }, [])
+    const showPercent = (val) =>
+    {
+        return val > 0 ? `+${val}%` : `${val}%`
+    }
+    const trendFunc = (val) => {
+        if(val > 0)
+        {
+            return 'trending_up';
+        }
+        else if(val == 0)
+        {
+            return 'trending_flat';
+        }
+        else 
+        {
+            return 'trending_down'
+        }
+    }
+    // Các dữ liệu tạo component 
+    const heros = [
+        {
+            "variant": "green",
+            "title": "Tổng số người dùng",
+            "number": totals?.countUser || 0,
+            "icon": "account_circle",
+            "trend": trendFunc(totals?.percentageIncreaseUser),
+            "percent": showPercent(totals?.percentageIncreaseUser),
+            "compare": "Tháng trước",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "purple",
+            "title": "Tổng số đơn hàng",
+            "number": totals?.countOrder || 0,
+            "icon": "shopping_cart",
+            "trend": trendFunc(totals?.percentageIncreaseOrder),
+            "percent": showPercent(totals?.percentageIncreaseOrder),
+            "compare": "Tháng trước",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "blue",
+            "title": "Tổng số sản phẩm",
+            "number": totals?.countProduct || 0,
+            "icon": "shopping_bag",
+            "trend": trendFunc(totals?.percentageIncreaseProduct),
+            "percent": showPercent(totals?.percentageIncreaseProduct),
+            "compare": "Tháng trước",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "yellow",
+            "title": "Tổng số đánh giá",
+            "number": totals?.countRate || 0,
+            "icon": "hotel_class",
+            "trend": trendFunc(totals?.percentageIncreaseRate),
+            "percent": showPercent(totals?.percentageIncreaseRate),
+            "compare": "Tháng trước",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        }
+    ]
+    // đơn hàng
+    const orders =    {
+        "title": "orders overview",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "history", "text": "last day" },
+                { "icon": "history", "text": "last week" },
+                { "icon": "history", "text": "last month" },
+                { "icon": "history", "text": "last year" }
+            ]
+        },
+        "items": [
+            { "name": "pending", "value": 547, "color": "purple", "icon": "pending" },
+            { "name": "shipped", "value": 398, "color": "blue", "icon": "add_circle" },
+            { "name": "recieved", "value": 605, "color": "green", "icon": "check_circle" },
+            { "name": "cancelled", "value": 249, "color": "red", "icon": "cancel" },
+            { "name": "refunded", "value": 176, "color": "yellow", "icon": "error" }
+        ]
+    }
     return (
         <PageLayout>
             <Row>
@@ -23,7 +154,7 @@ export default function Ecommerce() {
                 </Col>
                 <Col xs={12} xl={8}>
                     <Row xs={1} sm={2}>
-                        {data?.heros?.map((item, index) => (
+                        {heros?.map((item, index) => (
                             <Col key={index}>
                                 <EcommerceCard
                                     icon={item.icon}
@@ -67,9 +198,9 @@ export default function Ecommerce() {
                 </Col>
                 <Col xl={4}>
                     <OrdersCard
-                        title={data?.orders.title}
-                        dotsMenu={data?.orders.dotsMenu}
-                        items={data?.orders.items}
+                        title={orders.title}
+                        dotsMenu={orders.dotsMenu}
+                        items={orders.items}
                     />
                 </Col>
                 <Col xl={6}>

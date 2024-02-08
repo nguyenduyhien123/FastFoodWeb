@@ -20,9 +20,10 @@ return new class extends Migration
             $table->bigInteger('total_price')->unsigned();
             $table->string('address'); 
             $table->unsignedBigInteger('payment_method_id');
+            $table->string('checkoutURL')->nullable();
             $table->datetime('paid_at')->nullable();
             // $table->unsignedBigInteger('invoice_status_id')->nullable();
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');

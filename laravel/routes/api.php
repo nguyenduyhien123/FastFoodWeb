@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\ApiAccountController;
+use App\Http\Controllers\ApiAnalysisController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiCommentController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ApiDiscountController;
 use App\Http\Controllers\ApiInvoiceController;
 use App\Http\Controllers\ApiInvoiceStatusController;
 use App\Http\Controllers\ApiInvoiceTrackController;
+use App\Http\Controllers\ApiPaymentController;
 use App\Http\Controllers\ApiPaymentMethodController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProducttypeController;
@@ -18,8 +20,10 @@ use App\Http\Controllers\ApiSlideshowController;
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\ApiWistlistController;
 use App\Models\Invoice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Jackiedo\DotenvEditor\Facades\DotenvEditor;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +90,10 @@ Route::middleware('verify-token:authencation')->group(function(){
             Route::get('getCommentsByCriteria', [ApiCommentController::class, 'getCommentsByCriteria']);
             Route::get('getInvoiceByStatus', [ApiInvoiceController::class,'getInvoiceByStatus']);
         });
+        Route::prefix('analysis')->controller(ApiAnalysisController::class)->group(function(){
+            Route::get('getTotalUsers','getTotalUsers');
+        });
+        Route::resource('analysis', ApiAnalysisController::class);
         Route::prefix('update')->group(function(){
             Route::post('updateStatusProduct/{id}',[ApiProductController::class,'updateStatusProduct']);
 
@@ -98,7 +106,7 @@ Route::middleware('verify-token:authencation')->group(function(){
 Route::apiResource('products',ApiProductController::class)->only(['index','show']);
 Route::apiResource('product_types',ApiProducttypeController::class)->only(['index','show']);
 Route::get('getProductsByCriteria', [ApiProductController::class, 'getProductsByCriteria'])->withoutMiddleware(['throttle']);
-
+Route::get('generateCode', [ApiInvoiceController::class,'generateCode']);
 
 /// ------------------------------
 Route::apiResource('comments',ApiCommentController::class)->only(['index','show']);
@@ -115,6 +123,18 @@ Route::fallback(function () {
     return response()->json(['message' => 'API không tồn tại.'], 404);
 });
 
+// Xử lý các thanh toán
+Route::prefix('payment')->group(function(){
+    Route::get('success',[ApiPaymentController::class,'paymentSuccess']);
+    Route::get('fail', [ApiPaymentController::class, 'paymentFail']);
+    Route::get('create', [ApiPaymentController::class, 'createLinkPayment']);
+    Route::get('cancel/{orderCode}', [ApiPaymentController::class, '']);
+    Route::get('getPaymentLinkInfoOfOrder/{id}', [ApiPaymentController::class, 'getPaymentLinkInfoOfOrder']);
+
+});
+Route::get('order_code', function(){
+    return intval(substr(strval(Carbon::now()->getTimestampMs() * mt_rand(2, 99) * mt_rand(2, 99)), -9));
+});
 
 
 Route::controller(ApiAuthController::class)->prefix('auth')->group(function()

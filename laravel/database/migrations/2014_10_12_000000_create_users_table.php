@@ -31,7 +31,6 @@ return new class extends Migration
             $table->tinyInteger('locked_end')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }

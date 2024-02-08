@@ -11,7 +11,7 @@ export default function ProductsCard({ title, dotsMenu, table }) {
         <Box className="mc-card">
             <CardHeader title={ title } dotsMenu={ dotsMenu } />
             <Row xs={1} sm={2} xl={4} className="mb-4">
-                {table.filter.map((item, index)=> (
+                {table.filter?.map((item, index)=> (
                     <Col key={ index }>
                         <LabelField
                             type = { item.type }
@@ -24,7 +24,7 @@ export default function ProductsCard({ title, dotsMenu, table }) {
                     </Col>
                 ))}
             </Row>
-            <ProductsTable thead={ table.thead } tbody={ table.tbody } />
+            {/* <ProductsTable thead={ table.thead } tbody={ table.tbody } /> */}
             <Pagination />
         </Box>
     )
