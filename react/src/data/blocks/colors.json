@@ -1,0 +1,135 @@
+{
+    "pageTitle": "colors variant",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "blocks" },
+        { "text": "colors" }
+    ],
+    "variants": [
+        {
+            "title": "red variants",
+            "colors": [
+                { "name": "red-100", "code": "#fff1f3" },
+                { "name": "red-200", "code": "#ffdfe4" },
+                { "name": "red-300", "code": "#ffc4cd" },
+                { "name": "red-400", "code": "#ff9baa" },
+                { "name": "red-500", "code": "#ff6179" },
+                { "name": "red-600", "code": "#ff304f" },
+                { "name": "red-700", "code": "#f11133" },
+                { "name": "red-800", "code": "#e00b2b" },
+                { "name": "red-900", "code": "#a70d24" }
+            ]
+        },
+        {
+            "title": "dark variants",
+            "colors": [
+                { "name": "dark-100", "code": "#39496b" },
+                { "name": "dark-200", "code": "#2f3f61" },
+                { "name": "dark-300", "code": "#253557" },
+                { "name": "dark-400", "code": "#1b2b4d" },
+                { "name": "dark-500", "code": "#112143" },
+                { "name": "dark-600", "code": "#071739" },
+                { "name": "dark-700", "code": "#010c2c" },
+                { "name": "dark-800", "code": "#00031f" },
+                { "name": "dark-900", "code": "#000015" }
+            ]
+        },
+        {
+            "title": "gray variants",
+            "colors": [
+                { "name": "gray-100", "code": "#f8f8f8" },
+                { "name": "gray-200", "code": "#f0f0f0" },
+                { "name": "gray-300", "code": "#e4e4e4" },
+                { "name": "gray-400", "code": "#d1d1d1" },
+                { "name": "gray-500", "code": "#b4b4b4" },
+                { "name": "gray-600", "code": "#9a9a9a" },
+                { "name": "gray-700", "code": "#818181" },
+                { "name": "gray-800", "code": "#6a6a6a" },
+                { "name": "gray-900", "code": "#5a5a5a" }
+            ]
+        },
+        {
+            "title": "blue variants",
+            "colors": [
+                { "name": "blue-100", "code": "#eff8ff" },
+                { "name": "blue-200", "code": "#dcedfd" },
+                { "name": "blue-300", "code": "#c1e1fc" },
+                { "name": "blue-400", "code": "#96cefa" },
+                { "name": "blue-500", "code": "#64b3f6" },
+                { "name": "blue-600", "code": "#4094f1" },
+                { "name": "blue-700", "code": "#2b77e5" },
+                { "name": "blue-800", "code": "#2262d3" },
+                { "name": "blue-900", "code": "#2351af" }
+            ]
+        },
+        {
+            "title": "green variants",
+            "colors": [
+                { "name": "green-100", "code": "#f0fdf5" },
+                { "name": "green-200", "code": "#ddfbe9" },
+                { "name": "green-300", "code": "#bdf5d3" },
+                { "name": "green-400", "code": "#89ecb3" },
+                { "name": "green-500", "code": "#4eda89" },
+                { "name": "green-600", "code": "#27bf68" },
+                { "name": "green-700", "code": "#1a9f53" },
+                { "name": "green-800", "code": "#187d44" },
+                { "name": "green-900", "code": "#18633a" }
+            ]
+        },
+        {
+            "title":"orange variants",
+            "colors": [
+                { "name": "orange-100", "code": "#fff9ec" },
+                { "name": "orange-200", "code": "#fff2d3" },
+                { "name": "orange-300", "code": "#ffe1a5" },
+                { "name": "orange-400", "code": "#ffca6d" },
+                { "name": "orange-500", "code": "#ffa732" },
+                { "name": "orange-600", "code": "#ff8c0a" },
+                { "name": "orange-700", "code": "#ff7300" },
+                { "name": "orange-800", "code": "#cc5302" },
+                { "name": "orange-900", "code": "#a1400b" }
+            ]
+        },
+        {
+            "title": "purple variants",
+            "colors": [
+                { "name": "purple-100", "code": "#fdf3ff" },
+                { "name": "purple-200", "code": "#fbe5ff" },
+                { "name": "purple-300", "code": "#f6caff" },
+                { "name": "purple-400", "code": "#f3a0ff" },
+                { "name": "purple-500", "code": "#ed68ff" },
+                { "name": "purple-600", "code": "#de2fff" },
+                { "name": "purple-700", "code": "#be0ee1" },
+                { "name": "purple-800", "code": "#a808c3" },
+                { "name": "purple-900", "code": "#8c099f" }
+            ]
+        },
+        {
+            "title": "yellow variants",
+            "colors": [
+                { "name": "yellow-100", "code": "#fefdec" },
+                { "name": "yellow-200", "code": "#fcf7c9" },
+                { "name": "yellow-300", "code": "#f9ef8e" },
+                { "name": "yellow-400", "code": "#f6e053" },
+                { "name": "yellow-500", "code": "#f4d02b" },
+                { "name": "yellow-600", "code": "#edb213" },
+                { "name": "yellow-700", "code": "#e1940e" },
+                { "name": "yellow-800", "code": "#ae640f" },
+                { "name": "yellow-900", "code": "#8e4d12" }
+            ]
+        },
+        {
+            "title": "social variants",
+            "colors": [
+                { "name": "facebook", "code": "#3b5998" },
+                { "name": "linkedin", "code": "#0e76a8" },
+                { "name": "twitter", "code": "#00acee" },
+                { "name": "google", "code": "#E60023" },
+                { "name": "instagram", "code": "#F77737" },
+                { "name": "whatsapp", "code": "#25D366" },
+                { "name": "pinterest", "code": "#f0002a" },
+                { "name": "youtube", "code": "#FF0000" }
+            ]
+        }
+    ]
+}

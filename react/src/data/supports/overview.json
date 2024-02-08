@@ -1,0 +1,120 @@
+{
+    "banner": {
+        "logo": "images/logo.webp",
+        "title": "react admin dashboard",
+        "descrip": "This template built with powerful user interface and highly responsive experience with a versatile dashboard such as CRM, eCommerce, and analytics.",
+        "subtitle": "build with -"
+    },
+    "tools": [
+        "images/tools/react.webp",
+        "images/tools/sass.webp",
+        "images/tools/bs.webp"
+    ],
+    "demos": [
+        { 
+            "image": "images/pages/ecommerce.webp", 
+            "path": "/admin/ecommerce", 
+            "title": "ecommerce" 
+        },
+        { 
+            "image": "images/pages/analytics.webp", 
+            "path": "/admin/analytics", 
+            "title": "analytics" 
+        },
+        { 
+            "image": "images/pages/crm.webp", 
+            "path": "/admin/crm", 
+            "title": "crms" 
+        },
+        { 
+            "image": "images/pages/user-list.webp", 
+            "path": "/admin/user-list", 
+            "title": "user list" 
+        },
+        { 
+            "image": "images/pages/user-profile.webp", 
+            "path": "/admin/user-profile", 
+            "title": "user profile" 
+        },
+        { 
+            "image": "images/pages/my-account.webp", 
+            "path": "/admin/my-account", 
+            "title": "my account" 
+        },
+        { 
+            "image": "images/pages/product-list.webp", 
+            "path": "/admin/product-list", 
+            "title": "product list" 
+        },
+        { 
+            "image": "images/pages/product-view.webp", 
+            "path": "/admin/product-view", 
+            "title": "product view" 
+        },
+        { 
+            "image": "images/pages/product-upload.webp", 
+            "path": "/admin/product-upload", 
+            "title": "product upload" 
+        },
+        { 
+            "image": "images/pages/invoice-list.webp", 
+            "path": "/admin/invoice-list", 
+            "title": "invoice list" 
+        },
+        { 
+            "image": "images/pages/invoice-details.webp", 
+            "path": "/admin/invoice-details", 
+            "title": "invoice details" 
+        },
+        { 
+            "image": "images/pages/settings.webp", 
+            "path": "/admin/settings", 
+            "title": "settings" 
+        },
+        { 
+            "image": "images/pages/order-list.webp", 
+            "path": "/admin/order-list", 
+            "title": "orders" 
+        },
+        { 
+            "image": "images/pages/message.webp", 
+            "path": "/admin/message", 
+            "title": "messages" 
+        },
+        { 
+            "image": "images/pages/notification.webp", 
+            "path": "/admin/notification", 
+            "title": "notifications" 
+        },
+        { 
+            "image": "images/pages/login.webp", 
+            "path": "/admin/login", 
+            "title": "login" 
+        },
+        { 
+            "image": "images/pages/registration.webp", 
+            "path": "/admin/register", 
+            "title": "registration" 
+        },
+        { 
+            "image": "images/pages/forgot-password.webp", 
+            "path": "/admin/forgot-password", 
+            "title": "forgot password" 
+        },
+        { 
+            "image": "images/pages/error.webp", 
+            "path": "/admin*", 
+            "title": "404 error" 
+        },
+        { 
+            "image": "images/pages/blank.webp", 
+            "path": "/admin/blank-page", 
+            "title": "blank page" 
+        },
+        { 
+            "image": "images/pages/docs.webp", 
+            "path": "/admin/documentation", 
+            "title": "documentation" 
+        }
+    ]
+}

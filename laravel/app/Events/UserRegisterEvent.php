@@ -19,7 +19,7 @@ class UserRegisterEvent
      */
     // Biến $info chứa thông tin liên quan đến mail
     // to : người nhận, from : người gửi, subject : tiêu đề thư, view : file blade nào được gửi
-    public $info;
+    public $info; 
     public function __construct($info)
     {
         $this->info = $info;

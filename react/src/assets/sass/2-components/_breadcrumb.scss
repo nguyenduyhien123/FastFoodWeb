@@ -1,0 +1,48 @@
+.mc-breadcrumb {
+    @include flex-dimension(center, space-between, 0px);
+
+    @include mobile-breakpoint {
+        flex-direction: column;
+        gap: 15px 0px;
+    }
+}
+
+.mc-breadcrumb-title {
+    text-transform: capitalize;
+}
+
+.mc-breadcrumb-list {
+    @include flex-dimension(center, start, 0px);
+}
+
+.mc-breadcrumb-item {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: var(--textColor);
+    @include transition-linear;
+
+    &::after {
+        content: "~";
+        font-size: 16px;
+        margin: 0px 7px;
+        color: var(--textColor);
+    }
+
+    &:last-child {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.mc-breadcrumb-link {
+    color: var(--primaryHEX);
+    @include transition-linear;
+
+    &:hover {
+        color: var(--primaryHEX);
+        text-decoration: underline;
+    }
+}

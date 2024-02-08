@@ -1,0 +1,69 @@
+// custom buttons
+.mc-btn {
+    @include text-font (13px, 600);
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    padding: 14px 22px;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    color: var(--lightColor);
+    box-shadow: var(--btnBoxShadow);
+    @include transition-linear;
+
+    &:hover { 
+        opacity: 0.8; 
+        color: var(--lightColor);
+    }
+
+    i {
+        font-size: 20px;
+        vertical-align: middle;
+        margin-#{$end-direction}: 6px;
+    }
+
+    span {
+        vertical-align: middle;
+    }
+
+    &.primary { background-color: var(--primaryHEX); }
+    &.yellow { background-color: $yellow-600; }
+    &.purple { background-color: $purple-700; }
+    &.orange { background-color: $orange-700; }
+    &.green { background-color: $green-700; }
+    &.blue { background-color: $blue-700; }
+    &.gray { background-color: $gray-700; }
+    &.red { background-color: $red-700; }
+
+    &.sm {
+        font-size: 11px;
+        padding: 12px 18px;
+
+        i { font-size: 16px; }
+    }
+
+    &.h-sm { height: 40px; }
+    &.h-md { height: 45px; }
+    &.h-lg { height: 50px; }
+    &.h-xl { height: 55px; }
+}
+
+// bootstrap buttons
+.btn {
+    @include text-font(12px, 500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    color: var(--lightColor);
+    @include transition-linear;
+
+    &:hover {
+        color: var(--lightColor);
+    }
+
+    &.btn-sm {
+        @include text-font(11px, 500);
+        padding: 8px 15px;
+    }
+}

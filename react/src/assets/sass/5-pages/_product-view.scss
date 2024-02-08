@@ -1,0 +1,122 @@
+
+@import '../1-helpers/mixins';
+@import '../1-helpers/_directions';
+@import '../1-helpers/colors';
+.mc-product-view-gallery {
+    display: grid;
+    padding: 10px;
+    grid-gap: 20px;
+    grid-template-columns: 12;
+    grid-template-rows: auto;
+
+    img {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px dashed var(--deepBorder);
+        filter: drop-shadow(0px 10px 15px rgba(var(--blackRGB), 5%));
+
+        // &:nth-child(1) { grid-column: 1 / 13; }
+        // &:nth-child(2) { grid-column: 1 / 4; }
+        // &:nth-child(3) {  grid-column: 4 / 7; }
+        // &:nth-child(4) { grid-column: 7 / 10; }
+        // &:nth-child(5) { grid-column: 10 / 13; }
+    }
+    .image-active-show
+    {
+        height : 300px;
+        object-fit: contain;
+        border-color: var(--primaryHEX);
+    }
+    .image-active
+    {
+        border-color: red;
+    }
+    &.thumbnail
+    {
+        grid-template-columns: repeat(6, 1fr);
+        img
+        {
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+}
+
+.mc-product-view-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.mc-product-view-info-title {
+    @include text-font(30px, 500);
+    margin-bottom: 15px;
+    line-height: 30px;
+}
+
+.mc-product-view-meta {
+    @include flex-dimension(center, start, 0px);
+
+    i { 
+        font-size: 20px;
+        margin-#{$end-direction}: 12px; 
+    }
+
+    h5 {
+        width: 150px;
+        font-size: 15px;
+        text-transform: capitalize;
+    }
+
+    span { 
+        line-height: 16px;
+        margin-#{$end-direction}: 20px; 
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 18px;
+        text-transform: capitalize;
+
+        del {
+            margin-#{$start-direction}: 3px;
+            color: $red-600;
+        }
+    }
+
+    ul {
+        @include flex-dimension(center, start, 8px);
+        flex-wrap: wrap;
+        
+        li {
+            @include text-font(11px, 500);
+            text-transform: uppercase;
+            border-radius: 4px;
+            padding: 4px 8px;
+            background-color: var(--lightGray);
+        }
+    }
+}
+
+.mc-product-view-descrip {
+    padding: 0px 10px 10px;
+
+    p { 
+        font-size: 15px;
+        line-height: 30px; 
+    }
+}
+.mc-product-thumbnail-image img{
+    width: 20px;
+    height: 20px;
+}
+.mc-product-notifi
+{
+    text-align: center;
+    font-size: 40px;
+}
+.mc-product-spinner
+{
+
+}

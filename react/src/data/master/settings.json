@@ -1,0 +1,15 @@
+{
+    "pageTitle": "settings",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "settings" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    }
+}

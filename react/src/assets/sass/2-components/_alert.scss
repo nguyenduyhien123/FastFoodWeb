@@ -1,0 +1,134 @@
+.alert {
+    font-size: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.btn-close {
+    padding: 0px;
+    background-size: 12px;
+}
+
+.alert-dismissible .btn-close {
+    padding: 12px;
+}
+
+// custom alert
+.mc-alert {
+    padding: 18px 20px 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    position: relative;
+    @include flex-dimension(center, start, 15px);
+
+    &.red { 
+        color: $red-900;
+        background-color: $red-300; 
+
+        i { background-color: $red-400; }
+        h3 { color: $red-900; }
+
+        button { 
+            color: $red-900;
+            background-color: $red-300; 
+        }
+    }
+
+    &.blue { 
+        color: $blue-900;
+        background-color: $blue-300; 
+
+        i { background-color: $blue-400; }
+        h3 { color: $blue-900; }
+
+        button { 
+            color: $blue-900;
+            background-color: $blue-300; 
+        }
+    }
+
+    &.gray { 
+        color: $gray-900;
+        background-color: $gray-300; 
+
+        i { background-color: $gray-400; }
+        h3 { color: $gray-900; }
+
+        button { 
+            color: $gray-900;
+            background-color: $gray-300; 
+        }
+    }
+
+    &.green { 
+        color: $green-900;
+        background-color: $green-300; 
+
+        i { background-color: $green-400; }
+        h3 { color: $green-900; }
+
+        button { 
+            color: $green-900;
+            background-color: $green-300; 
+        }
+    }
+
+    &.purple { 
+        color: $purple-900;
+        background-color: $purple-300; 
+
+        i { background-color: $purple-400; }
+        h3 { color: $purple-900; }
+
+        button { 
+            color: $purple-900;
+            background-color: $purple-300; 
+        }
+    }
+
+    &.orange { 
+        color: $orange-900;
+        background-color: $orange-300; 
+
+        i { background-color: $orange-400; }
+        h3 { color: $orange-900; }
+
+        button { 
+            color: $orange-900;
+            background-color: $orange-300; 
+        }
+    }
+
+    i {
+        font-size: 22px;
+        @include content-center(42px, 42px, 10px);
+        text-shadow: 2px 4px 6px rgba(var(--blackRGB), 10%);
+        flex-shrink: 0;
+    }
+
+    h3 {
+        flex: auto;
+        text-transform: capitalize;
+        @include text-font(20px, 600);
+
+        span {
+            display: block;
+            margin-top: 6px;
+            text-transform: lowercase;
+            @include text-font(15px, 400);
+        }
+    }
+
+    button {
+        @include position-top-right(absolute, -15px, 20px, 1);
+        @include content-center(35px, 30px, 50%);
+        @include text-font(18px, 700);
+        border: 3px solid var(--lightColor);
+    }
+}
+
+.dark_mode {
+    .mc-alert button {
+        border-color: var(--lightBorder);
+    }
+}

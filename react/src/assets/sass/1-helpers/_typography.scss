@@ -1,0 +1,48 @@
+body {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+}
+
+input,
+textarea {
+    font-size: 15px;
+
+    &::placeholder {
+        @include text-font(14px, 400);
+    }
+}
+
+h1 { 
+    font-size: 36px; 
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+p {
+    line-height: 1.8;
+}

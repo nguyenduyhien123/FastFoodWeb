@@ -15,7 +15,7 @@ class EmailRule implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (!preg_match('/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/', $value)) {
-            $fail("Định dạng email không đúng.");
+            $fail("Định dạng email không hợp lệ.");
         }
     }
 }

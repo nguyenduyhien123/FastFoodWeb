@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'reactstrap'
-import pastaImg from '../../assets/images/pasta.png'
+import pastaImg from '../../assets/images/client/pasta.png'
 import './choose_us.scss'
 
 const ChooseUs = () => {

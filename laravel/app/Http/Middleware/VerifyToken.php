@@ -31,24 +31,24 @@ class VerifyToken
             $jwt = $this->decodeJWT($request->cookie('token'));
             if($jwt['description'] === $description)
             {
-                $user = User::find($jwt['sub']);
+                $user = User::with('role')->find($jwt['sub']);
                 if(!empty($user))
                 {
-                    // Auth::loginUsingId($user->id);
+                    Auth::loginUsingId($user->id);
                     $request->merge(['user' => $user]);
                     return $next($request);
                 }
             }
-        }
+        } 
         else if(!empty($request->token) && $description === 'verify-account')
         {
             $jwt = $this->decodeJWT($request->token);
             if($jwt['description'] === $description)
             {
-                $user = User::find($jwt['sub']);
+                $user = User::with('role')->find($jwt['sub']);
                 if(!empty($user))
                 {
-                    // Auth::loginUsingId($user->id);
+                    Auth::loginUsingId($user->id);
                     $request->merge(['user' => $user]);
                     return $next($request);
                 }

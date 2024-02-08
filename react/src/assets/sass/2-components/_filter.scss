@@ -1,0 +1,8 @@
+.mc-filter-between {
+    @include flex-dimension(center, space-between, 0px);
+    margin-bottom: 25px;
+}
+
+.mc-filter-search {
+    @include flex-dimension(center, end, 0px 12px);
+}

@@ -1,0 +1,64 @@
+.mc-float-card {
+    position: relative;
+    border-radius: 8px;
+    filter: drop-shadow(0px 7px 12px rgba(var(--blackRGB), 10%));
+
+    &.sm {
+        padding: 20px;
+        h3 { font-size: 22px; margin-bottom: 4px; }
+        p { font-size: 14px; }
+    }
+    
+    &.md {
+        padding: 24px;
+        h3 { font-size: 24px; margin-bottom: 6px; }
+        p { font-size: 15px; }
+    }
+
+    &.lg {
+        padding: 28px;
+        h3 { font-size: 26px; margin-bottom: 8px; }
+        p { font-size: 16px; }
+    }
+
+    i {
+        @include position-top-right(absolute, -18px, 5px, 1);
+        filter: drop-shadow(3px 5px 0px rgba(var(--blackRGB), 7%));
+        font-size: 50px;
+    }
+
+    h3 {
+        text-transform: capitalize;
+        color: var(--lightColor);
+    }
+
+    p {
+        text-transform: capitalize;
+        color: var(--lightColor);
+    }
+
+    &.purple {
+        background: linear-gradient($purple-500, $purple-700);
+        i { color: $purple-400; }
+    }
+
+    &.yellow {
+        background: linear-gradient($yellow-500, $yellow-700);
+        i { color: $yellow-400; }
+    }
+
+    &.green {
+        background: linear-gradient($green-500, $green-700);
+        i { color: $green-400; }
+    }
+
+    &.blue {
+        background: linear-gradient($blue-500, $blue-700);
+        i { color: $blue-400; }
+    }
+
+    &.red {
+        background: linear-gradient($red-500, $red-700);
+        i { color: $red-400; }
+    }
+}

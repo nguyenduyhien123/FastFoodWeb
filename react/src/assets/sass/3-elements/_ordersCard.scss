@@ -1,0 +1,59 @@
+.mc-order-card-list {
+    margin-top: 30px;
+}
+
+.mc-order-card-item {
+    padding: 12px 0px;
+    border-top: 1px solid var(--lightBorder); 
+    @include flex-dimension(center, center, 10px);
+
+    &:last-child {
+        padding-bottom: 0px;
+    }
+
+    i {
+        font-size: 24px;
+        color: var(--primaryHEX);
+        text-shadow: 0px 5px 7px rgba(0, 0, 0, 0.1);
+
+        &.red {
+            background: -webkit-linear-gradient($red-700, $red-500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &.blue {
+            background: -webkit-linear-gradient($blue-700, $blue-500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &.green {
+            background: -webkit-linear-gradient($green-700, $green-500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &.purple {
+            background: -webkit-linear-gradient($purple-700, $purple-500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &.yellow {
+            background: -webkit-linear-gradient($yellow-700, $yellow-500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    p {
+        flex: auto;
+        font-size: 15px;
+        text-transform: capitalize;
+    }
+
+    h5 {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "pageTitle": "Chi tiết hoá đơn",
+    "breadcrumb": [
+        { "path": "/", "text": "Trang chủ" },
+        { "text": "Hoá đơn" },
+        { "text": "Chi tiết" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "logo": {
+        "path": "#",
+        "src": "images/logo.webp",
+        "alt": "logo",
+        "name": "duyhien"
+    },
+    "title": "invoice #985466",
+    "recieved": { "title": "order recieved", "text": "Office 25/B, Road 30, West jalkuri, Fatullah, Narayanganj 1265. +8801838288389, support@miron.com" },
+    "shipment": { "title": "shipment details", "text": "House 17/A, Road 09, West jalkuri, Fatullah, Narayanganj 1265. +8801838288389, support@miron.com" },
+    "table": {
+        "thead": ["STT", "SẢn phẩm", "Giá", "Số lượng", "Thành tiền"],
+        "tbody": [
+            { 
+                "id": "#5768", 
+                "name": "modern summer short",
+                "src": "images/product/01.webp", 
+                "alt": "product",
+                "price": "$20", 
+                "discount": "20%", 
+                "quantity": "03", 
+                "amount": "$15" 
+            },
+            { 
+                "id": "#6489", 
+                "name": "stylish official suites", 
+                "src": "images/product/02.webp", 
+                "alt": "product",
+                "price": "$129", 
+                "discount": "10%", 
+                "quantity": "01", 
+                "amount": "$120" 
+            },
+            { 
+                "id": "#2086", 
+                "name": "party footware grooming",
+                "src": "images/product/03.webp", 
+                "alt": "product", 
+                "price": "$84", 
+                "discount": "25%", 
+                "quantity": "02", 
+                "amount": "$64" 
+            },
+            { 
+                "id": "#9834", 
+                "name": "wedding red bubble dress", 
+                "src": "images/product/04.webp", 
+                "alt": "product",
+                "price": "$405", 
+                "discount": "08%", 
+                "quantity": "01", 
+                "amount": "$308" 
+            },
+            { 
+                "id": "#3908", 
+                "name": "children take care pack", 
+                "src": "images/product/05.webp", 
+                "alt": "product",
+                "price": "$370", 
+                "discount": "15%", 
+                "quantity": "04", 
+                "amount": "$270" 
+            }
+        ]
+    },
+    "list": [
+        { "title": "subtotal", "digit": "$2,749.00" },
+        { "title": "discount", "digit": "$134.00" },
+        { "title": "shipping", "digit": "$60.00" },
+        { "title": "total", "digit": "$2,878.00", "addClass": "total" },
+        { "title": "status", "status": "cod", "variant": "purple" }
+    ],
+    "note": "Thank you for ordering greeny. We offer a 7-day return policy on all products. If you have any complain about this order, please call or email us. (VAT has been calculated as per GO 02/Mushak/2019). This is a sytem generated invoice and no signature or seal is required.",
+    "button": [
+        { "classes": "btn btn-dark", "path": "#", "icon": "print", "text": "print this reciept" },
+        { "classes": "btn btn-success", "path": "#", "icon": "download", "text": "download as pdf" }
+    ]
+}

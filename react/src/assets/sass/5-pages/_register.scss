@@ -1,0 +1,94 @@
+.mc-register {
+    display: flex;
+}
+
+.mc-register-banner {
+    width: 65%;
+    position: relative;
+    z-index: 1;
+    @include flex-dimension(center, center, 0px);
+    background: linear-gradient(to right, var(--lightGray), var(--thinGray));
+
+    @include custom-breakpoint(768px, 1199px) {
+        width: 55%;
+    }
+    
+    @include tablet-breakpoint { 
+        display: none; 
+    }
+}
+
+.mc-register-banner-pattern {
+    width: 100%;
+    height: 100%;
+    @include position-top-left(absolute, 0px, 0px, -1);
+    opacity: 0.08;
+}
+
+.mc-register-banner-content {
+    padding: 30px;
+    max-width: 700px;
+}
+
+.mc-register-banner-title {
+    @include text-font(45px, 900);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+
+
+    @include custom-breakpoint(768px, 991px) {
+        font-size: 35px;
+    }
+}
+
+.mc-register-banner-descrip {
+    font-size: 17px;
+    margin-bottom: 40px;
+}
+
+.mc-register-form {
+    width: 35%;
+    height: 100%;
+    text-align: center;
+    padding: 30px 60px 50px;
+    background-color: var(--lightGray);
+
+    @include custom-breakpoint(768px, 1199px) {
+        width: 45%;
+    }
+
+    @include custom-breakpoint(992px, 1199px) {
+        padding: 40px 50px;
+    }
+
+    @include custom-breakpoint(768px, 991px) {
+        padding: 30px 35px;
+    }
+
+    @include tablet-breakpoint {
+        width: 100%;
+        padding: 50px 80px;
+    }
+
+    @include mobile-breakpoint {
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+.mc-register-navigate {
+    font-size: 15px;
+    margin-top: 25px;
+    @include flex-dimension(center, center, 5px);
+
+    a {
+        font-weight: 500;
+        color: var(--primaryHEX);
+        text-transform: capitalize;
+        @include transition-linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

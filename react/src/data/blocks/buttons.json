@@ -1,0 +1,50 @@
+{
+    "pageTitle": "buttons variant",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "blocks" },
+        { "text": "buttons" }
+    ],
+    "bootstrap": {
+        "btns": [
+            { "label": "button", "classes": "btn btn-primary m-2" },
+            { "label": "button", "classes": "btn btn-secondary m-2" },
+            { "label": "button", "classes": "btn btn-success m-2" },
+            { "label": "button", "classes": "btn btn-danger m-2" },
+            { "label": "button", "classes": "btn btn-warning m-2" },
+            { "label": "button", "classes": "btn btn-info m-2" },
+            { "label": "button", "classes": "btn btn-dark m-2" }
+        ],
+        "small": [
+            { "label": "button", "classes": "btn btn-primary btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-secondary btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-success btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-danger btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-warning btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-info btn-sm m-2" },
+            { "label": "button", "classes": "btn btn-dark btn-sm m-2" }
+        ]
+    },
+    "custom": {
+        "btns": [
+            { "icon": "verified", "label": "button", "classes": "mc-btn primary m-2" },
+            { "icon": "thumb_up", "label": "button", "classes": "mc-btn yellow m-2" },
+            { "icon": "favorite", "label": "button", "classes": "mc-btn green m-2" },
+            { "icon": "water_drop", "label": "button", "classes": "mc-btn orange m-2" },
+            { "icon": "compare", "label": "button", "classes": "mc-btn purple m-2" },
+            { "icon": "drafts", "label": "button", "classes": "mc-btn blue m-2" },
+            { "icon": "unarchive", "label": "button", "classes": "mc-btn red m-2" },
+            { "icon": "collections", "label": "button", "classes": "mc-btn gray m-2" }
+        ],
+        "small": [
+            { "icon": "verified", "label": "button", "classes": "mc-btn primary sm m-2" },
+            { "icon": "thumb_up", "label": "button", "classes": "mc-btn yellow sm m-2" },
+            { "icon": "favorite", "label": "button", "classes": "mc-btn green sm m-2" },
+            { "icon": "water_drop", "label": "button", "classes": "mc-btn orange sm m-2" },
+            { "icon": "compare", "label": "button", "classes": "mc-btn purple sm m-2" },
+            { "icon": "drafts", "label": "button", "classes": "mc-btn blue sm m-2" },
+            { "icon": "unarchive", "label": "button", "classes": "mc-btn red sm m-2" },
+            { "icon": "collections", "label": "button", "classes": "mc-btn gray sm m-2" }
+        ]
+    }
+}

@@ -1,4 +1,82 @@
-.comment {
-  width: 750px;
-  max-height: 2000px;
+.comment-section
+{
+  width: 80%;
+  margin : 0 auto;
+   .avatar img
+   {
+    width: 50px;
+    height : 50px;
+    border-radius : 50%;
+   }
+   .btn-send
+   {
+    svg
+    {
+      width: 30px;
+      height : 30px;
+    }
+    svg#send
+    {
+      fill : #000000;
+      stroke: #000000;
+        }
+    svg#send:hover
+    {
+      fill: rgb(8, 102, 255)!important;
+      stroke : rgb(8, 102, 255)!important;
+    }
+   }
+   .list-comment
+   {
+
+   }
+   .avatar img
+   {
+     width : 30px;
+     height : 30px;
+   }
+   .account-type{
+    background-color: #eebc49;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 10px;
+   }
+   .comment-time
+   {
+    color: #8f9bb3;
+    font-size: 12px;
+   }
+   .btn-action
+   {
+    position: relative;
+    svg
+    {
+      width: 30px;
+      height: 30px;
+    }
+    .list-action
+    {
+      position: absolute;
+      display: block;
+      top: 120%;
+      left: 50%;
+      transform: translate(-50%);
+      background-color: white;
+      z-index: 9;
+      border:0.0625rem solid #dadce0;
+      .action-item
+      {
+        padding : 8px 12px;
+      }
+      .action-item:hover
+      {
+        background-color: #e4e6eb;
+      }
+    }
+    
+   }
+   .rdw-editor-wrapper
+   {
+    // border : 1px solid black;
+   }
 }

@@ -1,0 +1,54 @@
+.mc-fieldset {
+    min-width: inherit;
+    padding: 8px 15px;
+    margin: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--hardBorder);
+    background-color: var(--lightGray);
+    @include transition-linear;
+
+    &:focus-within {
+        border-color: var(--primaryHEX);
+        legend { color: var(--primaryHEX); }
+    }
+
+    legend {
+        float: inherit;
+        width: inherit;
+        line-height: inherit;
+        padding: 0px 5px;
+        line-height: 1px;
+        margin-bottom: 0px;
+        @include text-font(13px, 400);
+        text-transform: capitalize;
+        @include transition-linear;
+    }
+
+    input,
+    select {
+        padding: 0px 5px;
+        @include text-font(15px, 500);
+    }
+
+    textarea {
+        padding: 18px 5px;
+        line-height: 20px;
+        @include text-font(15px, 500);
+    }
+
+    .w-sm { width: 200px; }
+    .w-md { width: 300px; }
+    .w-lg { width: 400px; }
+    .w-xl { width: 500px; }
+    .w-100 { width: 100%; }
+    .w-fit { width: fit-content; }
+
+    .h-sm { height: 35px; }
+    .h-md { height: 40px; }
+    .h-lg { height: 45px; }
+    .h-xl { height: 50px; }
+    .h-text-sm { height: 120px; }
+    .h-text-md { height: 150px; }
+    .h-text-lg { height: 180px; }
+    .h-text-xl { height: 210px; }
+}

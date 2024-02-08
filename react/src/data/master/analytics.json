@@ -1,0 +1,309 @@
+{
+    "pageTitle": "analytics",
+    "breadcrumb": [
+        { "path": "/admin/", "text": "home" },
+        { "text": "dashboard" },
+        { "text": "analytics" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "mixed": [
+        {
+            "digit": "136,758K", 
+            "label": "impressions",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            },
+            "variant": { "name": "purple", "color": "#f3a0ff" },
+            "dataKey": "uv",
+            "dataSet": [
+                { "name": "fri", "uv": 4000 },
+                { "name": "sat", "uv": 3000 },
+                { "name": "sun", "uv": 5000 },
+                { "name": "mon", "uv": 2780 },
+                { "name": "tue", "uv": 1890 },
+                { "name": "wen", "uv": 2390 },
+                { "name": "thu", "uv": 3490 }
+            ]
+        },
+        {
+            "digit": "125,964K", 
+            "label": "engagements",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            },
+            "variant": { "name": "green", "color": "#89ecb3" },
+            "dataKey": "pv",
+            "dataSet": [
+                { "name": "fri", "pv": 2400 },
+                { "name": "sat", "pv": 1398 },
+                { "name": "sun", "pv": 9800 },
+                { "name": "mon", "pv": 3908 },
+                { "name": "tue", "pv": 4800 },
+                { "name": "wen", "pv": 3800 },
+                { "name": "thu", "pv": 4300 }
+            ]
+        },
+        {
+            "digit": "141,253K", 
+            "label": "conversions",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            },
+            "variant": { "name": "blue", "color": "#96cefa" },
+            "dataKey": "am",
+            "dataSet": [
+                { "name": "fri", "am": 2400 },
+                { "name": "sat", "am": 4210 },
+                { "name": "sun", "am": 2290 },
+                { "name": "mon", "am": 2000 },
+                { "name": "tue", "am": 5181 },
+                { "name": "wen", "am": 2500 },
+                { "name": "thu", "am": 2100 }
+            ]
+        },
+        {
+            "digit": "154,179K", 
+            "label": "bounce rate",
+            "more": {
+                "icon": "more_vert",
+                "menu": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            },
+            "variant": { "name": "red", "color": "#ff9baa" },
+            "dataKey": "xz",
+            "dataSet": [
+                { "name": "fri", "xz": 4000 },
+                { "name": "sat", "xz": 3000 },
+                { "name": "sun", "xz": 2000 },
+                { "name": "mon", "xz": 2780 },
+                { "name": "tue", "xz": 1890 },
+                { "name": "wen", "xz": 2390 },
+                { "name": "thu", "xz": 4490 }
+            ]
+        }
+    ],
+    "device": {
+        "title": "visitors device",
+        "icon": "calendar_month",
+        "option": ["year 2021", "year 2020", "year 2019", "year 2018", "year 2017", "year 2016", "year 2015"],
+        "chart": [
+            { "month": "JAN", "mobile": 4000, "desktop": 7400 },
+            { "month": "FEB", "mobile": 5000, "desktop": 8398 },
+            { "month": "MAR", "mobile": 6000, "desktop": 7800 },
+            { "month": "APR", "mobile": 3780, "desktop": 5908 },
+            { "month": "MAY", "mobile": 7890, "desktop": 4800 },
+            { "month": "JUN", "mobile": 9390, "desktop": 5800 },
+            { "month": "JUL", "mobile": 5390, "desktop": 7800 },
+            { "month": "AGU", "mobile": 6390, "desktop": 7800 },
+            { "month": "SEP", "mobile": 8390, "desktop": 5800 },
+            { "month": "OCT", "mobile": 8390, "desktop": 4800 },
+            { "month": "NOV", "mobile": 4390, "desktop": 7800 },
+            { "month": "DEC", "mobile": 5390, "desktop": 6800 }
+        ]
+    },
+    "country": {
+        "title": "country keywords",
+        "dotsMenu": {
+            "dots": "more_vert",
+            "dropdown": [
+                { "icon": "history", "text": "last day" },
+                { "icon": "history", "text": "last week" },
+                { "icon": "history", "text": "last month" },
+                { "icon": "history", "text": "last year" }
+            ]
+        },
+        "items": [
+            {
+                "src": "images/flag/bangladesh.webp",
+                "alt": "bangladesh",
+                "name": { "title": "country", "text": "bangladesh" },
+                "sales": { "title": "value", "text": "2500" },
+                "bounce": { "title": "seo", "text": "90%" }
+            },
+            {
+                "src": "images/flag/usa.webp",
+                "alt": "united state",
+                "name": { "title": "country", "text": "united state" },
+                "sales": { "title": "value", "text": "1400" },
+                "bounce": { "title": "seo", "text": "85%" }
+            },
+            {
+                "src": "images/flag/saudi.webp",
+                "alt": "saudi arabia",
+                "name": { "title": "country", "text": "saudi arabia" },
+                "sales": { "title": "value", "text": "3900" },
+                "bounce": { "title": "seo", "text": "70%" }
+            },
+            {
+                "src": "images/flag/germany.webp",
+                "alt": "germany",
+                "name": { "title": "country", "text": "germany" },
+                "sales": { "title": "value", "text": "4170" },
+                "bounce": { "title": "seo", "text": "65%" }
+            },
+            {
+                "src": "images/flag/philippines.webp",
+                "alt": "philippines",
+                "name": { "title": "country", "text": "philippines" },
+                "sales": { "title": "value", "text": "5298" },
+                "bounce": { "title": "seo", "text": "58%" }
+            },
+            {
+                "src": "images/flag/switzerland.webp",
+                "alt": "switzerland",
+                "name": { "title": "country", "text": "switzerland" },
+                "sales": { "title": "value", "text": "4892" },
+                "bounce": { "title": "seo", "text": "47%" }
+            },
+            {
+                "src": "images/flag/venezuela.webp",
+                "alt": "venezuela",
+                "name": { "title": "country", "text": "venezuela" },
+                "sales": { "title": "value", "text": "3541" },
+                "bounce": { "title": "seo", "text": "36%" }
+            },
+            {
+                "src": "images/flag/netherlands.webp",
+                "alt": "netherlands",
+                "name": { "title": "country", "text": "venezuela" },
+                "sales": { "title": "value", "text": "2467" },
+                "bounce": { "title": "seo", "text": "25%" }
+            },
+            {
+                "src": "images/flag/sa.webp",
+                "alt": "south-africa",
+                "name": { "title": "country", "text": "south africa" },
+                "sales": { "title": "value", "text": "1568" },
+                "bounce": { "title": "seo", "text": "14%" }
+            }
+        ]
+    },
+    "pages": {
+        "title": "page views",
+        "thead": ["page name", "visitors", "bounce"],
+        "tbody": [
+            { 
+                "path": "/admin/ecommerce",
+                "visitor": "5787", 
+                "bounce": "20%" 
+            },
+            { 
+                "path": "/admin/analytics",
+                "visitor": "4934", 
+                "bounce": "35%" 
+            },
+            { 
+                "path": "/admin/register",
+                "visitor": "6478", 
+                "bounce": "15%" 
+            },
+            { 
+                "path": "/admin/message",
+                "visitor": "3589", 
+                "bounce": "40%" 
+            },
+            { 
+                "path": "/admin/product-upload",
+                "visitor": "2872", 
+                "bounce": "55%" 
+            },
+            { 
+                "path": "/admin/user-profile",
+                "visitor": "1236", 
+                "bounce": "63%" 
+            },
+            { 
+                "path": "/admin/my-account",
+                "visitor": "908", 
+                "bounce": "72%" 
+            },
+            { 
+                "path": "/admin/invoice-details",
+                "visitor": "756", 
+                "bounce": "84%" 
+            },
+            { 
+                "path": "/admin/order-list",
+                "visitor": "248", 
+                "bounce": "91%" 
+            }
+        ]
+    },
+    "traffic": {
+        "title": "traffic sources",
+        "thead": ["source", "users", "sessions", "bounce", "duration"],
+        "tbody": [
+            { 
+                "source": { "icon": "directions", "text": "direct" },
+                "users": "872", 
+                "sessions": "1077",
+                "bounce": "63%", 
+                "duration": "00:09:18"
+            },
+            { 
+                "source": { "icon": "dataset_linked", "text": "referral" },
+                "users": "789", 
+                "sessions": "390",
+                "bounce": "74%", 
+                "duration": "00:03:20"
+            },
+            { 
+                "source": { "icon": "compost", "text": "organic" },
+                "users": "872", 
+                "sessions": "1077",
+                "bounce": "63%", 
+                "duration": "00:09:18"
+            },
+            { 
+                "source": { "icon": "interests", "text": "social" },
+                "users": "1023", 
+                "sessions": "1265",
+                "bounce": "29%", 
+                "duration": "00:06:25"
+            },
+            { 
+                "source": { "icon": "campaign", "text": "campaign" },
+                "users": "7843", 
+                "sessions": "2389",
+                "bounce": "35%", 
+                "duration": "00:15:25"
+            },
+            { 
+                "source": { "icon": "devices_other", "text": "others" },
+                "users": "872", 
+                "sessions": "1077",
+                "bounce": "63%", 
+                "duration": "00:09:18"
+            }
+        ]
+    }
+}
