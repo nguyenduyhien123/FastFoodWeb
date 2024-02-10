@@ -8,24 +8,20 @@ import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 
 const navLinks = [
        {
-              display: 'Home',
-              url: '#'
+              display: 'Trang chủ',
+              url: '/'
        },
        {
-              display: 'About',
+              display: 'Thông tin',
               url: '/about'
        },
        {
-              display: 'Menu',
-              url: '#'
+              display: 'Thực đơn',
+              url: '#menu_pack'
        },
        {
-              display: 'Recipes',
-              url: '#'
-       },
-       {
-              display: 'Contact',
-              url: '#'
+              display: 'Liên hệ',
+              url: '#footer_web'
        },
 ]
 
@@ -34,16 +30,16 @@ const Header = () => {
        const menuRef = useRef()
 
        const menuToggle = () => menuRef.current.classList.toggle('active_menu')
-       
+
        return (
               <header className="header_web">
                      <Container>
                             <div className="navigation">
                                    <div className="logo">
                                           <Link to="/">
-                                          <h2 className='d-flex align-items-center gap-1'>
-                                                 <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
-                                          </h2>
+                                                 <h2 className='d-flex align-items-center gap-1'>
+                                                        <span><i class="ri-restaurant-2-line"></i></span>{" "} Chef Food
+                                                 </h2>
                                           </Link>
 
                                    </div>
@@ -62,17 +58,17 @@ const Header = () => {
 
                                                  <div className="menu_right">
                                                         <div className="custom_search">
-                                                               <input type="text" placeholder='Search item...' />
+                                                               <input type="text" placeholder='Tìm kiếm...' />
                                                                <span><i class="ri-search-line"></i></span>
                                                         </div>
                                                  </div>
                                           </div>
                                    </div>
                                    <div className="avatar">
-                                        <DropdownAvatar></DropdownAvatar>
+                                          <DropdownAvatar></DropdownAvatar>
                                    </div>
                                    <div>
-                                          <Cart/>
+                                          <Cart />
                                    </div>
                                    <div className="mobile_menu">
                                           <span><i class="ri-menu-line " onClick={menuToggle}></i></span>

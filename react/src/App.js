@@ -1,5 +1,5 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useContext, useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
@@ -15,12 +15,13 @@ import { PageRegister } from "./pages/PageRegister";
 import PageSignIn from "./pages/PageSignIn";
 function App() {
   const navigate = useNavigate();
-  const {isLogin}  = useContext(AuthContext)
-    useEffect(() => {
+  const { isLogin } = useContext(AuthContext);
+  useEffect(() => {
     AOS.init();
-  }, [])
-  console.log('trạng thái ',isLogin);
-  return   <Routes>
+  }, []);
+  console.log("trạng thái ", isLogin);
+  return (
+    <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
@@ -28,15 +29,18 @@ function App() {
       </Route>
       <Route path="accounts" element={<Layout />}>
         <Route path="register" element={<PageRegister />} />
-        <Route path="signin" element={isLogin ? <Navigate replace to="/"/> : <PageSignIn/>} />
+        <Route
+          path="signin"
+          element={isLogin ? <Navigate replace to="/" /> : <PageSignIn />}
+        />
         <Route path="info" element={<UserInfo />} />
       </Route>
       <Route path="products" element={<Layout />}>
-        <Route path="1" element = {<ProductPage/>}/>
+        <Route path="1" element={<ProductPage />} />
       </Route>
       <Route path="/avatar" element={<DropdownAvatar />} />
-
     </Routes>
+  );
 }
 
 export default App;

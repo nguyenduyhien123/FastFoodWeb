@@ -16,7 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <ProductPage />
+        <App />
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
