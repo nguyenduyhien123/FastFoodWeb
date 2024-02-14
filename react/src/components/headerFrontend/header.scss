@@ -1,5 +1,5 @@
 .header_web {
-  margin : 0 auto;
+  margin: 0 auto;
   max-width: 1850px;
   padding-left: 50px;
   padding-right: 50px;
@@ -14,7 +14,6 @@
     z-index: 9;
     background: #ffffff; // Thay đổi màu nền thành màu sáng
     color: #141124; // Đảm bảo màu chữ đủ đậm để đọc được trên nền sáng
-    
   }
 
   .navigation {
@@ -81,7 +80,6 @@
   .mobile_menu {
     display: none;
   }
-
 
   .cart_icon {
     position: relative;
@@ -163,16 +161,12 @@
     .active_menu {
       display: block;
     }
-
   }
-  .list-action>*
-  {
-      color : #ffffff
+  .list-action > * {
+    color: #ffffff;
   }
 }
-.avatar svg
-{   
-    width: 30px;
-    height : 30px;
-
+.avatar svg {
+  width: 30px;
+  height: 30px;
 }

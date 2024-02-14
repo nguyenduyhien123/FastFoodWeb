@@ -1,22 +1,32 @@
 import { Form } from "react-bootstrap";
 import { useContext, useRef, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import validator from "validator";
 import "../.././assets/css/components/SignIn.scss";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.min.css';
 import { AuthContext } from "../../context/AuthContext";
-import {ClipLoader} from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 const overrideCliploader = {
   display: "block",
   margin: "0 auto",
   borderColor: "white",
-  borderWidth : "5px"
+  borderWidth: "5px",
 };
 export default function SignIn() {
-  const {userInfo, isLogin, updateUserInfo,updateLogin,loginInfo, updateLoginInfo,loginUser, isLoginLoading, handleLoginWithGoogle}  = useContext(AuthContext)
+  const {
+    userInfo,
+    isLogin,
+    updateUserInfo,
+    updateLogin,
+    loginInfo,
+    updateLoginInfo,
+    loginUser,
+    isLoginLoading,
+    handleLoginWithGoogle,
+  } = useContext(AuthContext);
   const [account, setAccount] = useState({ email: "", password: "" });
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -26,7 +36,7 @@ export default function SignIn() {
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-    updateLoginInfo({...loginInfo, [name] : value})
+    updateLoginInfo({ ...loginInfo, [name]: value });
   }
   // function handleSubmit(e)
   // {
@@ -155,17 +165,27 @@ export default function SignIn() {
           </div>
           <Link to="/accounts/reset-password" className="span">Quên mật khẩu?</Link>
         </div>
-        <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">
-          {isLoginLoading ? <ClipLoader
-  color="#36d7b7"
-  size={35}
-  speedMultiplier={1}
-  cssOverride={overrideCliploader}
-
-/> : 'Đăng nhập'}
+        <button
+          type="submit"
+          disabled={isLoginLoading ? true : false}
+          className="button-submit"
+        >
+          {isLoginLoading ? (
+            <ClipLoader
+              color="#36d7b7"
+              size={35}
+              speedMultiplier={1}
+              cssOverride={overrideCliploader}
+            />
+          ) : (
+            "Đăng nhập"
+          )}
         </button>
         <p className="p">
-          Chưa có tài khoản? <Link to="/accounts/register"><span className="span">Đăng ký</span></Link>
+          Chưa có tài khoản?{" "}
+          <Link to="/accounts/register">
+            <span className="span">Đăng ký</span>
+          </Link>
         </p>
         <p className="p line">Hoặc đăng nhập với</p>
 

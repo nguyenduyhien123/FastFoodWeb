@@ -9,24 +9,20 @@ import { ProductSearch } from '../product_search/ProductSearch'
 
 const navLinks = [
        {
-              display: 'Home',
-              url: '#'
+              display: 'Trang chủ',
+              url: '/'
        },
        {
-              display: 'About',
+              display: 'Thông tin',
               url: '/about'
        },
        {
-              display: 'Menu',
-              url: '#'
+              display: 'Thực đơn',
+              url: '#menu_pack'
        },
        {
-              display: 'Recipes',
-              url: '#'
-       },
-       {
-              display: 'Contact',
-              url: '#'
+              display: 'Liên hệ',
+              url: '#footer_web'
        },
 ]
 
@@ -62,7 +58,7 @@ const Header = () => {
                                                  </ul>
 
                                                  <div className="menu_right">
-                                                       <ProductSearch></ProductSearch>
+                                                        <ProductSearch></ProductSearch>
                                                  </div>
                                           </div>
                                    </div>
@@ -72,9 +68,9 @@ const Header = () => {
                                                  <DropdownAvatar></DropdownAvatar>
                                           </div>
                                           <Link to={"/wishlist"}>
-                                          <button class="material-symbols-outlined favorite">
-                                                 favorite
-                                          </button>
+                                                 <button class="material-symbols-outlined favorite">
+                                                        favorite
+                                                 </button>
                                           </Link>
                                    </div>
                                    <div>
