@@ -1,0 +1,83 @@
+/*
+*   Template name: duyhien - React Admin Dashboard Template
+*   Themeforest portfolio: (https://themeforest.net/user/Ndhcoder/portfolio)
+*   Service center: (https://www.fiverr.com/Ndhcoder)
+*   Support email: (Ndhcoder@gmail.com)
+*   All copyrights reserved by Ndhcoder
+*/
+
+//========================================
+//          1 - HELPERS FOLDER
+//========================================
+@import './1-helpers/directions';
+@import './1-helpers/breakpoints';
+@import './1-helpers/colors';
+@import './1-helpers/mixins';
+@import './1-helpers/globals';
+@import './1-helpers/typography';
+//========================================
+//          2 - COMPONENTS FOLDER
+//========================================
+@import './2-components/alert';
+@import './2-components/logo';
+@import './2-components/tabs';
+@import './2-components/form';
+@import './2-components/table';
+@import './2-components/field';
+@import './2-components/modal';
+@import './2-components/button';
+@import './2-components/spinner';
+@import './2-components/dropdown';
+@import './2-components/fieldset';
+@import './2-components/duel-text';
+@import './2-components/pagination';
+@import './2-components/breadcrumb';
+@import './2-components/file-upload';
+@import './2-components/round-avatar';
+@import './2-components/divide-title';
+@import './2-components/thinScrolling';
+
+//=======================================
+//          3 - ELEMENTS FOLDER
+//=======================================
+@import './3-elements/cardLayout';
+@import './3-elements/salesCard';
+@import './3-elements/revenueCard';
+@import './3-elements/ecommerceCard';
+@import './3-elements/analyticsCard';
+@import './3-elements/countriesCard';
+@import './3-elements/devicesCard';
+@import './3-elements/crmCard';
+@import './3-elements/tabCard';
+@import './3-elements/floatCard';
+@import './3-elements/activityCard';
+@import './3-elements/ordersCard';
+@import './3-elements/overviewCard';
+
+//=======================================
+//          4 - LAYOUTS FOLDER
+//=======================================
+@import './4-layouts/header';
+@import './4-layouts/sidebar';
+@import './4-layouts/main';
+@import './4-layouts/footer';
+@import './4-layouts/review';
+
+//=======================================
+//          5 - PAGES FOLDER
+//=======================================
+@import './5-pages/auth';
+@import './5-pages/register';
+@import './5-pages/user-profile';
+@import './5-pages/product-view';
+@import './5-pages/product-upload';
+@import './5-pages/invoice-details';
+@import './5-pages/notification';
+@import './5-pages/overview';
+@import './5-pages/message';
+@import './5-pages/settings';
+@import './5-pages/colors';
+@import './5-pages/blank';
+@import './5-pages/docs';
+@import './5-pages/error';
+@import './5-pages/comment';

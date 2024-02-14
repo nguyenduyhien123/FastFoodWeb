@@ -1,0 +1,25 @@
+{
+    "pageTitle": "alerts variant",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "blocks" },
+        { "text": "alerts" }
+    ],
+    "bootstrap": [
+        { "variant": "primary", "label": "A simple primary alert—check it out!" },
+        { "variant": "secondary", "label": "A simple primary alert—check it out!" },
+        { "variant": "success", "label": "A simple primary alert—check it out!" },
+        { "variant": "danger", "label": "A simple primary alert—check it out!" },
+        { "variant": "warning", "label": "A simple primary alert—check it out!" },
+        { "variant": "info", "label": "A simple primary alert—check it out!" },
+        { "variant": "dark", "label": "A simple primary alert—check it out!" }
+    ],
+    "custom": [
+        { "classes": "red", "icon": "report", "title": "ooooops!", "text": "A simple primary alert check it out here!" },
+        { "classes": "blue", "icon": "filter_vintage", "title": "owwooo!", "text": "A simple primary alert check it out here!" },
+        { "classes": "gray", "icon": "heart_broken", "title": "ooouufff!", "text": "A simple primary alert check it out here!" },
+        { "classes": "green", "icon": "verified", "title": "Congratulations!", "text": "A simple primary alert check it out here!" },
+        { "classes": "purple", "icon": "palette", "title": "isssshhhh!", "text": "A simple primary alert check it out here!" },
+        { "classes": "orange", "icon": "campaign", "title": "huurrrray!", "text": "A simple primary alert check it out here!" }
+    ]
+}

@@ -1,0 +1,32 @@
+.comment-input
+{
+    .avatar img
+    {
+     width: 50px;
+     height : 50px;
+     border-radius : 50%;
+    }
+    .btn-send
+    {
+     svg
+     {
+       width: 30px;
+       height : 30px;
+     }
+     svg#send
+     {
+       fill : #000000;
+       stroke: #000000;
+         }
+     svg#send.active
+     {
+       fill: rgb(8, 102, 255)!important;
+       stroke : rgb(8, 102, 255)!important;
+     }
+    }
+    .rdw-editor-wrapper
+    {
+      border: 1px solid #ccc;
+      width : 100%;
+    }
+}

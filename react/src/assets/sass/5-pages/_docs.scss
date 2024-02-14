@@ -1,0 +1,54 @@
+.mc-docs {
+    padding: 30px 20px;
+
+    @include mobile-breakpoint {
+        padding: 15px 0px;
+    }
+
+    h3 {
+        @include text-font(20px, 600);
+        margin-bottom: 20px;
+        text-transform: inherit;
+
+        @include tablet-breakpoint {
+            white-space: inherit;
+        }
+    }
+
+    b {
+        font-weight: 600;
+        color: var(--primaryHEX);
+    }
+
+    img {
+        margin: 12px;
+        height: 125px;
+        border-radius: 8px;
+        filter: invert(1);
+
+        @include tablet-breakpoint {
+            width: 90%;
+            height: auto;
+        }
+    }
+}
+
+.mc-docs-footer {
+    max-width: 300px;
+    text-align: center;
+    margin: 60px auto 50px;
+
+    @include custom-breakpoint(0px, 350px) {
+        max-width: 100%;
+    }
+    
+    h3 {
+        @include text-font(36px, 900);
+        text-transform: uppercase;
+        margin-bottom: 28px;
+
+        @include mobile-breakpoint {
+            font-size: 28px;
+        }
+    }
+}

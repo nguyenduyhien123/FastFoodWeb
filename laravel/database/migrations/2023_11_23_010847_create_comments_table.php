@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('comment_id')->unsigned()->nullable();
             $table->string('image')->nullable();
-            $table->string('content');
-            $table->string('path')->unique();
+            $table->string('content', 1000);
+            $table->string('path')->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -2,10 +2,10 @@ import { Form } from "react-bootstrap";
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
 import validator from "validator";
-import "../../assets/css/components/SignIn.css";
+import "../.././assets/css/components/SignIn.scss";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css";
+import Swal from 'sweetalert2';
+// import 'sweetalert2/dist/sweetalert2.min.css';
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 
@@ -74,7 +74,7 @@ export default function SignIn() {
   console.log(loginInfo);
   console.log("====================================");
   return (
-    <div>
+    <div className="form-login">
       <form onSubmit={loginUser} className="form border">
         <div className="flex-column">
           <label>Email </label>
@@ -163,7 +163,7 @@ export default function SignIn() {
               }
             />
           </div>
-          <span className="span">Quên mật khẩu?</span>
+          <Link to="/accounts/reset-password" className="span">Quên mật khẩu?</Link>
         </div>
         <button
           type="submit"

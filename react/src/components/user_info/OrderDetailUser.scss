@@ -1,0 +1,18 @@
+.customer-order-detail
+{
+    color : #000000;
+    .order-info
+    {
+        span
+        {
+            min-width: 200px;
+            display: inline-block!important;
+        }
+    }
+    .image-product
+    {
+        width: 60px;
+        object-fit: contain;
+        max-width: 100%;
+    }
+}

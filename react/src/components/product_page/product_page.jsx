@@ -9,38 +9,42 @@ export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState();
 
-  const [selectedImage, setSelectedImage] = useState(
-    "https://burgerking.vn/media/catalog/product/cache/1/small_image/316x/9df78eab33525d08d6e5fb8d27136e95/7/-/7-burger-b_-n_ng-whopper-jr_1.jpg"
-  );
-  const images = [
-    "https://burgerking.vn/media/catalog/product/cache/1/small_image/316x/9df78eab33525d08d6e5fb8d27136e95/7/-/7-burger-b_-n_ng-whopper-jr_1.jpg",
-    "https://burgerking.vn//media//catalog//product//cache//1//small_image//316x//9df78eab33525d08d6e5fb8d27136e95//6//-//6-burger-ca.jpg",
-    "https://burgerking.vn/media/catalog/product/cache/1/small_image/316x/9df78eab33525d08d6e5fb8d27136e95/1/2/12-burger-b_-n_ng-h_nh-chi_n_4.jpg",
-  ];
-
+  const [selectedImage, setSelectedImage] = useState();
+  const productStar = product?.star;
   const [quantity, setQuantity] = useState(1);
 
   const [comment, setComment] = useState(false);
   const [rating, setRating] = useState(true);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/products/1`).then((res) => {
-      setProduct(res.data);
-    });
+    axios
+      .get(`http://localhost:8000/api/products/${id}`)
+      .then((res) => {
+        let product = res.data;
+        product.image = JSON.parse(product.image);
+        setSelectedImage(product.image[0]);
+        setProduct(product);
+      })
+      .catch(() => {
+        console.log("Gọi API lỗi");
+      });
   }, []);
   return (
     <div>
-      <div className="Product-Page card h-100 col-sm-12 mb-3 py-4">
+      <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4">
         <div className="Image-List">
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              className="img-fluid rounded m-1"
-              style={{ opacity: selectedImage === image ? 1 : 0.5 }}
-              alt="product-image"
-              onClick={() => setSelectedImage(image)}
-            />
-          ))}
+          {product?.image &&
+            Object.keys(product?.image).map((image, index) => (
+              <img
+                key={index}
+                src={product.image[image]}
+                className="img-fluid rounded m-1"
+                style={{
+                  opacity: selectedImage === product.image[image] ? 1 : 0.5,
+                }}
+                alt="product"
+                onClick={() => setSelectedImage(product.image[image])}
+              />
+            ))}
         </div>
         <div className="Active-Image">
           {selectedImage && (
@@ -50,18 +54,18 @@ export default function ProductPage() {
         <div className="Description">
           <div className="first-row d-flex flex-column">
             {/* product-name */}
-            <h2 className="product-name">{product.name}</h2>
+            <h2 className="product-name">{product?.name}</h2>
             {/* rating */}
             <Rating
               size={20}
               interactive
-              rating={5}
+              rating={productStar}
               hoverColor="yellow"
               onRatingChanged={(e) => console.log(e)}
             ></Rating>
             {/* price */}
             <p className="price">
-              <h3>{product.price}&nbsp;VND</h3>
+              <h3>{product?.price}đ</h3>
             </p>
           </div>
           {/* quantity-change */}
@@ -152,6 +156,7 @@ export default function ProductPage() {
                 <img
                   class="rounded-circle shadow-1-strong me-3 user-image"
                   src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  alt="user"
                 />
                 <div>
                   <Rating
@@ -170,10 +175,10 @@ export default function ProductPage() {
                   ></textarea>
                 </div>
                 <div className="rating-box-button">
-                  <button class="btn btn-outline-primary btn-sm post-rating">
+                  <button class="btn btn-outline-warning btn-sm post-rating">
                     Đăng đánh giá
                   </button>
-                  <button class="btn btn-outline-primary btn-sm cancel-rating">
+                  <button class="btn btn-outline-warning btn-sm cancel-rating">
                     Hủy
                   </button>
                 </div>
@@ -190,6 +195,7 @@ export default function ProductPage() {
                 <img
                   class="rounded-circle shadow-1-strong me-3 user-image"
                   src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  alt="user"
                 />
                 <div>
                   <Rating
@@ -208,10 +214,10 @@ export default function ProductPage() {
                   ></textarea>
                 </div>
                 <div className="rating-box-button">
-                  <button class="btn btn-outline-primary btn-sm post-rating">
-                    Đăng đánh giá
+                  <button class="btn btn-outline-warning btn-sm post-rating">
+                    Đăng bình luận
                   </button>
-                  <button class="btn btn-outline-primary btn-sm cancel-rating">
+                  <button class="btn btn-outline-warning btn-sm cancel-rating">
                     Hủy
                   </button>
                 </div>

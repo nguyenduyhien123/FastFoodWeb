@@ -1,0 +1,461 @@
+{
+    "logo": {
+        "path": "/ecommerce",
+        "src": "/images/logo.webp",
+        "alt": "blue",
+        "name": "duyhien"
+    },
+    "toggle": { 
+        "open": "menu_open", 
+        "close": "menu" 
+    },
+    "search":{
+        "icon": "search",
+        "placeholder": "Quick finding..." 
+    },
+    "theme": {
+        "icon": { "light": "light_mode", "dark": "dark_mode" },
+        "title": "Theme Mode",
+        "addClass": "theme"
+    },
+    "language": {
+        "icon": "language",
+        "title": "Languages",
+        "addClass": "language",
+        "dropdown": [
+            { "flag": "/images/flag/bangladesh.webp", "name": "bengali", "check": "active" },
+            { "flag": "/images/flag/germany.webp", "name": "germany" },
+            { "flag": "/images/flag/saudi.webp", "name": "arabic" },
+            { "flag": "/images/flag/usa.webp", "name": "english" },
+            { "flag": "/images/flag/sa.webp", "name": "african" }
+        ]
+    },
+    "cart": {
+        "icon": "shopping_cart", 
+        "title": "Shopping",  
+        "addClass": "cart",   
+        "badge": { "text": "02", "variant": "primary" },
+        "dropdown": {
+            "title": "Orders",
+            "dotsMenu": {
+                "dots": "settings",
+                "dropdown": [
+                    { "icon": "drafts", "text": "mark all as read" },
+                    { "icon": "markunread", "text": "mark all as unread" },
+                    { "icon": "delete", "text": "delete all order" }
+                ]
+            },
+            "button": { 
+                "path": "/order-list", 
+                "label": "view all order" 
+            },
+            "items": [
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/07.webp", "/images/product/08.webp"],
+                        "count": "+3"
+                    },
+                    "name": "miron mahmud",
+                    "price": "$289",
+                    "addClass": "active",
+                    "shortMoment": "now",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/01.webp", "/images/product/02.webp"],
+                        "count": "+1"
+                    },
+                    "name": "tahmina bonny",
+                    "price": "$78",
+                    "addClass": "active",
+                    "shortMoment": "2m",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/03.webp", "/images/product/04.webp"],
+                        "count": "+5"
+                    },
+                    "name": "shikdar ahmed",
+                    "price": "$2,975",
+                    "shortMoment": "1h",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/05.webp", "/images/product/06.webp"],
+                        "count": "+1"
+                    },
+                    "name": "labonno khan",
+                    "price": "$96",
+                    "shortMoment": "3d",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/10.webp", "/images/product/09.webp"],
+                        "count": "+2"
+                    },
+                    "name": "kamlesh hasan",
+                    "price": "$103",
+                    "shortMoment": "1w",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/04.webp", "/images/product/02.webp"],
+                        "count": "+3"
+                    },
+                    "name": "rabeya akter",
+                    "price": "$190",
+                    "shortMoment": "2m",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "product": {
+                        "images": ["/images/product/06.webp", "/images/product/01.webp"],
+                        "count": "+1"
+                    },
+                    "name": "tanvir ahmed",
+                    "price": "$87",
+                    "shortMoment": "1y",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete order" },
+                            { "icon": "remove_circle", "text": "block order" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "message": {
+        "icon": "email", 
+        "title": "Message",  
+        "addClass": "message",   
+        "badge": { "text": "03", "variant": "primary" },
+        "dropdown": {
+            "title": "Messages",
+            "dotsMenu": {
+                "dots": "settings",
+                "dropdown": [
+                    { "icon": "drafts", "text": "mark all as read" },
+                    { "icon": "markunread", "text": "mark all as unread" },
+                    { "icon": "delete", "text": "delete all message" }
+                ]
+            },
+            "button": { 
+                "path": "/message", 
+                "label": "view all message" 
+            },
+            "items": [
+                {
+                    "user": { "image": "/images/avatar/01.webp", "status": "online" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "miron mahmud",
+                    "addClass": "active",
+                    "shortMoment": "now",
+                    "badge": "03",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/02.webp" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "tahmina bonny",
+                    "addClass": "active",
+                    "shortMoment": "24s",
+                    "badge": "01",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/03.webp", "status": "online" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "labonno khan",
+                    "addClass": "active",
+                    "shortMoment": "18m",
+                    "badge": "9+",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/04.webp" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "shipu shikdar",
+                    "shortMoment": "23h",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/05.webp", "status": "online" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "rabeya akter",
+                    "shortMoment": "13d",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/06.webp" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "md nasrullah",
+                    "shortMoment": "15w",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/07.webp", "status": "online" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "natasha amin",
+                    "shortMoment": "10m",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                },
+                {
+                    "user": { "image": "/images/avatar/08.webp" },
+                    "chat": "Lorem Ipsum has been the industry's standard dummy text ever",
+                    "name": "habib wahid",
+                    "shortMoment": "2y",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "account_circle", "text": "view profile" },
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete message" },
+                            { "icon": "remove_circle", "text": "block message" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "notify": {
+        "icon": "notifications", 
+        "title": "notification",  
+        "addClass": "notify",   
+        "badge": { "text": "04", "variant": "primary" },
+        "dropdown": {
+            "title": "notifications",
+            "dotsMenu": {
+                "dots": "settings",
+                "dropdown": [
+                    { "icon": "drafts", "text": "mark all as read" },
+                    { "icon": "markunread", "text": "mark all as unread" },
+                    { "icon": "delete", "text": "delete all notification" }
+                ]
+            },
+            "button": { 
+                "path": "/notification", 
+                "label": "view all notification" 
+            },
+            "items": [
+                {
+                    "path": "#",
+                    "addClass": "active",
+                    "notify": { "image": "/images/avatar/01.webp", "variant": "red", "icon": "favorite" },
+                    "note": "<b>Mahmudul</b> added to his favorite list <b>Leather belt steve madden</b>",
+                    "longMoment": "few seconds ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "addClass": "active",
+                    "notify": { "image": "/images/avatar/02.webp", "variant": "green", "icon": "forum" },
+                    "note": "<b>labonno</b> leave her comment to <b>Dressni Breathable female Dress</b>",
+                    "longMoment": "25 minutes ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "addClass": "active",
+                    "notify": { "image": "/images/avatar/03.webp", "variant": "blue", "icon": "campaign" },
+                    "note": "<b>tahmina</b> announce to 50% discount <b>New Exclusive long kurti</b>",
+                    "longMoment": "12 hours ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "addClass": "active",
+                    "notify": { "image": "/images/avatar/04.webp", "variant": "purple", "icon": "edit" },
+                    "note": "<b>jubayer</b> write to his latest blog <b>Best fashion outfit this winter</b>",
+                    "longMoment": "4 days ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "notify": { "image": "/images/avatar/05.webp", "variant": "yellow", "icon": "star" },
+                    "note": "<b>rebeka</b> give a review to <b>Exclusive Designed Multicolor long Kaptan</b>",
+                    "longMoment": "1 weeks ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                },
+                {
+                    "path": "#",
+                    "notify": { "image": "/images/logo.webp", "variant": "primary", "icon": "shield" },
+                    "note": "<b>duyhien</b> privacy updated and secure <b>all this multitask platform</b>",
+                    "longMoment": "2 months ago!",
+                    "more": {
+                        "icon": "more_vert",
+                        "menu": [
+                            { "icon": "mark_chat_read", "text": "mark as unread" },
+                            { "icon": "delete", "text": "delete notification" },
+                            { "icon": "remove_circle", "text": "block notification" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "profile": {
+        "name": "miron mahmud",
+        "username": "@Ndhcoder",
+        "image": "/images/avatar/01.webp",
+        "dropdown": [
+            { "path": "/admin/my-account", "icon": "person", "text": "Tài khoản" },
+            { "path": "/admin/forgot-password", "icon": "privacy_tip", "text": "Quên mật khẩu" },
+            { "path": "/admin/logout", "icon": "lock", "text": "Đăng xuất" }
+        ]
+    }
+}

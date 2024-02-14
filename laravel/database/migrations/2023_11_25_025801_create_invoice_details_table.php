@@ -15,9 +15,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('invoice_id');
             $table->unsignedBigInteger('product_id');
             $table->bigInteger('quantity');
+            $table->bigInteger('price');
+            $table->bigInteger('total');
             $table->timestamps();
             $table->softDeletes();
-
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->foreign('product_id')->references('id')->on('products');
 

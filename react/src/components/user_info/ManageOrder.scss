@@ -1,0 +1,29 @@
+.manage-order
+{
+    .list-tab-order
+    {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid rgba(0,0,0,.09);
+        transition : all 0.2s;
+        user-select: none;
+        .tab-item
+        {
+            cursor: pointer;
+            padding : 16px 0;
+            flex : 1;
+            text-align: center;
+            font-size: 18px;
+            &::hover
+            {
+                color : #ee4d2d;
+            }
+            &.active
+            {
+                color : #ee4d2d;
+                border-bottom : 2px solid red;
+            }
+        }
+}
+}

@@ -1,0 +1,365 @@
+{
+    "pageTitle": "dashborad",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "dashboard" }
+    ],
+    "heros": [
+        {
+            "variant": "green",
+            "title": "total users",
+            "number": "277",
+            "icon": "account_circle",
+            "trend": "trending_up",
+            "percent": "+ 95%",
+            "compare": "last month",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "purple",
+            "title": "total orders",
+            "number": "338",
+            "icon": "shopping_cart",
+            "trend": "trending_down",
+            "percent": "- 30%",
+            "compare": "last month",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "blue",
+            "title": "total products",
+            "number": "557",
+            "icon": "shopping_bag",
+            "trend": "trending_down",
+            "percent": "- 25%",
+            "compare": "last month",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        },
+        {
+            "variant": "yellow",
+            "title": "total reviews",
+            "number": "166",
+            "icon": "hotel_class",
+            "trend": "trending_up",
+            "percent": "+ 45%",
+            "compare": "last month",
+            "dotsMenu": {
+                "dots": "more_vert",
+                "dropdown": [
+                    { "icon": "history", "text": "last day" },
+                    { "icon": "history", "text": "last week" },
+                    { "icon": "history", "text": "last month" },
+                    { "icon": "history", "text": "last year" }
+                ]
+            }
+        }
+    ],
+    "sales": {
+        "title": "total sales",
+        "amount": "$3,787,681.00",
+        "percent": "40.63%",
+        "trendIcon": "trending_up",
+        "compare": "$3,578.90 in last month",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "history", "text": "last day" },
+                { "icon": "history", "text": "last week" },
+                { "icon": "history", "text": "last month" },
+                { "icon": "history", "text": "last year" }
+            ]
+        },
+        "chart": [
+            { "week": "fri", "sale": 2000 },
+            { "week": "sat", "sale": 3000 },
+            { "week": "san", "sale": 2000 },
+            { "week": "mon", "sale": 2780 },
+            { "week": "tue", "sale": 1890 },
+            { "week": "wen", "sale": 2390 },
+            { "week": "thu", "sale": 3490 }
+        ]
+    },
+    "products": {
+        "title": "best selling products",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "table": {
+            "filter":[
+                { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+                { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+                { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] },
+                { "label": "search by", "type": "search", "placeholder": "id / name / category / brand" }
+            ],
+            "thead": ["product", "category", "brand", "price", "stock", "rating", "order", "sales", "action"],
+            "tbody": [
+                { 
+                    "name":"check0",
+                    "src": "images/product/01.webp",
+                    "alt": "scart",
+                    "heading": "Tops and skirt set for Female", 
+                    "descrip": "Women's exclusive summer Tops and skirt set for Female Tops and skirt set", 
+                    "category": "womans",
+                    "brand": "richman",
+                    "price": { "present": "$19.00", "previous": "$21.00" },
+                    "stock": "30",
+                    "order": "380",
+                    "sales": "$38k", 
+                    "rating": { "icon": "star", "percent": "4.9", "number": "16" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                },
+                {
+                    "name":"check1",
+                    "src": "images/product/02.webp",
+                    "alt": "scart",
+                    "heading": "Leather belt steve madden men's", 
+                    "descrip": "Steve madden men's dress casual cvery cay ceather belt", 
+                    "category": "mans",
+                    "brand": "lubana",
+                    "price": { "present": "$14.00" },
+                    "stock": "23",
+                    "order": "189",
+                    "sales": "$9k", 
+                    "rating": { "icon": "star", "percent": "4.5", "number": "38" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                },
+                {
+                    "name":"check2",
+                    "src": "images/product/03.webp",
+                    "alt": "scart",
+                    "heading": "Existing product name", 
+                    "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                    "category": "womans",
+                    "brand": "ecstasy",
+                    "price": { "present": "33.00", "previous": "44.00" },
+                    "stock": "30",
+                    "order": "380",
+                    "sales": "$38k", 
+                    "rating": { "icon": "star", "percent": "4.1", "number": "69" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                },
+                {
+                    "name":"check3",
+                    "src": "images/product/04.webp",
+                    "alt": "scart",
+                    "heading": "Existing product name", 
+                    "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                    "category": "kidz",
+                    "brand": "ecstasy",
+                    "price": { "present": "33.00" },
+                    "stock": "30",
+                    "order": "380",
+                    "sales": "$38k", 
+                    "rating": { "icon": "star", "percent": "4.4", "number": "47" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                },
+                {
+                    "name":"check4",
+                    "src": "images/product/05.webp",
+                    "alt": "scart",
+                    "heading": "Existing product name", 
+                    "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                    "category": "accessory",
+                    "brand": "ecstasy",
+                    "price": { "present": "33.00" },
+                    "stock": "30",
+                    "order": "380",
+                    "sales": "$38k", 
+                    "rating": { "icon": "star", "percent": "5", "number": "47" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                },
+                {
+                    "name":"check5",
+                    "src": "images/product/06.webp",
+                    "alt": "scart",
+                    "heading": "Existing product name", 
+                    "descrip": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur", 
+                    "category": "womans",
+                    "brand": "ecstasy",
+                    "price": { "present": "33.00" },
+                    "stock": "30",
+                    "order": "380",
+                    "sales": "$38k", 
+                    "rating": { "icon": "star", "percent": "3.7", "number": "47" },
+                    "action": { "edit": "edit", "delete": "delete", "view": "visibility" }
+                }
+            ]
+        }
+    },
+    "revenue": {
+        "title": "revenue report",
+        "field": { 
+            "icon": "calendar_month", 
+            "option": ["year 2021", "year 2020", "year 2019", "year 2018", "year 2017", "year 2016", "year 2015"] 
+        },
+        "report": [
+            { "icon": "cases", "variant": "blue", "label": "invested", "number": "3,387.67K" },
+            { "icon": "bookmarks", "variant": "green", "label": "earnings", "number": "2,856.35K" },
+            { "icon": "layers", "variant": "purple", "label": "expenses", "number": "1,994.12K" }
+        ],
+        "chart": [
+            { "month": "JAN", "invest": 4000, "earning": 7400, "expense": 5789 },
+            { "month": "FEB", "invest": 5000, "earning": 8398, "expense": 5789 },
+            { "month": "MAR", "invest": 6000, "earning": 7800, "expense": 5789 },
+            { "month": "APR", "invest": 3780, "earning": 5908, "expense": 5789 },
+            { "month": "MAY", "invest": 7890, "earning": 4800, "expense": 5789 },
+            { "month": "JUN", "invest": 9390, "earning": 5800, "expense": 5789 },
+            { "month": "JUL", "invest": 5390, "earning": 7800, "expense": 5789 },
+            { "month": "AGU", "invest": 6390, "earning": 7800, "expense": 5789 },
+            { "month": "SEP", "invest": 8390, "earning": 5800, "expense": 5789 },
+            { "month": "OCT", "invest": 8390, "earning": 4800, "expense": 5789 },
+            { "month": "NOV", "invest": 4390, "earning": 7800, "expense": 5789 },
+            { "month": "DEC", "invest": 5390, "earning": 6800, "expense": 5789 }
+        ]
+    },
+    "orders": {
+        "title": "orders overview",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "history", "text": "last day" },
+                { "icon": "history", "text": "last week" },
+                { "icon": "history", "text": "last month" },
+                { "icon": "history", "text": "last year" }
+            ]
+        },
+        "items": [
+            { "name": "pending", "value": 547, "color": "purple", "icon": "pending" },
+            { "name": "shipped", "value": 398, "color": "blue", "icon": "add_circle" },
+            { "name": "recieved", "value": 605, "color": "green", "icon": "check_circle" },
+            { "name": "cancelled", "value": 249, "color": "red", "icon": "cancel" },
+            { "name": "refunded", "value": 176, "color": "yellow", "icon": "error" }
+        ]
+    },
+    "clients":{
+        "title": "popular clients",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "table": {
+            "thead": ["clients", "orders", "amount", "action"],
+            "tbody": [
+                {
+                    "id": "#4980",
+                    "src": "images/avatar/01.webp",
+                    "alt": "client",
+                    "name": "miron mahmud", 
+                    "order": "648",
+                    "amount": "$5500",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4981",
+                    "src": "images/avatar/02.webp",
+                    "alt": "client",
+                    "name": "tahmina bonny", 
+                    "order": "590",
+                    "amount": "$4400",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4982",
+                    "src": "images/avatar/03.webp",
+                    "alt": "client",
+                    "name": "labonno khan", 
+                    "order": "408",
+                    "amount": "$3300",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4983",
+                    "src": "images/avatar/04.webp",
+                    "alt": "client",
+                    "name": "sheikh adabali", 
+                    "order": "357",
+                    "amount": "$2200",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4984",
+                    "src": "images/avatar/05.webp",
+                    "alt": "client",
+                    "name": "johara khatun", 
+                    "order": "289",
+                    "amount": "$1100",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4985",
+                    "src": "images/avatar/06.webp",
+                    "alt": "client",
+                    "name": "kurulus osman", 
+                    "order": "194",
+                    "amount": "$789",
+                    "action": { "chat": "chat", "view": "visibility" }
+                }
+            ]
+        }
+    },
+    "activity": {
+        "title": "recent activities",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "items": [
+            { 
+                "title": "Your account is logged in",
+                "time": "45 min ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/avatar/01.webp", "alt": "avatar", "name": "miron mahmud" }
+            },
+            { 
+                "title": "Current language has been changed",
+                "time": "24 hr ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/flag/bangladesh.webp", "alt": "flag", "name": "bengali language" }
+            },
+            { 
+                "title": "Asked about this product",
+                "time": "Yesterday",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/product/01.webp", "alt": "product", "name": "Modern tiny red skirt" },
+                "button": { "path": "#", "label": "go there" }
+            }
+        ]
+    }
+}

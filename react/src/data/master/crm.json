@@ -1,0 +1,260 @@
+{
+    "breadcrumb": {
+        "title": "CRM Dashboard",
+        "items": [
+            { "path": "/", "text": "home" },
+            { "text": "dashboard" },
+            { "text": "CRM" }
+        ]
+    },
+    "crms": [
+        {
+            "content": { "icon": "summarize", "value": "6790", "label": "campaign sent" },
+            "status": { "icon": "arrow_upward", "value": "45%", "label": "Since last week" },
+            "variant": { "name": "blue", "deep": "#4094f1", "light": "#64b3f6" },
+            "dataKey": { "label": "weeks", "title": "campaign" },
+            "dataSet": [
+                { "weeks": "S", "campaign": 4000 },
+                { "weeks": "M", "campaign": 3000 },
+                { "weeks": "T", "campaign": 5000 },
+                { "weeks": "W", "campaign": 2780 },
+                { "weeks": "T", "campaign": 1890 },
+                { "weeks": "F", "campaign": 2390 },
+                { "weeks": "S", "campaign": 3490 }
+            ]
+
+        },
+        {
+            "content": { "icon": "thumb_up", "value": "5397", "label": "leads generate" },
+            "status": { "icon": "arrow_upward", "value": "35%", "label": "Since last week" },
+            "variant": { "name": "orange", "deep": "#ff8c0a", "light": "#ffa732" },
+            "dataKey": { "label": "weeks", "title": "leads" },
+            "dataSet": [
+                { "weeks": "S", "leads": 4000 },
+                { "weeks": "M", "leads": 3000 },
+                { "weeks": "T", "leads": 5000 },
+                { "weeks": "W", "leads": 2780 },
+                { "weeks": "T", "leads": 1890 },
+                { "weeks": "F", "leads": 2390 },
+                { "weeks": "S", "leads": 3490 }
+            ]
+
+        },
+        {
+            "content": { "icon": "forum", "value": "4278", "label": "deals customer" },
+            "status": { "icon": "arrow_downward", "value": "25%", "label": "Since last week" },
+            "variant": { "name": "green", "deep": "#27bf68", "light": "#4eda89" },
+            "dataKey": { "label": "weeks", "title": "deals" },
+            "dataSet": [
+                { "weeks": "S", "deals": 4000 },
+                { "weeks": "M", "deals": 3000 },
+                { "weeks": "T", "deals": 5000 },
+                { "weeks": "W", "deals": 2780 },
+                { "weeks": "T", "deals": 1890 },
+                { "weeks": "F", "deals": 2390 },
+                { "weeks": "S", "deals": 3490 }
+            ]
+
+        },
+        {
+            "content": { "icon": "shopping_cart", "value": "3594", "label": "revenue booked" },
+            "status": { "icon": "arrow_upward", "value": "15%", "label": "Since last week" },
+            "variant": { "name": "purple", "deep": "#de2fff", "light": "#ed68ff" },
+            "dataKey": { "label": "weeks", "title": "revenue" },
+            "dataSet": [
+                { "weeks": "S", "revenue": 4000 },
+                { "weeks": "M", "revenue": 3000 },
+                { "weeks": "T", "revenue": 5000 },
+                { "weeks": "W", "revenue": 2780 },
+                { "weeks": "T", "revenue": 1890 },
+                { "weeks": "F", "revenue": 2390 },
+                { "weeks": "S", "revenue": 3490 }
+            ]
+        }
+    ],
+    "deals": {
+        "title": "deals performance",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "history", "text": "last day" },
+                { "icon": "history", "text": "last week" },
+                { "icon": "history", "text": "last month" },
+                { "icon": "history", "text": "last year" }
+            ]
+        },
+        "table":{
+            "filter":[
+                { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+                { "label": "status by", "option": ["won leads", "new leads", "open leads", "lost leads"] },
+                { "label": "brand by", "type": "date" },
+                { "label": "search by", "type": "search", "placeholder": "id / name / email" }
+            ],
+            "thead": ["representer", "email", "amount", "status", "issue date", "action"],
+            "tbody": [
+                {
+                    "src": "images/avatar/01.webp",
+                    "alt": "client",
+                    "name": "miron mahmud", 
+                    "email": "miron@gmail.com", 
+                    "amount": "$5,689.00", 
+                    "status": { "text": "won leads", "variant": "green" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                },
+                {
+                    "src": "images/avatar/02.webp",
+                    "alt": "client",
+                    "name": "tahmina bonny", 
+                    "email": "tahmina@gmail.com", 
+                    "amount": "$4,578.00", 
+                    "status": { "text": "new leads", "variant": "blue" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                },
+                {
+                    "src": "images/avatar/03.webp",
+                    "alt": "client",
+                    "name": "labonno khan", 
+                    "email": "labonno@gmail.com", 
+                    "amount": "$6,872.00", 
+                    "status": { "text": "open leads", "variant": "purple" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                },
+                {
+                    "src": "images/avatar/04.webp",
+                    "alt": "client",
+                    "name": "sheikh adabali", 
+                    "email": "sheikh@gmail.com", 
+                    "amount": "$6,890.00", 
+                    "status": { "text": "won leads", "variant": "green" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                },
+                {
+                    "src": "images/avatar/05.webp",
+                    "alt": "client",
+                    "name": "johara khatun", 
+                    "email": "johara@gmail.com", 
+                    "amount": "$5,347.00", 
+                    "status": { "text": "new leads", "variant": "blue" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                },
+                {
+                    "src": "images/avatar/06.webp",
+                    "alt": "client",
+                    "name": "kurulus osman", 
+                    "email": "kurulus@gmail.com", 
+                    "amount": "$7,920.00", 
+                    "status": { "text": "lost leads", "variant": "red" },
+                    "date": "15/06/2022 14:02",
+                    "action": { "delete": "delete", "download": "download", "view": "visibility" }
+                }
+            ]
+        }
+    },
+    "clients":{
+        "title": "popular clients",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "table": {
+            "thead": ["clients", "orders", "amount", "action"],
+            "tbody": [
+                {
+                    "id": "#4980",
+                    "src": "images/avatar/01.webp",
+                    "alt": "client",
+                    "name": "miron mahmud", 
+                    "order": "648",
+                    "amount": "$5500",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4981",
+                    "src": "images/avatar/02.webp",
+                    "alt": "client",
+                    "name": "tahmina bonny", 
+                    "order": "590",
+                    "amount": "$4400",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4982",
+                    "src": "images/avatar/03.webp",
+                    "alt": "client",
+                    "name": "labonno khan", 
+                    "order": "408",
+                    "amount": "$3300",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4983",
+                    "src": "images/avatar/04.webp",
+                    "alt": "client",
+                    "name": "sheikh adabali", 
+                    "order": "357",
+                    "amount": "$2200",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4984",
+                    "src": "images/avatar/05.webp",
+                    "alt": "client",
+                    "name": "johara khatun", 
+                    "order": "289",
+                    "amount": "$1100",
+                    "action": { "chat": "chat", "view": "visibility" }
+                },
+                {
+                    "id": "#4985",
+                    "src": "images/avatar/06.webp",
+                    "alt": "client",
+                    "name": "kurulus osman", 
+                    "order": "194",
+                    "amount": "$789",
+                    "action": { "chat": "chat", "view": "visibility" }
+                }
+            ]
+        }
+    },
+    "activity": {
+        "title": "recent activities",
+        "dotsMenu": {
+            "dots": "more_horiz",
+            "dropdown": [
+                { "icon": "edit", "text": "edit" },
+                { "icon": "delete", "text": "delete" },
+                { "icon": "download", "text": "download" }
+            ]
+        },
+        "items": [
+            { 
+                "title": "Your account is logged in",
+                "time": "45 min ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/avatar/01.webp", "alt": "avatar", "name": "miron mahmud" }
+            },
+            { 
+                "title": "Current language has been changed",
+                "time": "24 hr ago",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/flag/bangladesh.webp", "alt": "flag", "name": "bengali language" }
+            },
+            { 
+                "title": "Asked about this product",
+                "time": "Yesterday",
+                "text": "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.",
+                "media": { "src": "images/product/01.webp", "alt": "product", "name": "Modern tiny red skirt" },
+                "button": { "path": "#", "label": "go there" }
+            }
+        ]
+    }
+}

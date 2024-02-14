@@ -1,0 +1,210 @@
+// red color
+$red-100: #fff1f3;
+$red-200: #ffdfe4;
+$red-300: #ffc4cd;
+$red-400: #ff9baa;
+$red-500: #ff6179;
+$red-600: #ff304f;
+$red-700: #f11133;
+$red-800: #e00b2b;
+$red-900: #a70d24;
+
+// dark color
+$dark-100: #39496b;
+$dark-200: #2f3f61;
+$dark-300: #253557;
+$dark-400: #1b2b4d;
+$dark-500: #112143;
+$dark-600: #071739;
+$dark-700: #010c2c;
+$dark-800: #00031f;
+$dark-900: #000015;
+
+// gray color
+$gray-100: #f8f8f8;
+$gray-200: #f0f0f0;
+$gray-300: #e4e4e4;
+$gray-400: #d1d1d1;
+$gray-500: #b4b4b4;
+$gray-600: #9a9a9a;
+$gray-700: #818181;
+$gray-800: #6a6a6a;
+$gray-900: #5a5a5a;
+
+// blue color
+$blue-100: #eff8ff;
+$blue-200: #dcedfd;
+$blue-300: #c1e1fc;
+$blue-400: #96cefa;
+$blue-500: #64b3f6;
+$blue-600: #4094f1;
+$blue-700: #2b77e5;
+$blue-800: #2262d3;
+$blue-900: #2351af;
+
+// green color
+$green-100: #f0fdf5;
+$green-200: #ddfbe9;
+$green-300: #bdf5d3;
+$green-400: #89ecb3;
+$green-500: #4eda89;
+$green-600: #27bf68;
+$green-700: #1a9f53;
+$green-800: #187d44;
+$green-900: #18633a;
+
+// purple color
+$purple-100: #fdf3ff;
+$purple-200: #fbe5ff;
+$purple-300: #f6caff;
+$purple-400: #f3a0ff;
+$purple-500: #ed68ff;
+$purple-600: #de2fff;
+$purple-700: #be0ee1;
+$purple-800: #a808c3;
+$purple-900: #8c099f;
+
+// orange color
+$orange-100: #fff9ec;
+$orange-200: #fff2d3;
+$orange-300: #ffe1a5;
+$orange-400: #ffca6d;
+$orange-500: #ffa732;
+$orange-600: #ff8c0a;
+$orange-700: #ff7300;
+$orange-800: #cc5302;
+$orange-900: #a1400b;
+
+// yellow color
+$yellow-100: #fefdec;
+$yellow-200: #fcf7c9;
+$yellow-300: #f9ef8e;
+$yellow-400: #f6e053;
+$yellow-500: #f4d02b;
+$yellow-600: #edb213;
+$yellow-700: #e1940e;
+$yellow-800: #ae640f;
+$yellow-900: #8e4d12;
+
+
+.light_mode {
+    --primaryHEX: #0858f7;
+
+    // Color
+    --lightColor: #ffffff;
+    --textColor: #5e5d72;
+    --activeColor: #0858f7;
+    --placeholderColor:#9a9a9a;
+    --headingColor: #403e57;
+    
+    // Background
+    --bodyBG: #ffffff;
+    --cardBG: #ffffff;
+    --paperBG: #ffffff;
+    --lightBG: #ffffff;
+
+    // Border
+    --thinBorder: #f8f8f8;
+    --lightBorder: #f0f0f0;
+    --deepBorder: #e4e4e4;
+    --hardBorder: #d1d1d1;
+
+    // Gray
+    --thinGray: #f8f8f8;
+    --lightGray: #f0f0f0;
+    --deepGray: #e4e4e4;
+    --hardGray: #d1d1d1;
+
+    // Hover
+    --hoverBG: #f1f1f1;
+    --activeBG: #ebf6ff;
+
+    // Social
+    --facebook: #3b5998;
+    --linkedin: #0e76a8;
+    --twitter: #00acee;
+    --google: #E60023;
+    --instagram: #F77737;
+    --whatsapp: #25D366;
+    --pinterest: #f0002a;
+    --youtube: #FF0000;
+
+    // RGB 
+    --primaryRGB: 8, 88, 247;
+    --lightRGB: 255, 255, 255;
+    --blackRGB: 0, 0, 0;
+    --redRGB: 241, 17, 51;
+    --darkRGB: 1, 12, 44;
+    --grayRGB: 129, 129, 129;
+    --blueRGB: 43, 119, 229;
+    --greenRGB: 26, 159, 83;
+    --purpleRGB: 190, 14, 225;
+    --orangeRGB: 255, 115, 0;
+    --yellowRGB: 225, 148, 14;
+
+    // Box shadow
+    --btnBoxShadow: 0px 8px 18px 0px rgba(var(--blackRGB), 12%);
+    --cardBoxShadow: 0px 15px 25px 0px rgba(var(--blackRGB), 6%);
+    --paperBoxShadow: 0px 15px 35px 0px rgba(var(--blackRGB), 10%);
+}
+
+.dark_mode {
+    --primaryHEX: #1e66ff;
+
+    // Color
+    --lightColor: #ffffff;
+    --textColor: #b4b4b4;
+    --activeColor: #94b7ff;
+    --placeholderColor:#acacac;
+    --headingColor: #e4e4e4;
+    
+    // Background
+    --bodyBG: #112143;
+    --cardBG: #112143;
+    --paperBG: #132140;
+    --lightBG: #071739;
+
+    // Border
+    --thinBorder: #253557;
+    --lightBorder: #1b2b4d;
+    --deepBorder: #253557;
+    --hardBorder: #31436a;
+
+    // Gray
+    --thinGray: #071739;
+    --lightGray:#1b2b4d;
+    --deepGray: #00031f;
+    --hardGray: #000015;
+
+    // Hover
+    --hoverBG: #253557;
+    --activeBG: rgba(40, 129, 227, 0.100);
+
+    // Social
+    --facebook: #3b5998;
+    --linkedin: #0e76a8;
+    --twitter: #00acee;
+    --google: #E60023;
+    --instagram: #F77737;
+    --whatsapp: #25D366;
+    --pinterest: #f0002a;
+    --youtube: #FF0000;
+
+    // RGB 
+    --primaryRGB: 35, 108, 255;
+    --lightRGB: 17, 33, 67;
+    --blackRGB: 0, 0, 0;
+    --redRGB: 241, 17, 51;
+    --darkRGB: 1, 12, 44;
+    --grayRGB: 129, 129, 129;
+    --blueRGB: 43, 119, 229;
+    --greenRGB: 26, 159, 83;
+    --purpleRGB: 190, 14, 225;
+    --orangeRGB: 255, 115, 0;
+    --yellowRGB: 225, 148, 14;
+
+    // Box shadow
+    --btnBoxShadow: 0px 8px 18px 0px rgba(var(--blackRGB), 12%);
+    --cardBoxShadow: 0px 15px 25px 0px rgba(var(--blackRGB), 6%);
+    --paperBoxShadow: 0px 15px 35px 0px rgba(var(--blackRGB), 10%);
+}

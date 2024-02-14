@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import { Col, Container, Row } from 'reactstrap'
-import testimonialsImg from '../../assets/images/slider1.png'
+import testimonialsImg from '../../assets/images/client/slider1.png'
 import './testimonials.scss'
 
 const Testimonials = () => {

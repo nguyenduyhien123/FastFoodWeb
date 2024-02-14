@@ -189,6 +189,7 @@ $disable: #f2f2f2;
       .rating-box-button {
         button {
           padding: 10px;
+          color: black !important;
         }
         .post-rating {
           margin-left: 66px;
@@ -262,9 +263,11 @@ $disable: #f2f2f2;
         .post-rating {
           margin-left: 66px;
           padding: 20px 30px;
+          color: black;
         }
         .cancel-rating {
           margin-left: 5px;
+          color: black;
         }
       }
     }

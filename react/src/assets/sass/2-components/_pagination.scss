@@ -1,0 +1,41 @@
+.mc-paginate {
+    margin-top: 25px;
+    @include flex-dimension(center, space-between, 0px);
+
+    @include mobile-breakpoint {
+        flex-direction: column;
+        gap: 15px 0px;
+    }
+}
+
+.mc-paginate-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.mc-paginate-list {
+    @include flex-dimension(center, center, 0px 8px);
+}
+
+.mc-paginate-item {
+    cursor: pointer;
+    background-color: var(--lightGray);
+    @include content-center(35px, 35px, 50%);
+    @include text-font(12px, 500);
+    @include transition-linear;
+
+    &:hover {
+        color: var(--lightColor);
+        background-color: var(--primaryHEX);
+    }
+
+    i {
+        line-height: 35px;
+        font-size: 20px;
+    }
+
+    &.active {
+        color: var(--lightColor);
+        background-color: var(--primaryHEX);
+    }
+}

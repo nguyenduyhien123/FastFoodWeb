@@ -1,0 +1,43 @@
+.mc-sales-card {
+    border-radius: 8px;
+    background: linear-gradient(to bottom, var(--primaryHEX), $blue-800);
+    @include transition-linear;
+
+    &:hover {
+        box-shadow: 0px 15px 25px 0px rgba(var(--blackRGB), 6%);
+    }
+
+    .mc-card-title { color: var(--lightColor); }
+    .mc-dropdown-toggle i {  color: var(--lightColor); }
+}
+
+.mc-sales-card-group {
+    padding: 22px;
+}
+
+.mc-sales-card-amount {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 6px;
+
+    &.red p { color: $red-400; }
+    &.green p { color: $green-400; }
+
+    h3 {
+        font-size: 26px;
+        color: var(--lightColor);
+    }
+
+    p {
+        align-self: flex-end;
+        @include text-font(15px, 600);
+        @include flex-dimension(center, center, 2px);
+
+        i { font-size: 15px; }
+    }
+}
+
+.mc-sales-card-compare {
+    font-size: 13px;
+    color: $blue-300;
+}

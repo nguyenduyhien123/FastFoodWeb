@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from "reactstrap";
 import { popularMenuFood } from '../../assets/fake-data/products';
 import ProductCard from '../product_card/ProductCard';
+import { Link } from 'react-router-dom';
 const PopularMenu = () => {
   return (
     <section>
@@ -12,9 +13,9 @@ const PopularMenu = () => {
                 </Col>
 
                 {
-                    popularMenuFood.map(item=>(
+                    popularMenuFood?.map(item=>(
                         <Col lg='3' key={item.id}>
-                            <ProductCard item={item}/>
+                            <ProductCard item={item}></ProductCard>
                         </Col>
                     ))
                 }

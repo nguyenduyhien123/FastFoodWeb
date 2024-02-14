@@ -1,65 +1,72 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import DatePicker from 'react-date-picker';
-import 'react-date-picker/dist/DatePicker.css';
-import 'react-calendar/dist/Calendar.css';
+import { useContext, useEffect, useState } from 'react'
 import './UserInfo.scss'
+//
+import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
+import { LegendField, LegendTextarea, IconField } from "../../components/fields";
+import { Item, Anchor, Box, Button, Image, Text } from "../../components/elements";
+import { CardLayout, TabCard } from "../../components/cards";
+import { Breadcrumb, FileUpload } from "../../components";
+import PageLayout from "../../layouts/PageLayout";
+import data from "../../data/master/userEdit.json";
+import Swal from 'sweetalert2';
+// import 'sweetalert2/dist/sweetalert2.min.css';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { ChangePassword } from './ChangePassword';
+import { AccountEdit } from './AccountEdit';
+import { ManageOrder } from './ManageOrder';
+//
 
 export const UserInfo = () => {
-    const [userInfo, setUserInfo] = useState({birthday : new Date()});
-    useEffect(() => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8000/api/accounts/',
-            withCredentials: true,          
-        })
-        .then(res => setUserInfo(res.data))
-    }, []);
-    const handleChange = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-        setUserInfo({...userInfo, [name] : value})
-    }
-    const handleSubmit = (e) => {
-      e.preventDefault();
-    }
-    console.log(userInfo);
-    return <div className="user-info mx-auto mt-5 w-50">
-    <h1 className="text-center fs-1 text-dark">Thông tin tài khoản</h1>
-       <form className='mt-4' onSubmit={handleSubmit}>
-       <div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="staticEmail" name='email' onChange={handleChange} value={userInfo?.email || ''} />
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputFullname" class="col-sm-4 col-form-label">Họ và tên đệm</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputFullname" name="fullname" onChange={handleChange} value={userInfo?.lastname || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputFullname" class="col-sm-4 col-form-label">Họ và tên</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputFullname" name="fullname" onChange={handleChange} value={userInfo?.firstname || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputTel" class="col-sm-4 col-form-label">Số điện thoại</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputTel" name="phonenumber" onChange={handleChange} value={userInfo?.phone || ""}/>
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputTel" class="col-sm-4 col-form-label">Ngày sinh</label>
-    <div class="col-sm-8">
-    <DatePicker name="date" onChange={(value) => {
-        setUserInfo({...userInfo, birthday : value}) 
-    }} value={userInfo?.birthday} format="dd/MM/y"/>
-    <button type='submit' className="button-submit">Cập nhật tài khoản</button>
-    </div>
-  </div>
-       </form>
+    const location = useLocation();
+    const path = location.pathname;
+    console.log(path); // In ra đường dẫn trên URL
+    const { userInfo } = useContext(AuthContext);
+    const [account, setAccount] = useState({});
+    const navigate = useNavigate();
+    const [accountError, setAccountError] = useState({});
+    const [listTab, setListTab] = useState([
+        {
+            name : 'forgot-password',
+            text : 'Cập nhật thông tin cá nhân',
+            component : <AccountEdit/>,
+            link : '/accounts/edit'
+        },
+        {
+            name : 'forgot-password',
+            text : 'Quản lý đơn hàng',
+            component : <ManageOrder/>,
+            link : '/accounts/manage-order'
+        },
+        {
+            name : 'forgot-password',
+            text : 'Đổi mật khẩu',
+            component : <ChangePassword/>,
+            link : '/accounts/change-password'
+        },
+
+    ]);
+    const [tabActive, setTabActive] = useState(() => {
+        return listTab.findIndex((tab) => tab.link == path);
+    });
+    console.log(tabActive);
+    console.log(account);
+    return <div className='user-info'>
+                <Row>
+                    <Col xl={3}>
+                    <CardLayout>
+                    <ul className="nav-tab-user">
+                        {
+                            listTab?.map((data, index) => <li><Anchor href={data?.link} className={tabActive === index ? 'btn-action active' : 'btn-action'} onClick={() => setTabActive(index)}>{data.text}</Anchor></li>)
+                        }
+                        </ul>
+                    </CardLayout>
+                    </Col>
+                    <Col xl={9}>
+                        {listTab[tabActive]?.component}
+                    </Col>
+
+                </Row>
     </div>
 }

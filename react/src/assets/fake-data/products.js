@@ -1,16 +1,16 @@
 // ======= imported  all products images from images folder ========
-import pizzaImg01 from "../images/pizza1.png";
+import pizzaImg01 from "../images/client/pizza1.png";
 
-import fastFood03 from "../images/chicken3.png";
-import fastFood04 from "../images/chicken4.png";
+import fastFood03 from "../images/client/chicken3.png";
+import fastFood04 from "../images/client/chicken4.png";
 
-import dessert02 from "../images/dessert02.png";
-import dessert03 from "../images/dessert2.png";
-import dessert04 from "../images/dessert3.png";
+import dessert02 from "../images/client/dessert02.png";
+import dessert03 from "../images/client/dessert2.png";
+import dessert04 from "../images/client/dessert3.png";
 
-import coffeeImg02 from "../images/coffe2.png";
+import coffeeImg02 from "../images/client/coffe2.png";
 
-import salad from "../images/slider2.png";
+import salad from "../images/client/slider2.png";
 
 export const popularMenuFood = [
   {

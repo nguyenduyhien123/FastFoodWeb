@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\UserRegisterEvent;
+use App\Events\UserResetPasswordEvent;
+use App\Listeners\SendResetPasswordEmailListener;
 use App\Listeners\SendVerifyEmailListener;
 use App\Mail\SendEmail;
 use Illuminate\Auth\Events\Registered;
@@ -23,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         // ],
         UserRegisterEvent::class => [
             SendVerifyEmailListener::class
+        ],
+        UserResetPasswordEvent::class => [
+            SendResetPasswordEmailListener::class
         ]
     ];
 

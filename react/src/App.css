@@ -17,12 +17,12 @@ html {
   background: #ffff;
 }
 
-section,
+/* section,
 footer {
   padding: 70px 0px;
 }
 
-h1,
+/* h1,
 h2 {
   font-size: 2rem;
   font-weight: 500;
@@ -35,10 +35,18 @@ p {
   color: #000000;
   line-height: 30px;
   font-family: "Rubik", sans-serif;
-}
+} */ */
 
 a {
   text-decoration: none;
   color: unset;
 }
 
+.row
+{
+  --bs-gutter-y : 1.5rem;
+}
+button.swal2-styled
+{
+  padding: .625em 1.1em;
+}

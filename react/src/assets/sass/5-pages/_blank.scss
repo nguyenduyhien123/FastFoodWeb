@@ -1,0 +1,35 @@
+.mc-blank {
+    height: calc(100vh - 190px);
+    @include flex-dimension(center, center, 15px);
+    flex-direction: column;
+
+    img {
+        max-width: 300px;
+    }
+
+    i {
+        font-size: 150px;
+        line-height: 150px;
+        background: -webkit-linear-gradient($gray-400, $gray-300);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+
+    p {
+        @include text-font(22px, 500);
+        text-transform: capitalize;
+        color: $gray-600;
+    }
+}
+
+.dark_mode {
+    .mc-blank {
+        i {
+            background: -webkit-linear-gradient($dark-200, $dark-400);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        p { color: $gray-800; }
+    }
+}

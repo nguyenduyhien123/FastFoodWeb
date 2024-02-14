@@ -1,0 +1,72 @@
+{
+    "pageTitle": "notification",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "notification" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "delete", "text": "delete all" },
+            { "icon": "drafts", "text": "mark as all read" },
+            { "icon": "mark_as_unread", "text": "mark as unread" },
+            { "icon": "near_me", "text": "recent notification" }
+        ]
+    },
+    "notify": [
+        {
+            "path": "#",
+            "src": "images/avatar/01.webp",
+            "alt": "avatar",
+            "icon": { "variant": "favorite", "label": "favorite" },
+            "note": { "user": "Autoland", "text": "added to his favorite list", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        },
+        {
+            "path": "#",
+            "src": "images/avatar/02.webp",
+            "alt": "avatar",
+            "icon": { "variant": "rating", "label": "star" },
+            "note": { "user": "Autoland", "text": "just review on", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        },
+        {
+            "path": "#",
+            "src": "images/avatar/03.webp",
+            "alt": "avatar",
+            "icon": { "variant": "comment", "label": "forum" },
+            "note": { "user": "Autoland", "text": "just comment on", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        },
+        {
+            "path": "#",
+            "src": "images/avatar/04.webp",
+            "alt": "avatar",
+            "icon": { "variant": "announce", "label": "campaign" },
+            "note": { "user": "Autoland", "text": "announce on", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        },
+        {
+            "path": "#",
+            "src": "images/avatar/05.webp",
+            "alt": "avatar",
+            "icon": { "variant": "blog", "label": "edit" },
+            "note": { "user": "Autoland", "text": "write a super blog on", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        },
+        {
+            "path": "#",
+            "src": "images/logo.webp",
+            "alt": "avatar",
+            "icon": { "variant": "privacy", "label": "shield" },
+            "note": { "user": "Autoland", "text": "privacy concern on", "reason": "Mercedez benz super mclaren" },
+            "time": "about few minutes ago!",
+            "button": "close"
+        }
+    ]
+}
