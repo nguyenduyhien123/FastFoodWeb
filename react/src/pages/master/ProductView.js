@@ -51,16 +51,18 @@ const productSpecify = [
             withCredentials: true,
         })
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 let p = res.data
                 p.image = JSON.parse(p.image)
                 setProduct(p)
                 setImageActive(Object.keys(p.image)[0])
                 setIsLoaded(true)
             })
-            .catch(err => console.log('Lỗi khi gọi API chi tiết sản phẩm'))
+            .catch(err => {
+                // console.log('Lỗi khi gọi API chi tiết sản phẩm')
+            })
     }, [])
-    console.log('Tên sản phẩm ', product?.name);
+    // console.log('Tên sản phẩm ', product?.name);
     return <>{isLoaded ? <>         <PageLayout>
         <CardLayout className="mb-4">
             <Breadcrumb title={'Xem sản phẩm'}>

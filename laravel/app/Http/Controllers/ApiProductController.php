@@ -193,7 +193,14 @@ class ApiProductController extends Controller
         // Lọc theo tên
         if ($request->has('name')) {
             $name = $request->input('name');
+            if(!empty($name))
+            {
             $query->where('name', 'like', "%$name%");
+            }
+            else
+            {
+                return [];
+            }
         }
 
         // Lọc theo giá

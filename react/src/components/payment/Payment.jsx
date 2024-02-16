@@ -9,7 +9,7 @@ import { LabelField } from "../fields";
 import { AuthContext } from "../../context/AuthContext";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export const Payment = () => {
     const navigate = useNavigate();
     const { userInfo } = useContext(AuthContext);
@@ -31,15 +31,14 @@ export const Payment = () => {
         })
             .then((res) => {
                 let data = res.data
-                if(data?.length > 0)
-                {
-                data.forEach(item => {
-                    let imageJSON = JSON.parse(item.product.image);
-                    item.product.image = imageJSON;
-                });
-                setCartList(data)
-                setDisableButtonPay(false);
-            }
+                if (data?.length > 0) {
+                    data.forEach(item => {
+                        let imageJSON = JSON.parse(item.product.image);
+                        item.product.image = imageJSON;
+                    });
+                    setCartList(data)
+                    setDisableButtonPay(false);
+                }
             })
             .catch(err => {
             })
@@ -51,9 +50,8 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
-                if(res?.data?.length > 0)
-                {            
-                setPaymentMethods(res.data);
+                if (res?.data?.length > 0) {
+                    setPaymentMethods(res.data);
                 }
                 setInfoOrder({ ...infoOrder, payment_method_id: res.data[0]?.id })
             })
@@ -65,6 +63,9 @@ export const Payment = () => {
         getCarts();
         getPaymentMethods();
     }, []);
+    useEffect(() => {
+        document.title = 'Thanh toán'
+    });
     useEffect(() => {
         let total = calcInvoiceTotal();
         setInvoiceTotal(total);
@@ -85,14 +86,12 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
-                if(res?.data?.checkoutLink)
-                {
+                if (res?.data?.checkoutLink) {
                     window.location.href = res?.data?.checkoutLink
                 }
-                else
-                {
-                // navigate(`/accounts/manage-order/${res?.data?.code}`)
-                toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
+                else {
+                    // navigate(`/accounts/manage-order/${res?.data?.code}`)
+                    toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
                 }
             })
             .catch((err) => {
@@ -101,8 +100,8 @@ export const Payment = () => {
 
             })
     }
-    console.log('hoá đơn', infoOrder);
-    console.log(infoOrderError);
+    // console.log('hoá đơn', infoOrder);
+    // console.log(infoOrderError);
     return <div className="mc-payment mt-2">
         <Row>
             <Col xl={6}>
@@ -127,7 +126,7 @@ export const Payment = () => {
                             }} />
                         </Col>
                         <Col xl={12}>
-                        <LabelField
+                            <LabelField
                                 type={"text"}
                                 placeholder={"Ghi chú cho đơn hàng"}
                                 labelDir="label-col"

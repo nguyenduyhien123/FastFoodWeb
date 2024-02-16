@@ -38,11 +38,11 @@ export default function UserEdit() {
             data: data
         })
             .then(res => {
-                console.log('Thêm thành công');
+               //  console.log('Thêm thành công');
                 navigate(`/admin/user-profile/${id}`)
             })
             .catch(err => {
-                console.log('Thêm thất bại');
+                // console.log('Thêm thất bại');
                 setAccountError(err.response.data.errors)
             })
     }
@@ -56,9 +56,11 @@ export default function UserEdit() {
             setAccount(res.data)
 
         })
-        .catch(err => console.log('Gọi API profile bị lỗi'))
+        .catch(err => {
+            // console.log('Gọi API profile bị lỗi')
+        })
     }, [])
-    console.log(account);
+    // console.log(account);
     return (
         <PageLayout>
             <Row>

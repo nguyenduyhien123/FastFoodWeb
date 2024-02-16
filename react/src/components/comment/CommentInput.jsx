@@ -162,7 +162,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
-            console.log('ID là : ', id);
+            // console.log('ID là : ', id);
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : data?.product_id,
@@ -186,7 +186,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
-              console.log(err)
+              // console.log(err)
               setIsSending(false)
               setIsAllow(false)
 
@@ -199,7 +199,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
-            console.log('ID là : ', id);
+            // console.log('ID là : ', id);
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : 1,
@@ -220,7 +220,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
-              console.log(err)
+              // console.log(err)
               setIsSending(false)
               setIsAllow(false)
 
@@ -238,17 +238,17 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           wrapperClassName="demo-wrapper"
           editorClassName="demo-editor"
           onEditorStateChange={val => {
-            console.log('Giá trị là ',val);
+            // console.log('Giá trị là ',val);
             setEditorState(val)
             if(handleGetPlainText(val) != "")
             {
               setIsAllow(true);
-              console.log('được sửa');
+              // console.log('được sửa');
             }
             else
             {
               setIsAllow(false);
-              console.log('k được sửa');
+              // console.log('k được sửa');
               setEditorState(val)
             }
           }}

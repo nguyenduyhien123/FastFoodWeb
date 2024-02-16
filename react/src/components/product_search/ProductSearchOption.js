@@ -22,7 +22,9 @@ export const ProductSearchOption = () => {
             withCredentials: true,        
         })
         .then(res => setCategories(res.data))
-        .catch(err => console.log(err))
+        .catch(err => {
+            // console.log(err)
+        })
 
     }, []);
     const handleSearch = () => {
@@ -40,14 +42,14 @@ export const ProductSearchOption = () => {
                 });
                 setProducts(products);
                           } else {
-                console.log('Kết quả trả về không phải là một mảng.');
+                // ('Kết quả trả về không phải là một mảng.');
               }
 
         })
         .catch(err => {
         })
     }
-    console.log(searchs);
+    // console.log(searchs);
     useEffect(() => {
         handleSearch();
     }, [JSON.stringify(searchs)])

@@ -82,7 +82,7 @@ export const ManageOrder = () => {
     useEffect(() => {
         getOrders(listTab[tabActive]?.id);
     }, [tabActive]);
-    console.log(typeSearch);
+    // console.log(typeSearch);
     return <div className="manage-order">
         <CardLayout>
             <DivideTitle as={"h2"} title="Quản lý đơn hàng" className="mb-4" />

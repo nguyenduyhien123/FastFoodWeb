@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import ChooseUs from '../../components/choose_us/ChooseUs'
 import Download from '../../components/download_section/Download'
 import Footer from '../../components/footer/Footer'
@@ -8,6 +8,9 @@ import MenuPack from '../../components/menu_pack/MenuPack'
 import PopularMenu from '../../components/popular-menu/PopularMenu'
 import Testimonials from '../../components/testimonials/Testimonials'
 const Home = () => {
+       useEffect(() => {
+              document.title = 'Trang chủ'
+       });
        return (
               <div className="home-client">
                      <div className='mt-5'>

@@ -31,13 +31,13 @@ export default function ProductList() {
             withCredentials: true,          
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             var products = res.data;
             products.forEach(item => {
                 item.image = JSON.parse(item.image)
             });
             setProducts(products)
-            console.log(res.data);
+            // console.log(res.data);
             setIsLoadData(true)
         })
         .catch(err => {
@@ -74,7 +74,9 @@ export default function ProductList() {
         .then(res => {
             setFloat([...float, float[0].digit = res.data.count]);
         })
-        .catch(err => console.log(err))
+        .catch(err => { 
+            // console.log(err)
+        })
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalProductTypes',
@@ -83,7 +85,9 @@ export default function ProductList() {
         .then(res => {
             setFloat([...float, float[1].digit = res.data.count]);
         })
-        .catch(err => console.log(err))
+        .catch(err => { 
+            // console.log(err)
+        })
 
     }, []);
     return (

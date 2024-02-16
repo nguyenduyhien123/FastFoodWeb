@@ -18,7 +18,7 @@ export default function MyAccount() {
         })
         .then(res => setAccount(res.data))
     }, []);
-    console.log(account);
+   //  console.log(account);
     return (
         <PageLayout>
             <Row>

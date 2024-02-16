@@ -37,7 +37,7 @@ export default function ProductEdit() {
                     arrImage.push(e.target.files[i])
                 }
             }
-            console.log('123');
+            // console.log('123');
         }
         else {
             let newArrImage = [];
@@ -51,7 +51,7 @@ export default function ProductEdit() {
             }
             setIndexCurrentImage(null);
         }
-        console.log("Mảng hình ảnh", arrImage);
+        // console.log("Mảng hình ảnh", arrImage);
         setImageUpload(imageUploadArr);
         setProduct({ ...product, "image[]": arrImage })
     }
@@ -76,7 +76,7 @@ export default function ProductEdit() {
         })
         dataSend["image[]"] = images;
         dataSend.imageDelete = imageDelete;
-        console.log(imageUpload);
+        // console.log(imageUpload);
         let data = { ...dataSend, _method: "PATCH" };
         axios({
             method: 'post',
@@ -102,7 +102,7 @@ export default function ProductEdit() {
                 });
             })
     }
-    console.log(productError);
+   //  console.log(productError);
     const [uploadFile, setUploadFile] = React.useState('Chọn hình ảnh');
     useEffect(() => {
         // Lấy ds loại sản phẩm
@@ -114,7 +114,9 @@ export default function ProductEdit() {
             .then((res) => {
                 setProductTypes(res.data)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+            });
         // Lấy thông tin chi tiết sản phẩm
         axios({
             method: 'get',
@@ -122,7 +124,7 @@ export default function ProductEdit() {
             withCredentials: true,
         })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 var product = res.data;
                 product.image = Object.values(JSON.parse(product?.image))
                 // delete product["image"];

@@ -34,16 +34,16 @@ export default function ProductUpload() {
             data: product
         })
             .then(res => {
-                console.log('Thêm thành công');
+                // console.log('Thêm thành công');
                 navigate('/admin/product-list')
                 
             })
             .catch(err => {
                 setProductError(err.response.data.errors);
-                console.log('Thêm thất bại');
+                // console.log('Thêm thất bại');
             })
     }
-    console.log(product);
+    // console.log(product);
     const [uploadFile, setUploadFile] = React.useState('Chọn hình ảnh');
     useEffect(() => {
         axios({
@@ -55,7 +55,9 @@ export default function ProductUpload() {
                 setProductTypes(res.data)
                 setProduct({...product, product_type_id : res.data[0].id})
             })
-            .catch(err => console.log('Lỗi khi gọi DSSP'))
+            .catch(err => {
+                // console.log('Lỗi khi gọi DSSP')
+            })
     }, [])
     return (
         <PageLayout>

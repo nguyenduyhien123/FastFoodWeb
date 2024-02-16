@@ -6,53 +6,53 @@ import { Col, Container, ListGroup, ListGroupItem, Row } from 'reactstrap'
 import 'remixicon/fonts/remixicon.css'
 import './footer.scss'
 
-const footerQuickLinks =[
+const footerQuickLinks = [
   {
-    display : 'Terms & Conditions',
-    url:'#'
+    display: 'Terms & Conditions',
+    url: '#'
   },
 
   {
-    display : 'Privacy Policy',
-    url:'#'
+    display: 'Privacy Policy',
+    url: '#'
   },
 
   {
-    display : 'Return & Refund',
-    url:'#'
+    display: 'Return & Refund',
+    url: '#'
   },
 
   {
-    display : 'Payment Method',
-    url:'#'
+    display: 'Payment Method',
+    url: '#'
   }
 ]
 
-const footerLinks =[
+const footerLinks = [
   {
-    display : 'About Us',
-    url:'#'
+    display: 'About Us',
+    url: '#'
   },
 
   {
-    display : 'Menu',
-    url:'#'
+    display: 'Menu',
+    url: '#'
   },
 
   {
-    display : 'Recipes',
-    url:'#'
+    display: 'Recipes',
+    url: '#'
   },
 
   {
-    display : 'Contact',
-    url:'#'
+    display: 'Contact',
+    url: '#'
   }
 ]
 
 const Footer = () => {
   return (
-   <footer className='footer_web'>
+    <footer className='footer_web' id='footer_web'>
 
       <div className="footer_top">
         <Container>
@@ -62,7 +62,7 @@ const Footer = () => {
                 <h2 className='d-flex align-items-center gap-1 mb-4'>
                   <span><i class="ri-restaurant-2-line"></i></span> Chef Food
                 </h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque, accusantium magnam. Consequuntur cupiditate alias culpa?</p>
+                <p>Bạn đói, muốn có đồ ăn ngon, giá cả hợp lý, phải chăng, tiện lợi, vừa ý? Hãy gọi chúng tôi!</p>
               </div>
             </Col>
 
@@ -73,9 +73,9 @@ const Footer = () => {
 
               <ListGroup>
                 {
-                  footerQuickLinks.map((item,index)=><ListGroupItem key={index} className='link_item'>
-                  <a href={item.url}>{item.display}</a>
-                </ListGroupItem>)
+                  footerQuickLinks.map((item, index) => <ListGroupItem key={index} className='link_item'>
+                    <a href={item.url}>{item.display}</a>
+                  </ListGroupItem>)
                 }
               </ListGroup>
             </Col>
@@ -89,28 +89,28 @@ const Footer = () => {
 
               <ListGroup>
                 {
-                  footerLinks.map((item,index)=><ListGroupItem key={index} className='link_item'>
-                  <a href={item.url}>{item.display}</a>
-                </ListGroupItem>)
+                  footerLinks.map((item, index) => <ListGroupItem key={index} className='link_item'>
+                    <a href={item.url}>{item.display}</a>
+                  </ListGroupItem>)
                 }
               </ListGroup>
             </Col>
 
             <Col lg='3' md='4' sm='6'>
-            <h5 className="footer_link-title">
+              <h5 className="footer_link-title">
                 Contact
               </h5>
               <ListGroup>
                 <ListGroupItem className='link_item d-flex align-items-center gap-3'>
-                <i className="ri-map-pin-line"></i> Sylhet, Bangladesh 
+                  <i className="ri-map-pin-line"></i> Sylhet, Bangladesh
                 </ListGroupItem>
 
                 <ListGroupItem className='link_item d-flex align-items-center gap-3'>
-                <i className="ri-mail-line"></i> example@gmail.com 
+                  <i className="ri-mail-line"></i> example@gmail.com
                 </ListGroupItem>
 
                 <ListGroupItem className='link_item d-flex align-items-center gap-3'>
-                <i className="ri-phone-line"></i> +880 123 456 789
+                  <i className="ri-phone-line"></i> +880 123 456 789
                 </ListGroupItem>
               </ListGroup>
             </Col>
@@ -126,7 +126,7 @@ const Footer = () => {
           </Row>
         </Container>
       </div>
-   </footer>
+    </footer>
   )
 }
 

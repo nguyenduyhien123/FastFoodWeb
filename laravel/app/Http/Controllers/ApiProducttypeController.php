@@ -22,7 +22,8 @@ class ApiProducttypeController extends Controller
             [
                 'name' => $request['name'],
                 'image' => '123', //gia tri mac dinh cua image la 123
-            ]);
+            ]
+        );
         if ($request->hasFile('image')) {
             $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
             $producttype->image = $path;
@@ -38,7 +39,7 @@ class ApiProducttypeController extends Controller
             return response()->json($productType);
         } else {
             return response()->json([
-                'message' => 'Không tìm thấy sản phẩm'
+                'message' => 'Không tìm thấy loại sản phẩm'
             ], 404);
         }
     }
@@ -76,7 +77,8 @@ class ApiProducttypeController extends Controller
             ], 404);
         }
     }
-    public function getTotalProductTypes(){
+    public function getTotalProductTypes()
+    {
         return response()->json(['count' => ProductType::all()->count()]);
 
     }

@@ -23,7 +23,9 @@ export default function UsersTable({ thead, tbody, setDataUserTable }) {
             withCredentials: true,          
         })
         .then(res => setDataUserTable(res.data))
-        .catch(err => console.log('GỌI APi ds user bị lỗi'))
+        .catch(err => {
+            // console.log('GỌI APi ds user bị lỗi')
+        })
     }
     const handleCheckbox = (event) => {
         const { name, checked } = event.target;

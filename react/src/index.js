@@ -11,7 +11,7 @@ import './assets/sass/styles.scss'
 
 
 
-import {AuthContext, AuthContextProvider} from "./context/AuthContext";
+import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
@@ -38,12 +38,12 @@ import "react-toastify/dist/ReactToastify.css";
 //   document.getElementById("root")
 // );
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(  <React.StrictMode>
+root.render(<React.StrictMode>
   <BrowserRouter>
     <AuthContextProvider>
-    <ThemeProvider>
-          <ToastContainer/>
-      <App />
+      <ThemeProvider>
+        <ToastContainer />
+        <App />
       </ThemeProvider>
     </AuthContextProvider>
   </BrowserRouter>

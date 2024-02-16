@@ -26,7 +26,7 @@ export default function Comment({product_id}) {
               }         
         })
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setListComment(res.data);
         })
         .catch(err => {
@@ -38,7 +38,7 @@ export default function Comment({product_id}) {
     const handleReceive  = () => {
         getCommentsByProductId(product_id);
     }
-    console.log('Comment .....');
+    // console.log('Comment .....');
     useEffect(() => {
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -49,11 +49,11 @@ export default function Comment({product_id}) {
 
         var channel = pusher.subscribe('commentChannel');
         channel.bind('App\\Events\\NewCommentEvent', (data) => {
-            console.log('Dữ liệu Event', data);
+            // console.log('Dữ liệu Event', data);
             handleReceive()
         });
         channel.bind('pusher:subscription_succeeded', (data) => {
-            console.log('Dữ liệu subscription_succeeded', data);
+            // console.log('Dữ liệu subscription_succeeded', data);
             handleReceive()
         });
         return () => {
@@ -62,7 +62,7 @@ export default function Comment({product_id}) {
             pusher.disconnect();
           };
     }, [])
-    console.log(comment);
+    // console.log(comment);
     return <div className="comment-section w-100">
         <div className="comment-input d-flex align-items-center gap-3">
             {isLogin ? <CommentInput /> : <h1>Đăng nhập đi bạn</h1>}

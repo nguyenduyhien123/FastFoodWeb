@@ -27,12 +27,14 @@ export default function UserCreate() {
                 setRoles(res.data)
                 setAccount({ ...account, role_id: res.data[0].id });
             })
-            .catch(err => console.log('Gọi API lấy role bị lỗi'))
+            .catch(err => {
+                // console.log('Gọi API lấy role bị lỗi')
+            })
     }
     useEffect(() => {
         getAllRole();
     }, [])
-    console.log(roles);
+    // console.log(roles);
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -65,7 +67,7 @@ export default function UserCreate() {
                 navigate(`/admin/user-list`)
             })
             .catch(err => {
-                console.log('Thêm thất bại');
+                // console.log('Thêm thất bại');
                 Swal.fire({
                     title: "Vui lòng nhập đầy đủ dữ liệu",
                     icon: 'error',
@@ -73,7 +75,7 @@ export default function UserCreate() {
                 setAccountError(err.response.data.errors)
             })
     }
-    console.log(account);
+    // console.log(account);
     return (
         <PageLayout>
             <Row>
