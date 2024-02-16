@@ -22,24 +22,26 @@ const MenuPack = () => {
 
   // console.log(categories);
   useEffect(() => {
-    axios.get('http://localhost:8000/api/product_types')
-    .then(res => setCategories(res.data))
-    .catch(err => {
-      // console.log('Lỗi khi gọi API', err)
-    })
-  },[]);
+    axios
+      .get("http://localhost:8000/api/product_types")
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.log("Lỗi khi gọi API", err));
+  }, []);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/products/getProductsByProductTypeId/${categoryActive}`)
-    .then(res => {
-      var products = res.data;
-      products.forEach(item => {
-          item.image = JSON.parse(item.image)
-          item.image = item.image[0]
-      });
-      setProducts(res.data)
-    })
-    .catch(err => console.log('Lỗi khi gọi API', err))
-  },[categoryActive]);
+    axios
+      .get(
+        `http://localhost:8000/api/products/getProductsByProductTypeId/${categoryActive}`
+      )
+      .then((res) => {
+        var products = res.data;
+        products.forEach((item) => {
+          item.image = JSON.parse(item.image);
+          item.image = item.image[0];
+        });
+        setProducts(res.data);
+      })
+      .catch((err) => console.log("Lỗi khi gọi API", err));
+  }, [categoryActive]);
 
   return (
     <section className="menu_pack" id="menu_pack">
