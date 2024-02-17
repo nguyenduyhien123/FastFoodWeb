@@ -13,7 +13,7 @@ class ApiCartController extends Controller
     public function index()
     {
         $carts = Cart::with('product')->get();
-        return $carts; 
+        return response()->json($carts);
     }
 
     /**
@@ -21,7 +21,13 @@ class ApiCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart = new Cart();
+        $cart->user_id = $request->user_id;
+        $cart->product_id = $request->product_id;
+        $cart->quantity = $request->quantity;
+        $cart->save();
+
+        return response()->json(['message' => 'Thêm vào giỏ hàng thành công'], 201);
     }
 
     /**
@@ -29,7 +35,11 @@ class ApiCartController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cart = Cart::with('product')->find($id);
+        if ($cart) {
+            return response()->json($cart);
+        }
+        return response()->json(['message' => 'Không tìm thấy'], 404);
     }
 
     /**
@@ -38,12 +48,10 @@ class ApiCartController extends Controller
     public function update(Request $request, string $id)
     {
         $cart = Cart::find($id);
-        if(!empty($cart))
-        {
+        if ($cart) {
             $cart->quantity = $request->quantity;
             $cart->save();
             return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
-
         }
         return response()->json(['message' => 'Không tìm thấy'], 404);
     }
@@ -54,16 +62,19 @@ class ApiCartController extends Controller
     public function destroy(string $id)
     {
         $cart = Cart::find($id);
-        if(!empty($cart))
-        {
+        if ($cart) {
             $cart->delete();
-            return response()->json(['message' => 'Xoá sản phẩm ra giỏ hàng thành công']);
-
+            return response()->json(['message' => 'Xoá sản phẩm ra khỏi giỏ hàng thành công']);
         }
         return response()->json(['message' => 'Không tìm thấy'], 404);
     }
-    public function getCartByUser(Request $request){
-        $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
-        return $carts;
+
+    /**
+     * Get user's cart.
+     */
+    public function getCartByUser(Request $request)
+    {
+        $carts = Cart::with('product')->where('user_id', $request->user->id)->get();
+        return response()->json($carts);
     }
 }

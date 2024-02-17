@@ -1,10 +1,12 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useContext, useEffect, useState } from "react";
-import { Navigate, Route, Routes, useNavigate, BrowserRouter, useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { About } from "./components/about/About";
+import Comment from './components/comment/Comment';
 import DropdownAvatar from "./components/dropdown_avatar/DropdownAvatar";
+import { Payment } from './components/payment/Payment';
 import ProductPage from "./components/product_page/product_page";
 import ShoppingCart from "./components/shoppingcart/ShoppingCart";
 import { UserInfo } from "./components/user_info/UserInfo";
@@ -13,30 +15,39 @@ import Home from "./pages/client/Home";
 import Layout from "./pages/client/Layout";
 import { PageRegister } from "./pages/client/PageRegister";
 import PageSignIn from "./pages/client/PageSignIn";
-import Comment from './components/comment/Comment';
-import { Payment } from './components/payment/Payment';
 // Admin 
 
-import { Overview, Documentation, ChangeLog, Error } from "./pages/supports";
-import { Avatars, Alerts, Buttons, Charts, Tables, Fields, Headings, Colors } from "./pages/blocks";
-import {
-  Ecommerce, Analytics, CRM, ForgotPassword, Register, Login, UserList, UserProfile, MyAccount,
-  ProductList, ProductView, ProductUpload, InvoiceList, InvoiceDetails, OrderList, Message,
-  Notification, BlankPage, Settings
-} from "./pages/master";
-import ProductEdit from './pages/master/ProductEdit';
-import UserEdit from './pages/master/UserEdit';
-import UserCreate from './pages/master/UserCreate';
-import CommentList from './pages/master/CommentList';
-import { WishList } from './components/wishlist/WishList';
-import { ProductSearch } from './components/product_search/ProductSearch';
 import { ProductSearchOption } from './components/product_search/ProductSearchOption';
-import { ResetPasswordVerifyEmail } from './components/user_info/ResetPasswordVerifyEmail';
-import { ResetPasswordSetPassword } from './components/user_info/ResetPasswordSetPassword';
-import { ChangePassword } from './components/user_info/ChangePassword';
-import { AccountEdit } from './components/user_info/AccountEdit';
-import { ManageOrder } from './components/user_info/ManageOrder';
 import { OrderDetailUser } from './components/user_info/OrderDetailUser';
+import { ResetPasswordSetPassword } from './components/user_info/ResetPasswordSetPassword';
+import { ResetPasswordVerifyEmail } from './components/user_info/ResetPasswordVerifyEmail';
+import {WishList} from './components/wishlist/WishList';
+import { Alerts, Avatars, Buttons, Charts, Colors, Fields, Headings, Tables } from "./pages/blocks";
+import {
+  Analytics,
+  BlankPage,
+  CRM,
+  Ecommerce,
+  ForgotPassword,
+  InvoiceDetails,
+  InvoiceList,
+  Login,
+  Message,
+  MyAccount,
+  Notification,
+  OrderList,
+  ProductList,
+  ProductUpload,
+  ProductView,
+  Register,
+  Settings,
+  UserList, UserProfile
+} from "./pages/master";
+import CommentList from './pages/master/CommentList';
+import ProductEdit from './pages/master/ProductEdit';
+import UserCreate from './pages/master/UserCreate';
+import UserEdit from './pages/master/UserEdit';
+import { ChangeLog, Documentation, Error, Overview } from "./pages/supports";
 
 
 // Admin

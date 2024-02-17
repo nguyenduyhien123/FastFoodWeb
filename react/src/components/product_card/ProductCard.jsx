@@ -25,6 +25,7 @@ const ProductCard = (props) => {
         data: data
     })
     .then( (res) => {
+      
      toast.success(res?.data?.message || 'Đã thêm sản phẩm vào danh sách yêu thích');
     })
     .catch((err) => {
