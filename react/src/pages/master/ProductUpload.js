@@ -75,16 +75,16 @@ export default function ProductUpload() {
                     <CardLayout>
                         <CardHeader title="Thông tin cơ bản" dotsMenu={data?.dotsMenu} />
                         <Row>
-                            <Col xl={12}><LabelField type="text" label="Tên sản phẩm" fieldSize="w-100 h-md" name="name" onChange={handleChange} placeholder="Tên sản phẩm ..."/>
+                            <Col xl={12}><LabelField type="text" label="Tên sản phẩm" fieldSize="w-100 h-md" name="name" onChange={handleChange} placeholder="Tên sản phẩm ..." value={product?.name}/>
                                 {productError?.name && <Text className="text-danger">{productError?.name[0]}</Text>}
                             </Col>
-                            <Col xl={12}><LabelField type="text" label="Mô tả sản phẩm" fieldSize="w-100 h-md" name="description" onChange={handleChange} placeholder="Mô tả sản phẩm ..."/>
+                            <Col xl={12}><LabelField type="text" label="Mô tả sản phẩm" fieldSize="w-100 h-md" name="description" onChange={handleChange} placeholder="Mô tả sản phẩm ..." value={product?.description}/>
                                 {productError?.description && <Text className="text-danger">{productError?.description[0]}</Text>}
                             </Col>
-                            <Col xl={6}><LabelField label="Loại sản phẩm" option={productTypes} fieldSize="w-100 h-md" name="product_type_id" onChange={handleChange} value="0" placeholder="Loại sản phẩm ..."/>
+                            <Col xl={6}><LabelField label="Loại sản phẩm" option={productTypes} fieldSize="w-100 h-md" name="product_type_id" onChange={handleChange} value={product?.product_type_id} placeholder="Loại sản phẩm ..."/>
                                 {productError?.product_type_id && <Text className="text-danger">{productError?.product_type_id[0]}</Text>}
                             </Col>
-                            <Col xl={6}><LabelField type="number" label="Giá" fieldSize="w-100 h-md" name="price" onChange={handleChange} placeholder="Giá ..."/>
+                            <Col xl={6}><LabelField type="number" label="Giá" fieldSize="w-100 h-md" name="price" onChange={handleChange} placeholder="Giá ..." value={product?.price}/>
                                 {productError?.price && <Text className="text-danger">{productError?.price[0]}</Text>}
                             </Col>
                         </Row>

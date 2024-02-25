@@ -5,7 +5,7 @@ import ProductsTable from "../../components/tables/ProductsTable";
 import LabelField from "../../components/fields/LabelField";
 import { Pagination, Breadcrumb } from "../../components";
 import Anchor from "../../components/elements/Anchor";
-import PageLayout from "../../layouts/PageLayout";
+import PageLayout from "../../layouts/PageLayout"; 
 import data from "../../data/master/productList.json";
 import axios from 'axios'
 export default function ProductList() {
@@ -135,7 +135,7 @@ export default function ProductList() {
                             </Col>
                         </Row>
                     </CardLayout>
-                </Col>
+                </Col> 
             </Row> 
         </PageLayout>
     );

@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Row, Col, Tab, Tabs, Form as FormBootstrap } from "react-bootstrap";
 
 
-export default function ProductsTable({ thead, tbody, getAllProduct }) {
+export default function ProductTypesTable({ thead, tbody, getAllProductType }) {
 
     const [alertModal, setAlertModal] = useState(false);
     const [data, setData] = useState([]);
@@ -37,11 +37,11 @@ export default function ProductsTable({ thead, tbody, getAllProduct }) {
             setData(checkData);
         }
     }
-    const handleDeleteProduct = (id) => {
+    const handleDeleteProductType = (id) => {
         let data = { _method: "DELETE" };
         axios({
             method: 'post',
-            url: `http://localhost:8000/api/products/${id}`,
+            url: `http://localhost:8000/api/producttypes/${id}`,
             withCredentials: true,
             data: data
         })
@@ -50,7 +50,7 @@ export default function ProductsTable({ thead, tbody, getAllProduct }) {
                     title: res?.data?.message || "Xoá thành công",
                     icon: 'success',
                 });
-                getAllProduct();
+                getAllProductType();
             })
             .catch(err => {
                 Swal.fire({
@@ -59,34 +59,9 @@ export default function ProductsTable({ thead, tbody, getAllProduct }) {
                 });
             })
     }
-    const handleUpdateStatusProduct = (id, check) => {
-        let data = { status: check };
-        const apiUpdateStatusProduct = axios({
-            method: 'post',
-            url: `http://localhost:8000/api/update/updateStatusProduct/${id}`,
-            withCredentials: true,
-            data: data
-        });
-        toast.promise(
-            apiUpdateStatusProduct.then(res => {
-                getAllProduct();
-            }),
-            {
-                pending: 'Đang cập nhật trạng thái',
-                success: 'Cập nhật trạng thái thành công',
-                error: 'Cập nhật bị lỗi',
-                autoClose: 4000,
-                hideProgressBar: true,
-                pauseOnHover: false,
-                closeOnClick: false,
-                pauseOnFocusLoss: false
-            }
-        );
-    }
     return (
         <>
             <ToastContainer />
-
             <Box className="mc-table-responsive">
                 <Table className="mc-table product">
                     <Thead className="mc-table-head primary">
@@ -123,43 +98,18 @@ export default function ProductsTable({ thead, tbody, getAllProduct }) {
                                 </Td>
                                 <Td>
                                     <Box className="mc-table-product md">
-                                        {item?.image && <Image src={item?.image[0]?.startsWith('https') ? item?.image[0] : `http://localhost:8000/storage/uploads/${item?.image[0]}`} alt={item?.alt} />}
+                                        {item?.image && <Image src={item?.image?.startsWith('https') ? item?.image : `http://localhost:8000/storage/uploads/${item?.image}`} alt={item?.alt} />}
                                         <Box className="mc-table-group">
                                             <Heading as="h6">{item?.name}</Heading>
                                             <Text>{item?.description}</Text>
                                         </Box>
                                     </Box>
                                 </Td>
-                                <Td className={"fw-bold"}>{item?.price}</Td>
-                                <Td>{item?.product_type?.name}</Td>
-                                <Td>
-                                    <FormBootstrap.Check type="switch" name="status" label={item?.status ? 'Còn hiệu lực' : 'Hết hiệu lực'} checked={item?.status} onChange={(e) => {
-                                        handleUpdateStatusProduct(item?.id, e.target.checked);
-                                    }} />
-
-                                </Td>
-                                <Td>{item?.star}</Td>
                                 <Td>{item?.created_at}</Td>
                                 <Td>{item?.updated_at}</Td>
-
-                                {/* <Td>
-                                <Box className="mc-table-price">
-                                    <del>{ item.price.previous }</del>
-                                    <Text>{ item.price.present }</Text>
-                                </Box>
-                            </Td>
-                            <Td>{ item.stock }</Td>
-                            <Td>
-                                <Box className="mc-table-rating">
-                                    <Icon>{ item.rating?.icon }</Icon>
-                                    <Heading>{ item.rating?.percent }</Heading>
-                                    <Text>({ item.rating?.number })</Text>
-                                </Box>
-                            </Td> */}
                                 <Td>
                                     <Box className="mc-table-action">
-                                        <Anchor href={`/admin/product-view/${item?.id}`} title="View" className="material-icons view">visibility</Anchor>
-                                        <Anchor href={`/admin/product-edit/${item?.id}`} title="Edit" className="material-icons edit">edit</Anchor>
+                                        <Anchor href={`/admin/producttype-edit/${item?.id}`} title="Edit" className="material-icons edit">edit</Anchor>
                                         <Button title="Delete" className="material-icons delete" onClick={() => {
                                             setAlertModal(true)
                                             setDataModal(item)
@@ -174,12 +124,12 @@ export default function ProductsTable({ thead, tbody, getAllProduct }) {
                     <Box className="mc-alert-modal">
                         <Icon type="new_releases" />
                         <Heading as="h3">Bạn có chắc!</Heading>
-                        <Text as="p">Muốn xoá sản phẩm <span className="fw-bold ">{dataModal?.name}</span> không?</Text>
+                        <Text as="p">Muốn xoá danh mục <span className="fw-bold ">{dataModal?.name}</span> không?</Text>
                         <Modal.Footer>
                             <Button type="button" className="btn btn-secondary" onClick={() => setAlertModal(false)}>Không, đóng cửa sổ này</Button>
                             <Button type="button" className="btn btn-danger" onClick={() => {
                                 setAlertModal(false)
-                                handleDeleteProduct(dataModal?.id);
+                                handleDeleteProductType(dataModal?.id);
                             }}>Có, tôi muốn xoá</Button>
                         </Modal.Footer>
                     </Box>
