@@ -31,7 +31,7 @@ class StoreProducttypeRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', Rule::unique('product_types')->ignore($this->producttype)],
-            'image' => 'image|mimes:jpg,jpeg, png, bmp|max:10240',
+            'image' => 'required|image|mimes:jpg,jpeg,png,bmp|max:10240',
         ];
     }
 
@@ -42,7 +42,8 @@ class StoreProducttypeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Tên loại sản phẩm',
+            'name' => 'Tên danh mục',
+            'image' => 'Hình ảnh danh mục'
         ];
     }
 }

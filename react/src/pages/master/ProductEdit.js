@@ -85,7 +85,7 @@ export default function ProductEdit() {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
-            data: data
+            data: data 
         })
             .then(res => {
                 Swal.fire({
@@ -139,8 +139,6 @@ export default function ProductEdit() {
             })
             .catch(err => console.log('Gọi API chi tiết sản phẩm bị lỗi'))
     }, [])
-    // console.log('ABCDEF ',product["image[]"]);
-    // console.log('Dữ liệu products, ',product);
     const listImageDisplay = () => {
         let arr = [];
         if (product["image[]"]) {
@@ -194,10 +192,6 @@ export default function ProductEdit() {
                         <CardHeader title="Hình ảnh sản phẩm" dotsMenu={data?.dotsMenu} />
                         <Box className="mc-product-upload-media">
                             {listImageDisplay()}
-                            {/* <Box className="mc-product-upload-image"><Image src="images/product/single/01.webp" alt="product" /></Box>
-                            <Box className="mc-product-upload-image"><Image src="images/product/single/02.webp" alt="product" /></Box>
-                            <Box className="mc-product-upload-image"><Image src="images/product/single/03.webp" alt="product" /></Box>
-                            <Box className="mc-product-upload-image"><Image src="images/product/single/04.webp" alt="product" /></Box> */}
                             <Box className="mc-product-upload-file">
                                 <Input type="file" multiple name="image[]" id="product" onChange={handleChooseImage} />
                                 <Label htmlFor="product"><Icon type="collections" /><Text>{uploadFile}</Text></Label>

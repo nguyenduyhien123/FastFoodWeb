@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    use SoftDeletes; 
 
     protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id', 'status'];
 

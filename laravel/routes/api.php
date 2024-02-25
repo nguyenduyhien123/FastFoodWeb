@@ -98,7 +98,7 @@ Route::middleware('verify-token:authencation')->group(function () {
             Route::post('updateStatusProduct/{id}', [ApiProductController::class, 'updateStatusProduct']);
 
         });
-
+        Route::apiResource('producttypes', ApiProducttypeController::class);
     });
 
 });
@@ -135,7 +135,7 @@ Route::prefix('payment')->group(function () {
 Route::get('order_code', function () {
     return intval(substr(strval(Carbon::now()->getTimestampMs() * mt_rand(2, 99) * mt_rand(2, 99)), -9));
 });
-
+ 
 
 Route::controller(ApiAuthController::class)->prefix('auth')->group(function () {
     Route::get('encode', 'encodeJWT');

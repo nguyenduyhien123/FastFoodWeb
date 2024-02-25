@@ -1,0 +1,9 @@
+
+@import '../1-helpers/mixins';
+@import '../1-helpers/_directions';
+@import '../1-helpers/colors';
+.mc-producttype-upload-image img
+{
+    width: 200px;
+    height : 200px;
+}

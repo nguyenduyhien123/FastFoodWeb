@@ -10,6 +10,10 @@ import UserCreate from "../pages/master/UserCreate";
 import UserEdit from "../pages/master/UserEdit";
 import ProductEdit from "../pages/master/ProductEdit";
 import CommentList from "../pages/master/CommentList";
+import { ProductTypeEdit } from "../pages/master/ProductTypeEdit";
+import { ProductTypeUpload } from "../pages/master/ProductTypeUpload";
+import { ProductTypeList } from "../pages/master/ProductTypeList";
+import { ProductTypeView } from "../pages/master/ProductTypeView";
 export const ListRouteAdmin = [
   {
     path: '/admin/ecommerce',
@@ -19,7 +23,6 @@ export const ListRouteAdmin = [
   {
     path: '/admin/analytics',
     element: <Analytics />,
-
   },
   {
     path: '/admin/crm',
@@ -69,7 +72,6 @@ export const ListRouteAdmin = [
   {
     path: '/admin/product-list',
     element: <ProductList />,
-
   },
   {
     path: '/admin/product-view/:id',
@@ -84,6 +86,25 @@ export const ListRouteAdmin = [
   {
     path: '/admin/product-upload',
     element: <ProductUpload />,
+
+  },
+  {
+    path: '/admin/producttype-list',
+    element: <ProductTypeList />,
+  },
+  {
+    path: '/admin/producttype-view/:id',
+    element: <ProductTypeView />,
+
+  },
+  {
+    path: '/admin/producttype-edit/:id',
+    element: <ProductTypeEdit />,
+
+  },
+  {
+    path: '/admin/producttype-upload',
+    element: <ProductTypeUpload />,
 
   },
   {

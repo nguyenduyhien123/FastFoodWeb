@@ -188,7 +188,7 @@ class ApiProductController extends Controller
         if ($request->has('product_type_id')) {
             $category = $request->input('product_type_id');
             $query->whereIn('product_type_id', $category);
-        }
+        } 
 
         // Lọc theo tên
         if ($request->has('name')) {
