@@ -62,11 +62,15 @@
     "scss": "^0.2.4",
     "slick-carousel": "^1.8.1",
     "summernote": "^0.8.20",
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     "sweetalert2": "^11.6.13",
 =======
     "sweetalert2": "^11.10.3",
 >>>>>>> master
+=======
+    "sweetalert2": "^11.6.13",
+>>>>>>> Stashed changes
     "validator": "^13.11.0",
     "web-vitals": "^2.1.4"
   },
