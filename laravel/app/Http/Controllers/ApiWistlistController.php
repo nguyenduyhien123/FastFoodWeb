@@ -13,6 +13,7 @@ class ApiWistlistController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $wishlists = Wishlist::with('product')->get();
 
         // Tạo một mảng mới chứa thông tin bạn muốn hiển thị
@@ -26,6 +27,11 @@ class ApiWistlistController extends Controller
         });
 
         return $formattedWishlists;
+=======
+        //
+        $wishlists = Wishlist::all();
+        return $wishlists;
+>>>>>>> master
     }
 
     /**
@@ -34,6 +40,7 @@ class ApiWistlistController extends Controller
     public function store(StoreWistlistRequest $request)
     {
         $user = $request->user;
+<<<<<<< HEAD
         $wishlist = Wishlist::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
         if ($wishlist) {
             $wishlist->delete();
@@ -41,6 +48,17 @@ class ApiWistlistController extends Controller
         } else {
             Wishlist::create(['product_id' => $request->product_id, 'user_id' => $user->id]);
             return response()->json(['message' => 'Thêm sản phẩm vào danh sách yêu thích thành công']);
+=======
+        $wistlist = Wishlist::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
+        if($wistlist)
+        {   $wistlist->delete();
+            return response()->json(['message' => 'Đã xoá sản phẩm ra khỏi danh sách yêu thích']);
+        }
+        else
+        {
+            Wishlist::create(['product_id' => $request->product_id, 'user_id' => $user->id]);
+        return response()->json(['message' => 'Thêm sản phẩm vào danh sách yêu thích thành công']);
+>>>>>>> master
         }
     }
 
@@ -49,6 +67,7 @@ class ApiWistlistController extends Controller
      */
     public function show(string $id)
     {
+<<<<<<< HEAD
         $wishlist = Wishlist::findOrFail($id);
         $product = $wishlist->product;
 
@@ -60,6 +79,17 @@ class ApiWistlistController extends Controller
             'product_price' => $product->price,
             // Thêm các thông tin khác của sản phẩm nếu cần
         ]);
+=======
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+>>>>>>> master
     }
 
     /**
@@ -67,9 +97,13 @@ class ApiWistlistController extends Controller
      */
     public function destroy(string $id)
     {
+<<<<<<< HEAD
         $wishlist = Wishlist::findOrFail($id);
         $wishlist->delete();
 
         return response()->json(['message' => 'Đã xoá sản phẩm ra khỏi danh sách yêu thích']);
+=======
+        //
+>>>>>>> master
     }
 }

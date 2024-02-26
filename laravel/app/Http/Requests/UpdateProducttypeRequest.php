@@ -30,7 +30,7 @@ class UpdateProducttypeRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', Rule::unique('product_types')->ignore($this->producttype)],
-            'image' => 'required|image|mimes:jpg,jpeg, png, bmp',
+            'image' => 'mimes:jpg,jpeg,png,bmp',
         ];
     }
 
@@ -42,6 +42,7 @@ class UpdateProducttypeRequest extends FormRequest
     {
         return [
             'name' => 'Tên loại sản phẩm',
+            'image' => 'Hình ảnh sản phẩm'
         ];
     }
 }

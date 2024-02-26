@@ -13,7 +13,11 @@ class ApiCartController extends Controller
     public function index()
     {
         $carts = Cart::with('product')->get();
+<<<<<<< HEAD
         return response()->json($carts);
+=======
+        return $carts; 
+>>>>>>> master
     }
 
     /**
@@ -21,6 +25,7 @@ class ApiCartController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $cart = new Cart();
         $cart->user_id = $request->user_id;
         $cart->product_id = $request->product_id;
@@ -28,6 +33,9 @@ class ApiCartController extends Controller
         $cart->save();
 
         return response()->json(['message' => 'Thêm vào giỏ hàng thành công'], 201);
+=======
+        //
+>>>>>>> master
     }
 
     /**
@@ -35,11 +43,15 @@ class ApiCartController extends Controller
      */
     public function show(string $id)
     {
+<<<<<<< HEAD
         $cart = Cart::with('product')->find($id);
         if ($cart) {
             return response()->json($cart);
         }
         return response()->json(['message' => 'Không tìm thấy'], 404);
+=======
+        //
+>>>>>>> master
     }
 
     /**
@@ -48,10 +60,19 @@ class ApiCartController extends Controller
     public function update(Request $request, string $id)
     {
         $cart = Cart::find($id);
+<<<<<<< HEAD
         if ($cart) {
             $cart->quantity = $request->quantity;
             $cart->save();
             return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
+=======
+        if(!empty($cart))
+        {
+            $cart->quantity = $request->quantity;
+            $cart->save();
+            return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
+
+>>>>>>> master
         }
         return response()->json(['message' => 'Không tìm thấy'], 404);
     }
@@ -62,6 +83,7 @@ class ApiCartController extends Controller
     public function destroy(string $id)
     {
         $cart = Cart::find($id);
+<<<<<<< HEAD
         if ($cart) {
             $cart->delete();
             return response()->json(['message' => 'Xoá sản phẩm ra khỏi giỏ hàng thành công']);
@@ -76,5 +98,18 @@ class ApiCartController extends Controller
     {
         $carts = Cart::with('product')->where('user_id', $request->user->id)->get();
         return response()->json($carts);
+=======
+        if(!empty($cart))
+        {
+            $cart->delete();
+            return response()->json(['message' => 'Xoá sản phẩm ra giỏ hàng thành công']);
+
+        }
+        return response()->json(['message' => 'Không tìm thấy'], 404);
+    }
+    public function getCartByUser(Request $request){
+        $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
+        return $carts;
+>>>>>>> master
     }
 }

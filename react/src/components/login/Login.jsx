@@ -7,65 +7,35 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.min.css';
 import { AuthContext } from "../../context/AuthContext";
-import {ClipLoader} from "react-spinners";
-
+import { ClipLoader } from "react-spinners";
+import { useLocation } from 'react-router-dom'
 const overrideCliploader = {
   display: "block",
   margin: "0 auto",
   borderColor: "white",
-  borderWidth : "5px"
+  borderWidth: "5px"
 };
-export default function SignIn() {
-  const {userInfo, isLogin, updateUserInfo,updateLogin,loginInfo, updateLoginInfo,loginUser, isLoginLoading, handleLoginWithGoogle}  = useContext(AuthContext)
+export default function Login() {
+  const { userInfo, isLogin, updateUserInfo, updateLogin, loginInfo, updateLoginInfo, loginUser, isLoginLoading, handleLoginWithGoogle } = useContext(AuthContext)
   const [account, setAccount] = useState({ email: "", password: "" });
   const emailRef = useRef();
   const passwordRef = useRef();
   const [disableButtonSubmit, setDisableButtonSubmit] = useState(false);
-  const [acountError, setAccountError] = useState({});
-
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-    updateLoginInfo({...loginInfo, [name] : value})
+    setAccount({ ...account, [name]: value })
   }
-  // function handleSubmit(e)
-  // {
-  //   e.preventDefault();
-  //   setDisableButtonSubmit(true);
-  //   axios({
-  //     method: 'post',
-  //     url: 'http://localhost:8000/api/auth/login',
-  //     data : account,
-  //     withCredentials: true,
-
-  // })
-  // .then(res => {
-  //   updateUserInfo(res.data.data);
-  //   updateLogin(true);
-  //   Swal.fire({
-  //     title: 'Đăng nhập thành công',
-  //     icon: 'success',
-  //     text: 'Chào mừng bạn đến với hệ thống',
-  //   });
-  //   setDisableButtonSubmit(false);
-
-  // })
-  // .catch(err => {
-  //   Swal.fire({
-  //     title: 'Đăng nhập thất bại',
-  //     icon: 'error',
-  //     text: 'Có vấn đề xảy ra',
-  //   });
-  //   setDisableButtonSubmit(false);
-  // })
-
-  // }
-  console.log("====================================");
-  console.log(loginInfo);
-  console.log("====================================");
-  return (
+  function handleSubmit(e) {
+    e.preventDefault();
+    setDisableButtonSubmit(true);
+    loginUser(account);
+    setDisableButtonSubmit(false);
+  }
+  console.log(account);
+  return <>
     <div className="form-login">
-      <form onSubmit={loginUser} className="form border">
+      <form onSubmit={handleSubmit} className="form border">
         <div className="flex-column">
           <label>Email </label>
         </div>
@@ -74,7 +44,7 @@ export default function SignIn() {
           ref={emailRef}
           onBlur={(e) => {
             let email = account.email;
-            console.log(validator.isEmail(email));
+            // console.log(validator.isEmail(email));
             if (validator.isEmail(email) == true) {
               emailRef.current.className = "inputForm input-validate is-valid";
             } else {
@@ -99,6 +69,7 @@ export default function SignIn() {
             type="text"
             onChange={handleChange}
             name="email"
+            value={account?.email}
           />
         </div>
         <div className="text-danger " style={{ display: "none" }}>
@@ -136,13 +107,14 @@ export default function SignIn() {
             type="password"
             onChange={handleChange}
             name="password"
+            value={account?.password}
           />
         </div>
         <div className="text-danger " style={{ display: "none" }}>
           Mật khẩu phải có ít nhất 8 ký tự
         </div>
         <div className="flex-row">
-          <div>
+          {/* <div>
             <Form.Check // prettier-ignore
               type="switch"
               id="custom-switch"
@@ -152,17 +124,17 @@ export default function SignIn() {
                 setAccount({ ...account, remember: e.target.checked })
               }
             />
-          </div>
+          </div> */}
           <Link to="/accounts/reset-password" className="span">Quên mật khẩu?</Link>
         </div>
         <button type="submit" disabled={isLoginLoading ? true : false} className="button-submit">
           {isLoginLoading ? <ClipLoader
-  color="#36d7b7"
-  size={35}
-  speedMultiplier={1}
-  cssOverride={overrideCliploader}
+            color="#36d7b7"
+            size={35}
+            speedMultiplier={1}
+            cssOverride={overrideCliploader}
 
-/> : 'Đăng nhập'}
+          /> : 'Đăng nhập'}
         </button>
         <p className="p">
           Chưa có tài khoản? <Link to="/accounts/register"><span className="span">Đăng ký</span></Link>
@@ -210,7 +182,7 @@ export default function SignIn() {
             </svg>
             <span>Google</span>
           </button>
-          <button className="btn apple">
+          {/* <button className="btn apple">
             <svg
               xmlSpace="preserve"
               style={{ enableBackground: "new 0 0 22.773 22.773" }}
@@ -232,9 +204,9 @@ export default function SignIn() {
               </g>
             </svg>
             Apple
-          </button>
+          </button> */}
         </div>
       </form>
     </div>
-  );
+  </>
 }

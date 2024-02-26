@@ -41,6 +41,18 @@
                     ]
                 },
                 { 
+<<<<<<< HEAD
+=======
+                    "icon": "pix", 
+                    "text": "Danh mục",
+                    "badge": { "text": "new", "variant": "purple square" },
+                    "submenu": [
+                        { "href": "/admin/producttype-list", "text": "Danh sách danh mục" },
+                        { "href": "/admin/producttype-upload", "text": "Thêm danh mục mới" }
+                    ]
+                },
+                { 
+>>>>>>> master
                     "href": "#",
                     "icon": "article", 
                     "text": "Hoá đơn",

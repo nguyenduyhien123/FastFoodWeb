@@ -27,7 +27,11 @@ export default function InvoiceList() {
     useEffect(() => {
         getInvoiceList();
     }, [])
+<<<<<<< HEAD
     console.log(invoiceList);
+=======
+    // console.log(invoiceList);
+>>>>>>> master
     return (
         <PageLayout>
             <Row>

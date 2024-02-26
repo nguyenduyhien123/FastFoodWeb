@@ -92,7 +92,7 @@ export default function Register() {
           ref={emailRef}
           onBlur={(e) => {
             let email = account.email;
-            console.log(validator.isEmail(email));
+            // console.log(validator.isEmail(email));
             if (validator.isEmail(email) == true) {
               emailRef.current.className = "inputForm input-validate is-valid";
             } else {
@@ -173,7 +173,7 @@ export default function Register() {
           ref={emailRef}
           onBlur={(e) => {
             let email = account.email;
-            console.log(validator.isEmail(email));
+            // console.log(validator.isEmail(email));
             if (validator.isEmail(email) == true) {
               emailRef.current.className = "inputForm input-validate is-valid";
             } else {

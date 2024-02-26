@@ -1,5 +1,9 @@
 .header_web {
+<<<<<<< HEAD
   margin : 0 auto;
+=======
+  margin: 0 auto;
+>>>>>>> master
   max-width: 1850px;
   padding-left: 50px;
   padding-right: 50px;
@@ -82,7 +86,6 @@
     display: none;
   }
 
-
   .cart_icon {
     position: relative;
     width: 40px;
@@ -163,16 +166,25 @@
     .active_menu {
       display: block;
     }
-
+  }
+  .list-action > * {
+    color: #ffffff;
   }
   .list-action>*
   {
       color : #ffffff
   }
 }
+<<<<<<< HEAD
 .avatar svg
 {   
     width: 30px;
     height : 30px;
 
 }
+=======
+.avatar svg {
+  width: 30px;
+  height: 30px;
+}
+>>>>>>> master

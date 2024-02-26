@@ -11,7 +11,11 @@ import './assets/sass/styles.scss'
 
 
 
+<<<<<<< HEAD
 import {AuthContext, AuthContextProvider} from "./context/AuthContext";
+=======
+import { AuthContext, AuthContextProvider } from "./context/AuthContext";
+>>>>>>> master
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
@@ -38,12 +42,21 @@ import "react-toastify/dist/ReactToastify.css";
 //   document.getElementById("root")
 // );
 const root = ReactDOM.createRoot(document.getElementById('root'));
+<<<<<<< HEAD
 root.render(  <React.StrictMode>
   <BrowserRouter>
     <AuthContextProvider>
     <ThemeProvider>
           <ToastContainer/>
       <App />
+=======
+root.render(<React.StrictMode>
+  <BrowserRouter>
+    <AuthContextProvider>
+      <ThemeProvider>
+        <ToastContainer />
+        <App />
+>>>>>>> master
       </ThemeProvider>
     </AuthContextProvider>
   </BrowserRouter>
@@ -60,4 +73,8 @@ root.render(  <React.StrictMode>
 //     </BrowserRouter>
 //   </React.StrictMode>,
 //   document.getElementById("root")
+<<<<<<< HEAD
 // );
+=======
+// );
+>>>>>>> master

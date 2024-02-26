@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProducttypeRequest;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ApiProducttypeController extends Controller
 {
@@ -21,12 +22,13 @@ class ApiProducttypeController extends Controller
         $producttype = ProductType::create(
             [
                 'name' => $request['name'],
-                'image' => '123', //gia tri mac dinh cua image la 123
-            ]);
-        if ($request->hasFile('image')) {
-            $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
-            $producttype->image = $path;
-        }
+                'image' => ''
+            ]
+        );
+        $file = $request->file('image');
+        $nameFile = Str::random(20) . Str::random(20) . '_producttype' . $producttype->id . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/Uploads', $nameFile);
+        $producttype->image = $nameFile;
         $producttype->save();
         return $producttype;
     }
@@ -38,7 +40,7 @@ class ApiProducttypeController extends Controller
             return response()->json($productType);
         } else {
             return response()->json([
-                'message' => 'Không tìm thấy sản phẩm'
+                'message' => 'Không tìm thấy hdanh mục'
             ], 404);
         }
     }
@@ -50,8 +52,10 @@ class ApiProducttypeController extends Controller
             $producttype->name = $request->name;
 
             if ($request->hasFile('image')) {
-                $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
-                $producttype->image = json_encode([$path], JSON_FORCE_OBJECT);
+                $file = $request->file('image');
+                $nameFile = Str::random(20) . Str::random(20) . '_producttype_' . $producttype->id . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/Uploads', $nameFile);
+                $producttype->image = $nameFile;
             }
 
             $producttype->update();
@@ -69,15 +73,23 @@ class ApiProducttypeController extends Controller
         $productTypeName = $producttype->name;
         if (!empty($producttype)) {
             $producttype->delete();
-            return "Xóa thành công loại sản phẩm{$productTypeName}";
+            return response()->json([
+                'message' => "Xóa thành công danh mục {$productTypeName}"
+            ]);
         } else {
             return response()->json([
                 'message' => 'Không tìm thấy sản phẩm'
             ], 404);
         }
     }
+<<<<<<< HEAD
     public function getTotalProductTypes(){
         return response()->json(['count' => ProductType::all()->count()]);
 
+=======
+    public function getTotalProductTypes()
+    {
+        return response()->json(['count' => ProductType::all()->count()]);
+>>>>>>> master
     }
 }

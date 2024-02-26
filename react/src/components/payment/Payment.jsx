@@ -9,7 +9,11 @@ import { LabelField } from "../fields";
 import { AuthContext } from "../../context/AuthContext";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+<<<<<<< HEAD
 import {useNavigate} from 'react-router-dom';
+=======
+import { useNavigate } from 'react-router-dom';
+>>>>>>> master
 export const Payment = () => {
     const navigate = useNavigate();
     const { userInfo } = useContext(AuthContext);
@@ -31,6 +35,7 @@ export const Payment = () => {
         })
             .then((res) => {
                 let data = res.data
+<<<<<<< HEAD
                 if(data?.length > 0)
                 {
                 data.forEach(item => {
@@ -40,6 +45,16 @@ export const Payment = () => {
                 setCartList(data)
                 setDisableButtonPay(false);
             }
+=======
+                if (data?.length > 0) {
+                    data.forEach(item => {
+                        let imageJSON = JSON.parse(item.product.image);
+                        item.product.image = imageJSON;
+                    });
+                    setCartList(data)
+                    setDisableButtonPay(false);
+                }
+>>>>>>> master
             })
             .catch(err => {
             })
@@ -51,9 +66,14 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
+<<<<<<< HEAD
                 if(res?.data?.length > 0)
                 {            
                 setPaymentMethods(res.data);
+=======
+                if (res?.data?.length > 0) {
+                    setPaymentMethods(res.data);
+>>>>>>> master
                 }
                 setInfoOrder({ ...infoOrder, payment_method_id: res.data[0]?.id })
             })
@@ -66,6 +86,12 @@ export const Payment = () => {
         getPaymentMethods();
     }, []);
     useEffect(() => {
+<<<<<<< HEAD
+=======
+        document.title = 'Thanh toán'
+    });
+    useEffect(() => {
+>>>>>>> master
         let total = calcInvoiceTotal();
         setInvoiceTotal(total);
     })
@@ -85,6 +111,7 @@ export const Payment = () => {
             withCredentials: true,
         })
             .then((res) => {
+<<<<<<< HEAD
                 if(res?.data?.checkoutLink)
                 {
                     window.location.href = res?.data?.checkoutLink
@@ -93,6 +120,14 @@ export const Payment = () => {
                 {
                 // navigate(`/accounts/manage-order/${res?.data?.code}`)
                 toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
+=======
+                if (res?.data?.checkoutLink) {
+                    window.location.href = res?.data?.checkoutLink
+                }
+                else {
+                    // navigate(`/accounts/manage-order/${res?.data?.code}`)
+                    toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
+>>>>>>> master
                 }
             })
             .catch((err) => {
@@ -101,8 +136,13 @@ export const Payment = () => {
 
             })
     }
+<<<<<<< HEAD
     console.log('hoá đơn', infoOrder);
     console.log(infoOrderError);
+=======
+    // console.log('hoá đơn', infoOrder);
+    // console.log(infoOrderError);
+>>>>>>> master
     return <div className="mc-payment mt-2">
         <Row>
             <Col xl={6}>
@@ -127,7 +167,11 @@ export const Payment = () => {
                             }} />
                         </Col>
                         <Col xl={12}>
+<<<<<<< HEAD
                         <LabelField
+=======
+                            <LabelField
+>>>>>>> master
                                 type={"text"}
                                 placeholder={"Ghi chú cho đơn hàng"}
                                 labelDir="label-col"
