@@ -5,7 +5,11 @@ import ProductsTable from "../../components/tables/ProductsTable";
 import LabelField from "../../components/fields/LabelField";
 import { Pagination, Breadcrumb } from "../../components";
 import Anchor from "../../components/elements/Anchor";
+<<<<<<< HEAD
+import PageLayout from "../../layouts/PageLayout";
+=======
 import PageLayout from "../../layouts/PageLayout"; 
+>>>>>>> master
 import data from "../../data/master/productList.json";
 import axios from 'axios'
 export default function ProductList() {
@@ -31,13 +35,21 @@ export default function ProductList() {
             withCredentials: true,          
         })
         .then((res) => {
+<<<<<<< HEAD
+            console.log(res);
+=======
             // console.log(res);
+>>>>>>> master
             var products = res.data;
             products.forEach(item => {
                 item.image = JSON.parse(item.image)
             });
             setProducts(products)
+<<<<<<< HEAD
+            console.log(res.data);
+=======
             // console.log(res.data);
+>>>>>>> master
             setIsLoadData(true)
         })
         .catch(err => {
@@ -74,9 +86,13 @@ export default function ProductList() {
         .then(res => {
             setFloat([...float, float[0].digit = res.data.count]);
         })
+<<<<<<< HEAD
+        .catch(err => console.log(err))
+=======
         .catch(err => { 
             // console.log(err)
         })
+>>>>>>> master
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalProductTypes',
@@ -85,9 +101,13 @@ export default function ProductList() {
         .then(res => {
             setFloat([...float, float[1].digit = res.data.count]);
         })
+<<<<<<< HEAD
+        .catch(err => console.log(err))
+=======
         .catch(err => { 
             // console.log(err)
         })
+>>>>>>> master
 
     }, []);
     return (
@@ -139,7 +159,11 @@ export default function ProductList() {
                             </Col>
                         </Row>
                     </CardLayout>
+<<<<<<< HEAD
+                </Col>
+=======
                 </Col> 
+>>>>>>> master
             </Row> 
         </PageLayout>
     );

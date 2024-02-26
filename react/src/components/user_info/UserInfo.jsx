@@ -21,7 +21,11 @@ import { ManageOrder } from './ManageOrder';
 export const UserInfo = () => {
     const location = useLocation();
     const path = location.pathname;
+<<<<<<< HEAD
+    console.log(path); // In ra đường dẫn trên URL
+=======
     // console.log(path); // In ra đường dẫn trên URL
+>>>>>>> master
     const { userInfo } = useContext(AuthContext);
     const [account, setAccount] = useState({});
     const navigate = useNavigate();
@@ -50,8 +54,13 @@ export const UserInfo = () => {
     const [tabActive, setTabActive] = useState(() => {
         return listTab.findIndex((tab) => tab.link == path);
     });
+<<<<<<< HEAD
+    console.log(tabActive);
+    console.log(account);
+=======
     // console.log(tabActive);
     // console.log(account);
+>>>>>>> master
     return <div className='user-info'>
                 <Row>
                     <Col xl={3}>

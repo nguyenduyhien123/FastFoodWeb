@@ -188,11 +188,18 @@ class ApiProductController extends Controller
         if ($request->has('product_type_id')) {
             $category = $request->input('product_type_id');
             $query->whereIn('product_type_id', $category);
+<<<<<<< HEAD
+        }
+=======
         } 
+>>>>>>> master
 
         // Lọc theo tên
         if ($request->has('name')) {
             $name = $request->input('name');
+<<<<<<< HEAD
+            $query->where('name', 'like', "%$name%");
+=======
             if(!empty($name))
             {
             $query->where('name', 'like', "%$name%");
@@ -201,6 +208,7 @@ class ApiProductController extends Controller
             {
                 return [];
             }
+>>>>>>> master
         }
 
         // Lọc theo giá

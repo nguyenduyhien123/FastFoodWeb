@@ -1,5 +1,9 @@
 .header_web {
+<<<<<<< HEAD
+  margin : 0 auto;
+=======
   margin: 0 auto;
+>>>>>>> master
   max-width: 1850px;
   padding-left: 50px;
   padding-right: 50px;
@@ -14,6 +18,7 @@
     z-index: 9;
     background: #ffffff; // Thay đổi màu nền thành màu sáng
     color: #141124; // Đảm bảo màu chữ đủ đậm để đọc được trên nền sáng
+    
   }
 
   .navigation {
@@ -165,8 +170,21 @@
   .list-action > * {
     color: #ffffff;
   }
+  .list-action>*
+  {
+      color : #ffffff
+  }
 }
+<<<<<<< HEAD
+.avatar svg
+{   
+    width: 30px;
+    height : 30px;
+
+}
+=======
 .avatar svg {
   width: 30px;
   height: 30px;
 }
+>>>>>>> master

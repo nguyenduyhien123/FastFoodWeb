@@ -1,5 +1,9 @@
 import { useEffect } from "react";
+<<<<<<< HEAD
+import SignIn from "../../components/SignIn/SignIn";
+=======
 import Login from "../../components/login/Login";
+>>>>>>> master
 
 const PageSignIn = () => {
     useEffect(() => {

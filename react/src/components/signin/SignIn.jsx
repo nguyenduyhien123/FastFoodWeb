@@ -49,6 +49,24 @@ export default function SignIn() {
     });
     setDisableButtonSubmit(false);
 
+<<<<<<< HEAD:react/src/components/SignIn/SignIn.js
+  // })
+  // .catch(err => {
+  //   Swal.fire({
+  //     title: 'Đăng nhập thất bại',
+  //     icon: 'error',
+  //     text: 'Có vấn đề xảy ra',
+  //   });
+  //   setDisableButtonSubmit(false);
+  // })
+
+  // }
+  console.log("====================================");
+  console.log(loginInfo);
+  console.log("====================================");
+  return (
+    <div className="form-login">
+=======
   })
   .catch(err => {
     Swal.fire({
@@ -59,6 +77,7 @@ export default function SignIn() {
     setDisableButtonSubmit(false);
   })
   return <><div className="form-login">
+>>>>>>> master:react/src/components/signin/SignIn.jsx
       <form onSubmit={loginUser} className="form border">
         <div className="flex-column">
           <label>Email </label>

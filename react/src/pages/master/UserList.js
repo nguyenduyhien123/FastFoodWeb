@@ -23,9 +23,13 @@ export default function UserList() {
             withCredentials: true,          
         })
         .then(res => setAccounts(res.data))
+<<<<<<< HEAD
+        .catch(err => console.log('GỌI APi ds user bị lỗi'))
+=======
         .catch(err => {
             // console.log('GỌI APi ds user bị lỗi')
         })
+>>>>>>> master
     }, [])
     useEffect(() => {
         axios({
@@ -36,9 +40,13 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[0].digit = res.data.count]);
         })
+<<<<<<< HEAD
+        .catch(err => console.log(err))
+=======
         .catch(err => {
             // console.log(err)
         })
+>>>>>>> master
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalUserIsVerified',
@@ -47,9 +55,13 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[1].digit = res.data.count]);
         })
+<<<<<<< HEAD
+        .catch(err => console.log(err))
+=======
         .catch(err => {
             // console.log(err)
         })
+>>>>>>> master
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalUserIsNotVerified',
@@ -58,12 +70,19 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[2].digit = res.data.count]);
         })
+<<<<<<< HEAD
+        .catch(err => console.log(err))
+
+    }, []);
+    console.log(accounts);
+=======
         .catch(err => {
             // console.log(err)
         })
 
     }, []);
     // console.log(accounts);
+>>>>>>> master
     return (
         <PageLayout>
             <Row> 

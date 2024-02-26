@@ -93,7 +93,11 @@ export default function InvoiceDetails() {
 
         })
     };
+<<<<<<< HEAD
+    console.log(invoice);
+=======
     // console.log(invoice);
+>>>>>>> master
     return (
         <PageLayout>
             <Row>

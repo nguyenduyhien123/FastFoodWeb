@@ -42,7 +42,11 @@ export default function CommentList() {
               }         
         })
         .then(res => {
+<<<<<<< HEAD
+            console.log(res.data);
+=======
             // console.log(res.data);
+>>>>>>> master
 
         })
         .catch(err => {
@@ -50,7 +54,11 @@ export default function CommentList() {
     }
     useEffect(() => {
         getCommentsByProductId(productActive?.id);
+<<<<<<< HEAD
+        console.log('Run .. ...');
+=======
         // console.log('Run .. ...');
+>>>>>>> master
     }, [productActive?.id])
     return (
         <PageLayout>

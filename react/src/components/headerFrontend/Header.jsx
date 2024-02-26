@@ -5,6 +5,10 @@ import { Container } from 'reactstrap'
 import Cart from '../carts/Cart'
 import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 import { ProductSearch } from '../product_search/ProductSearch'
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 const navLinks = [
        {
               display: 'Trang chủ',
@@ -52,18 +56,32 @@ const Header = () => {
                                                         }
                                                  </ul>
                                                  <div className="menu_right">
+<<<<<<< HEAD
+                                                       <ProductSearch></ProductSearch>
+=======
                                                         <ProductSearch></ProductSearch>
+>>>>>>> master
                                                  </div>
                                           </div>
                                    </div>
                                    <div className="d-flex list-action align-items-center gap-4">
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
                                           <div className="avatar">
                                                  <DropdownAvatar></DropdownAvatar>
                                           </div>
                                           <Link to={"/wishlist"}>
+<<<<<<< HEAD
+                                          <button class="material-symbols-outlined favorite">
+                                                 favorite
+                                          </button>
+=======
                                                  <button class="material-symbols-outlined favorite">
                                                         favorite
                                                  </button>
+>>>>>>> master
                                           </Link>
                                    </div>
                                    <div>

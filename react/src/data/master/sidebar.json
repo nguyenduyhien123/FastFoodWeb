@@ -41,6 +41,8 @@
                     ]
                 },
                 { 
+<<<<<<< HEAD
+=======
                     "icon": "pix", 
                     "text": "Danh mục",
                     "badge": { "text": "new", "variant": "purple square" },
@@ -50,6 +52,7 @@
                     ]
                 },
                 { 
+>>>>>>> master
                     "href": "#",
                     "icon": "article", 
                     "text": "Hoá đơn",

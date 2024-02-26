@@ -31,11 +31,17 @@ export default function UserProfile() {
             setFloat([...float, float[0].digit = 50]);
 
         })
+<<<<<<< HEAD
+        .catch(err => console.log('Gọi API profile bị lỗi'))
+    }, [])
+    console.log(profile);
+=======
         .catch(err => {
             // console.log('Gọi API profile bị lỗi')
         })
     }, [])
     // console.log(profile);
+>>>>>>> master
     return ( 
         <PageLayout>
             <Row> 
