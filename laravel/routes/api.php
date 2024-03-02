@@ -104,7 +104,7 @@ Route::middleware('verify-token:authencation')->group(function () {
 });
 // Api không cần đăng nhập
 Route::apiResource('products', ApiProductController::class)->only(['index', 'show']);
-Route::apiResource('product_types', ApiProducttypeController::class)->only(['index', 'show']);
+Route::apiResource('product_types', ApiProducttypeController::class);
 Route::get('getProductsByCriteria', [ApiProductController::class, 'getProductsByCriteria'])->withoutMiddleware(['throttle']);
 Route::get('generateCode', [ApiInvoiceController::class, 'generateCode']);
 

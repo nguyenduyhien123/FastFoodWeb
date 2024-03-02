@@ -69,6 +69,9 @@ import { ChangePassword } from "./components/user_info/ChangePassword";
 import { AccountEdit } from "./components/user_info/AccountEdit";
 import { ManageOrder } from "./components/user_info/ManageOrder";
 import { OrderDetailUser } from "./components/user_info/OrderDetailUser";
+import ProductType from "./components/ProductType/ProductType";
+import ProductTypeAdd from "./components/ProductType/ProductTypeAdd";
+import ProductTypeEdit from "./components/ProductType/ProductTypeEdit";
 
 // Admin
 function App() {
@@ -118,6 +121,9 @@ function App() {
 
         {/* Admin */}
         {/* master Pages */}
+        <Route path="/admin/producttype" element={<ProductType />} />
+        <Route path="/admin/producttype/add" element={<ProductTypeAdd />} />
+        <Route path="/admin/producttype/:id" element={<ProductTypeEdit />} />
         <Route path="/admin/ecommerce" element={<Ecommerce />} />
         <Route path="/admin/analytics" element={<Analytics />} />
         <Route path="/admin/crm" element={<CRM />} />
