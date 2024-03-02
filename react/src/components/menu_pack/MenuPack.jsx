@@ -20,7 +20,7 @@ const MenuPack = () => {
   const [categoryActive, setCategoryActive] = useState(1);
   const [products, setProducts] = useState([]);
 
-  console.log(categories);
+  // console.log(categories);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/product_types")

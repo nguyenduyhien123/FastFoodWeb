@@ -30,7 +30,7 @@ class ApiProductController extends Controller
                 'price' => $request['price'],
                 'image' => '{}',
                 'product_type_id' => $request['product_type_id'],
-                'star' => 5, 
+                'star' => 5,
             ]
         );
         $listImage = [];
@@ -193,7 +193,14 @@ class ApiProductController extends Controller
         // Lọc theo tên
         if ($request->has('name')) {
             $name = $request->input('name');
+            if(!empty($name))
+            {
             $query->where('name', 'like', "%$name%");
+            }
+            else
+            {
+                return [];
+            }
         }
 
         // Lọc theo giá

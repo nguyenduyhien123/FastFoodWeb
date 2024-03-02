@@ -48,7 +48,11 @@ export const ChangePassword = () => {
             })
 
     }
+<<<<<<< HEAD
     console.log(passwordUserError);
+=======
+    // console.log(passwordUserError);
+>>>>>>> master
     return <CardLayout>
         <DivideTitle as={"h2"} title="Đổi mật khẩu" className="mb-4" />
         <Row className='mt-3'>

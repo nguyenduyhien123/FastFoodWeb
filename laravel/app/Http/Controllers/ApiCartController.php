@@ -13,7 +13,7 @@ class ApiCartController extends Controller
     public function index()
     {
         $carts = Cart::with('product')->get();
-        return $carts; 
+        return $carts;
     }
 
     /**
@@ -38,8 +38,7 @@ class ApiCartController extends Controller
     public function update(Request $request, string $id)
     {
         $cart = Cart::find($id);
-        if(!empty($cart))
-        {
+        if (!empty($cart)) {
             $cart->quantity = $request->quantity;
             $cart->save();
             return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
@@ -54,16 +53,16 @@ class ApiCartController extends Controller
     public function destroy(string $id)
     {
         $cart = Cart::find($id);
-        if(!empty($cart))
-        {
+        if (!empty($cart)) {
             $cart->delete();
             return response()->json(['message' => 'Xoá sản phẩm ra giỏ hàng thành công']);
 
         }
         return response()->json(['message' => 'Không tìm thấy'], 404);
     }
-    public function getCartByUser(Request $request){
-        $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
+    public function getCartByUser(Request $request)
+    {
+        $carts = Cart::with('product')->where('user_id', $request->user->id)->get();
         return $carts;
     }
 }

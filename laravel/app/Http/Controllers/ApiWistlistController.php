@@ -25,14 +25,12 @@ class ApiWistlistController extends Controller
     {
         $user = $request->user;
         $wistlist = Wishlist::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
-        if($wistlist)
-        {   $wistlist->delete();
+        if ($wistlist) {
+            $wistlist->delete();
             return response()->json(['message' => 'Đã xoá sản phẩm ra khỏi danh sách yêu thích']);
-        }
-        else
-        {
+        } else {
             Wishlist::create(['product_id' => $request->product_id, 'user_id' => $user->id]);
-        return response()->json(['message' => 'Thêm sản phẩm vào danh sách yêu thích thành công']);
+            return response()->json(['message' => 'Thêm sản phẩm vào danh sách yêu thích thành công']);
         }
     }
 

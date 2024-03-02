@@ -1,3 +1,54 @@
+<<<<<<< HEAD
+.wishlist-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wishlist-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Màu chữ đen */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Bo góc cho bảng */
+  overflow: hidden; /* Ẩn phần nội dung vượt quá khung bảng */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiển thị bóng cho bảng */
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+  text-align: left; /* Canh nội dung về phía trái */
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Màu nền cho hàng chẵn */
+}
+
+.table tbody tr:hover {
+  background-color: #e9ecef; /* Màu nền khi di chuột qua hàng */
+}
+
+.img-thumbnail {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%; /* Bo góc hình ảnh thành hình tròn */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiển thị bóng cho hình ảnh */
+=======
 .product-wishlist
 {
     width: 100%;
@@ -5,4 +56,5 @@
     padding-left: 15px;
     margin : 0 auto;
     width: 75%;
+>>>>>>> master
 }

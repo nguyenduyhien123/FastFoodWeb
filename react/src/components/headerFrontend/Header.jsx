@@ -1,12 +1,14 @@
 import React, { useRef } from 'react'
 import "./header.scss"
-
 import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import Cart from '../carts/Cart'
 import DropdownAvatar from '../dropdown_avatar/DropdownAvatar'
 import { ProductSearch } from '../product_search/ProductSearch'
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 const navLinks = [
        {
               display: 'Trang chủ',
@@ -45,32 +47,51 @@ const Header = () => {
 
                                    </div>
                                    <div className="nav_menu " ref={menuRef}>
-
                                           <div className="nav_list_wrapper d-flex align-items-center gap-5">
                                                  <ul className="nav_list">
-
                                                         {
                                                                navLinks.map((item, index) => (
-                                                                      <li className="nav_item" key={index}><a href={item.url} onClick={menuToggle}>{item.display}</a></li>
+                                                                      <li className="nav_item" key={index}><Link to={item.url} onClick={menuToggle}>{item.display}</Link></li>
                                                                ))
                                                         }
-
                                                  </ul>
-
                                                  <div className="menu_right">
+<<<<<<< HEAD
                                                         <ProductSearch></ProductSearch>
+=======
+<<<<<<< HEAD
+                                                       <ProductSearch></ProductSearch>
+=======
+                                                        <ProductSearch></ProductSearch>
+>>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
                                                  </div>
                                           </div>
                                    </div>
                                    <div className="d-flex list-action align-items-center gap-4">
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
                                           <div className="avatar">
                                                  <DropdownAvatar></DropdownAvatar>
                                           </div>
                                           <Link to={"/wishlist"}>
+<<<<<<< HEAD
                                                  <button class="material-symbols-outlined favorite">
                                                         favorite
                                                  </button>
+=======
+<<<<<<< HEAD
+                                          <button class="material-symbols-outlined favorite">
+                                                 favorite
+                                          </button>
+=======
+                                                 <button class="material-symbols-outlined favorite">
+                                                        favorite
+                                                 </button>
+>>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
                                           </Link>
                                    </div>
                                    <div>

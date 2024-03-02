@@ -42,6 +42,7 @@ class UpdateProducttypeRequest extends FormRequest
     {
         return [
             'name' => 'Tên loại sản phẩm',
+            'image' => 'Hình ảnh sản phẩm'
         ];
     }
 }

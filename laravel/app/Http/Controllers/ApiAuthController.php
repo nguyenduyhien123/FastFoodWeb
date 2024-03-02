@@ -17,7 +17,7 @@ use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
-use Tymon\JWTAuth\Payload; 
+use Tymon\JWTAuth\Payload;
 use Tymon\JWTAuth\Token;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +61,7 @@ class ApiAuthController extends Controller
             'nbf' => Carbon::now()->timestamp,
             'jti' => uniqid(),
             'sub' => $payload['user_id'],
-            'description' => $payload['description'] ??  'authencation'
+            'description' => $payload['description'] ?? 'authencation'
         ];
 
         // Tạo PayloadFactory
@@ -82,11 +82,11 @@ class ApiAuthController extends Controller
         }
         $payload = ['user_id' => Auth::id(), 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp];
         $jwt = $this->encodeJWT($payload);
-        $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
+        $cookie = cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
         return response()->json([
             'message' => 'Thành công',
             'status' => 200,
-            'data' => ['lastname' => Auth::user()->lastname, 'verify_account' => Auth::user()->email_verified_at ? true : false, 'id' => Auth::id(), 'avatar' => Auth::user()->avatar]
+            'data' => ['lastname' => Auth::user()->lastname, 'verify_account' => Auth::user()->email_verified_at ? true : false, 'id' => Auth::id(), 'avatar' => Auth::user()->avatar, 'roleName' => Auth::user()->role->name, 'roleId' => Auth::user()->role->id]
         ])->cookie($cookie);
     }
     public function loginWithToken(Request $request)
@@ -95,7 +95,7 @@ class ApiAuthController extends Controller
         return response()->json([
             'message' => 'Đăng nhập thành công',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name, 'roleId' => $user->role->id]
         ]);
     }
     public function logout()
@@ -122,7 +122,7 @@ class ApiAuthController extends Controller
             $userLog->save();
             $payload = ['user_id' => $userLog->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp];
             $jwt = $this->encodeJWT($payload);
-            $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
+            $cookie = cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
@@ -131,11 +131,11 @@ class ApiAuthController extends Controller
         } else {
             $payload = ['user_id' => $user->id];
             $jwt = $this->encodeJWT($payload);
-            $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
+            $cookie = cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
-                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address,  'roleName' => $user->role->name]
+                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name, 'roleId' => $user->role->id]
             ])->cookie($cookie);
         }
     }
@@ -163,12 +163,12 @@ class ApiAuthController extends Controller
         }
         $payload = ['user_id' => $user->id, 'description' => 'authencation', 'exp' => Carbon::now()->addMinutes(env('TOKEN_AUTH_LIFETIME'))->timestamp];
         $jwt = $this->encodeJWT($payload);
-        $cookie =   cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
+        $cookie = cookie('token', $jwt, env('TOKEN_AUTH_LIFETIME'), '/', 'localhost', false, true, false);
         return response()->json([
             'message' => 'Đăng ký Thành công',
             'description' => 'Vui lòng mở hộp thư trong email để xác thực tài khoản !',
             'status' => 200,
-            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name]
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name, 'roleId' => $user->role->id]
         ])->cookie($cookie);
     }
     public function verifyAccount(Request $request)
@@ -253,7 +253,7 @@ class ApiAuthController extends Controller
                 'title' => 'Đặt lại mật khẩu trên hệ thống bán thức ăn nhanh',
                 'view' => 'email.resetPassword',
                 'link' => $linkResetPassword,
-                'link_expired' =>  $link_expired,
+                'link_expired' => $link_expired,
                 'email' => $email
             ];
             // Phát sinh sự kiện đặt lại mật khẩu
@@ -291,50 +291,50 @@ class ApiAuthController extends Controller
     }
     public function resetPasswordVerifyEmail(ResetPasswordVerifyEmailRequest $request)
     {
-            $email = $request->email;
-            // Kiểm tra đã tồn tại đặt lại mật khẩu và nó đã hết hạn chưa
-            $prt = PasswordResetToken::where('email', $email)->first();
-            // So sánh thời gian
-            if (!empty($prt)) {
-                $timePrt = Carbon::parse($prt->expires_at);
-                $timeNow = Carbon::now();
-                $diff = $timeNow->diffInMinutes($timePrt, false);
-                if ($diff >= 3) {
-                    $diffTime = $timeNow->diffInSeconds($timePrt) - 180;
-                    return response()->json(['message' => "Đặt lại mật khẩu sau $diffTime giây nữa"]);
-                } else if ($diff < 0) {
-                    $prt->delete();
-                }
+        $email = $request->email;
+        // Kiểm tra đã tồn tại đặt lại mật khẩu và nó đã hết hạn chưa
+        $prt = PasswordResetToken::where('email', $email)->first();
+        // So sánh thời gian
+        if (!empty($prt)) {
+            $timePrt = Carbon::parse($prt->expires_at);
+            $timeNow = Carbon::now();
+            $diff = $timeNow->diffInMinutes($timePrt, false);
+            if ($diff >= 3) {
+                $diffTime = $timeNow->diffInSeconds($timePrt) - 180;
+                return response()->json(['message' => "Đặt lại mật khẩu sau $diffTime giây nữa"]);
+            } else if ($diff < 0) {
+                $prt->delete();
             }
-            // Nếu như mà không tồn tại hoặc là hết hạn
-            // Tạo secure_code(mã bảo mật)
-            $string = $email . Str::random(10) . Carbon::now();
-            $secure_code = hash('sha256', $string);
-            $prt2 = PasswordResetToken::create([
-                'email' => $email,
-                'token' => $secure_code,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-                'expires_at' => Carbon::now()->addMinutes(60),
-            ]);
-            $linkResetPassword = "http://localhost:3000/accounts/reset-password/set-password?email=$email&secure_code=$secure_code";
-            $link_expired = Carbon::parse($prt2->expires_at)->format('d-m-Y H:i:s');
-            // Thông tin gửi mail đặt lại mật khẩu
-            $infoMail = [
-                'to' => $email,
-                'from' => env('MAIL_FROM_ADDRESS'),
-                'title' => 'Đặt lại mật khẩu trên hệ thống bán thức ăn nhanh',
-                'view' => 'email.resetPassword',
-                'link' => $linkResetPassword,
-                'link_expired' =>  $link_expired,
-                'email' => $email
-            ];
-            // Phát sinh sự kiện đặt lại mật khẩu
-            try {
-                event(new UserResetPasswordEvent($infoMail));
-            } catch (Exception $e) {
-                return $e;
-            }
-            return response()->json(['message' => 'Email đặt lại mật khẩu đã được gửi thành công', 'description' => 'Vui lòng kiểm tra hộp thư đến hoặc thư mục thư rác / thư rác để biết email đặt lại mật khẩu của bạn. Nếu bạn không nhận được email này, vui lòng đăng ký một tài khoản trực tuyến với chúng tôi.']);
+        }
+        // Nếu như mà không tồn tại hoặc là hết hạn
+        // Tạo secure_code(mã bảo mật)
+        $string = $email . Str::random(10) . Carbon::now();
+        $secure_code = hash('sha256', $string);
+        $prt2 = PasswordResetToken::create([
+            'email' => $email,
+            'token' => $secure_code,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'expires_at' => Carbon::now()->addMinutes(60),
+        ]);
+        $linkResetPassword = "http://localhost:3000/accounts/reset-password/set-password?email=$email&secure_code=$secure_code";
+        $link_expired = Carbon::parse($prt2->expires_at)->format('d-m-Y H:i:s');
+        // Thông tin gửi mail đặt lại mật khẩu
+        $infoMail = [
+            'to' => $email,
+            'from' => env('MAIL_FROM_ADDRESS'),
+            'title' => 'Đặt lại mật khẩu trên hệ thống bán thức ăn nhanh',
+            'view' => 'email.resetPassword',
+            'link' => $linkResetPassword,
+            'link_expired' => $link_expired,
+            'email' => $email
+        ];
+        // Phát sinh sự kiện đặt lại mật khẩu
+        try {
+            event(new UserResetPasswordEvent($infoMail));
+        } catch (Exception $e) {
+            return $e;
+        }
+        return response()->json(['message' => 'Email đặt lại mật khẩu đã được gửi thành công', 'description' => 'Vui lòng kiểm tra hộp thư đến hoặc thư mục thư rác / thư rác để biết email đặt lại mật khẩu của bạn. Nếu bạn không nhận được email này, vui lòng đăng ký một tài khoản trực tuyến với chúng tôi.']);
     }
 }

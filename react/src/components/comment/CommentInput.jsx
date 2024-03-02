@@ -162,7 +162,11 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
+<<<<<<< HEAD
             console.log('ID là : ', id);
+=======
+            // console.log('ID là : ', id);
+>>>>>>> master
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : data?.product_id,
@@ -186,7 +190,11 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
+<<<<<<< HEAD
               console.log(err)
+=======
+              // console.log(err)
+>>>>>>> master
               setIsSending(false)
               setIsAllow(false)
 
@@ -199,7 +207,11 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
+<<<<<<< HEAD
             console.log('ID là : ', id);
+=======
+            // console.log('ID là : ', id);
+>>>>>>> master
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : 1,
@@ -220,7 +232,11 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
+<<<<<<< HEAD
               console.log(err)
+=======
+              // console.log(err)
+>>>>>>> master
               setIsSending(false)
               setIsAllow(false)
 
@@ -238,17 +254,29 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           wrapperClassName="demo-wrapper"
           editorClassName="demo-editor"
           onEditorStateChange={val => {
+<<<<<<< HEAD
             console.log('Giá trị là ',val);
+=======
+            // console.log('Giá trị là ',val);
+>>>>>>> master
             setEditorState(val)
             if(handleGetPlainText(val) != "")
             {
               setIsAllow(true);
+<<<<<<< HEAD
               console.log('được sửa');
+=======
+              // console.log('được sửa');
+>>>>>>> master
             }
             else
             {
               setIsAllow(false);
+<<<<<<< HEAD
               console.log('k được sửa');
+=======
+              // console.log('k được sửa');
+>>>>>>> master
               setEditorState(val)
             }
           }}

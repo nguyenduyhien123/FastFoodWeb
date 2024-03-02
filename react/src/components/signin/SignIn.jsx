@@ -38,43 +38,36 @@ export default function SignIn() {
     let value = e.target.value;
     updateLoginInfo({ ...loginInfo, [name]: value });
   }
-  // function handleSubmit(e)
-  // {
-  //   e.preventDefault();
-  //   setDisableButtonSubmit(true);
-  //   axios({
-  //     method: 'post',
-  //     url: 'http://localhost:8000/api/auth/login',
-  //     data : account,
-  //     withCredentials: true,
+  function handleSubmit(e) {
+    e.preventDefault();
+    setDisableButtonSubmit(true);
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/login',
+      data: account,
+      withCredentials: true,
 
-  // })
-  // .then(res => {
-  //   updateUserInfo(res.data.data);
-  //   updateLogin(true);
-  //   Swal.fire({
-  //     title: 'Đăng nhập thành công',
-  //     icon: 'success',
-  //     text: 'Chào mừng bạn đến với hệ thống',
-  //   });
-  //   setDisableButtonSubmit(false);
+    })
+      .then(res => {
+        updateUserInfo(res.data.data);
+        updateLogin(true);
+        Swal.fire({
+          title: 'Đăng nhập thành công',
+          icon: 'success',
+          text: 'Chào mừng bạn đến với hệ thống',
+        });
+        setDisableButtonSubmit(false);
 
-  // })
-  // .catch(err => {
-  //   Swal.fire({
-  //     title: 'Đăng nhập thất bại',
-  //     icon: 'error',
-  //     text: 'Có vấn đề xảy ra',
-  //   });
-  //   setDisableButtonSubmit(false);
-  // })
-
-  // }
-  console.log("====================================");
-  console.log(loginInfo);
-  console.log("====================================");
-  return (
-    <div className="form-login">
+      })
+      .catch(err => {
+        Swal.fire({
+          title: 'Đăng nhập thất bại',
+          icon: 'error',
+          text: 'Có vấn đề xảy ra',
+        });
+        setDisableButtonSubmit(false);
+      })
+    return <><div className="form-login">
       <form onSubmit={loginUser} className="form border">
         <div className="flex-column">
           <label>Email </label>
@@ -84,7 +77,7 @@ export default function SignIn() {
           ref={emailRef}
           onBlur={(e) => {
             let email = account.email;
-            console.log(validator.isEmail(email));
+            // console.log(validator.isEmail(email));
             if (validator.isEmail(email) == true) {
               emailRef.current.className = "inputForm input-validate is-valid";
             } else {
@@ -109,6 +102,7 @@ export default function SignIn() {
             type="text"
             onChange={handleChange}
             name="email"
+            value={account?.email}
           />
         </div>
         <div className="text-danger " style={{ display: "none" }}>
@@ -146,6 +140,7 @@ export default function SignIn() {
             type="password"
             onChange={handleChange}
             name="password"
+            value={account?.password}
           />
         </div>
         <div className="text-danger " style={{ display: "none" }}>
@@ -256,5 +251,6 @@ export default function SignIn() {
         </div>
       </form>
     </div>
-  );
+    </>
+  }
 }

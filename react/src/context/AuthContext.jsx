@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios'
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useLayoutEffect } from "react";
 
 
 
@@ -11,6 +12,8 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate();
     const location = useLocation();
+    // Đang xác thực token
+    const [isAuthencating, setIsAuthencating] = useState(true);
     const [userInfo, setUserInfo] = useState({});
     // Đăng nhập
     const [isLogin, setIsLogin] = useState(false);
@@ -24,16 +27,15 @@ export const AuthContextProvider = ({children}) => {
     const [registerInfo, setRegisterInfo] = useState([]);
     const updateRegisterInfo = (val) =>{
       setRegisterInfo(val);
-      console.log(registerInfo);
+      // console.log(registerInfo);
     } 
     const updateLoginInfo = (info) => setLoginInfo(info)
-    const loginUser = (e) => {
-        e.preventDefault();
+    const loginUser = (data) => {
         setIsLoginLoading(true);
         axios({
           method: 'post',
           url: 'http://localhost:8000/api/auth/login',
-          data : loginInfo,
+          data : data,
           withCredentials: true,          
       })
       .then(res => {
@@ -45,11 +47,11 @@ export const AuthContextProvider = ({children}) => {
           text: 'Chào mừng bạn đến với DH FAST FOOD',
         });
         setIsLoginLoading(false);
-        navigate("/");
+        navigate(location?.state?.from?.pathname || "/");
 
       })
       .catch(res => {
-        console.log(res.response.data.error);
+        // console.log(res.response.data.error);
         Swal.fire({
           title: 'Đăng nhập thất bại',
           icon: 'error',
@@ -72,11 +74,13 @@ export const AuthContextProvider = ({children}) => {
             // const left = window.screen.width / 2 - width / 2;
             // const top = window.screen.height / 2 - height / 2;
             // window.open(res.data, '_blank', `width=${width},height=${height},left=${left},top=${top}`);        })
-            console.log(res.data);
+           //  console.log(res.data);
             window.location.href = res.data;
 
         })
-        .catch(err => console.log('Gọi api google bị lỗi'))
+        .catch(err => {
+          // console.log('Gọi api google bị lỗi')
+        })
     }
     const handleLogoutUser = () =>{
         axios({
@@ -90,7 +94,9 @@ export const AuthContextProvider = ({children}) => {
             setLoginInfo({});
         })
         .then(res => navigate("/accounts/signin"))
-        .catch(err => console.log('Gọi api đăng xuất bị lỗi'))
+        .catch(err => {
+          // console.log('Gọi api đăng xuất bị lỗi')
+        })
     }
     const logoutUser = () => {
         Swal.fire({
@@ -110,7 +116,7 @@ export const AuthContextProvider = ({children}) => {
     }
     const handleRegisterUser = (e) => {
       e.preventDefault();
-      console.table(registerInfo);
+      // console.table(registerInfo);
       setIsRegisterLoading(true);
       axios({
         method: 'post',
@@ -119,7 +125,7 @@ export const AuthContextProvider = ({children}) => {
         withCredentials: true,          
     })
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       Swal.fire({
         title: res.data?.message,
         icon: 'success',
@@ -133,13 +139,14 @@ export const AuthContextProvider = ({children}) => {
     })
     .catch(err => {
       setRegisterUserError(err.response.data.errors);
-      console.log(err.response.data.errors);
-        console.log('Gọi API bị lỗi');
+      // console.log(err.response.data.errors);
+        // console.log('Gọi API bị lỗi');
         setIsRegisterLoading(false)
     })
     }
-    useEffect(() => {
+    useLayoutEffect(() => {
       setIsLogin(false)
+      setIsAuthencating(true)
         axios({
             method: 'post',
             url: 'http://localhost:8000/api/auth/loginWithToken',
@@ -148,16 +155,18 @@ export const AuthContextProvider = ({children}) => {
         .then(res => {
           updateUserInfo(res.data.data);
           updateLogin(true);
+          setIsAuthencating(false)
         })
         .catch(err => {
-            console.log('Gọi API bị lỗi');
+            // console.log('Gọi API bị lỗi');
             updateLogin(false);
+            setIsAuthencating(false)
         })
     }, [location.pathname]) 
     useEffect(() => {
         if(location?.search)
         {
-          console.log(`http://localhost:8000/api/auth/loginGoogleCallback${location.search}`);
+          // console.log(`http://localhost:8000/api/auth/loginGoogleCallback${location.search}`);
             axios({
                 method: 'post',
                 url:    `http://localhost:8000/api/auth/loginGoogleCallback${location.search}`,
@@ -169,13 +178,13 @@ export const AuthContextProvider = ({children}) => {
               navigate('/');
             })
             .catch(err => {
-                console.log('Gọi API bị lỗi');
+                // console.log('Gọi API bị lỗi');
                 updateLogin(false);
             })
         }
 
     }, [location.pathname]) 
-    return <AuthContext.Provider value={{userInfo, isLogin, updateUserInfo,updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading,logoutUser, handleLoginWithGoogle,isRegisterLoading, handleRegisterUser, registerUserError,registerInfo, updateRegisterInfo}}>
+    return <AuthContext.Provider value={{userInfo, isLogin, updateUserInfo,updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading,logoutUser, handleLoginWithGoogle,isRegisterLoading, handleRegisterUser, registerUserError,registerInfo, updateRegisterInfo, isAuthencating, setIsAuthencating}}>
         {children}
     </AuthContext.Provider>
 }
