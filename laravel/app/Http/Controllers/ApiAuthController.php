@@ -135,7 +135,11 @@ class ApiAuthController extends Controller
             return response()->json([
                 'message' => 'Thành công',
                 'status' => 200,
+<<<<<<< Updated upstream
                 'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name, 'roleId' => $user->role->id]
+=======
+                'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address,  'roleName' => $user->role->name]
+>>>>>>> Stashed changes
             ])->cookie($cookie);
         }
     }
@@ -168,7 +172,11 @@ class ApiAuthController extends Controller
             'message' => 'Đăng ký Thành công',
             'description' => 'Vui lòng mở hộp thư trong email để xác thực tài khoản !',
             'status' => 200,
+<<<<<<< Updated upstream
             'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name, 'roleId' => $user->role->id]
+=======
+            'data' => ['firstname' => $user->firstname, 'lastname' => $user->lastname, 'verify_account' => $user->email_verified_at ? true : false, 'avatar' => $user->avatar, 'id' => $user->id, 'address' => $user->address, 'roleName' => $user->role->name]
+>>>>>>> Stashed changes
         ])->cookie($cookie);
     }
     public function verifyAccount(Request $request)
@@ -326,7 +334,11 @@ class ApiAuthController extends Controller
             'title' => 'Đặt lại mật khẩu trên hệ thống bán thức ăn nhanh',
             'view' => 'email.resetPassword',
             'link' => $linkResetPassword,
+<<<<<<< Updated upstream
             'link_expired' => $link_expired,
+=======
+            'link_expired' =>  $link_expired,
+>>>>>>> Stashed changes
             'email' => $email
         ];
         // Phát sinh sự kiện đặt lại mật khẩu

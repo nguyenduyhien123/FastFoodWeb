@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory;
-    use SoftDeletes; 
+    use SoftDeletes;
 
     protected $fillable = ['name', 'price', 'description', 'image', 'product_type_id', 'status'];
 
@@ -39,19 +39,21 @@ class Product extends Model
     {
         return $this->hasMany(Wishlist::class);
     }
- 
+
     public function invoiceDetail()
     {
         return $this->hasMany(InvoiceDetail::class);
     }
-    public function getCreatedAtAttribute($val){
+    public function getCreatedAtAttribute($val)
+    {
         return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
     }
-    public function getUpdatedAtAttribute($val){
+    public function getUpdatedAtAttribute($val)
+    {
         return Carbon::parse($val)->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
     }
     // protected $casts = [
     //     'created_at' => 'timestamp',
     //     'updated_at' => 'timestamp'
     // ];
-} 
+}
