@@ -57,10 +57,14 @@ const Header = () => {
                                                  </ul>
                                                  <div className="menu_right">
 <<<<<<< HEAD
+                                                        <ProductSearch></ProductSearch>
+=======
+<<<<<<< HEAD
                                                        <ProductSearch></ProductSearch>
 =======
                                                         <ProductSearch></ProductSearch>
 >>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
                                                  </div>
                                           </div>
                                    </div>
@@ -74,6 +78,11 @@ const Header = () => {
                                           </div>
                                           <Link to={"/wishlist"}>
 <<<<<<< HEAD
+                                                 <button class="material-symbols-outlined favorite">
+                                                        favorite
+                                                 </button>
+=======
+<<<<<<< HEAD
                                           <button class="material-symbols-outlined favorite">
                                                  favorite
                                           </button>
@@ -82,6 +91,7 @@ const Header = () => {
                                                         favorite
                                                  </button>
 >>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
                                           </Link>
                                    </div>
                                    <div>

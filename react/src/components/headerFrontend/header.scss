@@ -1,9 +1,13 @@
 .header_web {
 <<<<<<< HEAD
+  margin: 0 auto;
+=======
+<<<<<<< HEAD
   margin : 0 auto;
 =======
   margin: 0 auto;
 >>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
   max-width: 1850px;
   padding-left: 50px;
   padding-right: 50px;
@@ -18,7 +22,6 @@
     z-index: 9;
     background: #ffffff; // Thay đổi màu nền thành màu sáng
     color: #141124; // Đảm bảo màu chữ đủ đậm để đọc được trên nền sáng
-    
   }
 
   .navigation {
@@ -166,15 +169,19 @@
     .active_menu {
       display: block;
     }
+<<<<<<< HEAD
+=======
+  }
+  .list-action > * {
+    color: #ffffff;
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
   }
   .list-action > * {
     color: #ffffff;
   }
-  .list-action>*
-  {
-      color : #ffffff
-  }
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 .avatar svg
 {   
@@ -183,8 +190,12 @@
 
 }
 =======
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
 .avatar svg {
   width: 30px;
   height: 30px;
 }
+<<<<<<< HEAD
+=======
 >>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad

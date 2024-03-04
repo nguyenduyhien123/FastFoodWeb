@@ -7,6 +7,11 @@ import "./product_page.scss";
 import { Button } from "react-bootstrap";
 export default function ProductPage() {
 <<<<<<< HEAD
+  const { id } = useParams();
+  const [product, setProduct] = useState();
+
+=======
+<<<<<<< HEAD
     const [data] = useState([
         {
           userId: '01a',
@@ -169,6 +174,7 @@ export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState();
 
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
   const [selectedImage, setSelectedImage] = useState();
   const productStar = product?.star;
   const [quantity, setQuantity] = useState(1);
@@ -205,7 +211,10 @@ export default function ProductPage() {
                 onClick={() => setSelectedImage(product.image[image])}
               />
             ))}
+<<<<<<< HEAD
+=======
 >>>>>>> master
+>>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
         </div>
         <div className="Active-Image">
           {selectedImage && (
