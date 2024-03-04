@@ -12,32 +12,20 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
-<<<<<<< HEAD
     "axios": "^1.6.7",
-=======
-    "axios": "^1.6.5",
->>>>>>> master
     "bootstrap": "^5.3.2",
     "dompurify": "^3.0.8",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "emoji-mart": "^5.5.2",
     "emoji-picker-react": "^4.6.8",
-<<<<<<< HEAD
     "jodit-react": "^4.0.4",
-=======
-    "jodit-react": "^4.0.9",
->>>>>>> master
     "laravel-echo": "^1.15.3",
     "mdb-react-ui-kit": "^7.0.0",
     "moment": "^2.30.1",
     "pusher-js": "^8.4.0-rc2",
     "react": "^18.2.0",
-<<<<<<< HEAD
     "react-bootstrap": "^2.10.0",
-=======
-    "react-bootstrap": "^2.10.1",
->>>>>>> master
     "react-date-picker": "^10.6.0",
     "react-dom": "^18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
@@ -54,10 +42,7 @@
     "reactstrap": "^9.2.1",
     "recharts": "^2.10.4",
     "remixicon": "^3.7.0",
-<<<<<<< HEAD
     "router-dom": "^2.2.11",
-=======
->>>>>>> master
     "sass": "^1.69.7",
     "scss": "^0.2.4",
     "slick-carousel": "^1.8.1",
