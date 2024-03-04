@@ -1,12 +1,12 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
-import { LegendField, LegendTextarea, IconField } from "../../components/fields";
-import { Item, Anchor, Box, Button, Image } from "../../components/elements";
+import { Col, Form, Row, Tab, Tabs } from "react-bootstrap";
+import { Breadcrumb, FileUpload } from "../../components";
 import { CardLayout, TabCard } from "../../components/cards";
-import { Breadcrumb, FileUpload } from "../../components"; 
-import PageLayout from "../../layouts/PageLayout";
+import { Anchor, Box, Button, Image, Item } from "../../components/elements";
+import { IconField, LegendField, LegendTextarea } from "../../components/fields";
 import data from "../../data/master/myAccount.json";
-import axios  from "axios";
+import PageLayout from "../../layouts/PageLayout";
 
 export default function MyAccount() {
     const [account, setAccount] = useState({});
@@ -18,11 +18,7 @@ export default function MyAccount() {
         })
         .then(res => setAccount(res.data))
     }, []);
-<<<<<<< HEAD
     console.log(account);
-=======
-   //  console.log(account);
->>>>>>> master
     return (
         <PageLayout>
             <Row>

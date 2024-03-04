@@ -1,16 +1,16 @@
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Anchor, Box, Item, Text, Icon, List, Image, Heading, Button } from "../../components/elements";
-import { CustomerReview, RatingAnalytics } from "../../components/review";
-import { Breadcrumb, DivideTitle } from "../../components";
-import PageLayout from "../../layouts/PageLayout";
-import LabelTextarea from "../../components/fields/LabelTextarea";
-import CardLayout from "../../components/cards/CardLayout";
-import data from "../../data/master/productView.json";
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { Col, Row } from "react-bootstrap";
+import { useParams } from 'react-router-dom';
+import { RingLoader } from "react-spinners";
 import '../../assets/sass/5-pages/_product-view.scss';
-import {RingLoader} from "react-spinners";
+import { Breadcrumb, DivideTitle } from "../../components";
+import CardLayout from "../../components/cards/CardLayout";
+import { Anchor, Box, Button, Heading, Icon, Image, Item, List, Text } from "../../components/elements";
+import LabelTextarea from "../../components/fields/LabelTextarea";
+import { CustomerReview, RatingAnalytics } from "../../components/review";
+import data from "../../data/master/productView.json";
+import PageLayout from "../../layouts/PageLayout";
 const override = {
     display: "block",
     margin: "0 auto",
@@ -51,28 +51,16 @@ const productSpecify = [
             withCredentials: true,
         })
             .then((res) => {
-<<<<<<< HEAD
                 console.log(res.data);
-=======
-                // console.log(res.data);
->>>>>>> master
                 let p = res.data
                 p.image = JSON.parse(p.image)
                 setProduct(p)
                 setImageActive(Object.keys(p.image)[0])
                 setIsLoaded(true)
             })
-<<<<<<< HEAD
             .catch(err => console.log('Lỗi khi gọi API chi tiết sản phẩm'))
     }, [])
     console.log('Tên sản phẩm ', product?.name);
-=======
-            .catch(err => {
-                // console.log('Lỗi khi gọi API chi tiết sản phẩm')
-            })
-    }, [])
-    // console.log('Tên sản phẩm ', product?.name);
->>>>>>> master
     return <>{isLoaded ? <>         <PageLayout>
         <CardLayout className="mb-4">
             <Breadcrumb title={'Xem sản phẩm'}>

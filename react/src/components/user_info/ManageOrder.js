@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react"
-import DivideTitle from "../DivideTitle"
-import { CardLayout } from "../cards"
-import './ManageOrder.scss';
-import axios from 'axios'
-import Modal from 'react-bootstrap/Modal';
-import { Row, Col } from 'react-bootstrap';
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import { Col, Row } from 'react-bootstrap';
 import data from '../../data/master/manageOrder.json';
-import OrdersUserTable from "../tables/OrdersUserTable";
-import { IconField } from "../fields";
+import DivideTitle from "../DivideTitle";
+import { CardLayout } from "../cards";
 import { Button } from "../elements";
+import { IconField } from "../fields";
+import OrdersUserTable from "../tables/OrdersUserTable";
+import './ManageOrder.scss';
 export const ManageOrder = () => {
     const [listTab, setListTab] = useState([
         {
@@ -82,11 +81,7 @@ export const ManageOrder = () => {
     useEffect(() => {
         getOrders(listTab[tabActive]?.id);
     }, [tabActive]);
-<<<<<<< HEAD
-    console.log(typeSearch);
-=======
     // console.log(typeSearch);
->>>>>>> master
     return <div className="manage-order">
         <CardLayout>
             <DivideTitle as={"h2"} title="Quản lý đơn hàng" className="mb-4" />

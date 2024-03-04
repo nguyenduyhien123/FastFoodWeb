@@ -1,13 +1,13 @@
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Item, Anchor } from "../../components/elements";
-import { CardLayout, CardHeader, FloatCard } from "../../components/cards";
+import { Col, Row } from "react-bootstrap";
 import { Breadcrumb, Pagination } from "../../components";
+import { CardHeader, CardLayout, FloatCard } from "../../components/cards";
+import { Anchor, Item } from "../../components/elements";
 import LabelField from "../../components/fields/LabelField";
 import InvoiceTable from "../../components/tables/InvoiceTable";
-import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/invoiceList.json";
-import axios from 'axios'
+import PageLayout from "../../layouts/PageLayout";
 
 export default function InvoiceList() {
     const [invoiceList, setInvoiceList] = useState([]);
@@ -27,11 +27,7 @@ export default function InvoiceList() {
     useEffect(() => {
         getInvoiceList();
     }, [])
-<<<<<<< HEAD
     console.log(invoiceList);
-=======
-    // console.log(invoiceList);
->>>>>>> master
     return (
         <PageLayout>
             <Row>

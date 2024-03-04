@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Form } from "react-bootstrap";
-import { Table, Thead, Tbody, Th, Tr, Td } from "../elements/Table";
-import { Button, Image, Input, Text, Box, Icon, Anchor, Option, Heading } from "../elements";
-import userInfo from "../../data/master/userList.json";
-import moment from 'moment';
+import React, { useEffect, useState } from "react";
+import { Form, Modal } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import userInfo from "../../data/master/userList.json";
+import { Anchor, Box, Button, Heading, Icon, Image, Input, Option, Text } from "../elements";
+import { Table, Tbody, Td, Th, Thead, Tr } from "../elements/Table";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from 'axios';
 
@@ -23,13 +22,7 @@ export default function UsersTable({ thead, tbody, setDataUserTable }) {
             withCredentials: true,          
         })
         .then(res => setDataUserTable(res.data))
-<<<<<<< HEAD
         .catch(err => console.log('GỌI APi ds user bị lỗi'))
-=======
-        .catch(err => {
-            // console.log('GỌI APi ds user bị lỗi')
-        })
->>>>>>> master
     }
     const handleCheckbox = (event) => {
         const { name, checked } = event.target;

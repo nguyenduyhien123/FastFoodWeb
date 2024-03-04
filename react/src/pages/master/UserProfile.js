@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
-import { List, Item, Icon, Text, Box, Anchor } from "../../components/elements";
-import { Breadcrumb, RoundAvatar, DivideTitle, DuelText } from "../../components";
-import { CardLayout, CardHeader, FloatCard, ActivityCard } from "../../components/cards";
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/userProfile.json";
-import { useState } from "react";
 import axios from 'axios';
-import { useParams } from 'react-router-dom'
 import moment from 'moment';
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { useParams } from 'react-router-dom';
+import { Breadcrumb, DivideTitle, DuelText, RoundAvatar } from "../../components";
+import { CardHeader, CardLayout, FloatCard } from "../../components/cards";
+import { Anchor, Box, Icon, Item, List, Text } from "../../components/elements";
+import data from "../../data/master/userProfile.json";
+import PageLayout from "../../layouts/PageLayout";
 
 
 
@@ -31,17 +30,9 @@ export default function UserProfile() {
             setFloat([...float, float[0].digit = 50]);
 
         })
-<<<<<<< HEAD
         .catch(err => console.log('Gọi API profile bị lỗi'))
     }, [])
     console.log(profile);
-=======
-        .catch(err => {
-            // console.log('Gọi API profile bị lỗi')
-        })
-    }, [])
-    // console.log(profile);
->>>>>>> master
     return ( 
         <PageLayout>
             <Row> 

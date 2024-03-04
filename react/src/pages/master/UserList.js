@@ -1,13 +1,13 @@
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Anchor, Item } from "../../components/elements";
-import { CardLayout, CardHeader, FloatCard } from "../../components/cards";
+import { Col, Row } from "react-bootstrap";
 import { Breadcrumb, Pagination } from "../../components";
+import { CardHeader, CardLayout, FloatCard } from "../../components/cards";
+import { Anchor, Item } from "../../components/elements";
 import LabelField from "../../components/fields/LabelField";
 import UsersTable from "../../components/tables/UsersTable";
-import PageLayout from "../../layouts/PageLayout";
 import data from "../../data/master/userList.json";
-import axios from 'axios'
+import PageLayout from "../../layouts/PageLayout";
 
 export default function UserList() {
     const [accounts, setAccounts]  = useState([]);
@@ -23,13 +23,7 @@ export default function UserList() {
             withCredentials: true,          
         })
         .then(res => setAccounts(res.data))
-<<<<<<< HEAD
         .catch(err => console.log('GỌI APi ds user bị lỗi'))
-=======
-        .catch(err => {
-            // console.log('GỌI APi ds user bị lỗi')
-        })
->>>>>>> master
     }, [])
     useEffect(() => {
         axios({
@@ -40,13 +34,7 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[0].digit = res.data.count]);
         })
-<<<<<<< HEAD
         .catch(err => console.log(err))
-=======
-        .catch(err => {
-            // console.log(err)
-        })
->>>>>>> master
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalUserIsVerified',
@@ -55,13 +43,7 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[1].digit = res.data.count]);
         })
-<<<<<<< HEAD
         .catch(err => console.log(err))
-=======
-        .catch(err => {
-            // console.log(err)
-        })
->>>>>>> master
         axios({
             method: 'get',
             url: 'http://localhost:8000/api/summary/getTotalUserIsNotVerified',
@@ -70,19 +52,10 @@ export default function UserList() {
         .then(res => {
             setFloat([...float, float[2].digit = res.data.count]);
         })
-<<<<<<< HEAD
         .catch(err => console.log(err))
 
     }, []);
     console.log(accounts);
-=======
-        .catch(err => {
-            // console.log(err)
-        })
-
-    }, []);
-    // console.log(accounts);
->>>>>>> master
     return (
         <PageLayout>
             <Row> 

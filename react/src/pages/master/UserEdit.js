@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
-import { LegendField, LegendTextarea, IconField } from "../../components/fields";
-import { Item, Anchor, Box, Button, Image, Text } from "../../components/elements";
+import { Col, Form, Row, Tab, Tabs } from "react-bootstrap";
+import { Breadcrumb, FileUpload } from "../../components";
 import { CardLayout, TabCard } from "../../components/cards";
-import { Breadcrumb, FileUpload } from "../../components"; 
-import PageLayout from "../../layouts/PageLayout";
+import { Anchor, Box, Button, Image, Item } from "../../components/elements";
+import { IconField, LegendField, LegendTextarea } from "../../components/fields";
 import data from "../../data/master/userEdit.json";
+import PageLayout from "../../layouts/PageLayout";
 
-import axios  from "axios";
-import {useParams, useNavigate} from 'react-router-dom';
+import axios from "axios";
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 export default function UserEdit() {
@@ -38,19 +38,11 @@ export default function UserEdit() {
             data: data
         })
             .then(res => {
-<<<<<<< HEAD
                 console.log('Thêm thành công');
                 navigate(`/admin/user-profile/${id}`)
             })
             .catch(err => {
                 console.log('Thêm thất bại');
-=======
-               //  console.log('Thêm thành công');
-                navigate(`/admin/user-profile/${id}`)
-            })
-            .catch(err => {
-                // console.log('Thêm thất bại');
->>>>>>> master
                 setAccountError(err.response.data.errors)
             })
     }
@@ -64,17 +56,9 @@ export default function UserEdit() {
             setAccount(res.data)
 
         })
-<<<<<<< HEAD
         .catch(err => console.log('Gọi API profile bị lỗi'))
     }, [])
     console.log(account);
-=======
-        .catch(err => {
-            // console.log('Gọi API profile bị lỗi')
-        })
-    }, [])
-    // console.log(account);
->>>>>>> master
     return (
         <PageLayout>
             <Row>

@@ -1,11 +1,10 @@
-import { Row, Col } from "react-bootstrap";
-import { CardHeader, CardLayout } from "../cards";
-import { Box, Button, Heading, Image, Input, Item, List, Section, Text } from "../elements";
-import { useEffect, useState } from "react";
-import './OrderDetailItem.scss';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+import { useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { Box, Button, Heading, Image, Input, Text } from "../elements";
+import './OrderDetailItem.scss';
 
 export const OrderDetailItem = ({data, setCartList}) => {
     const [count, setCount] = useState(data?.quantity);
@@ -41,11 +40,7 @@ export const OrderDetailItem = ({data, setCartList}) => {
         pauseOnHover: false, // Không dừng lại khi hovered
     }
     const deleteCart = () => {
-<<<<<<< HEAD
         console.log('Xoá giỏ hàng có id là ', cart?.id);
-=======
-        // console.log('Xoá giỏ hàng có id là ', cart?.id);
->>>>>>> master
         setIsProcessing(true);
         let data = { _method: "DELETE" };
       

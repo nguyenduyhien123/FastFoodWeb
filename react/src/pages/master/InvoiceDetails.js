@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Box, Text, List, Item, Image, Anchor, Heading, Button, Icon } from "../../components/elements";
-import { Table, Thead, Tbody, Th, Tr, Td } from "../../components/elements/Table";
-import CardLayout from "../../components/cards/CardLayout";
-import Breadcrumb from "../../components/Breadcrumb";
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/invoiceDetails.json";
-import { useParams } from 'react-router-dom';
-import { useEffect } from "react";
 import axios from 'axios';
-import { DivideTitle } from "../../components";
 import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
-import { LabelField } from "../../components/fields";
+import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { DivideTitle } from "../../components";
+import Breadcrumb from "../../components/Breadcrumb";
+import CardLayout from "../../components/cards/CardLayout";
+import { Anchor, Box, Button, Heading, Icon, Image, Item, List, Text } from "../../components/elements";
+import { Table, Tbody, Td, Th, Thead, Tr } from "../../components/elements/Table";
+import { LabelField } from "../../components/fields";
+import data from "../../data/master/invoiceDetails.json";
+import PageLayout from "../../layouts/PageLayout";
 
 export default function InvoiceDetails() {
     let stt = 0;
@@ -93,11 +92,7 @@ export default function InvoiceDetails() {
 
         })
     };
-<<<<<<< HEAD
     console.log(invoice);
-=======
-    // console.log(invoice);
->>>>>>> master
     return (
         <PageLayout>
             <Row>

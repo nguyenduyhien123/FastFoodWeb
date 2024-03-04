@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import './ProductSearchOption.scss';
-import {Row, Col} from 'react-bootstrap';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { ProductCardSearch } from '../product_card/ProductCardSearch';
-import {useLocation} from 'react-router-dom';
+import './ProductSearchOption.scss';
 
 export const ProductSearchOption = () => {
     const location = useLocation();
@@ -22,13 +22,7 @@ export const ProductSearchOption = () => {
             withCredentials: true,        
         })
         .then(res => setCategories(res.data))
-<<<<<<< HEAD
         .catch(err => console.log(err))
-=======
-        .catch(err => {
-            // console.log(err)
-        })
->>>>>>> master
 
     }, []);
     const handleSearch = () => {
@@ -46,22 +40,14 @@ export const ProductSearchOption = () => {
                 });
                 setProducts(products);
                           } else {
-<<<<<<< HEAD
                 console.log('Kết quả trả về không phải là một mảng.');
-=======
-                // ('Kết quả trả về không phải là một mảng.');
->>>>>>> master
               }
 
         })
         .catch(err => {
         })
     }
-<<<<<<< HEAD
     console.log(searchs);
-=======
-    // console.log(searchs);
->>>>>>> master
     useEffect(() => {
         handleSearch();
     }, [JSON.stringify(searchs)])

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
-import { LegendField, LegendTextarea, IconField } from "../../components/fields";
-import { Item, Anchor, Box, Button, Image, Text } from "../../components/elements";
-import { CardLayout, TabCard } from "../../components/cards";
-import { Breadcrumb, FileUpload } from "../../components";
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/userEdit.json";
+import { Col, Row } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import { Breadcrumb, FileUpload } from "../../components";
+import { Anchor, Box, Button, Image, Item, Text } from "../../components/elements";
+import { LegendField, LegendTextarea } from "../../components/fields";
+import data from "../../data/master/userEdit.json";
+import PageLayout from "../../layouts/PageLayout";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 import axios from "axios";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function UserCreate() {
@@ -27,22 +26,12 @@ export default function UserCreate() {
                 setRoles(res.data)
                 setAccount({ ...account, role_id: res.data[0].id });
             })
-<<<<<<< HEAD
             .catch(err => console.log('Gọi API lấy role bị lỗi'))
-=======
-            .catch(err => {
-                // console.log('Gọi API lấy role bị lỗi')
-            })
->>>>>>> master
     }
     useEffect(() => {
         getAllRole();
     }, [])
-<<<<<<< HEAD
     console.log(roles);
-=======
-    // console.log(roles);
->>>>>>> master
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -75,11 +64,7 @@ export default function UserCreate() {
                 navigate(`/admin/user-list`)
             })
             .catch(err => {
-<<<<<<< HEAD
                 console.log('Thêm thất bại');
-=======
-                // console.log('Thêm thất bại');
->>>>>>> master
                 Swal.fire({
                     title: "Vui lòng nhập đầy đủ dữ liệu",
                     icon: 'error',
@@ -87,11 +72,7 @@ export default function UserCreate() {
                 setAccountError(err.response.data.errors)
             })
     }
-<<<<<<< HEAD
     console.log(account);
-=======
-    // console.log(account);
->>>>>>> master
     return (
         <PageLayout>
             <Row>

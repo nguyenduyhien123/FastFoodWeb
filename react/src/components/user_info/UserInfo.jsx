@@ -1,31 +1,21 @@
-import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
-import './UserInfo.scss'
+import { useContext, useState } from 'react';
+import './UserInfo.scss';
 //
-import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
-import { LegendField, LegendTextarea, IconField } from "../../components/fields";
-import { Item, Anchor, Box, Button, Image, Text } from "../../components/elements";
-import { CardLayout, TabCard } from "../../components/cards";
-import { Breadcrumb, FileUpload } from "../../components";
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/userEdit.json";
-import Swal from 'sweetalert2';
+import { Col, Row } from "react-bootstrap";
+import { CardLayout } from "../../components/cards";
+import { Anchor } from "../../components/elements";
 // import 'sweetalert2/dist/sweetalert2.min.css';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { ChangePassword } from './ChangePassword';
 import { AccountEdit } from './AccountEdit';
+import { ChangePassword } from './ChangePassword';
 import { ManageOrder } from './ManageOrder';
 //
 
 export const UserInfo = () => {
     const location = useLocation();
     const path = location.pathname;
-<<<<<<< HEAD
-    console.log(path); // In ra đường dẫn trên URL
-=======
     // console.log(path); // In ra đường dẫn trên URL
->>>>>>> master
     const { userInfo } = useContext(AuthContext);
     const [account, setAccount] = useState({});
     const navigate = useNavigate();
@@ -54,13 +44,8 @@ export const UserInfo = () => {
     const [tabActive, setTabActive] = useState(() => {
         return listTab.findIndex((tab) => tab.link == path);
     });
-<<<<<<< HEAD
-    console.log(tabActive);
-    console.log(account);
-=======
     // console.log(tabActive);
     // console.log(account);
->>>>>>> master
     return <div className='user-info'>
                 <Row>
                     <Col xl={3}>

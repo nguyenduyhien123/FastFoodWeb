@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Box, Anchor, Button, Image, Input, Label, Icon, Text } from "../../components/elements";
-import { LabelField, LabelTextarea } from "../../components/fields";
-import { CardLayout, CardHeader } from "../../components/cards";
-import Breadcrumb from "../../components/Breadcrumb";
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/productEdit.json";
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom'
-import ImageInteractive from "../../components/elements/ImageInteractive";
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Breadcrumb from "../../components/Breadcrumb";
+import { CardHeader, CardLayout } from "../../components/cards";
+import { Anchor, Box, Icon, Input, Label, Text } from "../../components/elements";
+import ImageInteractive from "../../components/elements/ImageInteractive";
+import { LabelField } from "../../components/fields";
+import data from "../../data/master/productEdit.json";
+import PageLayout from "../../layouts/PageLayout";
 
 
 export default function ProductEdit() {
@@ -37,11 +37,7 @@ export default function ProductEdit() {
                     arrImage.push(e.target.files[i])
                 }
             }
-<<<<<<< HEAD
             console.log('123');
-=======
-            // console.log('123');
->>>>>>> master
         }
         else {
             let newArrImage = [];
@@ -55,11 +51,7 @@ export default function ProductEdit() {
             }
             setIndexCurrentImage(null);
         }
-<<<<<<< HEAD
         console.log("Mảng hình ảnh", arrImage);
-=======
-        // console.log("Mảng hình ảnh", arrImage);
->>>>>>> master
         setImageUpload(imageUploadArr);
         setProduct({ ...product, "image[]": arrImage })
     }
@@ -84,11 +76,7 @@ export default function ProductEdit() {
         })
         dataSend["image[]"] = images;
         dataSend.imageDelete = imageDelete;
-<<<<<<< HEAD
         console.log(imageUpload);
-=======
-        // console.log(imageUpload);
->>>>>>> master
         let data = { ...dataSend, _method: "PATCH" };
         axios({
             method: 'post',
@@ -97,11 +85,7 @@ export default function ProductEdit() {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
-<<<<<<< HEAD
             data: data
-=======
-            data: data 
->>>>>>> master
         })
             .then(res => {
                 Swal.fire({
@@ -118,11 +102,7 @@ export default function ProductEdit() {
                 });
             })
     }
-<<<<<<< HEAD
     console.log(productError);
-=======
-   //  console.log(productError);
->>>>>>> master
     const [uploadFile, setUploadFile] = React.useState('Chọn hình ảnh');
     useEffect(() => {
         // Lấy ds loại sản phẩm
@@ -134,13 +114,7 @@ export default function ProductEdit() {
             .then((res) => {
                 setProductTypes(res.data)
             })
-<<<<<<< HEAD
             .catch(err => console.log(err));
-=======
-            .catch(err => {
-                console.log(err)
-            });
->>>>>>> master
         // Lấy thông tin chi tiết sản phẩm
         axios({
             method: 'get',
@@ -148,11 +122,7 @@ export default function ProductEdit() {
             withCredentials: true,
         })
             .then((res) => {
-<<<<<<< HEAD
                 console.log(res);
-=======
-                // console.log(res);
->>>>>>> master
                 var product = res.data;
                 product.image = Object.values(JSON.parse(product?.image))
                 // delete product["image"];
@@ -167,11 +137,8 @@ export default function ProductEdit() {
             })
             .catch(err => console.log('Gọi API chi tiết sản phẩm bị lỗi'))
     }, [])
-<<<<<<< HEAD
     // console.log('ABCDEF ',product["image[]"]);
     // console.log('Dữ liệu products, ',product);
-=======
->>>>>>> master
     const listImageDisplay = () => {
         let arr = [];
         if (product["image[]"]) {
@@ -225,13 +192,10 @@ export default function ProductEdit() {
                         <CardHeader title="Hình ảnh sản phẩm" dotsMenu={data?.dotsMenu} />
                         <Box className="mc-product-upload-media">
                             {listImageDisplay()}
-<<<<<<< HEAD
                             {/* <Box className="mc-product-upload-image"><Image src="images/product/single/01.webp" alt="product" /></Box>
                             <Box className="mc-product-upload-image"><Image src="images/product/single/02.webp" alt="product" /></Box>
                             <Box className="mc-product-upload-image"><Image src="images/product/single/03.webp" alt="product" /></Box>
                             <Box className="mc-product-upload-image"><Image src="images/product/single/04.webp" alt="product" /></Box> */}
-=======
->>>>>>> master
                             <Box className="mc-product-upload-file">
                                 <Input type="file" multiple name="image[]" id="product" onChange={handleChooseImage} />
                                 <Label htmlFor="product"><Icon type="collections" /><Text>{uploadFile}</Text></Label>

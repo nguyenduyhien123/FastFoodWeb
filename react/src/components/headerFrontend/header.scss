@@ -1,201 +1,163 @@
 .header_web {
-<<<<<<< HEAD
   margin: 0 auto;
-=======
-<<<<<<< HEAD
-  margin : 0 auto;
-=======
-  margin: 0 auto;
->>>>>>> master
->>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
   max-width: 1850px;
   padding-left: 50px;
   padding-right: 50px;
-  // background-color: #e31837;
-  .header {
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background: #ffffff; /* Changed from comment to CSS style */
+  color: #141124; /* Changed from comment to CSS style */
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo h2 {
+  margin-bottom: 0;
+}
+
+.nav_list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  list-style: none;
+  column-gap: 2rem;
+}
+
+.nav_item a {
+  color: #141124;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.nav_item a:hover {
+  color: #f5b70a;
+}
+
+.custom_search {
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  height: 35px;
+  border-radius: 50px;
+  background: #ffffff;
+  border: 1px solid #141124;
+  color: #141124;
+}
+
+.custom_search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #141124;
+}
+
+.custom_search span i {
+  cursor: pointer;
+  color: #f5b70a;
+}
+
+.mobile_menu span i {
+  font-size: 1.5rem;
+}
+
+.mobile_menu {
+  display: none;
+}
+
+.cart_icon {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  border-radius: 5px;
+  background: #f76e11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart_icon .badge {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 992px) {
+  .nav_menu {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9;
-    background: #ffffff; // Thay đổi màu nền thành màu sáng
-    color: #141124; // Đảm bảo màu chữ đủ đậm để đọc được trên nền sáng
-  }
-
-  .navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo h2 {
-    margin-bottom: 0;
-  }
-
-  .nav_list {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    list-style: none;
-    column-gap: 2rem;
-  }
-
-  .nav_item a {
-    color: #141124; // Chuyển màu chữ thành màu đậm
-    cursor: pointer;
-    transition: 0.3s; // Thêm hiệu ứng chuyển động
-    font-weight: bold;
-  }
-
-  .nav_item a:hover {
-    color: #f5b70a;
-  }
-
-  .custom_search {
-    display: flex;
-    align-items: center;
-    padding: 10px 25px;
-    height: 35px;
-    border-radius: 50px;
-    background: #ffffff; // Thay đổi màu nền thành màu sáng
-    border: 1px solid #141124; // Chuyển màu đường viền thành màu tối
-    color: #141124; // Chuyển màu chữ thành màu đậm
-  }
-
-  .custom_search {
-    input {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: #141124; // Chuyển màu chữ thành màu đậm
-    }
-    span i {
-      cursor: pointer;
-      color: #f5b70a; // Màu icon vàng cho ô tìm kiếm
-    }
-  }
-
-  .custom_search span i {
-    cursor: pointer;
-  }
-
-  .mobile_menu span i {
-    font-size: 1.5rem;
-  }
-
-  .mobile_menu {
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: #ffffff;
     display: none;
   }
 
-  .cart_icon {
-    position: relative;
-    width: 40px;
+  .nav_list_wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 100;
+    background: #ffffff;
+    flex-direction: column;
+    box-shadow: 5px 5px 15px -5px #f5b70a;
+    justify-content: center !important;
+    padding: 0px 20px;
+  }
+
+  .nav_list {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav_item a {
+    font-size: 0.9rem;
+  }
+
+  .header {
+    line-height: 40px;
+    padding: 10px 0px;
+  }
+
+  .custom_search {
+    border: 1px solid #f5b70a;
+    padding: 5px 15px;
+    font-size: 0.9rem;
     height: 30px;
-    border-radius: 5px;
-    background: #f76e11;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .badge {
-      position: absolute;
-      top: -2px;
-      right: -3px;
-      // z-index: 1000;
-      color: #ffffff; // Chuyển màu chữ thành màu sáng
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
+    margin-top: 15px;
   }
 
-  @media only screen and (max-width: 992px) {
-    .nav_menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 99;
-      background: #ffffff; // Thay đổi màu nền thành màu sáng
-      display: none;
-    }
-
-    .nav_list_wrapper {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 250px;
-      height: 100%;
-      z-index: 100;
-      background: #ffffff; // Thay đổi màu nền thành màu sáng
-      flex-direction: column;
-      box-shadow: 5px 5px 15px -5px #f5b70a;
-      justify-content: center !important;
-      padding: 0px 20px;
-    }
-
-    .nav_list {
-      flex-direction: column;
-      padding: 0;
-    }
-
-    .nav_item a {
-      font-size: 0.9rem;
-    }
-
-    .header {
-      line-height: 40px;
-      padding: 10px 0px;
-    }
-
-    .custom_search {
-      border: 1px solid #f5b70a;
-      padding: 5px 15px;
-      font-size: 0.9rem;
-      height: 30px;
-      margin-top: 15px;
-    }
-
-    .mobile_menu {
-      display: block;
-    }
-
-    .logo h2 {
-      font-size: 1.5rem;
-    }
-
-    .active_menu {
-      display: block;
-    }
-<<<<<<< HEAD
-=======
+  .mobile_menu {
+    display: block;
   }
-  .list-action > * {
-    color: #ffffff;
->>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
+
+  .logo h2 {
+    font-size: 1.5rem;
   }
-  .list-action > * {
-    color: #ffffff;
+
+  .active_menu {
+    display: block;
   }
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-.avatar svg
-{   
-    width: 30px;
-    height : 30px;
 
+.list-action > * {
+  color: #ffffff;
 }
-=======
->>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad
-.avatar svg {
-  width: 30px;
-  height: 30px;
-}
-<<<<<<< HEAD
-=======
->>>>>>> master
->>>>>>> a942427a129553aa59df26f3b973a5f030bc73ad

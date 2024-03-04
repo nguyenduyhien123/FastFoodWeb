@@ -1,14 +1,13 @@
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Box, List, Item, Icon, Text, Form, Button, Input, Anchor } from "../../components/elements";
+import { Col, Row } from "react-bootstrap";
 import { Breadcrumb, DotsMenu, DuelText, RoundAvatar } from "../../components";
 import CardLayout from "../../components/cards/CardLayout";
-import IconField from "../../components/fields/IconField"
-import PageLayout from "../../layouts/PageLayout";
-import data from "../../data/master/commentList.json";
-import axios from 'axios'
-import CustomerComment from "../../components/comment/CustomerComment";
 import Comment from "../../components/comment/Comment";
+import { Anchor, Box, Item, List, Text } from "../../components/elements";
+import IconField from "../../components/fields/IconField";
+import data from "../../data/master/commentList.json";
+import PageLayout from "../../layouts/PageLayout";
 
 
 export default function CommentList() {
@@ -42,11 +41,7 @@ export default function CommentList() {
               }         
         })
         .then(res => {
-<<<<<<< HEAD
             console.log(res.data);
-=======
-            // console.log(res.data);
->>>>>>> master
 
         })
         .catch(err => {
@@ -54,11 +49,7 @@ export default function CommentList() {
     }
     useEffect(() => {
         getCommentsByProductId(productActive?.id);
-<<<<<<< HEAD
         console.log('Run .. ...');
-=======
-        // console.log('Run .. ...');
->>>>>>> master
     }, [productActive?.id])
     return (
         <PageLayout>

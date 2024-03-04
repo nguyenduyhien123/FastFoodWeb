@@ -1,14 +1,13 @@
-import { useContext, useState } from 'react';
-import './CommentInput.scss'
-import { ReactComponent as IconSend } from '../../assets/icon/send.svg'
 import axios from 'axios';
+import { useContext, useState } from 'react';
+import { Col, Row } from "react-bootstrap";
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { Row, Col } from "react-bootstrap";
+import { ReactComponent as IconSend } from '../../assets/icon/send.svg';
+import './CommentInput.scss';
 
-import { EditorState, convertToRaw, ContentState , convertFromHTML} from 'draft-js';
+import { ContentState, EditorState, convertFromHTML, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
-import { convertFromRaw } from 'draft-js';
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { AuthContext } from '../../context/AuthContext';
@@ -162,11 +161,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
-<<<<<<< HEAD
             console.log('ID là : ', id);
-=======
-            // console.log('ID là : ', id);
->>>>>>> master
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : data?.product_id,
@@ -190,11 +185,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
-<<<<<<< HEAD
               console.log(err)
-=======
-              // console.log(err)
->>>>>>> master
               setIsSending(false)
               setIsAllow(false)
 
@@ -207,11 +198,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           {
             const contentState = draftToHtml(convertToRaw(editorState.getCurrentContent()))
             let id = commentParent?.id ? commentParent?.id : null;
-<<<<<<< HEAD
             console.log('ID là : ', id);
-=======
-            // console.log('ID là : ', id);
->>>>>>> master
             let infoComment = {
                     user_id : userInfo?.id,
                     product_id : 1,
@@ -232,11 +219,7 @@ export const CommentInput = ({data,commentParent, onReply}) => {
               setIsAllow(false)
             })
             .catch(err => {
-<<<<<<< HEAD
               console.log(err)
-=======
-              // console.log(err)
->>>>>>> master
               setIsSending(false)
               setIsAllow(false)
 
@@ -254,29 +237,17 @@ export const CommentInput = ({data,commentParent, onReply}) => {
           wrapperClassName="demo-wrapper"
           editorClassName="demo-editor"
           onEditorStateChange={val => {
-<<<<<<< HEAD
             console.log('Giá trị là ',val);
-=======
-            // console.log('Giá trị là ',val);
->>>>>>> master
             setEditorState(val)
             if(handleGetPlainText(val) != "")
             {
               setIsAllow(true);
-<<<<<<< HEAD
               console.log('được sửa');
-=======
-              // console.log('được sửa');
->>>>>>> master
             }
             else
             {
               setIsAllow(false);
-<<<<<<< HEAD
               console.log('k được sửa');
-=======
-              // console.log('k được sửa');
->>>>>>> master
               setEditorState(val)
             }
           }}

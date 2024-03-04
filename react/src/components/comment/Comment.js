@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import InputEmoji from "react-input-emoji";
-import './Comment.scss'
-import { ReactComponent as IconSend } from '../../assets/icon/send.svg'
-import { ReactComponent as IconThreeDotHorizontal } from '../../assets/icon/threeDotHorizontal.svg'
-import { CommentItem } from "./CommentItem";
-import { CommentInput } from "./CommentInput";
-import axios from 'axios'
+import axios from 'axios';
 import Pusher from 'pusher-js';
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import './Comment.scss';
+import { CommentInput } from "./CommentInput";
+import { CommentItem } from "./CommentItem";
 
 
 export default function Comment({product_id}) {
@@ -26,11 +23,7 @@ export default function Comment({product_id}) {
               }         
         })
         .then(res => {
-<<<<<<< HEAD
             console.log(res.data);
-=======
-            // console.log(res.data);
->>>>>>> master
             setListComment(res.data);
         })
         .catch(err => {
@@ -42,11 +35,7 @@ export default function Comment({product_id}) {
     const handleReceive  = () => {
         getCommentsByProductId(product_id);
     }
-<<<<<<< HEAD
     console.log('Comment .....');
-=======
-    // console.log('Comment .....');
->>>>>>> master
     useEffect(() => {
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -57,19 +46,11 @@ export default function Comment({product_id}) {
 
         var channel = pusher.subscribe('commentChannel');
         channel.bind('App\\Events\\NewCommentEvent', (data) => {
-<<<<<<< HEAD
             console.log('Dữ liệu Event', data);
             handleReceive()
         });
         channel.bind('pusher:subscription_succeeded', (data) => {
             console.log('Dữ liệu subscription_succeeded', data);
-=======
-            // console.log('Dữ liệu Event', data);
-            handleReceive()
-        });
-        channel.bind('pusher:subscription_succeeded', (data) => {
-            // console.log('Dữ liệu subscription_succeeded', data);
->>>>>>> master
             handleReceive()
         });
         return () => {
@@ -78,11 +59,7 @@ export default function Comment({product_id}) {
             pusher.disconnect();
           };
     }, [])
-<<<<<<< HEAD
     console.log(comment);
-=======
-    // console.log(comment);
->>>>>>> master
     return <div className="comment-section w-100">
         <div className="comment-input d-flex align-items-center gap-3">
             {isLogin ? <CommentInput /> : <h1>Đăng nhập đi bạn</h1>}

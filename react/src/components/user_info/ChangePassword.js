@@ -1,11 +1,11 @@
-import { Button } from "../elements"
-import { Row, Col, Tab, Tabs, Form } from "react-bootstrap";
-import { IconField } from "../fields";
-import { CardLayout } from "../cards";
-import DivideTitle from "../DivideTitle";
-import { useState } from "react";
 import axios from 'axios';
+import { useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import DivideTitle from "../DivideTitle";
+import { CardLayout } from "../cards";
+import { Button } from "../elements";
+import { IconField } from "../fields";
 
 export const ChangePassword = () => {
     const [passwordUser, setPasswordUser] = useState({});
@@ -48,11 +48,7 @@ export const ChangePassword = () => {
             })
 
     }
-<<<<<<< HEAD
-    console.log(passwordUserError);
-=======
     // console.log(passwordUserError);
->>>>>>> master
     return <CardLayout>
         <DivideTitle as={"h2"} title="Đổi mật khẩu" className="mb-4" />
         <Row className='mt-3'>
