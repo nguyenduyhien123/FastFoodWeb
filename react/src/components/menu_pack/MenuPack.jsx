@@ -59,9 +59,8 @@ const MenuPack = () => {
                 <div
                   key={index}
                   onClick={() => setCategoryActive(data.id)}
-                  className={`category-item ${
-                    data.id === categoryActive ? "active_btn" : ""
-                  } filter-btn d-flex align-items-center gap-2 fs-3`}
+                  className={`category-item ${data.id === categoryActive ? "active_btn" : ""
+                    } filter-btn d-flex align-items-center gap-2 fs-3`}
                 >
                   <div className="icon">
                     <img src={data?.image} />
@@ -76,11 +75,11 @@ const MenuPack = () => {
               lg="3"
               key={item.id}
               className="mb-4"
-              url={`/product/${item.id}`}
+              url={`/products/${item.id}`}
             >
               <ProductCard
                 item={item}
-                onClick={() => navigate(`/product/${item.id}`)}
+                onClick={() => navigate(`/products/${item.id}`)}
               />
             </Col>
           ))}

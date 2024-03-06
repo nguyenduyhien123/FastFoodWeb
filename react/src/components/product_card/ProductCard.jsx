@@ -12,7 +12,7 @@ const ProductCard = (props) => {
   //Sử lý nhấn ProductCard
   const navigate = useNavigate();
   const handleProductDetailClick = () => {
-    navigate(`/product/${props.item.id}`);
+    navigate(`/products/${props.item.id}`);
   };
 
   const handleAddToCart = () => {

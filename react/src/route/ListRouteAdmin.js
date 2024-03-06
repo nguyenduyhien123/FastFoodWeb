@@ -1,10 +1,35 @@
-// Admin 
+// Admin
 import { Overview, Documentation, ChangeLog, Error } from "../pages/supports";
-import { Avatars, Alerts, Buttons, Charts, Tables, Fields, Headings, Colors } from "../pages/blocks";
 import {
-  Ecommerce, Analytics, CRM, ForgotPassword, Register, Login, UserList, UserProfile, MyAccount,
-  ProductList, ProductView, ProductUpload, InvoiceList, InvoiceDetails, OrderList, Message,
-  Notification, BlankPage, Settings
+  Avatars,
+  Alerts,
+  Buttons,
+  Charts,
+  Tables,
+  Fields,
+  Headings,
+  Colors,
+} from "../pages/blocks";
+import {
+  Ecommerce,
+  Analytics,
+  CRM,
+  ForgotPassword,
+  Register,
+  Login,
+  UserList,
+  UserProfile,
+  MyAccount,
+  ProductList,
+  ProductView,
+  ProductUpload,
+  InvoiceList,
+  InvoiceDetails,
+  OrderList,
+  Message,
+  Notification,
+  BlankPage,
+  Settings,
 } from "../pages/master";
 import UserCreate from "../pages/master/UserCreate";
 import UserEdit from "../pages/master/UserEdit";
@@ -14,183 +39,166 @@ import { ProductTypeEdit } from "../pages/master/ProductTypeEdit";
 import { ProductTypeUpload } from "../pages/master/ProductTypeUpload";
 import { ProductTypeList } from "../pages/master/ProductTypeList";
 import { ProductTypeView } from "../pages/master/ProductTypeView";
+import ProductType from "../components/product_type/ProductType";
 export const ListRouteAdmin = [
   {
-    path: '/admin/ecommerce',
+    path: "/admin/ecommerce",
     element: <Ecommerce />,
-
   },
   {
-    path: '/admin/analytics',
+    path: "/admin/analytics",
     element: <Analytics />,
   },
   {
-    path: '/admin/crm',
+    path: "/admin/crm",
     element: <CRM />,
-
   },
   {
-    path: '/admin/login',
+    path: "/admin/login",
     element: <Login />,
-
   },
   {
-    path: '/admin/register',
+    path: "/admin/register",
     element: <Register />,
-
   },
   {
-    path: '/admin/forgot-password',
+    path: "/admin/forgot-password",
     element: <ForgotPassword />,
-
   },
   {
-    path: '/admin/user-list',
+    path: "/admin/user-list",
     element: <UserList />,
-
   },
   {
-    path: '/admin/user-profile/:id',
+    path: "/admin/user-profile/:id",
     element: <UserProfile />,
-
   },
   {
-    path: '/admin/user-create',
+    path: "/admin/user-create",
     element: <UserCreate />,
-
   },
   {
-    path: '/admin/user-edit/:id',
+    path: "/admin/user-edit/:id",
     element: <UserEdit />,
-
   },
   {
-    path: '/admin/my-account',
+    path: "/admin/my-account",
     element: <MyAccount />,
-
   },
   {
-    path: '/admin/product-list',
+    path: "/admin/product-list",
     element: <ProductList />,
   },
   {
-    path: '/admin/product-view/:id',
+    path: "/admin/product-view/:id",
     element: <ProductView />,
-
   },
   {
-    path: '/admin/product-edit/:id',
+    path: "/admin/product-edit/:id",
     element: <ProductEdit />,
-
   },
   {
-    path: '/admin/product-upload',
+    path: "/admin/product-upload",
     element: <ProductUpload />,
-
   },
   {
-    path: '/admin/producttype-list',
+    path: "/admin/producttype-list",
     element: <ProductTypeList />,
   },
   {
-    path: '/admin/producttype-view/:id',
+    path: "/admin/producttype-view/:id",
     element: <ProductTypeView />,
-
   },
   {
-    path: '/admin/producttype-edit/:id',
+    path: "/admin/producttype-edit/:id",
     element: <ProductTypeEdit />,
-
   },
   {
-    path: '/admin/producttype-upload',
+    path: "/admin/producttype-upload",
     element: <ProductTypeUpload />,
-
   },
   {
-    path: '/admin/invoice-list',
+    path: "/admin/invoice-list",
     element: <InvoiceList />,
-
   },
   {
-    path: '/admin/comment-list',
+    path: "/admin/comment-list",
     element: <CommentList />,
-
   },
   {
-    path: '/admin/invoice-details/:id',
+    path: "/admin/invoice-details/:id",
     element: <InvoiceDetails />,
-
   },
   {
-    path: '/admin/order-list',
+    path: "/admin/order-list",
     element: <OrderList />,
-
   },
   {
-    path: '/admin/message',
+    path: "/admin/message",
     element: <Message />,
-
   },
   {
-    path: '/admin/notification',
+    path: "/admin/notification",
     element: <Notification />,
-
   },
   {
-    path: '/admin/settings',
+    path: "/admin/settings",
     element: <Settings />,
   },
   {
-    path: '/admin/blank-page',
+    path: "/admin/blank-page",
     element: <BlankPage />,
   },
   {
-    path: '/admin/headings',
+    path: "/admin/headings",
     element: <Headings />,
   },
   {
-    path: '/admin/buttons',
+    path: "/admin/buttons",
     element: <Buttons />,
   },
   {
-    path: '/admin/avatars',
+    path: "/admin/avatars",
     element: <Avatars />,
   },
   {
-    path: '/admin/colors',
+    path: "/admin/colors",
     element: <Colors />,
   },
   {
-    path: '/admin/charts',
+    path: "/admin/charts",
     element: <Charts />,
   },
   {
-    path: '/admin/tables',
+    path: "/admin/tables",
     element: <Tables />,
   },
   {
-    path: '/admin/fields',
+    path: "/admin/fields",
     element: <Fields />,
   },
   {
-    path: '/admin/alerts',
+    path: "/admin/alerts",
     element: <Alerts />,
   },
   {
-    path: '*',
+    path: "*",
     element: <Error />,
   },
   {
-    path: '/admin/',
+    path: "/admin/",
     element: <Overview />,
   },
   {
-    path: '/admin/documentation',
+    path: "/admin/documentation",
     element: <Documentation />,
   },
   {
-    path: '/admin/changelog',
+    path: "/admin/changelog",
     element: <ChangeLog />,
-  }
-]
+  },
+  {
+    path: "/admin/producttype",
+    element: <ProductType />,
+  },
+];

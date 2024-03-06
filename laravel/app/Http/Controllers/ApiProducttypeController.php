@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateProducttypeRequest;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ApiProducttypeController extends Controller
 {
@@ -22,13 +21,13 @@ class ApiProducttypeController extends Controller
         $producttype = ProductType::create(
             [
                 'name' => $request['name'],
-                'image' => ''
+                'image' => '123', //gia tri mac dinh cua image la 123
             ]
         );
-        $file = $request->file('image');
-        $nameFile = Str::random(20) . Str::random(20) . '_producttype' . $producttype->id . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/Uploads', $nameFile);
-        $producttype->image = $nameFile;
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
+            $producttype->image = $path;
+        }
         $producttype->save();
         return $producttype;
     }
@@ -40,7 +39,7 @@ class ApiProducttypeController extends Controller
             return response()->json($productType);
         } else {
             return response()->json([
-                'message' => 'Không tìm thấy hdanh mục'
+                'message' => 'Không tìm thấy loại sản phẩm'
             ], 404);
         }
     }
@@ -52,17 +51,15 @@ class ApiProducttypeController extends Controller
             $producttype->name = $request->name;
 
             if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $nameFile = Str::random(20) . Str::random(20) . '_producttype_' . $producttype->id . '.' . $file->getClientOriginalExtension();
-                $file->storeAs('public/Uploads', $nameFile);
-                $producttype->image = $nameFile;
+                $path = $request->image->store('upload/product_type/' . $producttype->id, 'public');
+                $producttype->image = $path;
             }
 
             $producttype->update();
             return $producttype;
         } else {
             return response()->json([
-                'message' => 'Không tìm thấy sản phẩm'
+                'message' => 'Không tìm thấy loại sản phẩm'
             ], 404);
         }
     }
@@ -73,12 +70,10 @@ class ApiProducttypeController extends Controller
         $productTypeName = $producttype->name;
         if (!empty($producttype)) {
             $producttype->delete();
-            return response()->json([
-                'message' => "Xóa thành công danh mục {$productTypeName}"
-            ]);
+            return "Xóa thành công loại sản phẩm{$productTypeName}";
         } else {
             return response()->json([
-                'message' => 'Không tìm thấy sản phẩm'
+                'message' => 'Không tìm thấy loại sản phẩm'
             ], 404);
         }
     }
