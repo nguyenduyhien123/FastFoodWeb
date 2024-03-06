@@ -7,19 +7,21 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCartItems();
+    console.log(cartItems);
+
   }, []);
 
   const fetchCartItems = () => {
     axios({
       method: "get",
-      url: "http://localhost:8000/api/cart/",
+      url: "http://localhost:8000/api/carts/",
       withCredentials: true,
     })
       .then((res) => {
         let updatedCartItems = res.data;
         updatedCartItems.forEach((item) => {
-          if (typeof item.product_image === "string") {
-            item.product_image = JSON.parse(item.product_image);
+          if (typeof item.product.image === "string") {
+            item.product.image = JSON.parse(item.product.image);
           }
         });
         setCartItems(updatedCartItems);
@@ -34,7 +36,7 @@ const Cart = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/api/cart/${id}`, { withCredentials: true })
+      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
       .then((res) => {
         // Sau khi xóa sản phẩm thành công, cập nhật lại danh sách giỏ hàng
         fetchCartItems();
@@ -60,12 +62,13 @@ const Cart = () => {
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>
-                {item.product_image ? (
+                {item.product.image ? (
                   <img
                     src={
-                      item.product_image[0]?.startsWith("https")
-                        ? item.product_image[0]
-                        : `http://localhost:8000/storage/uploads/${item.product_image[0]}`
+
+                      item.product.image[0]?.startsWith("https")
+                        ? item.product.image[0]
+                        : `http://localhost:8000/storage/uploads/${item.product.image[0]}`
                     }
                     alt=""
                     className="img-thumbnail "
@@ -74,9 +77,9 @@ const Cart = () => {
                   <span>Hình ảnh không khả dụng</span>
                 )}
               </td>
-              <td>{item.product_name}</td>
-              <td>{item.product_price}</td>
-              <td>
+              <td>{item.product.name}</td>
+              <td>{item.product.price}</td>
+              <td className="d-flex">
                 <button
                   type="button"
                   className="btn btn-primary"
