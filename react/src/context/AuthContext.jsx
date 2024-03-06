@@ -9,35 +9,35 @@ import { useLayoutEffect } from "react";
 
 
 export const AuthContext = createContext();
-export const AuthContextProvider = ({children}) => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    // Đang xác thực token
-    const [isAuthencating, setIsAuthencating] = useState(true);
-    const [userInfo, setUserInfo] = useState({});
-    // Đăng nhập
-    const [isLogin, setIsLogin] = useState(false);
-    const updateUserInfo = (infoObj) => setUserInfo(infoObj)
-    const updateLogin = (val) => setIsLogin(val);
-    const [loginInfo, setLoginInfo] = useState({});
-    const [isLoginLoading, setIsLoginLoading] = useState(false);
-    // Đăng ký
-    const [isRegisterLoading, setIsRegisterLoading] = useState(false);
-    const [registerUserError, setRegisterUserError] = useState({});
-    const [registerInfo, setRegisterInfo] = useState([]);
-    const updateRegisterInfo = (val) =>{
-      setRegisterInfo(val);
-      // console.log(registerInfo);
-    } 
-    const updateLoginInfo = (info) => setLoginInfo(info)
-    const loginUser = (data) => {
-        setIsLoginLoading(true);
-        axios({
-          method: 'post',
-          url: 'http://localhost:8000/api/auth/login',
-          data : data,
-          withCredentials: true,          
-      })
+export const AuthContextProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  // Đang xác thực token
+  const [isAuthencating, setIsAuthencating] = useState(true);
+  const [userInfo, setUserInfo] = useState({});
+  // Đăng nhập
+  const [isLogin, setIsLogin] = useState(false);
+  const updateUserInfo = (infoObj) => setUserInfo(infoObj)
+  const updateLogin = (val) => setIsLogin(val);
+  const [loginInfo, setLoginInfo] = useState({});
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  // Đăng ký
+  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
+  const [registerUserError, setRegisterUserError] = useState({});
+  const [registerInfo, setRegisterInfo] = useState([]);
+  const updateRegisterInfo = (val) => {
+    setRegisterInfo(val);
+    // console.log(registerInfo);
+  }
+  const updateLoginInfo = (info) => setLoginInfo(info)
+  const loginUser = (data) => {
+    setIsLoginLoading(true);
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/login',
+      data: data,
+      withCredentials: true,
+    })
       .then(res => {
         updateUserInfo(res.data.data);
         updateLogin(true);
@@ -47,7 +47,16 @@ export const AuthContextProvider = ({children}) => {
           text: 'Chào mừng bạn đến với DH FAST FOOD',
         });
         setIsLoginLoading(false);
-        navigate(location?.state?.from?.pathname || "/");
+
+        if (res?.data?.data?.roleName === 'Admin') {
+          navigate("/admin/product-list");
+        }
+        else if (location?.state?.from?.pathname) {
+          navigate(location?.state?.from?.pathname);
+        }
+        else {
+          navigate("/");
+        }
 
       })
       .catch(res => {
@@ -59,132 +68,131 @@ export const AuthContextProvider = ({children}) => {
         });
         setIsLoginLoading(false);
       })
-    }
-    const handleLoginWithGoogle = (e) => {
-        e.preventDefault();
+  }
+  const handleLoginWithGoogle = (e) => {
+    e.preventDefault();
+    setLoginInfo({});
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/loginGoogle',
+      withCredentials: true,
+    })
+      .then(res => {
+        // const width = 500;
+        // const height = 600;
+        // const left = window.screen.width / 2 - width / 2;
+        // const top = window.screen.height / 2 - height / 2;
+        // window.open(res.data, '_blank', `width=${width},height=${height},left=${left},top=${top}`);        })
+        //  console.log(res.data);
+        window.location.href = res.data;
+
+      })
+      .catch(err => {
+        // console.log('Gọi api google bị lỗi')
+      })
+  }
+  const handleLogoutUser = () => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/logout',
+      withCredentials: true,
+    })
+      .then(res => {
+        setIsLogin(false);
+        setUserInfo(false);
         setLoginInfo({});
-        axios({
-            method: 'post',
-            url: 'http://localhost:8000/api/auth/loginGoogle',
-            withCredentials: true,          
-        })
-        .then(res => {
-            // const width = 500;
-            // const height = 600;
-            // const left = window.screen.width / 2 - width / 2;
-            // const top = window.screen.height / 2 - height / 2;
-            // window.open(res.data, '_blank', `width=${width},height=${height},left=${left},top=${top}`);        })
-           //  console.log(res.data);
-            window.location.href = res.data;
-
-        })
-        .catch(err => {
-          // console.log('Gọi api google bị lỗi')
-        })
-    }
-    const handleLogoutUser = () =>{
-        axios({
-            method: 'post',
-            url: 'http://localhost:8000/api/auth/logout',
-            withCredentials: true,          
-        })
-        .then(res => {
-            setIsLogin(false);
-            setUserInfo(false);
-            setLoginInfo({});
-        })
-        .then(res => navigate("/accounts/signin"))
-        .catch(err => {
-          // console.log('Gọi api đăng xuất bị lỗi')
-        })
-    }
-    const logoutUser = () => {
+      })
+      .then(res => navigate("/accounts/signin"))
+      .catch(err => {
+        // console.log('Gọi api đăng xuất bị lỗi')
+      })
+  }
+  const logoutUser = () => {
+    Swal.fire({
+      title: "Bạn có muốn đăng xuất ?",
+      text: "Bạn sẽ thoát ra khỏi hệ thống !!!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Có",
+      cancelButtonText: "Không"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleLogoutUser()
+      }
+    });
+  }
+  const handleRegisterUser = (e) => {
+    e.preventDefault();
+    // console.table(registerInfo);
+    setIsRegisterLoading(true);
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/register',
+      data: registerInfo,
+      withCredentials: true,
+    })
+      .then(res => {
+        // console.log(res.data);
         Swal.fire({
-            title: "Bạn có muốn đăng xuất ?",
-            text: "Bạn sẽ thoát ra khỏi hệ thống !!!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Có",
-            cancelButtonText : "Không"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              handleLogoutUser()
-            }
-          });
-    }
-    const handleRegisterUser = (e) => {
-      e.preventDefault();
-      // console.table(registerInfo);
-      setIsRegisterLoading(true);
-      axios({
-        method: 'post',
-        url: 'http://localhost:8000/api/auth/register',
-        data : registerInfo,
-        withCredentials: true,          
-    })
-    .then(res => {
-      // console.log(res.data);
-      Swal.fire({
-        title: res.data?.message,
-        icon: 'success',
-        text: res.data?.description,
-      })
-      .then(() => {
-        setIsRegisterLoading(false)
-        navigate('/')
-      })
+          title: res.data?.message,
+          icon: 'success',
+          text: res.data?.description,
+        })
+          .then(() => {
+            setIsRegisterLoading(false)
+            navigate('/')
+          })
 
-    })
-    .catch(err => {
-      setRegisterUserError(err.response.data.errors);
-      // console.log(err.response.data.errors);
+      })
+      .catch(err => {
+        setRegisterUserError(err.response.data.errors);
+        // console.log(err.response.data.errors);
         // console.log('Gọi API bị lỗi');
         setIsRegisterLoading(false)
+      })
+  }
+  useLayoutEffect(() => {
+    setIsLogin(false)
+    setIsAuthencating(true)
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/api/auth/loginWithToken',
+      withCredentials: true,
     })
-    }
-    useLayoutEffect(() => {
-      setIsLogin(false)
-      setIsAuthencating(true)
-        axios({
-            method: 'post',
-            url: 'http://localhost:8000/api/auth/loginWithToken',
-            withCredentials: true,          
-        })
+      .then(res => {
+        updateUserInfo(res.data.data);
+        updateLogin(true);
+        setIsAuthencating(false)
+      })
+      .catch(err => {
+        // console.log('Gọi API bị lỗi');
+        updateLogin(false);
+        setIsAuthencating(false)
+      })
+  }, [location.pathname])
+  useEffect(() => {
+    if (location?.search) {
+      // console.log(`http://localhost:8000/api/auth/loginGoogleCallback${location.search}`);
+      axios({
+        method: 'post',
+        url: `http://localhost:8000/api/auth/loginGoogleCallback${location.search}`,
+        withCredentials: true,
+      })
         .then(res => {
           updateUserInfo(res.data.data);
           updateLogin(true);
-          setIsAuthencating(false)
+          navigate('/');
         })
         .catch(err => {
-            // console.log('Gọi API bị lỗi');
-            updateLogin(false);
-            setIsAuthencating(false)
+          // console.log('Gọi API bị lỗi');
+          updateLogin(false);
         })
-    }, [location.pathname]) 
-    useEffect(() => {
-        if(location?.search)
-        {
-          // console.log(`http://localhost:8000/api/auth/loginGoogleCallback${location.search}`);
-            axios({
-                method: 'post',
-                url:    `http://localhost:8000/api/auth/loginGoogleCallback${location.search}`,
-                withCredentials: true,          
-            })
-            .then(res => {
-              updateUserInfo(res.data.data);
-              updateLogin(true);
-              navigate('/');
-            })
-            .catch(err => {
-                // console.log('Gọi API bị lỗi');
-                updateLogin(false);
-            })
-        }
+    }
 
-    }, [location.pathname]) 
-    return <AuthContext.Provider value={{userInfo, isLogin, updateUserInfo,updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading,logoutUser, handleLoginWithGoogle,isRegisterLoading, handleRegisterUser, registerUserError,registerInfo, updateRegisterInfo, isAuthencating, setIsAuthencating}}>
-        {children}
-    </AuthContext.Provider>
+  }, [location.pathname])
+  return <AuthContext.Provider value={{ userInfo, isLogin, updateUserInfo, updateLogin, loginInfo, setLoginInfo, updateLoginInfo, loginUser, isLoginLoading, logoutUser, handleLoginWithGoogle, isRegisterLoading, handleRegisterUser, registerUserError, registerInfo, updateRegisterInfo, isAuthencating, setIsAuthencating }}>
+    {children}
+  </AuthContext.Provider>
 }

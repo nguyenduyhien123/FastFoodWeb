@@ -91,20 +91,6 @@ export default function UserList() {
                 <Col xl={12}>
                     <CardLayout>
                         <CardHeader title={ data?.cardTitle } dotsMenu={ data?.dotsMenu } />
-                        <Row xs={1} sm={4} className="mb-4">
-                            {data?.filter.map((item, index)=> (
-                                <Col key={index}>
-                                    <LabelField 
-                                        type = { item.type }
-                                        label = { item.label }
-                                        option = { item.option }
-                                        placeholder = { item.placeholder }
-                                        labelDir = "label-col"
-                                        fieldSize = "w-100 h-sm"
-                                    /> 
-                                </Col>
-                            ))}
-                        </Row>
                         <UsersTable 
                             thead = { data?.table.thead }
                             tbody = { accounts }

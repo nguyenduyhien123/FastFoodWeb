@@ -170,7 +170,7 @@ export default function Ecommerce() {
                         ))}
                     </Row>
                 </Col>
-                <Col xs={12} xl={4}>
+                {/* <Col xs={12} xl={4}>
                     <SalesCard
                         title={data?.sales.title}
                         amount={data?.sales.amount}
@@ -195,8 +195,8 @@ export default function Ecommerce() {
                         report={data?.revenue.report}
                         chart={data?.revenue.chart}
                     />
-                </Col>
-                <Col xl={4}>
+                </Col> */}
+                {/* <Col xl={4}>
                     <OrdersCard
                         title={orders.title}
                         dotsMenu={orders.dotsMenu}
@@ -216,7 +216,7 @@ export default function Ecommerce() {
                         dotsMenu={data?.activity.dotsMenu}
                         items={data?.activity.items}
                     />
-                </Col>
+                </Col> */}
             </Row>
         </PageLayout>
     );

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dropdown } from "react-bootstrap";
 import { DuelText, RoundAvatar } from "..";
 import { Anchor } from "../elements";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function ProfileDropdown({ name, username, image, dropdown }) {
+    const {logoutUser} = useContext(AuthContext);
     return (
         <Dropdown className="mc-header-user">
             <Dropdown.Toggle className="mc-dropdown-toggle">
@@ -14,10 +16,11 @@ export default function ProfileDropdown({ name, username, image, dropdown }) {
                 {dropdown.map((item, index) => (
                     <Anchor
                         key={index}
-                        href={item.path}
-                        icon={item.icon}
+                       icon={item.icon}
                         text={item.text}
                         className="mc-dropdown-menu"
+                        onClick={logoutUser}
+                        isBtn={true}
                     />
                 ))}
             </Dropdown.Menu>

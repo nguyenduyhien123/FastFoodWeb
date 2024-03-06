@@ -117,18 +117,6 @@ export default function ProductList() {
                 <Col xl={12}>
                     <CardLayout>
                         <Row>
-                            {productFilter?.map((item, index)=> (
-                                <Col xs={12} sm={6} md={4} lg={3} key={ index }>
-                                    <LabelField
-                                        type = { item.type }
-                                        label = { item.label }
-                                        option = { item.option }
-                                        placeholder = { item.placeholder }
-                                        labelDir = "label-col"
-                                        fieldSize = "w-100 h-md"
-                                    />
-                                </Col>
-                            ))}
                             <Col xl={12}>
                                 <ProductsTable 
                                     thead = { headTableProduct } 

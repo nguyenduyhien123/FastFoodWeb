@@ -60,7 +60,7 @@ export default function Header() {
                         onClick={ toggleTheme }
                         className={`mc-header-icon ${ data.theme.addClass }`}
                     />
-                    <LanguageDropdown  
+                    {/* <LanguageDropdown  
                         icon={ data.language.icon }
                         title={ data.language.title }
                         addClass={ data.language.addClass }
@@ -86,7 +86,7 @@ export default function Header() {
                         badge={ data.notify.badge }
                         addClass={ data.notify.addClass }
                         dropdown={ data.notify.dropdown }
-                    />
+                    /> */}
                     <ProfileDropdown 
                         name={ userInfo?.firstname }
                         image={ userInfo?.avatar || "Xin chào"}

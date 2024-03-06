@@ -6,7 +6,7 @@ import data from "../../data/master/login.json";
 
 export default function Login() {
     return (
-        <Box className="mc-auth">
+        <Box className="mc-auth"> 
             <Image
                 src={ data?.pattern.src } 
                 alt={ data?.pattern.alt }

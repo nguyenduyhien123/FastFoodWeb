@@ -453,9 +453,7 @@
         "username": "@Ndhcoder",
         "image": "/images/avatar/01.webp",
         "dropdown": [
-            { "path": "/admin/my-account", "icon": "person", "text": "Tài khoản" },
-            { "path": "/admin/forgot-password", "icon": "privacy_tip", "text": "Quên mật khẩu" },
-            { "path": "/admin/logout", "icon": "lock", "text": "Đăng xuất" }
+            { "path": "/accounts/logout", "icon": "lock", "text": "Đăng xuất" }
         ]
     }
 }
