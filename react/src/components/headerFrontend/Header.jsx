@@ -16,7 +16,7 @@ const navLinks = [
        },
        {
               display: 'Thực đơn',
-              url: '#menu_pack'
+              url: '/menu'
        },
        {
               display: 'Liên hệ',
