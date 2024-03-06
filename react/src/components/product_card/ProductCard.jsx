@@ -1,28 +1,17 @@
-import React from "react";
-import Rating from "react-star-review";
-import "./product_card.scss";
-import { Button, Icon } from "../elements";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import Rating from "react-star-review";
+import { toast } from "react-toastify";
+import { Button } from "../elements";
+import "./product_card.scss";
+
 const ProductCard = (props) => {
-  const { id, name, image, price, star, onAddToCart } = props.item;
-
-  //Sử lý nhấn ProductCard
+  const { id, name, image, price, star } = props.item;
   const navigate = useNavigate();
-  const handleProductDetailClick = () => {
-    navigate(`/products/${props.item.id}`);
-  };
 
-  const handleAddToCart = () => {
-    if (onAddToCart) {
-      onAddToCart(props.item);
-    } else {
-      console.error(
-        "Prop 'onAddToCart' is not defined in the parent component."
-      );
-    }
+  const handleProductDetailClick = () => {
+    navigate(`/products/${id}`);
   };
 
   const handleAddToFavorite = (productID) => {
@@ -36,6 +25,24 @@ const ProductCard = (props) => {
       .then((res) => {
         toast.success(
           res?.data?.message || "Đã thêm sản phẩm vào danh sách yêu thích"
+        );
+      })
+      .catch((err) => {
+        toast.error(err.response.data.errors);
+      });
+  };
+
+  const handleAddToCart = () => {
+    let data = { product_id: id }; // Change productID to id
+    axios({
+      method: "post",
+      url: `http://localhost:8000/api/cart`,
+      withCredentials: true,
+      data: data,
+    })
+      .then((res) => {
+        toast.success(
+          res?.data?.message || "Đã thêm sản phẩm vào giỏ hàng"
         );
       })
       .catch((err) => {

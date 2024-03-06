@@ -2,7 +2,7 @@
 import { About } from "../components/about/About";
 import DropdownAvatar from "../components/dropdown_avatar/DropdownAvatar";
 import ProductPage from "../components/product_page/product_page";
-import ShoppingCart from "../components/shoppingcart/ShoppingCart";
+import Cart from '../components/carts/Cart';
 import { UserInfo } from "../components/user_info/UserInfo";
 import Home from "../pages/client/Home";
 import { PageRegister } from "../pages/client/PageRegister";
@@ -30,8 +30,8 @@ export const ListRouteClient = [
     element: <Home />,
   },
   {
-    path: "/shopping-cart",
-    element: <ShoppingCart />,
+    path: "/cart",
+    element: <Cart />,
   },
   {
     path: "/about",

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiCartController extends Controller
 {
@@ -13,7 +14,7 @@ class ApiCartController extends Controller
     public function index()
     {
         $carts = Cart::with('product')->get();
-        return $carts; 
+        return response()->json($carts);
     }
 
     /**
@@ -21,49 +22,73 @@ class ApiCartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $cart = new Cart();
+        $cart->user_id = Auth::id(); // Assuming you're using Laravel's built-in authentication
+        $cart->product_id = $request->product_id;
+        $cart->quantity = $request->quantity;
+        $cart->save();
+
+        return response()->json(['message' => 'Sản phẩm đã được thêm vào giỏ hàng'], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $cart = Cart::with('product')->find($id);
+        if (!$cart) {
+            return response()->json(['message' => 'Không tìm thấy giỏ hàng'], 404);
+        }
+        return response()->json($cart);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $cart = Cart::find($id);
-        if(!empty($cart))
-        {
-            $cart->quantity = $request->quantity;
-            $cart->save();
-            return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
 
+        $cart = Cart::find($id);
+        if (!$cart) {
+            return response()->json(['message' => 'Không tìm thấy giỏ hàng'], 404);
         }
-        return response()->json(['message' => 'Không tìm thấy'], 404);
+
+        $cart->quantity = $request->quantity;
+        $cart->save();
+
+        return response()->json(['message' => 'Cập nhật giỏ hàng thành công']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $cart = Cart::find($id);
-        if(!empty($cart))
-        {
-            $cart->delete();
-            return response()->json(['message' => 'Xoá sản phẩm ra giỏ hàng thành công']);
-
+        if (!$cart) {
+            return response()->json(['message' => 'Không tìm thấy giỏ hàng'], 404);
         }
-        return response()->json(['message' => 'Không tìm thấy'], 404);
+
+        $cart->delete();
+
+        return response()->json(['message' => 'Đã xoá sản phẩm ra khỏi giỏ hàng']);
     }
-    public function getCartByUser(Request $request){
-        $carts = Cart::with('product')->where('user_id',$request->user->id)->get();
-        return $carts;
+
+    /**
+     * Get user's cart.
+     */
+    public function getCartByUser()
+    {
+        $carts = Cart::with('product')->where('user_id', Auth::id())->get();
+        return response()->json($carts);
     }
 }
