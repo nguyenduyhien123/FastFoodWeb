@@ -60,7 +60,7 @@ const Header = () => {
                                           <div className="avatar">
                                                  <DropdownAvatar></DropdownAvatar>
                                           </div>
-                                          <Link to={"/wishlist"}>
+                                          <Link to={"/accounts/wishlist"}>
                                                  <button class="material-symbols-outlined favorite">
                                                         favorite
                                                  </button>
