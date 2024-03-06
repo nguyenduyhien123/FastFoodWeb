@@ -14,15 +14,16 @@ const Cart = () => {
   const fetchCartItems = () => {
     axios({
       method: "get",
-      url: "http://localhost:8000/api/carts/",
+      url: `http://localhost:8000/api/carts`,
       withCredentials: true,
     })
       .then((res) => {
-        let updatedCartItems = res.data;
-        updatedCartItems.forEach((item) => {
+        let updatedCartItems = res.data.map(item => {
+          // Chuyển đổi dữ liệu hình ảnh nếu cần thiết
           if (typeof item.product.image === "string") {
             item.product.image = JSON.parse(item.product.image);
           }
+          return item;
         });
         setCartItems(updatedCartItems);
       })
@@ -30,15 +31,13 @@ const Cart = () => {
   };
 
   const handleDetail = (id) => {
-    // Điều hướng tới trang chi tiết sản phẩm hoặc hiển thị thông tin sản phẩm trong cùng một trang
     console.log(`Xem chi tiết sản phẩm có id: ${id}`);
   };
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
+      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true }) 
       .then((res) => {
-        // Sau khi xóa sản phẩm thành công, cập nhật lại danh sách giỏ hàng
         fetchCartItems();
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
@@ -64,14 +63,11 @@ const Cart = () => {
               <td>
                 {item.product.image ? (
                   <img
-                    src={
-
-                      item.product.image[0]?.startsWith("https")
-                        ? item.product.image[0]
-                        : `http://localhost:8000/storage/uploads/${item.product.image[0]}`
-                    }
-                    alt=""
-                    className="img-thumbnail "
+                    src={item.product.image[0]?.startsWith("https")
+                    ? item.product.image[0]
+                    : `http://localhost:8000/storage/uploads/${item.product.image[0]}`}
+                    alt="Product"
+                    className="img-thumbnail"
                   />
                 ) : (
                   <span>Hình ảnh không khả dụng</span>
