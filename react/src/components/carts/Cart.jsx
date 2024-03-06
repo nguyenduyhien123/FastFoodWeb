@@ -79,7 +79,7 @@ const Cart = () => {
               </td>
               <td>{item.product.name}</td>
               <td>{item.product.price}</td>
-              <td className="d-flex">
+              <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '250px', }}>
                 <button
                   type="button"
                   className="btn btn-primary"
@@ -99,7 +99,7 @@ const Cart = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </div >
   );
 };
 
