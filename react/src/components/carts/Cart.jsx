@@ -12,15 +12,16 @@ const Cart = () => {
   const fetchCartItems = () => {
     axios({
       method: "get",
-      url: "http://localhost:8000/api/cart/",
+      url: `http://localhost:8000/api/carts`,
       withCredentials: true,
     })
       .then((res) => {
-        let updatedCartItems = res.data;
-        updatedCartItems.forEach((item) => {
-          if (typeof item.product_image === "string") {
-            item.product_image = JSON.parse(item.product_image);
+        let updatedCartItems = res.data.map(item => {
+          // Chuyển đổi dữ liệu hình ảnh nếu cần thiết
+          if (typeof item.image === "string") {
+            item.image = JSON.parse(item.image);
           }
+          return item;
         });
         setCartItems(updatedCartItems);
       })
@@ -28,7 +29,6 @@ const Cart = () => {
   };
 
   const handleDetail = (id) => {
-    // Điều hướng tới trang chi tiết sản phẩm hoặc hiển thị thông tin sản phẩm trong cùng một trang
     console.log(`Xem chi tiết sản phẩm có id: ${id}`);
   };
 
@@ -36,7 +36,6 @@ const Cart = () => {
     axios
       .delete(`http://localhost:8000/api/cart/${id}`, { withCredentials: true })
       .then((res) => {
-        // Sau khi xóa sản phẩm thành công, cập nhật lại danh sách giỏ hàng
         fetchCartItems();
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
@@ -60,22 +59,18 @@ const Cart = () => {
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>
-                {item.product_image ? (
+                {item.image ? (
                   <img
-                    src={
-                      item.product_image[0]?.startsWith("https")
-                        ? item.product_image[0]
-                        : `http://localhost:8000/storage/uploads/${item.product_image[0]}`
-                    }
-                    alt=""
-                    className="img-thumbnail "
+                    src={item.image[0] && item.image[0].startsWith("https") ? item.image[0] : `http://localhost:8000/storage/uploads/${item.image[0]}`}
+                    alt="Product"
+                    className="img-thumbnail"
                   />
                 ) : (
                   <span>Hình ảnh không khả dụng</span>
                 )}
               </td>
-              <td>{item.product_name}</td>
-              <td>{item.product_price}</td>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
               <td>
                 <button
                   type="button"

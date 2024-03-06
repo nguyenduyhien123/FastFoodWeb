@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./WishList.scss";
 
 export const WishList = () => {
   const [wishList, setWishList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios({
@@ -25,10 +27,10 @@ export const WishList = () => {
       );
   }, []);
 
-  const handleDetail = (id) => {
-    // Điều hướng tới trang chi tiết sản phẩm hoặc hiển thị thông tin sản phẩm trong cùng một trang
-    console.log(`Xem chi tiết sản phẩm có id: ${id}`);
+  const handleProductDetailClick = (id) => {
+    navigate(`/products/${id}`);
   };
+  
 
   return (
     <div className="wishlist-container">
@@ -68,7 +70,7 @@ export const WishList = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={() => handleDetail(wishlist.id)}
+                  onClick={() => handleProductDetailClick(wishlist.id)}
                 >
                   Xem chi tiết
                 </button>
