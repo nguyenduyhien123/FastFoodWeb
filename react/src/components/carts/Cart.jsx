@@ -20,8 +20,8 @@ const Cart = () => {
       .then((res) => {
         let updatedCartItems = res.data.map(item => {
           // Chuyển đổi dữ liệu hình ảnh nếu cần thiết
-          if (typeof item.image === "string") {
-            item.image = JSON.parse(item.image);
+          if (typeof item.product.image === "string") {
+            item.product.image = JSON.parse(item.product.image);
           }
           return item;
         });
@@ -36,7 +36,7 @@ const Cart = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
+      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true }) 
       .then((res) => {
         fetchCartItems();
       })
@@ -61,9 +61,11 @@ const Cart = () => {
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>
-                {item.image ? (
+                {item.product.image ? (
                   <img
-                    src={item.image[0] && item.image[0].startsWith("https") ? item.image[0] : `http://localhost:8000/storage/uploads/${item.image[0]}`}
+                    src={item.product.image[0]?.startsWith("https")
+                    ? item.product.image[0]
+                    : `http://localhost:8000/storage/uploads/${item.product.image[0]}`}
                     alt="Product"
                     className="img-thumbnail"
                   />
@@ -71,9 +73,9 @@ const Cart = () => {
                   <span>Hình ảnh không khả dụng</span>
                 )}
               </td>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td>
+              <td>{item.product.name}</td>
+              <td>{item.product.price}</td>
+              <td className="d-flex">
                 <button
                   type="button"
                   className="btn btn-primary"

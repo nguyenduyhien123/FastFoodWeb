@@ -1,10 +1,9 @@
 import { createContext, useState } from "react";
 import Swal from 'sweetalert2';
 // import 'sweetalert2/dist/sweetalert2.min.css';
-import axios from 'axios'
-import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useLayoutEffect } from "react";
+import axios from 'axios';
+import { useEffect, useLayoutEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
