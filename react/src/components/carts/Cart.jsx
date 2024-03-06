@@ -7,6 +7,8 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCartItems();
+    console.log(cartItems);
+
   }, []);
 
   const fetchCartItems = () => {
@@ -34,7 +36,7 @@ const Cart = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/api/cart/${id}`, { withCredentials: true })
+      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
       .then((res) => {
         fetchCartItems();
       })
