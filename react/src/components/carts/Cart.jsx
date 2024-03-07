@@ -83,9 +83,9 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
                 )}
               </td>
               <td style={{ width: '350px', }}>{item.product.name}</td>
-              <td>{item.product.price}.000 vnd</td>
+              <td>{item.product.price}<u>đ</u></td>
               <td>{item.quantity}</td>
-              <td>{item.quantity * item.product.price}.000vnd</td>
+              <td>{item.quantity * item.product.price}<u>đ</u></td>
               <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '120px', }}>
 
                 <button
@@ -100,7 +100,7 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
           ))}
         </tbody>
       </table>
-      <h1>Tổng tiền:&nbsp;{totalPrice.toLocaleString('vi-VN')}.000 Vnd </h1>
+      <h1>Tổng tiền:&nbsp;{totalPrice.toLocaleString('vi-VN')}<u>đ</u></h1>
     </div >
   );
 };
