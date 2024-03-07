@@ -33,7 +33,7 @@ const ProductCard = (props) => {
   };
 
   const handleAddToCart = () => {
-    // số lượng đâu ???
+
     let data = { product_id: id, quantity: 1 }; // Change productID to id
     axios({
       method: "post",
