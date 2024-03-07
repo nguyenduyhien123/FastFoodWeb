@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
-const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một props
+const Cart = ({ setCartItemCount }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
@@ -14,9 +14,8 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
   }, []);
 
   useEffect(() => {
-    // Calculate the total price whenever cartItems changes
     const total = cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
-    setTotalPrice(total); // Update the total price state
+    setTotalPrice(total);
   }, [cartItems]);
 
   const fetchCartItems = () => {
@@ -48,6 +47,26 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
         fetchCartItems();
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
+  };
+
+  const handleIncrement = (id) => {
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const handleDecrement = (id) => {
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
   };
 
   return (
@@ -84,10 +103,13 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
               </td>
               <td style={{ width: '350px', }}>{item.product.name}</td>
               <td>{item.product.price}<u>đ</u></td>
-              <td>{item.quantity}</td>
+              <td>
+                <button onClick={() => handleDecrement(item.id)}>-</button>
+                {item.quantity}
+                <button onClick={() => handleIncrement(item.id)}>+</button>
+              </td>
               <td>{item.quantity * item.product.price}<u>đ</u></td>
               <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '120px', }}>
-
                 <button
                   type="button"
                   className="btn btn-danger"
@@ -101,7 +123,7 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
         </tbody>
       </table>
       <h1>Tổng tiền:&nbsp;{totalPrice.toLocaleString('vi-VN')}<u>đ</u></h1>
-    </div >
+    </div>
   );
 };
 
