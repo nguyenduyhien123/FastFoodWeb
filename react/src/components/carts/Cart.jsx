@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
-const Cart = () => {
+const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một props
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCartItems();
@@ -25,7 +27,6 @@ const Cart = () => {
     })
       .then((res) => {
         let updatedCartItems = res.data.map(item => {
-          // Chuyển đổi dữ liệu hình ảnh nếu cần thiết
           if (typeof item.product.image === "string") {
             item.product.image = JSON.parse(item.product.image);
           }
@@ -36,8 +37,8 @@ const Cart = () => {
       .catch((error) => console.error("Lỗi khi tải giỏ hàng:", error));
   };
 
-  const handleDetail = (id) => {
-    console.log(`Xem chi tiết sản phẩm có id: ${id}`);
+  const handleProductDetailClick = (id) => {
+    navigate(`/products/${id}`);
   };
 
   const handleDelete = (id) => {

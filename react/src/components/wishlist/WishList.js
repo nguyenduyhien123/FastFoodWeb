@@ -7,6 +7,10 @@ export const WishList = () => {
   const [wishList, setWishList] = useState([]);
   const navigate = useNavigate();
 
+  const handleProductDetailClick = (id) => {
+    navigate(`/products/${id}`);
+  };
+
   useEffect(() => {
     axios({
       method: "get",
@@ -26,10 +30,6 @@ export const WishList = () => {
         console.error("Lỗi khi tải danh sách yêu thích:", error)
       );
   }, []);
-
-  const handleProductDetailClick = (id) => {
-    navigate(`/products/${id}`);
-  };
   
 
   return (
@@ -70,7 +70,7 @@ export const WishList = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={() => handleProductDetailClick(wishlist.id)}
+                  onClick={() => handleProductDetailClick(wishlist.product_id)}
                 >
                   Xem chi tiết
                 </button>

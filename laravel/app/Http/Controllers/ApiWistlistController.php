@@ -22,6 +22,7 @@ class ApiWistlistController extends Controller
                 'product_image' => $wishlist->product->image,
                 'product_name' => $wishlist->product->name,
                 'product_price' => $wishlist->product->price,
+                'product_id' => $wishlist->product_id
             ];
         });
 
