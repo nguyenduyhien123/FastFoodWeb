@@ -4,12 +4,18 @@ import "./Cart.scss";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     fetchCartItems();
     console.log(cartItems);
-
   }, []);
+
+  useEffect(() => {
+    // Calculate the total price whenever cartItems changes
+    const total = cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+    setTotalPrice(total); // Update the total price state
+  }, [cartItems]);
 
   const fetchCartItems = () => {
     axios({
@@ -44,7 +50,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="wishlist-container">
+    <div className="cart-container">
       <h1 className="wishlist-title">Giỏ hàng của bạn</h1>
       <table className="table">
         <thead className="thead-dark">
@@ -53,6 +59,8 @@ const Cart = () => {
             <th>Hình Ảnh</th>
             <th>Tên sản phẩm</th>
             <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
             <th>Chức Năng</th>
           </tr>
         </thead>
@@ -73,16 +81,12 @@ const Cart = () => {
                   <span>Hình ảnh không khả dụng</span>
                 )}
               </td>
-              <td>{item.product.name}</td>
-              <td>{item.product.price}</td>
-              <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '250px', }}>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => handleDetail(item.id)}
-                >
-                  Xem chi tiết
-                </button>
+              <td style={{ width: '350px', }}>{item.product.name}</td>
+              <td>{item.product.price}.000 vnd</td>
+              <td>{item.quantity}</td>
+              <td>{item.quantity * item.product.price}.000vnd</td>
+              <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '120px', }}>
+
                 <button
                   type="button"
                   className="btn btn-danger"
@@ -95,6 +99,7 @@ const Cart = () => {
           ))}
         </tbody>
       </table>
+      <h1>Tổng tiền:&nbsp;{totalPrice.toLocaleString('vi-VN')}.000 Vnd </h1>
     </div >
   );
 };
