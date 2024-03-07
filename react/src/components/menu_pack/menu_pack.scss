@@ -20,7 +20,32 @@
       color: #fff; // Chuyển màu chữ thành màu sáng
     }
   }
-
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+    .pagination-item {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s; // Thêm hiệu ứng chuyển động
+  
+      &.active,
+      &:hover {
+        background: #f76e11;
+        color: #fff; // Chuyển màu chữ thành màu sáng
+        border-color: #f76e11;
+      }
+    }
+  }
+  
   .menu_tile {
     color: #f5b70a;
 

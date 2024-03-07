@@ -1,32 +1,25 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import {
-  coffeeProducts,
-  dessertProducts,
-  fastFoodProducts,
-  pizzaProducts,
-  riceMenuProducts,
-} from "../../assets/fake-data/products";
 import ProductCard from "../product_card/ProductCard";
 import "./menu_pack.scss";
-import axios from "axios";
-import { ReactComponent as IconPizza } from "../../assets/icon/pizza.svg";
-import { ReactComponent as IconBurger } from "../../assets/icon/burger.svg";
-import { ReactComponent as IconPack } from "../../assets/icon/pack.svg";
-import { useNavigate } from "react-router-dom";
+
 const MenuPack = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [categoryActive, setCategoryActive] = useState(1);
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  // console.log(categories);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/product_types")
       .then((res) => setCategories(res.data))
       .catch((err) => console.log("Lỗi khi gọi API", err));
   }, []);
+
   useEffect(() => {
     axios
       .get(
@@ -38,17 +31,31 @@ const MenuPack = () => {
           item.image = JSON.parse(item.image);
           item.image = item.image[0];
         });
-        setProducts(res.data);
+
+        // Tính số trang dựa trên số sản phẩm
+        const totalProducts = products.length;
+        const totalPages = Math.ceil(totalProducts / 8);
+        setTotalPages(totalPages);
+
+        // Chỉ lấy 8 sản phẩm cho trang hiện tại
+        const startIndex = (currentPage - 1) * 8;
+        const endIndex = Math.min(startIndex + 8, totalProducts);
+        const slicedProducts = products.slice(startIndex, endIndex);
+        setProducts(slicedProducts);
       })
       .catch((err) => console.log("Lỗi khi gọi API", err));
-  }, [categoryActive]);
+  }, [categoryActive, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <section className="menu_pack" id="menu_pack">
       <Container>
         <Row>
           <Col lg="12" className="text-center mb-4">
-            <h3 className="menu_tile">Our Menu Pack</h3>
+            <h2 className="menu_tile">Sản Phẩm Của Chúng Tôi</h2>
           </Col>
           <Col
             lg="12"
@@ -63,7 +70,7 @@ const MenuPack = () => {
                     } filter-btn d-flex align-items-center gap-2 fs-3`}
                 >
                   <div className="icon">
-                    <img src={data?.image} />
+                    <img src={data?.image} alt={data.name} />
                   </div>
                   <div className="product-name fw-bold">{data?.name}</div>
                 </div>
@@ -84,6 +91,21 @@ const MenuPack = () => {
             </Col>
           ))}
         </Row>
+        {/* Phân trang */}
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (page) => (
+              <button
+                key={page}
+                className={`pagination-item ${page === currentPage ? "active" : ""
+                  }`}
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </button>
+            )
+          )}
+        </div>
       </Container>
     </section>
   );
