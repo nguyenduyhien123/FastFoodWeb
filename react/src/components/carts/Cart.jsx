@@ -36,7 +36,7 @@ const Cart = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true }) 
+      .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
       .then((res) => {
         fetchCartItems();
       })
@@ -64,8 +64,8 @@ const Cart = () => {
                 {item.product.image ? (
                   <img
                     src={item.product.image[0]?.startsWith("https")
-                    ? item.product.image[0]
-                    : `http://localhost:8000/storage/uploads/${item.product.image[0]}`}
+                      ? item.product.image[0]
+                      : `http://localhost:8000/storage/uploads/${item.product.image[0]}`}
                     alt="Product"
                     className="img-thumbnail"
                   />

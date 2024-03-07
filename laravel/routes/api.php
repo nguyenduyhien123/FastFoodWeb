@@ -39,7 +39,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('carts', ApiCartController::class);
 // Route::apiResource('roles', ApiRoleController::class);
 Route::middleware('verify-token:authencation')->group(function () {
     Route::prefix('auth')->group(function () {
@@ -47,7 +46,7 @@ Route::middleware('verify-token:authencation')->group(function () {
         Route::post('change-password', [ApiAuthController::class, 'changePassword']);
     });
     Route::apiResource('comments', ApiCommentController::class)->except(['index', 'show']);
-
+    Route::apiResource('carts', ApiCartController::class);
     Route::apiResource('paymentMethods', ApiPaymentMethodController::class)->only(['index', 'show']);
     Route::apiResource('invoices', ApiInvoiceController::class)->only(['store']);
     Route::get('getCartByUser', [ApiCartController::class, 'getCartByUser']);

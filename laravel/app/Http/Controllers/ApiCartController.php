@@ -27,8 +27,16 @@ class ApiCartController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $cart = new Cart();
-        $cart->user_id = Auth::id(); // Assuming you're using Laravel's built-in authentication
+        $user = $request->user;
+        $cart = Cart::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
+        // return response()->json(isset($cart));
+        if (isset($cart)) {
+            $cart->quantity = $cart->quantity + 1;
+            $cart->save();
+            return response()->json(['message' => 'Sản phẩm đã được thêm vào giỏ hàng', 'cart' => $cart]);
+        }
+        $cart = new Cart;
+        $cart->user_id = $user->id; // Assuming you're using Laravel's built-in authentication
         $cart->product_id = $request->product_id;
         $cart->quantity = $request->quantity;
         $cart->save();
