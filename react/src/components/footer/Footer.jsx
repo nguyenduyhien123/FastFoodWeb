@@ -8,44 +8,44 @@ import './footer.scss'
 
 const footerQuickLinks = [
   {
-    display: 'Terms & Conditions',
+    display: 'Điều khoản và điều kiện',
     url: '#'
   },
 
   {
-    display: 'Privacy Policy',
+    display: 'Chính sách bảo mật',
     url: '#'
   },
 
   {
-    display: 'Return & Refund',
+    display: 'Hoàn lại tiền',
     url: '#'
   },
 
   {
-    display: 'Payment Method',
+    display: 'Phương thức thanh toán',
     url: '#'
   }
 ]
 
 const footerLinks = [
   {
-    display: 'About Us',
+    display: 'Mô tả',
     url: '#'
   },
 
   {
-    display: 'Menu',
+    display: 'Sản Phẩm',
     url: '#'
   },
 
   {
-    display: 'Recipes',
+    display: 'Công thức nấu ăn',
     url: '#'
   },
 
   {
-    display: 'Contact',
+    display: 'Liên hệ',
     url: '#'
   }
 ]
@@ -68,7 +68,7 @@ const Footer = () => {
 
             <Col lg='3' md='4' sm='6'>
               <h5 className="footer_link-title">
-                Info Links
+              Liên kết thông tin
               </h5>
 
               <ListGroup>
@@ -84,7 +84,7 @@ const Footer = () => {
 
             <Col lg='2' md='4' sm='6'>
               <h5 className="footer_link-title">
-                Quick Links
+              Đường dẫn nhanh
               </h5>
 
               <ListGroup>
@@ -98,11 +98,11 @@ const Footer = () => {
 
             <Col lg='3' md='4' sm='6'>
               <h5 className="footer_link-title">
-                Contact
+              Liên hệ
               </h5>
               <ListGroup>
                 <ListGroupItem className='link_item d-flex align-items-center gap-3'>
-                  <i className="ri-map-pin-line"></i> Sylhet, Bangladesh
+                  <i className="ri-map-pin-line"></i> Tp.HCM, Việt Nam
                 </ListGroupItem>
 
                 <ListGroupItem className='link_item d-flex align-items-center gap-3'>

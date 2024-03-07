@@ -20,35 +20,35 @@ const Testimonials = () => {
                 <Col lg='8' className='m-auto'>
                     <div className="silder_wrapper d-flex align-items-center g-5">
                         <div className="slider_content w-50">
-                        <h2 className='mb-4'>What our customes are saying</h2>
+                        <h2 className='mb-4'>Những gì khách hàng của chúng tôi nói</h2>
                             <Slider {...settings}>
                                 <div>
                                     <div className="single_testimonial">
                                         <p className="review_content">
-                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, rerum soluta error at rem deserunt eius minima, eveniet placeat inventore vero commodi molestiae sapiente quasi doloribus quidem aperiam pariatur quam."
+                                            "Tôi rất hài lòng với chất lượng của sản phẩm. Đặc biệt là dịch vụ giao hàng nhanh chóng và đúng hẹn."
                                         </p>
                                         <h6>Jhon Doe</h6>
-                                        <p>Web Developer</p>
+                                        <p>Khách hàng</p>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div className="single_testimonial">
                                         <p className="review_content">
-                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, rerum soluta error at rem deserunt eius minima, eveniet placeat inventore vero commodi molestiae sapiente quasi doloribus quidem aperiam pariatur quam."
+                                            "Dịch vụ của họ rất chuyên nghiệp và thân thiện. Tôi sẽ tiếp tục ủng hộ họ trong tương lai."
                                         </p>
-                                        <h6>Jhon Doe</h6>
-                                        <p>Web Developer</p>
+                                        <h6>Jane Smith</h6>
+                                        <p>Khách hàng</p>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div className="single_testimonial">
                                         <p className="review_content">
-                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, rerum soluta error at rem deserunt eius minima, eveniet placeat inventore vero commodi molestiae sapiente quasi doloribus quidem aperiam pariatur quam."
+                                            "Ở đây có nhiều món ăn ngon và đa dạng. Tôi đã thử nhiều món và đều rất hài lòng."
                                         </p>
-                                        <h6>Jhon Doe</h6>
-                                        <p>Web Developer</p>
+                                        <h6>Alex Johnson</h6>
+                                        <p>Khách hàng</p>
                                     </div>
                                 </div>
                             </Slider>

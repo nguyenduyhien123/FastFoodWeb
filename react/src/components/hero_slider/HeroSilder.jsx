@@ -26,7 +26,7 @@ const HeroSilder = () => {
                 <div className="slider_content w-50 ps-2">
                   <h2 className='mb-3'>{item.title}</h2>
                   <p>{item.desc}</p>
-                  <button className="btn">Explore Food</button>
+                  <button className="btn">Khám phá ẩm thực</button>
                 </div>
                 <div className="slider_img w-50">
                   <img src={item.imgUrl} alt="" className='w-100'/>
