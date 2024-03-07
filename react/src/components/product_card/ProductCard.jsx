@@ -93,7 +93,7 @@ const ProductCard = (props) => {
         </div>
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
-            <span>{price.toLocaleString("vi")}.000 Vnd</span>
+            <span>{price.toLocaleString("vi")}<u>đ</u></span>
           </span>
           <span className="shopping_icon" onClick={handleAddToCart}>
             <i className="ri-shopping-cart-line"></i>
