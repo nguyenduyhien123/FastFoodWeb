@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
-const Cart = () => {
+const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một props
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     fetchCartItems();
-    console.log(cartItems);
-
   }, []);
 
   const fetchCartItems = () => {
@@ -20,17 +19,17 @@ const Cart = () => {
     })
       .then((res) => {
         let updatedCartItems = res.data.map(item => {
-          // Chuyển đổi dữ liệu hình ảnh nếu cần thiết
           if (typeof item.product.image === "string") {
             item.product.image = JSON.parse(item.product.image);
           }
           return item;
         });
         setCartItems(updatedCartItems);
+        
+        setCartItemCount(updatedCartItems.length); // Sử dụng setCartItemCount được nhận từ props
       })
       .catch((error) => console.error("Lỗi khi tải giỏ hàng:", error));
   };
-
 
   const handleProductDetailClick = (id) => {
     navigate(`/products/${id}`);
@@ -44,7 +43,7 @@ const Cart = () => {
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
   };
-
+  
   return (
     <div className="wishlist-container">
       <h1 className="wishlist-title">Giỏ hàng của bạn</h1>
@@ -88,7 +87,7 @@ const Cart = () => {
                 <button
                   type="button"
                   className="btn btn-danger"
-                  onClick={() => handleDelete(item.product.id)}
+                  onClick={() => handleDelete(item.id)}
                 >
                   Xóa
                 </button>

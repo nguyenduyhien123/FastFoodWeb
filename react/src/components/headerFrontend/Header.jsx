@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import DropdownAvatar from '../dropdown_avatar/DropdownAvatar';
@@ -24,11 +24,18 @@ const navLinks = [
   },
 ];
 
-const Header = () => {
+const Header = ({ cartItemCount }) => {
   const menuRef = useRef();
-  const [cartItemCount, setCartItemCount] = useState(0); // State để lưu số lượng sản phẩm trong giỏ hàng
 
   const menuToggle = () => menuRef.current.classList.toggle('active_menu');
+
+  // Sử dụng state để cập nhật số lượng sản phẩm trong giỏ hàng
+  const [updatedCartItemCount, setUpdatedCartItemCount] = useState(cartItemCount);
+
+  // Sử dụng useEffect để cập nhật số lượng sản phẩm trong giỏ hàng khi có thay đổi
+  useEffect(() => {
+    setUpdatedCartItemCount(cartItemCount);
+  }, [cartItemCount]);
 
   return (
     <header className="header_web">
@@ -66,7 +73,8 @@ const Header = () => {
           <div>
             <Link to="/cart" className="cart_icon">
               <i className="ri-shopping-basket-line"></i>
-              <span className="badge">{cartItemCount}</span>
+              {/* Sử dụng updatedCartItemCount thay vì cartItemCount */}
+              <span className="badge">{updatedCartItemCount}</span>
             </Link>
           </div>
           <div className="mobile_menu">
