@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchCartItems();
     console.log(cartItems);
@@ -30,8 +31,9 @@ const Cart = () => {
       .catch((error) => console.error("Lỗi khi tải giỏ hàng:", error));
   };
 
-  const handleDetail = (id) => {
-    console.log(`Xem chi tiết sản phẩm có id: ${id}`);
+
+  const handleProductDetailClick = (id) => {
+    navigate(`/products/${id}`);
   };
 
   const handleDelete = (id) => {
@@ -79,14 +81,14 @@ const Cart = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={() => handleDetail(item.id)}
+                  onClick={() => handleProductDetailClick(item.product.id)}
                 >
                   Xem chi tiết
                 </button>
                 <button
                   type="button"
                   className="btn btn-danger"
-                  onClick={() => handleDelete(item.id)}
+                  onClick={() => handleDelete(item.product.id)}
                 >
                   Xóa
                 </button>
