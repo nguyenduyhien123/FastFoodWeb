@@ -36,10 +36,6 @@ const Cart = ({ setCartItemCount }) => {
       .catch((error) => console.error("Lỗi khi tải giỏ hàng:", error));
   };
 
-  const handleProductDetailClick = (id) => {
-    navigate(`/products/${id}`);
-  };
-
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:8000/api/carts/${id}`, { withCredentials: true })
@@ -47,26 +43,6 @@ const Cart = ({ setCartItemCount }) => {
         fetchCartItems();
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
-  };
-
-  const handleIncrement = (id) => {
-    const updatedCartItems = cartItems.map(item => {
-      if (item.id === id) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-    setCartItems(updatedCartItems);
-  };
-
-  const handleDecrement = (id) => {
-    const updatedCartItems = cartItems.map(item => {
-      if (item.id === id && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
-    setCartItems(updatedCartItems);
   };
 
   return (
