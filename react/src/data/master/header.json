@@ -1,6 +1,6 @@
 {
     "logo": {
-        "path": "/ecommerce",
+        "path": "/admin/product-list",
         "src": "/images/logo.webp",
         "alt": "blue",
         "name": "duyhien"

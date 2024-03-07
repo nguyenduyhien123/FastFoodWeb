@@ -90,8 +90,8 @@ export const Payment = () => {
                     window.location.href = res?.data?.checkoutLink
                 }
                 else {
-                    // navigate(`/accounts/manage-order/${res?.data?.code}`)
                     toast.success(res?.data?.message || 'Tạo đơn hàng thành công');
+                    navigate(`/accounts/manage-order/${res?.data?.code}`)
                 }
             })
             .catch((err) => {
@@ -103,8 +103,8 @@ export const Payment = () => {
     // console.log('hoá đơn', infoOrder);
     // console.log(infoOrderError);
     return <div className="mc-payment mt-2">
-        <Row>
-            <Col xl={6}>
+        <Row className="position-relative">
+            <Col xl={6} className="sticky-top">
                 <CardLayout>
                     <CardHeader title="Thông tin giao hàng" fontTitle={3} />
                     <Row className="d-flex align-items-center">

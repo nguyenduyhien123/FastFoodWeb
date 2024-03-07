@@ -25,7 +25,7 @@
         { "label": "search by", "type": "search", "placeholder": "id / name / email" }
     ],
     "table":{
-        "thead": ["Người dùng","CODE","Tổng hoá đơn", "Địa chỉ giao hàng","Trạng thái", "Ngày tạo", "Cập nhật lần cuối", "Hành động"],
+        "thead": ["Người dùng","CODE","Tổng đơn hàng", "Địa chỉ giao hàng","Trạng thái", "Ngày tạo", "Cập nhật lần cuối", "Hành động"],
         "tbody": [
             {
                 "id": "#4980",

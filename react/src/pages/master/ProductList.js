@@ -15,7 +15,7 @@ export default function ProductList() {
     const [float, setFloat] = useState([
         { "title": "Tổng sản phẩm", "digit": "0", "icon": "shopping_bag", "variant": "lg blue" }, 
         { "title": "Tổng loại sản phẩm", "digit": "0", "icon": "widgets", "variant": "lg green" },
-        { "title": "Tổng thương hiệu", "digit": "0", "icon": "verified_user", "variant": "lg purple" }
+        // { "title": "Tổng thương hiệu", "digit": "0", "icon": "verified_user", "variant": "lg purple" }
     ])
     const [productFilter, setProductFilter] = useState([
         { "label": "Hiển thị bởi", "option": ["12 row", "24 row", "36 row"] },
@@ -95,12 +95,12 @@ export default function ProductList() {
             <Row>
                 <Col xl={12}>
                     <CardLayout>
-                        <Breadcrumb title={ data?.pageTitle }>
-                            {data?.breadcrumb.map((item, index) => (
+                        <Breadcrumb title={ "Danh sách sản phẩm"}>
+                            {/* {data?.breadcrumb.map((item, index) => (
                                 <li key={ index } className="mc-breadcrumb-item">
                                     {item.path ? <Anchor className="mc-breadcrumb-link" href={ item.path }>{ item.text }</Anchor> : item.text }
                                 </li>
-                            ))}
+                            ))} */}
                         </Breadcrumb>
                     </CardLayout>
                 </Col>

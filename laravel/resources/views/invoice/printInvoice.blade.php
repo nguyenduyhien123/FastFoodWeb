@@ -207,7 +207,7 @@
                 <div>Địa chỉ nhận hàng : {{ $invoice->address }}</div>
                 <div>Ghi chú : {{ $invoice->note }}</div>
                 <div>Phương thức thanh toán : {{ $invoice->paymentMethod->name }}</div>
-                <div>Trạng thái thanh toán : {{ $invoice->paid_at ? 'Đã thanh toán' : 'Chưa thanh toán' }}</div>
+                <div>Trạng thái thanh toán: {{ $invoice->paid_at ? "Đã thanh toán vào lúc " . Carbon::now()->addDays(1)->format('d-m-Y H:m:s') : 'Chưa thanh toán' }}</div>
             </div>
 
         <div class="mc-invoice-shipment">

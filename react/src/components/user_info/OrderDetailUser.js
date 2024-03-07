@@ -66,7 +66,7 @@ export const OrderDetailUser = () => {
                                 <Text ><span>Ghi chú :</span> <strong>{order?.note}</strong></Text>
                                 <Text ><span>Trạng thái đơn hàng :</span> <strong>{order?.last_status?.invoice_status?.name_vi}</strong></Text>
                                 <Text ><span>Phương thức thanh toán :</span> <strong>{order?.payment_method?.name}</strong></Text>
-                                <Text ><span>Trạng thái thanh toán :</span> <strong>{order?.paid_at ? 'Đã thanh toán' : 'Chưa thanh toán'}</strong></Text>
+                                <Text ><span>Trạng thái thanh toán :</span> <strong>{order?.paid_at ? `Đã thanh toán vào lúc ${moment(order?.paid_at).format('DD/MM/YYYY HH:mm:ss')}` : 'Chưa thanh toán'}</strong></Text>
                             </Col>
                         </div>
                         <div className="mt-2">

@@ -70,11 +70,11 @@ export default function UserList() {
                 <Col xl={12}>
                     <CardLayout>
                         <Breadcrumb title={ data?.pageTitle }>
-                            {data?.breadcrumb.map((item, index) => (
+                            {/* {data?.breadcrumb.map((item, index) => (
                                 <Item key={ index } className="mc-breadcrumb-item">
                                     {item.path ? <Anchor className="mc-breadcrumb-link" href={ item.path }>{ item.text }</Anchor> : item.text }
                                 </Item>
-                            ))}
+                            ))} */}
                         </Breadcrumb>
                     </CardLayout>
                 </Col>
@@ -90,7 +90,7 @@ export default function UserList() {
                 ))}
                 <Col xl={12}>
                     <CardLayout>
-                        <CardHeader title={ data?.cardTitle } dotsMenu={ data?.dotsMenu } />
+                        {/* <CardHeader title={ data?.cardTitle } dotsMenu={ data?.dotsMenu } /> */}
                         <UsersTable 
                             thead = { data?.table.thead }
                             tbody = { accounts }

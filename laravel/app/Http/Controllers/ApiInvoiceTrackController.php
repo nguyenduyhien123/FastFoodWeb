@@ -6,6 +6,7 @@ use App\Http\Requests\StoreInvoiceTrackRequest;
 use App\Models\Invoice;
 use App\Models\InvoiceStatus;
 use App\Models\InvoiceTrack;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,7 @@ class ApiInvoiceTrackController extends Controller
     /**
      * Display a listing of the resource.
      */
-     public function index()
+    public function index()
     {
         $invoice_tracks = InvoiceTrack::all();
         return $invoice_tracks;
@@ -31,6 +32,13 @@ class ApiInvoiceTrackController extends Controller
             'invoice_status_id' => $request->invoice_status_id,
             'description' => $this->generateDescriptionInvoiceTrack($request->invoice_id, $request->invoice_status_id)
         ]);
+        if ($request->invoice_status_id == 4) {
+            $invoice = Invoice::find($request->invoice_id);
+            if ($invoice->payment_method_id == 1) {
+                $invoice->paid_at = Carbon::now();
+                $invoice->save();
+            }
+        }
         return response()->json(['message' => 'Cập nhật trạng thái thành công']);
     }
 
@@ -62,7 +70,7 @@ class ApiInvoiceTrackController extends Controller
         $invoice_status = InvoiceStatus::find($invoice_status_id);
         $invoice = Invoice::find($invoice_id);
         $desc = "Đơn hàng $invoice->code ";
-        $desc.= Str::lower($invoice_status->name_vi);
+        $desc .= Str::lower($invoice_status->name_vi);
         return $desc;
     }
 }

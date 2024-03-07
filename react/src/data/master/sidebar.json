@@ -16,8 +16,7 @@
                     "badge": { "text": "hot", "variant": "red square" },
                     "submenu": [
                         { "href": "/admin/user-list", "text": "Danh sách tài khoản" },
-                        { "href": "/admin/user-create", "text": "Tạo tài khoản mới" },
-                        { "href": "/admin/my-account", "text": "my account" }
+                        { "href": "/admin/user-create", "text": "Tạo tài khoản mới" }
                     ]
                 },
                 { 
@@ -41,9 +40,9 @@
                 { 
                     "href": "#",
                     "icon": "article", 
-                    "text": "Hoá đơn",
+                    "text": "Đơn hàng",
                     "submenu": [
-                        { "href": "/admin/invoice-list", "text": "Danh sách hoá đơn" }
+                        { "href": "/admin/invoice-list", "text": "Danh sách đơn hàng" }
                     ]
                 }
             ]

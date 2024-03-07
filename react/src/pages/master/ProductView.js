@@ -66,11 +66,11 @@ const productSpecify = [
     return <>{isLoaded ? <>         <PageLayout>
         <CardLayout className="mb-4">
             <Breadcrumb title={'Xem sản phẩm'}>
-                {productBreadcrum?.map((item, index) => (
+                {/* {productBreadcrum?.map((item, index) => (
                     <Item key={index} className="mc-breadcrumb-item">
                         {item?.path ? <Anchor className="mc-breadcrumb-link" href={item?.path}>{item?.name}</Anchor> : item?.text}
                     </Item>
-                ))}
+                ))} */}
             </Breadcrumb>
         </CardLayout>
         <CardLayout className="p-lg-5">
@@ -122,7 +122,7 @@ const productSpecify = [
                         <Text>{product?.description}</Text>
                     </Box>
                 </Col>
-                <Col xl={12}>
+                {/* <Col xl={12}>
                     <DivideTitle title="Phân tích đánh giá" className="mt-5 mb-4" />
                     <RatingAnalytics
                         graphLine={data?.rating.item}
@@ -140,7 +140,7 @@ const productSpecify = [
                     <DivideTitle title="review reply form" className="mt-3 mb-4" />
                     <LabelTextarea placeholder="Write here..." fieldSize="w-100 h-text-xl" />
                     <Button className="mc-btn mc-review-form-btn primary">drop your replies</Button>
-                </Col>
+                </Col> */}
             </Row>
         </CardLayout>
     </PageLayout> </> : <>      <PageLayout>

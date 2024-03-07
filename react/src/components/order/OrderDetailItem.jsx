@@ -122,12 +122,12 @@ export const OrderDetailItem = ({data, setCartList}) => {
                             </Box>
                         </Col>    
                         <Col xl={1} md={2} xs={2} className="d-flex align-items-center justify-content-center">
-                        <Button title="Delete" className="material-icons delete" onClick={() => {
+                        {/* <Button title="Delete" className="material-icons delete" onClick={() => {
                             if(!isProcessing)
                             {
                                 deleteCart();
                             }
-                        }}>delete</Button>
+                        }}>delete</Button> */}
                         </Col>
                         </Row>
 

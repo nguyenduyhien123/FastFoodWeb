@@ -35,6 +35,8 @@ export default function InvoiceDetails() {
                 return 'green';
             case 'cancelled':
                 return 'red';
+            default:
+                return 'giá trị không hợp lệ';
         }
     }
     const getInvoice = () => {
@@ -55,16 +57,16 @@ export default function InvoiceDetails() {
 
             })
     }
-    const getInvoiceStatuses = ()=>{
+    const getInvoiceStatuses = () => {
         axios({
             method: 'get',
             url: `http://localhost:8000/api/invoice_statuses`,
             withCredentials: true,
         })
-        .then(res => setInvoiceStatuses(res.data))
-        .catch(() => {
+            .then(res => setInvoiceStatuses(res.data))
+            .catch(() => {
 
-        })
+            })
     }
     useEffect(() => {
         getInvoice();
@@ -72,8 +74,8 @@ export default function InvoiceDetails() {
     }, [])
     const handleUpdateStatusInvoice = () => {
         let data = {
-            invoice_id : invoice?.id,
-            invoice_status_id : invoiceStatus
+            invoice_id: invoice?.id,
+            invoice_status_id: invoiceStatus
         };
         axios({
             method: 'post',
@@ -81,17 +83,17 @@ export default function InvoiceDetails() {
             withCredentials: true,
             data: data
         })
-        .then(res => {
-              Swal.fire({
-                title:  'Trạng thái hoá đơn',
-                icon: 'success',
-                text: res?.data?.message || 'Cập nhật trạng thái thành công',
-              });
-              getInvoice();
-        })
-        .catch(err => {
+            .then(res => {
+                Swal.fire({
+                    title: 'Trạng thái hoá đơn',
+                    icon: 'success',
+                    text: res?.data?.message || 'Cập nhật trạng thái thành công',
+                });
+                getInvoice();
+            })
+            .catch(err => {
 
-        })
+            })
     };
     // console.log(invoice);
     return (
@@ -100,11 +102,11 @@ export default function InvoiceDetails() {
                 <Col xl={12}>
                     <CardLayout>
                         <Breadcrumb title={data?.pageTitle}>
-                            {data?.breadcrumb.map((item, index) => (
+                            {/* {data?.breadcrumb.map((item, index) => (
                                 <Item key={index} className="mc-breadcrumb-item">
                                     {item.path ? <Anchor className="mc-breadcrumb-link" href={item.path}>{item.text}</Anchor> : item.text}
                                 </Item>
-                            ))}
+                            ))} */}
                         </Breadcrumb>
                     </CardLayout>
                 </Col>
@@ -170,19 +172,16 @@ export default function InvoiceDetails() {
                                             <Text as="span" className="clone fs-3">:</Text>
                                             {invoice?.total_price && <Text as="span" className={`digit fs-3 fw-bold`}>{invoice?.total_price.toLocaleString("vi-VN")}</Text>}
                                         </Item>
-                                        <Text>{invoice?.payment_method?.name}</Text>
+                                        <Text>{invoice?.payment_method?.name}{invoice?.paid_at ? ` - Đã thanh toán vào lúc ${moment(invoice.paid_at).format('DD/MM/YYYY HH:mm:ss')}` : ' - Chưa thanh toán'}</Text>
                                     </List>
                                 </Box>
                                 {/* <Text className="mc-invoice-note">Cảm ơn bạn đã đặt hàng KHV. Nếu bạn có bất kỳ khiếu nại nào về đơn đặt hàng này, vui lòng gọi điện hoặc gửi email cho chúng tôi. (Thuế GTGT đã được tính ). Đây là hóa đơn do hệ thống tạo ra và không cần chữ ký hoặc con dấu.
 
                                 </Text> */}
-                                <Box className="mc-invoice-btns">
-                                    <Anchor
-                                        icon={"print"}
-                                        text={"In hoá đơn"}
-                                        className={"btn btn-success"}
-                                    />
-                                </Box>
+                                <div className="d-flex justify-content-center">
+                                    <form action={`http://localhost:8000/api/printInvoice?code=${invoice?.code}`} method="POST" target="_blank">
+                                        <Button icon={"print"} text={"In hoá đơn"} className={"mc-btn primary m-2 fs-4"} type={"submit"} />                            </form>
+                                </div>
                             </CardLayout>
                         </Col>
                         <Col xl={5}>
@@ -210,15 +209,16 @@ export default function InvoiceDetails() {
                     <Icon type="new_releases" />
                     <Heading as="h3">Cập nhật trạng thái hoá đơn!</Heading>
                     {/* <Text as="p">Want to delete this invoice?</Text>  */}
-                                                        <LabelField
-                                        // type = { item.type }
-                                        label = { "Trạng thái" }
-                                        option = { invoiceStatuses }
-                                        // placeholder = {"Trạng thái"}
-                                        // labelDir = "label-col"
-                                        fieldSize = "w-100 h-md"
-                                        onChange = {e => setInvoiceStatus(e.target.value)}
-                                    /> 
+                    <LabelField
+                        // type = { item.type }
+                        label={"Trạng thái"}
+                        option={invoiceStatuses}
+                        // placeholder = {"Trạng thái"}
+                        // labelDir = "label-col"
+                        fieldSize="w-100 h-md"
+                        onChange={e => setInvoiceStatus(e.target.value)}
+                        defaultOption = {invoice?.last_status?.id}
+                    />
                     <Modal.Footer>
                         <Button type="button" className="btn btn-secondary" onClick={() => setAlertModal(false)}>Đóng</Button>
                         <Button type="button" className="btn btn-danger" onClick={() => {

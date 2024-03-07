@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
 const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một props
@@ -22,7 +22,7 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
   const fetchCartItems = () => {
     axios({
       method: "get",
-      url: `http://localhost:8000/api/carts`,
+      url: `http://localhost:8000/api/getCartByUser/`,
       withCredentials: true,
     })
       .then((res) => {
@@ -82,12 +82,11 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
                   <span>Hình ảnh không khả dụng</span>
                 )}
               </td>
-              <td style={{ width: '350px', }}>{item.product.name}</td>
-              <td>{item.product.price}.000 vnd</td>
-              <td>{item.quantity}</td>
-              <td>{item.quantity * item.product.price}.000vnd</td>
+              <td style={{ width: '350px', }}><Link to={`/products/${item.product.id}`} >{item.product.name}</Link></td>
+              <td>{item.product.price.toLocaleString("vi-VN")} VND</td>
+              <td>{item.quantity.toLocaleString("vi-VN")}</td>
+              <td>{(item.quantity * item.product.price).toLocaleString("vi-VN")} VND</td>
               <td className="d-flex justify-content-around align-items-center mt-4 pb-5" style={{ width: '120px', }}>
-
                 <button
                   type="button"
                   className="btn btn-danger"
@@ -100,7 +99,9 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
           ))}
         </tbody>
       </table>
-      <h1>Tổng tiền:&nbsp;{totalPrice.toLocaleString('vi-VN')}.000 Vnd </h1>
+      <button className="btn btn-primary fs-5 w-100" onClick={() => {
+        navigate('/accounts/payments')
+      }}>Đến trang Thanh toán &nbsp;{totalPrice.toLocaleString('vi-VN')} Vnd</button>
     </div >
   );
 };
