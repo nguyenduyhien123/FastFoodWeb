@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Cart.scss";
 
-const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một props
+const Cart = ({ setCartItemCount }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
@@ -14,9 +14,8 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
   }, []);
 
   useEffect(() => {
-    // Calculate the total price whenever cartItems changes
     const total = cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
-    setTotalPrice(total); // Update the total price state
+    setTotalPrice(total);
   }, [cartItems]);
 
   const fetchCartItems = () => {
@@ -48,6 +47,26 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
         fetchCartItems();
       })
       .catch((error) => console.error("Lỗi khi xóa sản phẩm:", error));
+  };
+
+  const handleIncrement = (id) => {
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const handleDecrement = (id) => {
+    const updatedCartItems = cartItems.map(item => {
+      if (item.id === id && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
   };
 
   return (
@@ -101,7 +120,7 @@ const Cart = ({ setCartItemCount }) => { // Nhận setCartItemCount như một p
       </table>
       <button className="btn btn-primary fs-5 w-100" onClick={() => {
         navigate('/accounts/payments')
-      }}>Đến trang Thanh toán &nbsp;{totalPrice.toLocaleString('vi-VN')} Vnd</button>
+      }}>Đến trang Thanh toán &nbsp;{totalPrice.toLocaleString('vi-VN')} VND</button>
     </div >
   );
 };

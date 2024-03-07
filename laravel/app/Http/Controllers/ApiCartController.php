@@ -31,7 +31,11 @@ class ApiCartController extends Controller
         $cart = Cart::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
         // return response()->json(isset($cart));
         if (isset($cart)) {
-            $cart->quantity = $cart->quantity + 1;
+            if ($request->quantity == 1) {
+                $cart->quantity = $cart->quantity + 1;
+            } else {
+                $cart->quantity = $cart->quantity + $request->quantity;
+            }
             $cart->save();
             return response()->json(['message' => 'Sản phẩm đã được thêm vào giỏ hàng', 'cart' => $cart]);
         }
