@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react";
+import { toast } from "react-toastify";
 import Rating from "react-star-review";
 import "./product_page.scss";
 import { Button } from "react-bootstrap";
@@ -28,6 +29,25 @@ export default function ProductPage() {
         console.log("Gọi API lỗi");
       });
   }, []);
+
+  const handleAddToCart = () => {
+
+    let data = { product_id: id, quantity: quantity }; // Change productID to id
+    axios({
+      method: "post",
+      url: `http://localhost:8000/api/carts`,
+      withCredentials: true,
+      data: data,
+    })
+      .then((res) => {
+        toast.success(
+          res?.data?.message || "Đã thêm sản phẩm vào giỏ hàng"
+        );
+      })
+      .catch((err) => {
+        toast.error(err.response.data.errors);
+      });
+  };
   return (
     <div>
       <div className="Product-Page card h-100 col-sm-12 mb-3 d-flex flex-row py-4">
@@ -99,7 +119,7 @@ export default function ProductPage() {
           </div>
           {/* add-to-cart-button */}
           <div className="add-to-cart-button mt-4">
-            <Button className="button-of-productpage">
+            <Button className="button-of-productpage" onClick={handleAddToCart}>
               Thêm vào giỏ hàng{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
