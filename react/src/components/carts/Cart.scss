@@ -4,6 +4,31 @@
   cursor: pointer;
   width: 80%;
   margin: auto;
+
+  .quantity-buttons {
+    display: flex;
+    align-items: center;
+
+    .quantity-display {
+      margin: 0 10px; // Khoảng cách giữa số lượng và nút tăng giảm
+    }
+
+    button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc; // Khung viền xám
+      background-color: #fff; // Nền trắng
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #f0f0f0; // Nền xám nhạt khi di chuột qua
+      }
+    }
+  }
 }
 
 .cart_icon {
@@ -56,14 +81,3 @@
   }
 }
 /* Cart.scss */
-.cart-container {
-  position: relative;
-  cursor: pointer;
-
-  .cart-products {
-    /* ... existing styles ... */
-    top: calc(
-      100% + 10px
-    ); /* Adjust the distance from the bottom of the icon */
-  }
-}
